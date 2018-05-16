@@ -1,4 +1,4 @@
-import {call, put, takeEvery, takeLatest, all, fork} from 'redux-saga/effects';
+import {call, put, takeLatest} from 'redux-saga/effects';
 import {USER_LIST_REQUESTED, USER_LIST_SUCCEEDED, USER_LIST_FAILED} from '../actions/allActions.js';
 
 // TODO: Add login page

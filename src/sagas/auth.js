@@ -1,6 +1,7 @@
-import {call, put, takeEvery, takeLatest, all, fork} from 'redux-saga/effects';
+import {call, put, takeLatest} from 'redux-saga/effects';
 import {AUTH_STATUS_REQUESTED, AUTH_STATUS_SUCCEEDED, AUTH_STATUS_FAILED} from '../actions/allActions.js';
 import {AUTH_LOGIN_REQUESTED, AUTH_LOGIN_SUCCEEDED, AUTH_LOGIN_FAILED} from '../actions/allActions.js';
+import {AUTH_LOGOUT_REQUESTED, AUTH_LOGOUT_SUCCEEDED, AUTH_LOGOUT_FAILED} from '../actions/allActions.js';
 
 function* authStatus() {
 	try {

@@ -2,10 +2,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Route} from 'react-router-dom';
-import {bindActionCreators} from 'redux';
 import {BrowserRouter} from 'react-router-dom';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
-import {LinkContainer, IndexLinkContainer} from 'react-router-bootstrap';
+import {IndexLinkContainer} from 'react-router-bootstrap';
 
 // Actions
 import {AUTH_STATUS_REQUESTED} from '../actions/allActions';
