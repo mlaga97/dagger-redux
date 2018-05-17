@@ -6,8 +6,8 @@ import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import {IndexLinkContainer} from 'react-router-bootstrap';
 
 // Components
-import UserList from './UserList';
 import LogoutPage from './LogoutPage';
+import AssessmentTest from './AssessmentTest';
 
 // Helpers
 function HomePage() {
@@ -34,6 +34,9 @@ function PrivateApp() {
 						<IndexLinkContainer to='/'>
 							<NavItem eventKey={1}>Home</NavItem>
 						</IndexLinkContainer>
+						<IndexLinkContainer to='/assessmentTest'>
+							<NavItem eventKey={2}>Assessments</NavItem>
+						</IndexLinkContainer>
 						<IndexLinkContainer to='/logout'>
 							<NavItem eventKey={7}>Logout</NavItem>
 						</IndexLinkContainer>
@@ -43,6 +46,7 @@ function PrivateApp() {
 				<div style={divStyle}>
 					<Route exact path='/' component={HomePage} />
 					<Route exact path='/logout' component={LogoutPage} />
+					<Route exact path='/assessmentTest' component={AssessmentTest} />
 
 					{/*
 					<Route exact path='/users' component={UserList} />

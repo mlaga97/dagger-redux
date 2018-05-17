@@ -2,17 +2,16 @@
 import {combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 
-// Actions
-import * as allActions from '../actions/allActions';
-
 // Reducers
 import userData from './userDataReducer';
 import auth from './authReducer';
+import assessment from './assessmentReducer';
 
 // Combine our reducers together
 const rootReducer = combineReducers({
 	userData,
 	auth,
+	assessment,
 	form: formReducer.plugin({
 		loginForm: (state, action) => {
 			switch(action.type) {

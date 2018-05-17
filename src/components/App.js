@@ -1,10 +1,6 @@
 // Library imports
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route} from 'react-router-dom';
-import {BrowserRouter} from 'react-router-dom';
-import {Navbar, Nav, NavItem} from 'react-bootstrap';
-import {IndexLinkContainer} from 'react-router-bootstrap';
 
 // Actions
 import {AUTH_STATUS_REQUESTED} from '../actions/allActions';
@@ -12,20 +8,6 @@ import {AUTH_STATUS_REQUESTED} from '../actions/allActions';
 // Components
 import PrivateApp from './PrivateApp';
 import PublicApp from './PublicApp';
-import UserList from './UserList';
-import LoginForm from './LoginForm';
-import LogoutPage from './LogoutPage';
-
-// Helpers
-function HomePage() {
-	return <p>Hello.</p>
-}
-
-let divStyle = {
-	'paddingLeft': '15px',
-	'paddingRight': '15px',
-	'paddingBottom': '15px',
-}
 
 // The main layout for the application
 class App extends React.Component {
