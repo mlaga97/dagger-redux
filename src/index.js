@@ -13,13 +13,13 @@ import configureStore from './configureStore';
 import App from './components/App';
 
 // Actions
-import {AUTH_LOGIN_REQUESTED} from './actions/allActions.js';
+import {AUTH_STATUS_REQUESTED} from './actions/allActions.js';
 
 // Redux Store
 let store = configureStore();
 
 // Get stuff from the server
-store.dispatch({type: AUTH_LOGIN_REQUESTED});
+store.dispatch({type: AUTH_STATUS_REQUESTED});
 
 // Do the routing and then render
 ReactDOM.render(

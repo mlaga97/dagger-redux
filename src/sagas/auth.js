@@ -6,7 +6,9 @@ import {AUTH_LOGOUT_REQUESTED, AUTH_LOGOUT_SUCCEEDED, AUTH_LOGOUT_FAILED} from '
 function* authStatus() {
 	try {
 		const data = yield call(() => {
-			return fetch('http://dagger-local/api/v1/auth')
+			return fetch('http://dagger-local/api/v1/auth', {
+					credentials: 'include',
+				})
 				.then(response => response.json())
 				.then(data => data)
 				.catch(error => {
@@ -26,15 +28,13 @@ function* authStatus() {
 	}
 }
 
-function* authLogin() {
+function* authLogin(action) {
 	try {
 		const data = yield call(() => {
 			return fetch('http://dagger-local/api/v1/auth/login', {
 					method: 'POST',
-					body: JSON.stringify({
-						'username': 'MS',
-						'password': 'mississippi',
-					}),
+					body: JSON.stringify(action.data),
+					credentials: 'include',
 				})
 				.then(response => response.json())
 				.then(data => data)
@@ -44,7 +44,7 @@ function* authLogin() {
 		})
 
 		yield put({
-			type: AUTH_LOGIN_SUCCEEDED,
+			type: data === 'Authentication succeeded!' ? AUTH_LOGIN_SUCCEEDED : AUTH_LOGIN_FAILED,
 			data: data,
 		});
 	} catch(e) {
@@ -55,8 +55,35 @@ function* authLogin() {
 	}
 }
 
+function* authLogout() {
+	try {
+		const data = yield call(() => {
+			return fetch('http://dagger-local/api/v1/auth/logout', {
+					method: 'POST',
+					credentials: 'include',
+				})
+				.then(response => response.json())
+				.then(data => data)
+				.catch(error => {
+					throw error
+				});
+		})
+
+		yield put({
+			type: AUTH_LOGOUT_SUCCEEDED,
+			data: data,
+		});
+	} catch(e) {
+		yield put({
+			type: AUTH_LOGOUT_FAILED,
+			message: e.message,
+		});
+	}
+}
+
 function* authSaga() {
 	yield takeLatest(AUTH_LOGIN_REQUESTED, authLogin);
+	yield takeLatest(AUTH_LOGOUT_REQUESTED, authLogout);
 	yield takeLatest(AUTH_STATUS_REQUESTED, authStatus);
 }
 

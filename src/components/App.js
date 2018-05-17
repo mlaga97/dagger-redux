@@ -9,8 +9,17 @@ import {IndexLinkContainer} from 'react-router-bootstrap';
 // Actions
 import {AUTH_STATUS_REQUESTED} from '../actions/allActions';
 
-// Pages
+// Components
+import PrivateApp from './PrivateApp';
+import PublicApp from './PublicApp';
 import UserList from './UserList';
+import LoginForm from './LoginForm';
+import LogoutPage from './LogoutPage';
+
+// Helpers
+function HomePage() {
+	return <p>Hello.</p>
+}
 
 let divStyle = {
 	'paddingLeft': '15px',
@@ -18,10 +27,6 @@ let divStyle = {
 	'paddingBottom': '15px',
 }
 
-function HomePage() {
-	return <p>Hello.</p>
-}
-	
 // The main layout for the application
 class App extends React.Component {
 	componentWillMount() {
@@ -30,66 +35,27 @@ class App extends React.Component {
 	}
 
 	render() {
-		// TODO: Fix settings back
-		/*if(!this.props.settings) {
+		if(!this.props.auth) {
 			return (
-				<div>
-					Loading settings...
-				</div>
+				<div>Getting auth data...</div>
 			);
-		} else {*/
-			return (
-				<BrowserRouter>
-					<div>
-						<Navbar inverse>
-							<Navbar.Header>
-								<Navbar.Brand>
-									<a href='/'>Dagger</a>
-								</Navbar.Brand>
-							</Navbar.Header>
-							<Nav>
-								<IndexLinkContainer to='/'>
-									<NavItem eventKey={1}>Home</NavItem>
-								</IndexLinkContainer>
-								<IndexLinkContainer to='/assessment'>
-									<NavItem eventKey={2}>Assessment</NavItem>
-								</IndexLinkContainer>
-								<IndexLinkContainer to='/search'>
-									<NavItem eventKey={3}>Search</NavItem>
-								</IndexLinkContainer>
-								<IndexLinkContainer to='/statistics'>
-									<NavItem eventKey={4}>Statistics</NavItem>
-								</IndexLinkContainer>
-								<IndexLinkContainer to='/settings'>
-									<NavItem eventKey={5}>Settings</NavItem>
-								</IndexLinkContainer>
-								<IndexLinkContainer to='/users'>
-									<NavItem eventKey={6}>User List</NavItem>
-								</IndexLinkContainer>
-							</Nav>
-						</Navbar>
-						
-						<div style={divStyle}>
-							<Route exact path='/' component={HomePage} />
-							<Route path='/assessment' component={HomePage} />
-							<Route path='/search' component={HomePage} />
-							<Route path='/statistics' component={HomePage} />
-							<Route path='/settings' component={HomePage} />
+		} else {
+			if(!this.props.auth.status) {
+				if(window.location.pathname !== '/login') {
+					window.location.pathname = '/login';
+				}
 
-							<Route exact path='/users' component={UserList} />
-						</div>
-					</div>
-				</BrowserRouter>
-			);
-		//}
+				return <PublicApp />;
+			} else {
+				return <PrivateApp />;
+			}
+		}
 	}
 }
-						//<Route exact path='/user' component={UserPage} />
-						//<Route path='/user/*' component={UserPage} />
 
 function mapStateToProps(state) {
 	return {
-		settings: state.settings,
+		auth: state.auth,
 	}
 }
 

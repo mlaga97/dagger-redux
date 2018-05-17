@@ -1,14 +1,26 @@
 // Library imports
 import {combineReducers} from 'redux';
+import {reducer as formReducer} from 'redux-form';
+
+// Actions
+import * as allActions from '../actions/allActions';
 
 // Reducers
 import userData from './userDataReducer';
-import authReducer from './authReducer';
+import auth from './authReducer';
 
 // Combine our reducers together
 const rootReducer = combineReducers({
 	userData,
-	authReducer,
+	auth,
+	form: formReducer.plugin({
+		loginForm: (state, action) => {
+			switch(action.type) {
+				default:
+					return state;
+			}
+		},
+	})
 });
 
 export default rootReducer;
