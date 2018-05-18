@@ -1,7 +1,13 @@
-import {call, put, takeLatest} from 'redux-saga/effects';
-import {ASSESSMENT_ALL_REQUESTED, ASSESSMENT_ALL_SUCCEEDED, ASSESSMENT_ALL_FAILED} from '../actions/allActions.js';
+// Library imports
+import {call, put} from 'redux-saga/effects';
 
-function* getAllAssessmentData() {
+// Actions
+import {ASSESSMENT_ALL_SUCCEEDED, ASSESSMENT_ALL_FAILED} from '../../actions/allActions.js';
+
+/**
+ * Retrieve data for all available assessments
+ */
+export default function* getAllAssessmentData() {
 	try {
 		const data = yield call(() => {
 			return fetch('http://dagger-local/api/v1/assessment/all', {
@@ -25,9 +31,3 @@ function* getAllAssessmentData() {
 		});
 	}
 }
-
-function* assessmentSaga() {
-	yield takeLatest(ASSESSMENT_ALL_REQUESTED, getAllAssessmentData);
-}
-
-export default assessmentSaga;

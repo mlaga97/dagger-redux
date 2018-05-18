@@ -5,9 +5,6 @@ import {connect} from 'react-redux';
 // Actions
 import {ASSESSMENT_ALL_REQUESTED} from '../actions/allActions';
 
-// Components
-import Assessment from './Assessment';
-
 function AssessmentSelector(props) {
 	return(
 		<div>{props.assessmentClass.metadata.text}</div>

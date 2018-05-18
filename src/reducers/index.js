@@ -3,13 +3,13 @@ import {combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 
 // Reducers
-import userData from './userDataReducer';
-import auth from './authReducer';
 import assessment from './assessmentReducer';
+import auth from './authReducer';
+import user from './userReducer';
 
 // Combine our reducers together
 const rootReducer = combineReducers({
-	userData,
+	user,
 	auth,
 	assessment,
 	form: formReducer.plugin({

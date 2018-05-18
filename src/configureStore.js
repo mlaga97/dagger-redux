@@ -4,10 +4,10 @@ import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 
 // Sagas
-import rootSaga from './sagas/rootSaga';
+import rootSaga from './sagas';
 
 // Reducers
-import rootReducer from './reducers/rootReducer';
+import rootReducer from './reducers';
 
 // Configure the store to use thunk, saga, and devtool extensions
 export default function configureStore() {
