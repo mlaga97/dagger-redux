@@ -1,16 +1,8 @@
 // Library imports
 import React from 'react';
 
-function AssessmentQuestion(props) {
-	if(!props.question)
-		return null;
-
-	return(
-		<div>
-			{props.index + 1}. {props.question.text} ({props.question.id}, {typeof(props.question.type) === 'string' ? props.question.type : 'inline'})<br/>
-		</div>
-	);
-}
+// Components
+import AssessmentQuestion from './AssessmentQuestion';
 
 function AssessmentQuestions(props) {
 	if(!props.questions)
@@ -21,7 +13,7 @@ function AssessmentQuestions(props) {
 			{
 				props.questions.map((question, index) => {
 					return(
-						<AssessmentQuestion key={index} index={index} question={question} />
+						<AssessmentQuestion key={index} index={index} question={question} types={props.types} />
 					);
 				})
 			}
@@ -60,7 +52,7 @@ function AssessmentSection(props) {
 		<div>
 			<AssessmentSectionHeader header={props.section.header} />
 			<AssessmentSectionDescription description={props.section.description} />
-			<AssessmentQuestions questions={props.section.questions} />
+			<AssessmentQuestions questions={props.section.questions} types={props.types} />
 			<br/>
 		</div>
 	);
@@ -72,11 +64,11 @@ function Assessment(props) {
 	return(
 		<div>
 			<h3>{assessment.metadata.text}</h3>
-			<AssessmentQuestions questions={assessment.questions} />
+			<AssessmentQuestions questions={assessment.questions} types={assessment.types} />
 			{
 				assessment.sections.map((section, index) => {
 					return(
-						<AssessmentSection key={index} section={section} />
+						<AssessmentSection key={index} section={section} types={assessment.types} />
 					);
 				})
 			}
