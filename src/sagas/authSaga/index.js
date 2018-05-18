@@ -2,7 +2,7 @@
 import {takeLatest} from 'redux-saga/effects';
 
 // Actions
-import {AUTH_LOGIN_REQUESTED, AUTH_LOGOUT_REQUESTED, AUTH_STATUS_REQUESTED} from '../../actions/allActions.js';
+import actions from '../../actions';
 
 // Sagas
 import login from './login';
@@ -11,8 +11,8 @@ import status from './status';
 
 // Export saga
 export default function* authSaga() {
-	yield takeLatest(AUTH_LOGIN_REQUESTED, login);
-	yield takeLatest(AUTH_LOGOUT_REQUESTED, logout);
-	yield takeLatest(AUTH_STATUS_REQUESTED, status);
+	yield takeLatest(actions.auth.login.requested, login);
+	yield takeLatest(actions.auth.logout.requested, logout);
+	yield takeLatest(actions.auth.status.requested, status);
 }
 

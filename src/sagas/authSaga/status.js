@@ -2,7 +2,7 @@
 import {call, put} from 'redux-saga/effects';
 
 // Actions
-import {AUTH_STATUS_SUCCEEDED, AUTH_STATUS_FAILED} from '../../actions/allActions.js';
+import actions from '../../actions';
 
 /**
  * Retrieves the current login status of the user.
@@ -21,12 +21,12 @@ export default function* status() {
 		})
 
 		yield put({
-			type: AUTH_STATUS_SUCCEEDED,
+			type: actions.auth.status.succeeded,
 			data: data,
 		});
 	} catch(e) {
 		yield put({
-			type: AUTH_STATUS_FAILED,
+			type: actions.auth.status.failed,
 			message: e.message,
 		});
 	}

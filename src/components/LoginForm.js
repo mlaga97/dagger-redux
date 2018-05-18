@@ -7,7 +7,7 @@ import {FormGroup, ControlLabel, Button} from 'react-bootstrap';
 import ReduxFormControl from './ReduxFormControl';
 
 // Actions
-import {AUTH_LOGIN_REQUESTED} from '../actions/allActions';
+import actions from '../actions';
 
 function LoginForm(props) {
 	return(
@@ -30,7 +30,7 @@ export default reduxForm({
 			window.location.pathname = '/';
 
 		dispatch({
-			type: AUTH_LOGIN_REQUESTED,
+			type: actions.auth.login.requested,
 			data: values,
 		});
 	}

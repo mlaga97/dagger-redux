@@ -2,7 +2,7 @@
 import {call, put} from 'redux-saga/effects'; 
 
 // Actions
-import {USER_LIST_SUCCEEDED, USER_LIST_FAILED} from '../../actions/allActions.js'; 
+import actions from '../../actions';
 
 /**
  * Retrieve list of all user IDs
@@ -21,12 +21,12 @@ export default function* list() {
 		}) 
 
 		yield put({ 
-			type: USER_LIST_SUCCEEDED, 
+			type: actions.user.list.succeeded, 
 			data: data, 
 		}); 
 	} catch(e) { 
 		yield put({ 
-			type: USER_LIST_FAILED, 
+			type: actions.user.list.failed, 
 			message: e.message, 
 		}); 
 	} 

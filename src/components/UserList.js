@@ -4,11 +4,11 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 // Actions
-import {USER_LIST_REQUESTED} from '../actions/allActions';
+import actions from '../actions';
 
 class UserList extends React.Component {
 	componentWillMount() {
-		this.props.dispatch({type: USER_LIST_REQUESTED});
+		this.props.dispatch({type: actions.user.list.requested});
 	}
 
 	render() {

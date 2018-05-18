@@ -10,21 +10,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import configureStore from './configureStore';
 
 // Components
-import App from './components/App';
+import AuthRedirector from './components';
 
 // Actions
-import {AUTH_STATUS_REQUESTED} from './actions/allActions.js';
+import actions from './actions';
 
 // Redux Store
 let store = configureStore();
 
 // Get stuff from the server
-store.dispatch({type: AUTH_STATUS_REQUESTED});
+store.dispatch({type: actions.auth.status.requested});
 
 // Do the routing and then render
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+		<AuthRedirector />
 	</Provider>
 	,
 	document.getElementById('root')

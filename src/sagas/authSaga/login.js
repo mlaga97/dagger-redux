@@ -2,7 +2,7 @@
 import {call, put} from 'redux-saga/effects';
 
 // Actions
-import {AUTH_LOGIN_SUCCEEDED, AUTH_LOGIN_FAILED} from '../../actions/allActions.js';
+import actions from '../../actions';
 
 /**
  * Attempts to log the user in with the given username and password credentials.
@@ -27,12 +27,12 @@ export default function* login(action) {
 		})
 
 		yield put({
-			type: data === 'Authentication succeeded!' ? AUTH_LOGIN_SUCCEEDED : AUTH_LOGIN_FAILED,
+			type: data === 'Authentication succeeded!' ? actions.auth.login.succeeded : actions.auth.login.failed,
 			data: data,
 		});
 	} catch(e) {
 		yield put({
-			type: AUTH_LOGIN_FAILED,
+			type: actions.auth.login.failed,
 			message: e.message,
 		});
 	}

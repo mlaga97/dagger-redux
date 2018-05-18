@@ -2,12 +2,12 @@
 import {takeLatest} from 'redux-saga/effects';
 
 // Actions
-import {USER_LIST_REQUESTED} from '../../actions/allActions.js';
+import actions from '../../actions';
 
 // Sagas
 import list from './list.js';
 
 // Export saga
 export default function* userSaga() {
-	yield takeLatest(USER_LIST_REQUESTED, list);
+	yield takeLatest(actions.user.list.requested, list);
 }

@@ -3,11 +3,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 // Actions
-import {AUTH_LOGOUT_REQUESTED} from '../actions/allActions';
+import actions from '../actions';
 
 class LogoutPage extends React.Component {
 	componentWillMount() {
-		this.props.dispatch({type: AUTH_LOGOUT_REQUESTED});
+		this.props.dispatch({type: actions.auth.logout.requested});
 	}
 
 	render() {

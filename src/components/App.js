@@ -1,53 +1,100 @@
 // Library imports
 import React from 'react';
-import {connect} from 'react-redux';
-
-// Actions
-import {AUTH_STATUS_REQUESTED} from '../actions/allActions';
+import {Route} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
+import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import {IndexLinkContainer} from 'react-router-bootstrap';
 
 // Components
-import PrivateApp from './PrivateApp';
-import PublicApp from './PublicApp';
+import LogoutPage from './LogoutPage';
+import AssessmentPage from './AssessmentPage';
+import AssessmentTest from './AssessmentTest';
 
-// The main layout for the application
-class App extends React.Component {
+// Helpers
+function HomePage() {
+	return <p>Hello.</p>
+}
+
+let divStyle = {
+	'paddingLeft': '15px',
+	'paddingRight': '15px',
+	'paddingBottom': '15px',
+}
+
+
+class PrivateApp extends React.Component {
+	// Do stuff that the entire application needs
 	componentWillMount() {
-		this.props.dispatch({type: AUTH_STATUS_REQUESTED});
+		// TODO: Get server data
+		// TODO: Get user data
+		// TODO: Get users' data (admin only?)
+		// TODO: Get clinic data
+		// TODO: Get assessment [meta?]data
+		// TODO: Setup response?
 	}
 
 	render() {
-		if(!this.props.auth) {
-			return (
-				<div>Getting auth data...</div>
-			);
-		} else {
-			if(!this.props.auth.status) {
-				if(window.location.pathname !== '/login') {
-					window.location.pathname = '/login';
-				}
+		return (
+			<BrowserRouter>
+				<div>
+					<Navbar inverse>
+						<Navbar.Header>
+							<Navbar.Brand>
+								<a href='/'>Dagger</a>
+							</Navbar.Brand>
+						</Navbar.Header>
+						<Nav>
+							<IndexLinkContainer to='/'>
+								<NavItem eventKey={1}>Home</NavItem>
+							</IndexLinkContainer>
+							<IndexLinkContainer to='/assessment'>
+								<NavItem eventKey={2}>Assessment</NavItem>
+							</IndexLinkContainer>
+							<IndexLinkContainer to='/assessmentTest'>
+								<NavItem eventKey={3}>Assessment Test</NavItem>
+							</IndexLinkContainer>
+							<IndexLinkContainer to='/reportTest'>
+								<NavItem eventKey={4}>Reports</NavItem>
+							</IndexLinkContainer>
+							<NavDropdown eventKey={5} title='Other' id='nav-dropdown-other'>
+								<IndexLinkContainer to='/clinicStats'>
+									<MenuItem eventKey={5.1}>Clinic Statistics</MenuItem>
+								</IndexLinkContainer>
+								<IndexLinkContainer to='/modules'>
+									<MenuItem eventKey={5.2}>Modules</MenuItem>
+								</IndexLinkContainer>
+								<IndexLinkContainer to='/config'>
+									<MenuItem eventKey={5.3}>Configuration</MenuItem>
+								</IndexLinkContainer>
+								<IndexLinkContainer to='/userStats'>
+									<MenuItem eventKey={5.4}>User Statistics</MenuItem>
+								</IndexLinkContainer>
+								<IndexLinkContainer to='/userSettings'>
+									<MenuItem eventKey={5.5}>User Settings</MenuItem>
+								</IndexLinkContainer>
+								<IndexLinkContainer to='/logout'>
+									<MenuItem eventKey={5.6}>Logout</MenuItem>
+								</IndexLinkContainer>
+							</NavDropdown>
+						</Nav>
+					</Navbar>
+					
+					<div style={divStyle}>
+						<Route exact path='/' component={HomePage} />
+						<Route exact path='/logout' component={LogoutPage} />
+						<Route exact path='/assessment' component={AssessmentPage} />
+						<Route exact path='/assessmentTest' component={AssessmentTest} />
 
-				return <PublicApp />;
-			} else {
-				return <PrivateApp />;
-			}
-		}
+						{/*
+						<Route exact path='/users' component={UserList} />
+						<Route exact path='/user' component={UserPage} />
+						<Route path='/user/*' component={UserPage} />
+						*/}
+					</div>
+				</div>
+			</BrowserRouter>
+		);
 	}
 }
 
-function mapStateToProps(state) {
-	return {
-		auth: state.auth,
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		dispatch: dispatch,
-	}
-}
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(App);
-
+export default PrivateApp;

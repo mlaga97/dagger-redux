@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 // Actions
-import {ASSESSMENT_ALL_REQUESTED} from '../actions/allActions';
+import actions from '../actions';
 
 function AssessmentSelector(props) {
 	return(
@@ -14,7 +14,7 @@ function AssessmentSelector(props) {
 class AssessmentTest extends React.Component {
 	componentWillMount() {
 		if(!this.props.assessment)
-			this.props.dispatch({type: ASSESSMENT_ALL_REQUESTED});
+			this.props.dispatch({type: actions.assessment.all.requested});
 	}
 
 	render() {

@@ -2,13 +2,13 @@
 import {takeLatest} from 'redux-saga/effects';
 
 // Actions
-import {ASSESSMENT_ALL_REQUESTED} from '../../actions/allActions.js';
+import actions from '../../actions';
 
 // Sagas
 import getAllAssessmentData from './all';
 
 // Export saga
 export default function* assessmentSaga() {
-	yield takeLatest(ASSESSMENT_ALL_REQUESTED, getAllAssessmentData);
+	yield takeLatest(actions.assessment.all.requested, getAllAssessmentData);
 }
 

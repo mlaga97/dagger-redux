@@ -2,7 +2,7 @@
 import {call, put} from 'redux-saga/effects';
 
 // Actions
-import {ASSESSMENT_ALL_SUCCEEDED, ASSESSMENT_ALL_FAILED} from '../../actions/allActions.js';
+import actions from '../../actions';
 
 /**
  * Retrieve data for all available assessments
@@ -21,12 +21,12 @@ export default function* getAllAssessmentData() {
 		})
 
 		yield put({
-			type: ASSESSMENT_ALL_SUCCEEDED,
+			type: actions.assessment.all.succeeded,
 			data: data,
 		});
 	} catch(e) {
 		yield put({
-			type: ASSESSMENT_ALL_FAILED,
+			type: actions.assessment.all.failed,
 			message: e.message,
 		});
 	}

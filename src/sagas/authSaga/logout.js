@@ -2,7 +2,7 @@
 import {call, put} from 'redux-saga/effects';
 
 // Actions
-import {AUTH_LOGOUT_SUCCEEDED, AUTH_LOGOUT_FAILED} from '../../actions/allActions.js';
+import actions from '../../actions';
 
 /**
  * Logs user out of API.
@@ -22,12 +22,12 @@ export default function* logout() {
 		})
 
 		yield put({
-			type: AUTH_LOGOUT_SUCCEEDED,
+			type: actions.auth.logout.succeeded,
 			data: data,
 		});
 	} catch(e) {
 		yield put({
-			type: AUTH_LOGOUT_FAILED,
+			type: actions.auth.logout.failed,
 			message: e.message,
 		});
 	}
