@@ -8,6 +8,12 @@ import {ASSESSMENT_ALL_REQUESTED} from '../actions/allActions';
 // Components
 import Assessment from './Assessment';
 
+function AssessmentSelector(props) {
+	return(
+		<div>{props.assessmentClass.metadata.text}</div>
+	);
+}
+
 class AssessmentTest extends React.Component {
 	componentWillMount() {
 		if(!this.props.assessment)
@@ -26,7 +32,7 @@ class AssessmentTest extends React.Component {
 						Object.keys(this.props.assessment.all).map((key) => {
 							let value = this.props.assessment.all[key];
 							return(
-								<Assessment key={key} assessmentClass={value} />
+								<AssessmentSelector key={key} assessmentClass={value} />
 							);
 						})
 					}

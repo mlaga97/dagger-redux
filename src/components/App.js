@@ -12,7 +12,6 @@ import PublicApp from './PublicApp';
 // The main layout for the application
 class App extends React.Component {
 	componentWillMount() {
-		// Do stuff that the entire application needs
 		this.props.dispatch({type: AUTH_STATUS_REQUESTED});
 	}
 
