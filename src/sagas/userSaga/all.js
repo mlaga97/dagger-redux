@@ -5,12 +5,12 @@ import {call, put} from 'redux-saga/effects';
 import actions from '../../actions';
 
 /**
- * Retrieves list of all user IDs
+ * Retrieves data of all user IDs
  */
-export default function* list() { 
+export default function* all() { 
 	try { 
 		const data = yield call(() => { 
-			return fetch('http://dagger-local/api/v1/user', { 
+			return fetch('http://dagger-local/api/v1/user/all', { 
 					'credentials': 'include', 
 				}) 
 				.then(response => response.json()) 
@@ -21,12 +21,12 @@ export default function* list() {
 		}) 
 
 		yield put({ 
-			type: actions.user.list.succeeded, 
+			type: actions.user.all.succeeded, 
 			data: data, 
 		}); 
 	} catch(e) { 
 		yield put({ 
-			type: actions.user.list.failed, 
+			type: actions.user.all.failed, 
 			message: e.message, 
 		}); 
 	} 

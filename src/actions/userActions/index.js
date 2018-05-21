@@ -1,10 +1,14 @@
 // Actions
-import data from './data';
+import all from './all';
+import current from './current';
+import get from './get';
 import list from './list';
 
 // Export Actions
 export default {
-	data,
+	all,
+	current,
+	get,
 	list,
 }
 

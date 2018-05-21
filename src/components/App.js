@@ -9,6 +9,7 @@ import {IndexLinkContainer} from 'react-router-bootstrap';
 import LogoutPage from './LogoutPage';
 import AssessmentPage from './AssessmentPage';
 import AssessmentTest from './AssessmentTest';
+import UserList from './UserList';
 
 // Helpers
 function HomePage() {
@@ -85,8 +86,8 @@ class PrivateApp extends React.Component {
 						<Route exact path='/assessment' component={AssessmentPage} />
 						<Route exact path='/assessmentTest' component={AssessmentTest} />
 
-						{/*
 						<Route exact path='/users' component={UserList} />
+						{/*
 						<Route exact path='/user' component={UserPage} />
 						<Route path='/user/*' component={UserPage} />
 						*/}

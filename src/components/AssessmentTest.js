@@ -10,12 +10,12 @@ import Assessment from './Assessment';
 
 class AssessmentTest extends React.Component {
 	componentWillMount() {
-		if(!this.props.assessment)
+		if(!this.props.assessments)
 			this.props.dispatch({type: actions.assessment.all.requested});
 	}
 
 	render() {
-		if(!this.props.assessment) { 
+		if(!this.props.assessments) { 
 			return(
 				<div>Retrieving assessments...</div>
 			);
@@ -23,8 +23,8 @@ class AssessmentTest extends React.Component {
 			return(
 				<div>
 					{
-						Object.keys(this.props.assessment.all).map((key) => {
-							let value = this.props.assessment.all[key];
+						Object.keys(this.props.assessments.all).map((key) => {
+							let value = this.props.assessments.all[key];
 							return(
 								<Assessment key={key} assessmentClass={value} />
 							);
@@ -38,7 +38,7 @@ class AssessmentTest extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		assessment: state.assessment,
+		assessments: state.assessments,
 		auth: state.auth,
 	};
 }
