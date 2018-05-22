@@ -5,18 +5,18 @@ import {reducer as formReducer} from 'redux-form';
 // Reducers
 import assessments from './assessmentReducer';
 import auth from './authReducer';
-import user from './userReducer';
+import clinics from './clinicReducer';
+import users from './userReducer';
 
 // Combine our reducers together
 const rootReducer = combineReducers({
 	assessments,	// Assessments, by class
 	auth,			// Authentication information
-	//clinics,		// Clinics, by ID
+	clinics,		// Clinics, by ID
 	//info,			// Information about the client and server
 	//modules,		// Modules, by name
 	//response, 	// Working area for current record
-	user,			// Current user data
-	//users,		// Data for users, by id
+	users,			// Users, by ID
 	form: formReducer.plugin({
 		loginForm: (state, action) => {
 			switch(action.type) {
