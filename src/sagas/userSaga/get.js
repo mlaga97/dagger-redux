@@ -5,7 +5,7 @@ import {call, put} from 'redux-saga/effects';
 import actions from '../../actions';
 
 /**
- * Retrieves data of given user
+ * Retrieves data of given user.
  */
 export default function* get(action) { 
 	try { 

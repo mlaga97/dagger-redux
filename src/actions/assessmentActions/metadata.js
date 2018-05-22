@@ -1,0 +1,5 @@
+export default {
+	requested: 'ASSESSMENT_METADATA_REQUESTED',
+	succeeded: 'ASSESSMENT_METADATA_SUCCEEDED',
+	failed: 'ASSESSMENT_METADATA_FAILED',
+}

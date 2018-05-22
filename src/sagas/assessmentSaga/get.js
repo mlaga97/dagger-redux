@@ -5,12 +5,12 @@ import {call, put} from 'redux-saga/effects';
 import actions from '../../actions';
 
 /**
- * Retrieves data for all available assessments.
+ * Retrieves data for selected assessment.
  */
-export default function* all() {
+export default function* get(action) {
 	try {
 		const data = yield call(() => {
-			return fetch('http://dagger-local/api/v1/assessment/all', {
+			return fetch('http://dagger-local/api/v1/assessment/' + action.data.assessmentClass, {
 					credentials: 'include',
 				})
 				.then(response => response.json())
@@ -21,12 +21,12 @@ export default function* all() {
 		})
 
 		yield put({
-			type: actions.assessment.all.succeeded,
+			type: actions.assessment.get.succeeded,
 			data: data,
 		});
 	} catch(e) {
 		yield put({
-			type: actions.assessment.all.failed,
+			type: actions.assessment.get.failed,
 			message: e.message,
 		});
 	}

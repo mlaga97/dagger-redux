@@ -1,6 +1,4 @@
-/**
- *
- */
+// TODO: JSDoc
 export default function list(state, action) {
 	let newState = {};
 

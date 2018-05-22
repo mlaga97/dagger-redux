@@ -5,7 +5,7 @@ import {call, put} from 'redux-saga/effects';
 import actions from '../../actions';
 
 /**
- * Retrieves data of all user IDs
+ * Retrieves data of all user IDs.
  */
 export default function* all() { 
 	try { 

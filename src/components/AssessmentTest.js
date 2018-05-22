@@ -23,8 +23,8 @@ class AssessmentTest extends React.Component {
 			return(
 				<div>
 					{
-						Object.keys(this.props.assessments.all).map((key) => {
-							let value = this.props.assessments.all[key];
+						Object.keys(this.props.assessments).map((key) => {
+							let value = this.props.assessments[key];
 							return(
 								<Assessment key={key} assessmentClass={value} />
 							);
