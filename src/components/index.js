@@ -22,10 +22,6 @@ class AuthRedirector extends React.Component {
 			);
 		} else {
 			if(!this.props.auth.status) {
-				if(window.location.pathname !== '/login') {
-					window.location.pathname = '/login';
-				}
-
 				return <PublicApp />;
 			} else {
 				return <App />;

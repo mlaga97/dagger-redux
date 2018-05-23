@@ -12,11 +12,12 @@ class LogoutPage extends React.Component {
 
 	render() {
 		if(this.props.auth.status) {
+			window.location.pathname = '/';
+
 			return(
 				<div>Logging out...</div>
 			);
 		} else {
-			this.props.history.push("/");
 			return(
 				<div>Logged out!</div>
 			);

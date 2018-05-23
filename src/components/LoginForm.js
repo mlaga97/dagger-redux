@@ -26,6 +26,7 @@ function LoginForm(props) {
 export default reduxForm({
 	form: 'loginForm',
 	onSubmit: (values, dispatch, props, previousValues) => {
+		// TODO: Change this is login page is moved.
 		if(window.location.pathname !== '/')
 			window.location.pathname = '/';
 

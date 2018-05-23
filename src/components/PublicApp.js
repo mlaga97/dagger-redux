@@ -30,14 +30,14 @@ function PublicApp() {
 						</Navbar.Brand>
 					</Navbar.Header>
 					<Nav>
-						<IndexLinkContainer to='/Login'>
+						<IndexLinkContainer to='/'>
 							<NavItem eventKey={1}>Login</NavItem>
 						</IndexLinkContainer>
 					</Nav>
 				</Navbar>
 				
 				<div style={divStyle}>
-					<Route exact path='/' component={HomePage} />
+					<Route exact path='/' component={LoginForm} />
 					<Route exact path='/login' component={LoginForm} />
 				</div>
 			</div>

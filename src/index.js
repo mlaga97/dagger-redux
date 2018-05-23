@@ -18,9 +18,6 @@ import actions from './actions';
 // Redux Store
 let store = configureStore();
 
-// Get stuff from the server
-store.dispatch({type: actions.auth.status.requested});
-
 // Do the routing and then render
 ReactDOM.render(
 	<Provider store={store}>
