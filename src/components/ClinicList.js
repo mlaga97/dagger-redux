@@ -7,16 +7,16 @@ import {Table} from 'react-bootstrap';
 // Actions
 import actions from '../actions';
 
-class UserList extends React.Component {
+class ClinicList extends React.Component {
 	componentWillMount() {
-		this.props.dispatch({type: actions.user.all.requested});
+		this.props.dispatch({type: actions.clinic.all.requested});
 	}
 
 	render() {
-		if(!this.props.users) {
+		if(!this.props.clinics) {
 			return (
 				<div>
-					Retrieving user list...
+					Retrieving clinic list...
 				</div>
 			);
 		} else {
@@ -26,28 +26,24 @@ class UserList extends React.Component {
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>Username</th>
-								<th>Active</th>
-								<th>Admin</th>
-								<th>Debug</th>
-								<th>Tester</th>
+								<th>Name</th>
+								<th>City</th>
+								<th>State</th>
 							</tr>
 						</thead>
 						<tbody>
 							{
-								Object.keys(this.props.users).map((userID, index) => {
-									let user = this.props.users[userID];
+								Object.keys(this.props.clinics).map((clinicID, index) => {
+									let clinic = this.props.clinics[clinicID];
 
 									return (
-										<tr key={index}>
+										<tr key={clinic.id}>
 											<td>
-												<Link to={'/user/' + user.id}>{user.id}</Link>
+												<Link to={'/clinic/' + clinic.id}>{clinic.id}</Link>
 											</td>
-											<td>{user.login.username}</td>
-											<td>{user.login.active ? 'Yes' : 'No'}</td>
-											<td>{user.flags.admin ? 'Yes' : 'No'}</td>
-											<td>{user.flags.debug ? 'Yes' : 'No'}</td>
-											<td>{user.flags.tester ? 'Yes' : 'No'}</td>
+											<td>{clinic.name}</td>
+											<td>{clinic.city}</td>
+											<td>{clinic.state}</td>
 										</tr>
 									);
 								})
@@ -62,7 +58,7 @@ class UserList extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		users: state.users,
+		clinics: state.clinics,
 	};
 }
 
@@ -75,4 +71,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(UserList);
+)(ClinicList);

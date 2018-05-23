@@ -9,7 +9,10 @@ import {IndexLinkContainer} from 'react-router-bootstrap';
 import LogoutPage from './LogoutPage';
 import AssessmentPage from './AssessmentPage';
 import AssessmentTest from './AssessmentTest';
+import ClinicList from './ClinicList';
+import ClinicPage from './ClinicList';
 import UserList from './UserList';
+import UserPage from './UserList';
 
 // Helpers
 function HomePage() {
@@ -73,8 +76,14 @@ class PrivateApp extends React.Component {
 								<IndexLinkContainer to='/userSettings'>
 									<MenuItem eventKey={5.5}>User Settings</MenuItem>
 								</IndexLinkContainer>
+								<IndexLinkContainer to='/users'>
+									<MenuItem eventKey={5.6}>Users</MenuItem>
+								</IndexLinkContainer>
+								<IndexLinkContainer to='/clinics'>
+									<MenuItem eventKey={5.7}>Clinics</MenuItem>
+								</IndexLinkContainer>
 								<IndexLinkContainer to='/logout'>
-									<MenuItem eventKey={5.6}>Logout</MenuItem>
+									<MenuItem eventKey={5.8}>Logout</MenuItem>
 								</IndexLinkContainer>
 							</NavDropdown>
 						</Nav>
@@ -86,11 +95,13 @@ class PrivateApp extends React.Component {
 						<Route exact path='/assessment' component={AssessmentPage} />
 						<Route exact path='/assessmentTest' component={AssessmentTest} />
 
+						<Route exact path='/clinics' component={ClinicList} />
+						{/*<Route exact path='/clinic' component={ClinicPage} />*/}
+						<Route path='/clinic/*' component={ClinicPage} />
+
 						<Route exact path='/users' component={UserList} />
-						{/*
-						<Route exact path='/user' component={UserPage} />
+						{/*<Route exact path='/user' component={UserPage} />*/}
 						<Route path='/user/*' component={UserPage} />
-						*/}
 					</div>
 				</div>
 			</BrowserRouter>
