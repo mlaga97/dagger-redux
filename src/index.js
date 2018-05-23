@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import axios from 'axios';
 
 // Bootstrap Stuff
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,6 +15,11 @@ import AuthRedirector from './components';
 
 // Actions
 import actions from './actions';
+
+// Axios configuration
+// TODO: Somewhere else?
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'http://dagger-local/api/v1/';
 
 // Redux Store
 let store = configureStore();

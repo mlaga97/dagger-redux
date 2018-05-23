@@ -1,5 +1,6 @@
 // Library imports
 import {call, put} from 'redux-saga/effects'; 
+import axios from 'axios';
 
 // Actions
 import actions from '../../actions';
@@ -9,20 +10,13 @@ import actions from '../../actions';
  */
 export default function* all() { 
 	try { 
-		const data = yield call(() => { 
-			return fetch('http://dagger-local/api/v1/clinic/all', { 
-					'credentials': 'include', 
-				}) 
-				.then(response => response.json()) 
-				.then(data => data) 
-				.catch(error => { 
-					throw error 
-				}); 
+		const response = yield call(() => {
+			return axios.get('/clinic/all');
 		}) 
 
 		yield put({ 
 			type: actions.clinic.all.succeeded, 
-			data: data, 
+			data: response.data, 
 		}); 
 	} catch(e) { 
 		yield put({ 

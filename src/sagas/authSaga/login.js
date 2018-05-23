@@ -1,5 +1,6 @@
 // Library imports
 import {call, put} from 'redux-saga/effects';
+import axios from 'axios';
 
 // Actions
 import actions from '../../actions';
@@ -13,22 +14,13 @@ import actions from '../../actions';
  */
 export default function* login(action) {
 	try {
-		const data = yield call(() => {
-			return fetch('http://dagger-local/api/v1/auth/login', {
-					method: 'POST',
-					body: JSON.stringify(action.data),
-					credentials: 'include',
-				})
-				.then(response => response.json())
-				.then(data => data)
-				.catch(error => {
-					throw error
-				});
+		const response = yield call(() => {
+			return axios.post('/auth/login', action.data);
 		})
 
 		yield put({
-			type: data === 'Authentication succeeded!' ? actions.auth.login.succeeded : actions.auth.login.failed,
-			data: data,
+			type: response.data === 'Authentication succeeded!' ? actions.auth.login.succeeded : actions.auth.login.failed,
+			data: response.data,
 		});
 	} catch(e) {
 		yield put({
