@@ -1,5 +1,8 @@
 // TODO: JSDoc
 export default function list(state, action) {
+	if(!state)
+		state = {};
+
 	let newState = {};
 
 	// Copy data for any user IDs that are in the new list

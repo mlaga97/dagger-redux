@@ -1,5 +1,8 @@
 // TODO: JSDoc
 export default function list(state, action) {
+	if(!state)
+		state = {};
+
 	let newState = {};
 
 	// TODO: Document
