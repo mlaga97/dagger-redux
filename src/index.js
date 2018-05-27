@@ -13,9 +13,6 @@ import configureStore from './configureStore';
 // Components
 import AuthRedirector from './components';
 
-// Actions
-import actions from './actions';
-
 // Axios configuration
 // TODO: Somewhere else?
 axios.defaults.withCredentials = true;

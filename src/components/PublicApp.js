@@ -8,17 +8,13 @@ import {IndexLinkContainer} from 'react-router-bootstrap';
 // Components
 import LoginForm from './LoginForm';
 
-// Helpers
-function HomePage() {
-	return <p>This will be a landing page, at some point.</p>
-}
-
 let divStyle = {
 	'paddingLeft': '15px',
 	'paddingRight': '15px',
 	'paddingBottom': '15px',
 }
 
+// TODO: Show a landing page for non-logged-in users
 function PublicApp() {
 	return (
 		<BrowserRouter>
