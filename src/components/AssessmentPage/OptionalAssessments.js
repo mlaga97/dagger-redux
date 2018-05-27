@@ -5,6 +5,7 @@ import {Panel} from 'react-bootstrap';
 // Components
 import Assessment from '../Assessment';
 
+// TODO: Handle the 'optional' part
 function OptionalAssessments(props) {
 	if(!props.assessments) { 
 		return(
