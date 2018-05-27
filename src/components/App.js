@@ -8,7 +8,6 @@ import {IndexLinkContainer} from 'react-router-bootstrap';
 // Components
 import LogoutPage from './LogoutPage';
 import AssessmentPage from './AssessmentPage';
-import AssessmentTest from './AssessmentTest';
 import ClinicList from './ClinicList';
 import ClinicPage from './ClinicList';
 import UserList from './UserList';
@@ -54,9 +53,6 @@ class PrivateApp extends React.Component {
 							<IndexLinkContainer to='/assessment'>
 								<NavItem eventKey={2}>Assessment</NavItem>
 							</IndexLinkContainer>
-							<IndexLinkContainer to='/assessmentTest'>
-								<NavItem eventKey={3}>Assessment Test</NavItem>
-							</IndexLinkContainer>
 							<IndexLinkContainer to='/reportTest'>
 								<NavItem eventKey={4}>Reports</NavItem>
 							</IndexLinkContainer>
@@ -93,7 +89,6 @@ class PrivateApp extends React.Component {
 						<Route exact path='/' component={HomePage} />
 						<Route exact path='/logout' component={LogoutPage} />
 						<Route exact path='/assessment' component={AssessmentPage} />
-						<Route exact path='/assessmentTest' component={AssessmentTest} />
 
 						<Route exact path='/clinics' component={ClinicList} />
 						{/*<Route exact path='/clinic' component={ClinicPage} />*/}

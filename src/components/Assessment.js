@@ -59,7 +59,7 @@ function AssessmentSection(props) {
 }
 
 function Assessment(props) {
-	let assessment = props.assessmentClass;
+	let assessment = props.assessment;
 
 	return(
 		<div>

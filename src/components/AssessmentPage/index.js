@@ -3,13 +3,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 // Actions
-import actions from '../actions';
+import actions from '../../actions';
 
-function AssessmentSelector(props) {
-	return(
-		<div>{props.assessmentClass.metadata.text}</div>
-	);
-}
+// Components
+import AssessmentSelector from './AssessmentSelector';
+import AssessmentMetadata from './AssessmentMetadata';
+import OptionalAssessments from './OptionalAssessments';
 
 class AssessmentTest extends React.Component {
 	componentWillMount() {
@@ -17,26 +16,14 @@ class AssessmentTest extends React.Component {
 			this.props.dispatch({type: actions.assessment.all.requested});
 	}
 
-	render() {
-		if(!this.props.assessments) { 
-			return(
-				<div>Retrieving assessments...</div>
-			);
-		} else {
-			return(
-				<div>
-					{
-						Object.keys(this.props.assessments).map((key) => {
-							let value = this.props.assessments[key];
-							return(
-								<AssessmentSelector key={key} assessmentClass={value} />
-							);
-						})
-					}
-				</div>
-			);
-		}
-	}
+	render = () => (
+		<form>
+			<AssessmentMetadata />
+			{/*<RequiredAssessments />*/}
+			<AssessmentSelector assessments={this.props.assessments} />
+			<OptionalAssessments assessments={this.props.assessments} />
+		</form>
+	)
 }
 
 function mapStateToProps(state) {
