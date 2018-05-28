@@ -2,29 +2,34 @@
 import React from 'react';
 
 // Components
-import AssessmentSection from './Section';
+import Section from './Section';
 
 function Assessment(props) {
+
+	// Props
 	let assessment = props.assessment;
 
-	// TODO: Decide if this will be replaced by requiring it to be a section
-	if(assessment.questions) {
-		assessment.sections = [
+	// Assessment Variables
+	let types = assessment.types;
+	let sections = assessment.sections;
+	let questions = assessment.questions;
+
+	// TODO: Decide if this will be replaced by deprecating assessment.questions
+	if(questions) {
+		sections = [
 			{
-				'questions': assessment.questions,
+				'questions': questions,
 			}
 		];
 	}
 
 	return(
 		<div>
-			{/* Render Sections */}
 			{
-				assessment.sections.map((section, index) => {
-					return(
-						<AssessmentSection key={index} section={section} types={assessment.types} />
-					);
-				})
+				// Render Sections
+				sections.map((section, index) => (
+					<Section key={index} section={section} types={types} />
+				))
 			}
 		</div>
 	);

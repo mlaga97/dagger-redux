@@ -38,7 +38,7 @@ classes.radioScale = function(props) {
 						Object.keys(props.type.options).map((value, key) => {
 							return(
 								<td key={key}>
-									<Radio>
+									<Radio name={props.question.id}>
 										{value}
 									</Radio>
 								</td>
@@ -54,44 +54,4 @@ classes.radioScale = function(props) {
 	}
 }
 
-// TODO: Inline types
-function AssessmentQuestion(props) {
-	if(!props.question)
-		return null;
-
-	switch(typeof props.question.type) {
-		case 'string':
-			let type = props.types[props.question.type];
-
-			if(!classes[type.class]) {
-				console.warn('No renderer for class: ' + type.class);
-				return(
-					<div>
-						{props.index + 1}. {props.question.text} ({props.question.id}, {typeof(props.question.type) === 'string' ? props.question.type : 'inline'})<br/>
-					</div>
-				)
-			} else {
-				return classes[type.class]({
-					index: props.index,
-					question: props.question,
-					type: props.types[props.question.type],
-				});
-			}
-
-		case 'object':
-			console.warn('Inline types are currently unsupported');
-
-			return(
-				<div>
-					{props.index + 1}. {props.question.text} ({props.question.id}, {typeof(props.question.type) === 'string' ? props.question.type : 'inline'})<br/>
-				</div>
-			)
-
-		default:
-			// TODO: More helpful error message
-			console.warn('TODO: Make a more descriptive error message here.');
-	}
-
-}
-
-export default AssessmentQuestion;
+export default classes
