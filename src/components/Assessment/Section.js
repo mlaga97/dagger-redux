@@ -3,7 +3,7 @@ import React from 'react';
 import getChunks from './getChunks';
 
 // Components
-import Chunk from '../Chunk';
+import Chunk from './Chunk';
 
 function Header(props) {
 	let header = props.header;

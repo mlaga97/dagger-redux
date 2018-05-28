@@ -34,8 +34,8 @@ function Question(props) {
 	type = types[type];
 
 	// Check if we have a renderer available
-	if(classes[type.class]) {
-		return classes[type.class]({
+	if(classes[type.class] && classes[type.class].renderer) {
+		return classes[type.class].renderer({
 			index: props.index,
 			question: props.question,
 			type: props.types[props.question.type],

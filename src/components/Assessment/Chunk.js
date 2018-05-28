@@ -1,9 +1,11 @@
 // Library imports
 import React from 'react';
-import {Table} from 'react-bootstrap';
 
 // Components
 import Question from './Question';
+
+// Question Classes
+import classes from './classes';
 
 function Chunk(props) {
 
@@ -20,51 +22,37 @@ function Chunk(props) {
 
 	// Question Variables
 	let type = questions[0].type;
-	let id = questions[0].id;
+
+	// Calculate children, since these will be the same no matter what
+	let children = (
+		<React.Fragment>
+			{
+				questions.map((question, index) => (
+					<Question key={index} index={index} question={question} types={types} />
+				))
+			}
+		</React.Fragment>
+	)
 
 	// Handle Anonymous Types
+	// TODO: Anonymous Types
 	if(typeof type !== 'string') {
-		return(
-			<div>
-				{
-					questions.map((question, index) => (
-						<Question key={index} index={index} question={question} types={types} />
-					))
-				}
-			</div>
-		);
+		console.warn('Inline types are currently unsupported');
+		return children;
 	}
 
 	// Turns out the type was actually just the typeName!
 	// TODO: Stop using this variable for 2 different things.
 	type = types[type];
 
-	// TODO: Handle wrappers in some better way.
-	switch(type.class) {
-		case 'radioScale':
-			return (
-				<Table striped bordered condensed hover>
-					<tbody>
-						{
-							questions.map((question, index) => (
-								<Question key={index} index={index} question={question} types={types} />
-							))
-						}
-					</tbody>
-				</Table>
-			);
-		default:
-			console.warn('No chunk wrapper specified for ' + type.class);
-			return(
-				<div>
-					{
-						questions.map((question, index) => (
-							<Question key={index} index={index} question={question} types={types} />
-						))
-					}
-				</div>
-			);
+	// Check if we have a wrapper available
+	if(classes[type.class] && classes[type.class].wrapper) {
+		return classes[type.class].wrapper(children);
 	}
+
+	// Fall back to provisional wrapper
+	console.warn('No chunk wrapper specified for ' + type.class);
+	return children;
 }
 
 export default Chunk;
