@@ -1,38 +1,40 @@
 // Library imports
 import React from 'react';
-import {Field, reduxForm} from 'redux-form';
-import {FormGroup, ControlLabel, Button} from 'react-bootstrap';
-
-// Components
-import ReduxFormControl from './ReduxFormControl';
+import connectForm from './FormContainer'; // <-- Probably Trash
+import {connect} from 'react-redux';
+import {FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
 
 // Actions
 import actions from '../actions';
 
-function LoginForm(props) {
-	return(
-		<form onSubmit={props.handleSubmit}>
-			<FormGroup>
-				<ControlLabel>Login</ControlLabel>
-				<Field component={ReduxFormControl} name='username' type='text' />
-				<Field component={ReduxFormControl} name='password' type='password' />
-			</FormGroup>
-			<Button type='submit'>Submit</Button>
-		</form>
-	)
-}
+let InnerForm = ({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting}) => (
+	<form onSubmit={handleSubmit}>
+		<FormGroup>
+			<ControlLabel>Login</ControlLabel>
+			<FormControl name='username' type='text' onBlur={handleBlur} onChange={handleChange} value={values.username} />
+			<FormControl name='password' type='password' onBlur={handleBlur} onChange={handleChange} value={values.password} />
+		</FormGroup>
+		<Button type='submit'>Submit</Button>
+	</form>
+);
 
-// Redux Form Decorator
-export default reduxForm({
-	form: 'loginForm',
-	onSubmit: (values, dispatch, props, previousValues) => {
-		// TODO: Change this is login page is moved.
-		if(window.location.pathname !== '/')
-			window.location.pathname = '/';
+let LoginForm = connectForm(InnerForm);
 
-		dispatch({
-			type: actions.auth.login.requested,
-			data: values,
-		});
-	}
-})(LoginForm);
+export default connect(
+	props => ({
+		handleSubmit: (state, props) => {
+			props.dispatch({
+				type: actions.auth.login.requested,
+				data: state,
+			});
+		},
+		initialValues: {
+			username: '',
+			password: '',
+		},
+	}),
+	dispatch => ({
+		dispatch: dispatch,
+	})
+)(LoginForm);
+
