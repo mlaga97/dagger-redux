@@ -45,17 +45,14 @@ class AssessmentSelector extends React.Component {
 									{
 										Object.keys(this.props.assessments).map((key) => {
 											let assessment = this.props.assessments[key];
+											let text = assessment.metadata.text;
 
-											let metadata = assessment.metadata;
-
-											let id = metadata.id;
-											let text = metadata.text;
-
-											let value = this.props.selected[id] || false;
+											// Assume default value, lest we anger React
+											let value = this.props.selected[key] || false;
 
 											return(
 												<Col key={key} xs={12} sm={6} md={3} lg={0.5}>
-													<Checkbox name={id} onChange={this.handleChange} checked={value}>
+													<Checkbox name={key} onChange={this.handleChange} checked={value}>
 														{text}
 													</Checkbox>
 												</Col>

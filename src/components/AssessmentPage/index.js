@@ -20,8 +20,8 @@ class AssessmentTest extends React.Component {
 		<form>
 			<AssessmentMetadata />
 			{/*<RequiredAssessments />*/}
-			<AssessmentSelector assessments={this.props.assessments} />
-			<OptionalAssessments assessments={this.props.assessments} />
+			<AssessmentSelector />
+			<OptionalAssessments />
 		</form>
 	)
 }
