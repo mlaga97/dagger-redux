@@ -17,28 +17,18 @@ function Question(props) {
 	let type = question.type;
 
 	// Handle Anonymous Types
-	// TODO: Anonymous Types
-	if(typeof question.type !== 'string') {
-		console.warn('Inline types are currently unsupported');
-
-		return(
-			<div>
-				{index}. {text} ({id}, {typeof(type) === 'string' ? type : 'inline'})
-				<br/>
-			</div>
-		)
+	if(typeof type === 'string') {
+		// Turns out the type was actually just the typeName!
+		// TODO: Stop using this variable for 2 different things.
+		type = types[type];
 	}
-
-	// Turns out the type was actually just the typeName!
-	// TODO: Stop using this variable for 2 different things.
-	type = types[type];
 
 	// Check if we have a renderer available
 	if(classes[type.class] && classes[type.class].renderer) {
 		return classes[type.class].renderer({
-			index: props.index,
-			question: props.question,
-			type: props.types[props.question.type],
+			index: index,
+			question: question,
+			type: type,
 		});
 	}
 

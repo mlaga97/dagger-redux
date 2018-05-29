@@ -35,15 +35,11 @@ function Chunk(props) {
 	)
 
 	// Handle Anonymous Types
-	// TODO: Anonymous Types
-	if(typeof type !== 'string') {
-		console.warn('Inline types are currently unsupported');
-		return children;
+	if(typeof type === 'string') {
+		// Turns out the type was actually just the typeName!
+		// TODO: Stop using this variable for 2 different things.
+		type = types[type];
 	}
-
-	// Turns out the type was actually just the typeName!
-	// TODO: Stop using this variable for 2 different things.
-	type = types[type];
 
 	// Check if we have a wrapper available
 	if(classes[type.class] && classes[type.class].wrapper) {
