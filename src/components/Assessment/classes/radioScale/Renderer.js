@@ -47,15 +47,13 @@ function Renderer(props) {
 							let options = subType.options;
 							let hideLabel = subType.hideLabel;
 
-							return Object.keys(options).map((value, key) => {
-								return(
-									<td key={key}>
-										<Radio name={id + ((suffix) ? suffix : '')}>
-											{!hideLabel ? value : null}
-										</Radio>
-									</td>
-								)
-							})
+							return Object.keys(options).map((value, key) => (
+								<td key={key}>
+									<Radio name={id + ((suffix) ? suffix : '')}>
+										{!hideLabel ? value : null}
+									</Radio>
+								</td>
+							))
 						})
 					}
 				</React.Fragment>

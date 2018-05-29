@@ -32,7 +32,7 @@ function Renderer(props) {
 function Wrapper(props) {
 	let children = props.children;
 
-	return (
+	return(
 		<Table striped bordered condensed hover>
 			<thead>
 				<tr>

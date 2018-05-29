@@ -8,7 +8,7 @@ function PreHeader(props) {
 	if(!props.type.span)
 		return null;
 
-	return (
+	return(
 		<tr>
 			<th>{props.type.span}</th>
 			{

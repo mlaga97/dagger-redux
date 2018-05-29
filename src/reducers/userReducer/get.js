@@ -7,4 +7,3 @@ export default function get(state, action) {
 
 	return state;
 }
-

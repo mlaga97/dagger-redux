@@ -17,4 +17,3 @@ export default function* assessmentSaga() {
 	yield takeLatest(actions.assessment.list.requested, list);
 	yield takeLatest(actions.assessment.metadata.requested, metadata);
 }
-

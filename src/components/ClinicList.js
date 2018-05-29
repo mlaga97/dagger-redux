@@ -14,7 +14,7 @@ class ClinicList extends React.Component {
 
 	render() {
 		if(!this.props.clinics) {
-			return (
+			return(
 				<div>
 					Retrieving clinic list...
 				</div>
@@ -36,7 +36,7 @@ class ClinicList extends React.Component {
 								Object.keys(this.props.clinics).map((clinicID, index) => {
 									let clinic = this.props.clinics[clinicID];
 
-									return (
+									return(
 										<tr key={clinic.id}>
 											<td>
 												<Link to={'/clinic/' + clinic.id}>{clinic.id}</Link>

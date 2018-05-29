@@ -46,7 +46,7 @@ function Wrapper(props) {
 	// Type variables
 	let options = type.options;
 
-	return (
+	return(
 		<Table striped bordered condensed hover>
 			<thead>
 				<tr>

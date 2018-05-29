@@ -17,9 +17,7 @@ class AuthRedirector extends React.Component {
 
 	render() {
 		if(!this.props.auth) {
-			return (
-				<div>Getting auth data...</div>
-			);
+			return <div>Getting auth data...</div>;
 		} else {
 			if(!this.props.auth.status) {
 				return <PublicApp />;
@@ -46,4 +44,3 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(AuthRedirector);
-

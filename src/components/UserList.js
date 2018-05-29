@@ -14,7 +14,7 @@ class UserList extends React.Component {
 
 	render() {
 		if(!this.props.users) {
-			return (
+			return(
 				<div>
 					Retrieving user list...
 				</div>
@@ -38,7 +38,7 @@ class UserList extends React.Component {
 								Object.keys(this.props.users).map((userID, index) => {
 									let user = this.props.users[userID];
 
-									return (
+									return(
 										<tr key={index}>
 											<td>
 												<Link to={'/user/' + user.id}>{user.id}</Link>

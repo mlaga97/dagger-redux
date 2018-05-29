@@ -16,7 +16,7 @@ let divStyle = {
 
 // TODO: Show a landing page for non-logged-in users
 function PublicApp() {
-	return (
+	return(
 		<BrowserRouter>
 			<div>
 				<Navbar inverse>

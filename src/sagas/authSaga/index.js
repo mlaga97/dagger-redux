@@ -15,4 +15,3 @@ export default function* authSaga() {
 	yield takeLatest(actions.auth.logout.requested, logout);
 	yield takeLatest(actions.auth.status.requested, status);
 }
-

@@ -37,7 +37,7 @@ class PrivateApp extends React.Component {
 	}
 
 	render() {
-		return (
+		return(
 			<BrowserRouter>
 				<div>
 					<Navbar inverse>
