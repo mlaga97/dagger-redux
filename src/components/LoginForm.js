@@ -1,38 +1,73 @@
 // Library imports
 import React from 'react';
-import {Field, reduxForm} from 'redux-form';
-import {FormGroup, ControlLabel, Button} from 'react-bootstrap';
-
-// Components
-import ReduxFormControl from './ReduxFormControl';
+import {connect} from 'react-redux';
+import {FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
 
 // Actions
 import actions from '../actions';
 
-function LoginForm(props) {
-	return(
-		<form onSubmit={props.handleSubmit}>
-			<FormGroup>
-				<ControlLabel>Login</ControlLabel>
-				<Field component={ReduxFormControl} name='username' type='text' />
-				<Field component={ReduxFormControl} name='password' type='password' />
-			</FormGroup>
-			<Button type='submit'>Submit</Button>
-		</form>
-	)
-}
+class LoginForm extends React.Component {
+	constructor(props) {
+		super(props);
 
-// Redux Form Decorator
-export default reduxForm({
-	form: 'loginForm',
-	onSubmit: (values, dispatch, props, previousValues) => {
+		this.state = {
+			form: {},
+		}
+
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+
+	handleSubmit(event) {
+		event.preventDefault();
+
+		// TODO: Do a validate!
+
 		// TODO: Change this is login page is moved.
 		if(window.location.pathname !== '/')
 			window.location.pathname = '/';
 
-		dispatch({
+		// Attempt Login
+		this.props.dispatch({
 			type: actions.auth.login.requested,
-			data: values,
+			data: this.state.form,
 		});
 	}
-})(LoginForm);
+
+	handleChange(event) {
+		let target = event.target;
+
+		let name = target.name;
+		let value = target.value;
+
+		this.setState(prevState => ({
+			...prevState,
+			form: {
+				...prevState.form,
+				[name]: value,
+			},
+		}));
+	}
+
+	render() {
+		return(
+			<form onSubmit={this.handleSubmit}>
+				<FormGroup>
+					<ControlLabel>Login</ControlLabel>
+					<FormControl name='username' type='text' value={this.state.username} onBlur={this.handleChange} />
+					<FormControl name='password' type='password' value={this.state.password} onBlur={this.handleChange} />
+				</FormGroup>
+				<Button type='submit'>Submit</Button>
+			</form>
+		)
+	}
+}
+
+export default connect(
+	props => ({
+	}),
+	dispatch => ({
+		dispatch: dispatch,
+	})
+)(LoginForm);
+//export default LoginForm;
