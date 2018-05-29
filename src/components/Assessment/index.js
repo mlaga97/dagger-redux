@@ -14,7 +14,8 @@ function Assessment(props) {
 	let sections = assessment.sections;
 	let questions = assessment.questions;
 
-	// TODO: Decide if this will be replaced by deprecating assessment.questions
+	// Translate questions field into sections format
+	// TODO: Decide if we should deprecate assessment.questions
 	if(questions) {
 		sections = [
 			{

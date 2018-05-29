@@ -14,46 +14,38 @@ function Chunk(props) {
 	let types = props.types;
 
 	// Check that we have at least one question
-	// TODO: getChunks shouldn't do this.
+	// TODO: getChunks shouldn't do this in the first place...
 	if(!questions[0]) {
-		console.warn('Chunk was empty!');
 		return null;
 	}
 
-	// Question Variables
+	// Get the type of the first question, now that we know it exists
 	let type = questions[0].type;
-
-	// Calculate children, since these will be the same no matter what
-	let children = (
-		<React.Fragment>
-			{
-				questions.map((question, index) => (
-					<Question key={index} index={index} question={question} types={types} />
-				))
-			}
-		</React.Fragment>
-	)
 
 	// Handle Anonymous Types
 	if(typeof type === 'string') {
 		// Turns out the type was actually just the typeName!
-		// TODO: Stop using this variable for 2 different things.
+		// TODO: Stop using this variable for 2 different things?
 		type = types[type];
 	}
 
-	// Check if we have a wrapper available
+	// Set default wrapper
+	let Wrapper = props => props.children;
+
+	// Replace if we have a better one available
 	if(classes[type.class] && classes[type.class].wrapper) {
-		let Wrapper = classes[type.class].wrapper;
-		return(
-			<Wrapper type={type}>
-				{children}
-			</Wrapper>
-		);
+		Wrapper = classes[type.class].wrapper;
 	}
 
-	// Fall back to provisional wrapper
-	console.warn('No chunk wrapper specified for ' + type.class);
-	return children;
+	return(
+		<Wrapper type={type}>
+			{
+				props.questions.map((question, index) => (
+					<Question key={index} index={index} question={question} types={props.types} />
+				))
+			}
+		</Wrapper>
+	);
 }
 
 export default Chunk;

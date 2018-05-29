@@ -1,6 +1,3 @@
-// Library imports
-import React from 'react';
-
 // Question Classes
 import classes from './classes';
 
@@ -12,16 +9,11 @@ function Question(props) {
 	let question = props.question;
 
 	// Question Variables
-	let text = question.text;
-	let id = question.id;
 	let type = question.type;
 
 	// Handle Anonymous Types
-	if(typeof type === 'string') {
-		// Turns out the type was actually just the typeName!
-		// TODO: Stop using this variable for 2 different things.
-		type = types[type];
-	}
+	if(typeof type === 'string')
+		type = types[type]; // Turns out the type was actually just the name!
 
 	// Check if we have a renderer available
 	if(classes[type.class] && classes[type.class].renderer) {
@@ -32,14 +24,9 @@ function Question(props) {
 		});
 	}
 
-	// Fall back to provisional renderer
+	// Fail if no renderer available
 	console.warn('No renderer for class: ' + type.class);
-	return(
-		<div>
-			{index}. {text} ({id}, {typeof(type) === 'string' ? type : 'inline'})
-			<br/>
-		</div>
-	)
+	return null;
 }
 
 export default Question;
