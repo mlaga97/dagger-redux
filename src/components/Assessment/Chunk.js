@@ -47,7 +47,12 @@ function Chunk(props) {
 
 	// Check if we have a wrapper available
 	if(classes[type.class] && classes[type.class].wrapper) {
-		return classes[type.class].wrapper(type, children);
+		let Wrapper = classes[type.class].wrapper;
+		return(
+			<Wrapper type={type}>
+				{children}
+			</Wrapper>
+		);
 	}
 
 	// Fall back to provisional wrapper

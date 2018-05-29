@@ -74,7 +74,10 @@ function Header(props) {
 	}
 }
 
-let Wrapper = (type, children) => {
+function Wrapper(props) {
+	let type = props.type;
+	let children = props.children;
+
 	return (
 		<Table striped bordered condensed hover>
 			<thead>
