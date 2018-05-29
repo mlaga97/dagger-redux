@@ -12,73 +12,60 @@ function PreHeader(props) {
 		<tr>
 			<th>{props.type.span}</th>
 			{
-				props.type.options.map((subType, index) => {
-					return(
-						<th key={index} colSpan={Object.keys(subType.options).length}>
-							{subType.span}
-						</th>
-					);
-				})
+				props.type.options.map((subType, index) => (
+					<th key={index} colSpan={Object.keys(subType.options).length}>
+						{subType.span}
+					</th>
+				))
 			}
 		</tr>
 	);
 }
 
-function Header(props) {
+function HeaderColumns(props) {
 	let type = props.type;
 	let options = type.options;
+
+	if(typeof options[Object.keys(options)[1]] !== 'object') {
+		return Object.keys(options).map((value, key) => (
+			<th key={key}>
+				{value}
+			</th>
+		))
+	} else {
+		return options.map((subType) => {
+			let options = subType.options;
+
+			return Object.keys(options).map((value, key) => (
+				<th key={key}>
+					{value}
+				</th>
+			))
+		})
+	}
+}
+
+function Header(props) {
+	let type = props.type;
 	let span = type.span;
 
-	let hasPreheader = !!span;
+	let hasPreheader = span;
 
-	if(typeof options[Object.keys(props.type.options)[1]] !== 'object') {
-		return (
-			<tr>
-				<th>
-					{
-						!hasPreheader ? 'Question' : null
-					}
-				</th>
-				{
-					Object.keys(options).map((value, key) => {
-						return(
-							<th key={key}>
-								{value}
-							</th>
-						);
-					})
-				}
-			</tr>
-		);
-	} else {
-		return (
-			<tr>
-				<th>
-					{
-						!hasPreheader ? 'Question' : null
-					}
-				</th>
-				{
-					props.type.options.map((subType) => {
-						return Object.keys(subType.options).map((value, key) => {
-							return(
-								<th key={key}>
-									{value}
-								</th>
-							);
-						})
-					})
-				}
-			</tr>
-		);
-	}
+	return(
+		<tr>
+			<th>
+				{!hasPreheader ? 'Question' : null}
+			</th>
+			<HeaderColumns type={type} />
+		</tr>
+	);
 }
 
 function Wrapper(props) {
 	let type = props.type;
 	let children = props.children;
 
-	return (
+	return(
 		<Table striped bordered condensed hover>
 			<thead>
 				<PreHeader type={type} />
