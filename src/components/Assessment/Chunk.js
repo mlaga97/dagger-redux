@@ -41,7 +41,7 @@ function Chunk(props) {
 		<Wrapper type={type}>
 			{
 				props.questions.map((question, index) => (
-					<Question key={index} index={index} question={question} types={props.types} />
+					<Question key={index} index={index + props.index} question={question} types={props.types} />
 				))
 			}
 		</Wrapper>

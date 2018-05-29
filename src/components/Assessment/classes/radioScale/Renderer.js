@@ -7,6 +7,7 @@ function Renderer(props) {
 	// Props
 	let type = props.type;
 	let question = props.question;
+	let index = props.index;
 
 	// Type Variables
 	let options = type.options;
@@ -22,7 +23,9 @@ function Renderer(props) {
 
 		return(
 			<tr>
-				<td>{text}</td>
+				<td>
+					{index}. {text}
+				</td>
 				<React.Fragment>
 					{
 						Object.keys(options).map((value, key) => (

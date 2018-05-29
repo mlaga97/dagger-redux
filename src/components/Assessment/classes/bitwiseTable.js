@@ -7,6 +7,7 @@ function Renderer(props) {
 	// Props
 	let type = props.type
 	let question = props.question;
+	let index = props.index;
 
 	// Question variables
 	let id = question.id;
@@ -15,16 +16,10 @@ function Renderer(props) {
 	// Type Variables
 	let options = type.options;
 
-	// TODO: Learn how to count.
-	// TODO: Is ol/li the best way?
-	let questionNumber = 0;
-
 	return(
 		<tr>
 			<td>
-				<ol start={questionNumber}>
-					<li>{text}</li>
-				</ol>
+				{index}. {text}
 			</td>
 			{
 				options.map((option, key) => (

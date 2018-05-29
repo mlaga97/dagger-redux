@@ -24,13 +24,18 @@ function Assessment(props) {
 		];
 	}
 
+	let offset = 0;
+
 	return(
 		<div>
 			{
 				// Render Sections
-				sections.map((section, index) => (
-					<Section key={index} section={section} types={types} />
-				))
+				sections.map((section, index) => {
+					index = index + offset;
+					offset = offset + section.questions.length - 1;
+
+					return <Section key={index} index={index} section={section} types={types} />
+				})
 			}
 		</div>
 	);

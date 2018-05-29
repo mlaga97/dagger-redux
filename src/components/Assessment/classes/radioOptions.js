@@ -12,6 +12,7 @@ function renderer(props) {
 	// Props
 	let type = props.type;
 	let question = props.question;
+	let index = props.index;
 
 	// Type Variables
 	let options = type.options;
@@ -20,14 +21,10 @@ function renderer(props) {
 	let id = question.id;
 	let text = question.text;
 
-	// TODO: Learn how to count.
-	// TODO: Is ol/li the best way?
-	let questionNumber = 0;
-
 	return(
 		<FormGroup>
 			<ControlLabel>
-				{questionNumber}. {text}
+				{index}. {text}
 			</ControlLabel>
 			<div style={questionStyle}>
 				{

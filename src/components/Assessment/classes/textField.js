@@ -6,19 +6,16 @@ function Renderer(props) {
 
 	// Props
 	let question = props.question;
+	let index = props.index;
 
 	// Question variables
 	let id = question.id;
 	let text = question.text;
 
-	// TODO: Learn how to count.
-	// TODO: Is ol/li the best way?
-	let questionNumber = 0;
-
 	return(
 		<FormGroup>
 			<ControlLabel>
-				{questionNumber}. {text}
+				{index}. {text}
 			</ControlLabel>
 			<FormControl type='text' name={id} />
 		</FormGroup>

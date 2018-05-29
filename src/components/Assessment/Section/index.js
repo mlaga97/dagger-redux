@@ -22,6 +22,9 @@ function Section(props) {
 	// Divide section into chunks
 	let chunks = getChunks(types, questions);
 
+	// Index
+	let offset = props.index;
+
 	return(
 		<div>
 			{/* Render Header and Description */}
@@ -30,9 +33,12 @@ function Section(props) {
 
 			{
 				// Render Chunks
-				chunks.map((chunk, index) => (
-					<Chunk key={index} index={index} questions={chunk} types={types} />
-				))
+				chunks.map((chunk, index) => {
+					index = index + offset;
+					offset = offset + chunk.length - 1;
+
+					return <Chunk key={index} index={index} questions={chunk} types={types} />
+				})
 			}
 		</div>
 	);
