@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import {Radio} from 'react-bootstrap';
+import {FormGroup, ControlLabel, Radio} from 'react-bootstrap';
 
 // Helpers
 let questionStyle = {
@@ -11,7 +11,6 @@ function renderer(props) {
 
 	// Props
 	let type = props.type;
-	let index = props.index + 1;
 	let question = props.question;
 
 	// Type Variables
@@ -20,26 +19,27 @@ function renderer(props) {
 	// Question Variables
 	let id = question.id;
 	let text = question.text;
-	let typeName = typeof(question.type) === 'string' ? question.type : 'inline';
+
+	// TODO: Learn how to count.
+	// TODO: Is ol/li the best way?
+	let questionNumber = 0;
 
 	return(
-		<div>
-			{index}. {text} ({id}, {typeName})
+		<FormGroup>
+			<ControlLabel>
+				{questionNumber}. {text}
+			</ControlLabel>
 			<div style={questionStyle}>
 				{
-					Object.keys(options).map((option, key) => {
-						return(
-							<Radio key={key} value={options[option]} name={id}>
-								{option}
-							</Radio>
-						);
-					})
+					Object.keys(options).map((option, key) => (
+						<Radio key={key} value={options[option]} name={id}>
+							{option}
+						</Radio>
+					))
 				}
 			</div>
-			<br/>
-		</div>
+		</FormGroup>
 	);
-							//<div key={key}>{value}: {options[value]}</div>
 }
 
 export default {
