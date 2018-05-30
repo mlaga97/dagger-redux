@@ -8,4 +8,4 @@ ADD . /dagger
 WORKDIR /dagger
 RUN npm install
 
-ENTRYPOINT ["npm", "start"]
+CMD cd /dagger && npm install && npm start
