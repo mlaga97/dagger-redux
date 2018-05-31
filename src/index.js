@@ -16,7 +16,7 @@ import AuthRedirector from './components';
 // Axios configuration
 // TODO: Somewhere else?
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'http://dagger-local/api/v1/';
+axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 
 // Redux Store
 let store = configureStore();
