@@ -1,5 +1,6 @@
 // Library imports
 import {call, put} from 'redux-saga/effects'; 
+import axios from 'axios';
 
 // Actions
 import actions from '../../actions';
@@ -9,20 +10,13 @@ import actions from '../../actions';
  */
 export default function* list() { 
 	try { 
-		const data = yield call(() => { 
-			return fetch('/user', { 
-					'credentials': 'include', 
-				}) 
-				.then(response => response.json()) 
-				.then(data => data) 
-				.catch(error => { 
-					throw error 
-				}); 
+		const response = yield call(() => { 
+			return axios.get('/user');
 		}) 
 
 		yield put({ 
 			type: actions.user.list.succeeded, 
-			data: data, 
+			data: response.data, 
 		}); 
 	} catch(e) { 
 		yield put({ 
