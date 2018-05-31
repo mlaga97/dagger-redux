@@ -11,7 +11,7 @@ import actions from '../../actions';
 export default function* status() {
 	try {
 		const response = yield call(() => {
-			return axios.get('http://dagger-local/api/v1/auth');
+			return axios.get('/auth');
 		})
 
 		yield put({

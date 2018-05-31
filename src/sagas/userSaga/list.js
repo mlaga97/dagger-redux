@@ -10,7 +10,7 @@ import actions from '../../actions';
 export default function* list() { 
 	try { 
 		const data = yield call(() => { 
-			return fetch('http://dagger-local/api/v1/user', { 
+			return fetch('/user', { 
 					'credentials': 'include', 
 				}) 
 				.then(response => response.json()) 
