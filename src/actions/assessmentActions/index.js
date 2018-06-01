@@ -6,8 +6,8 @@ import metadata from './metadata';
 
 // Export Actions
 export default {
-	all,
-	get,
-	list,
-	metadata,
-}
+  all,
+  get,
+  list,
+  metadata,
+};

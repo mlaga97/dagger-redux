@@ -1,27 +1,26 @@
 // Library imports
 import React from 'react';
-import {FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 function Renderer(props) {
+  // Props
+  const question = props.question;
+  const index = props.index;
 
-	// Props
-	let question = props.question;
-	let index = props.index;
+  // Question variables
+  const id = question.id;
+  const text = question.text;
 
-	// Question variables
-	let id = question.id;
-	let text = question.text;
-
-	return(
-		<FormGroup>
-			<ControlLabel>
-				{index}. {text}
-			</ControlLabel>
-			<FormControl type='text' name={id} />
-		</FormGroup>
-	)
+  return (
+    <FormGroup>
+      <ControlLabel>
+        {index}. {text}
+      </ControlLabel>
+      <FormControl type="text" name={id} />
+    </FormGroup>
+  );
 }
 
 export default {
-	renderer: Renderer,
+  renderer: Renderer,
 };

@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 // Actions
 import actions from '../actions';
@@ -11,36 +11,34 @@ import PublicApp from './PublicApp';
 
 // The main layout for the application
 class AuthRedirector extends React.Component {
-	componentWillMount() {
-		this.props.dispatch({type: actions.auth.status.requested});
-	}
+  componentWillMount() {
+    this.props.dispatch({ type: actions.auth.status.requested });
+  }
 
-	render() {
-		if(!this.props.auth) {
-			return <div>Getting auth data...</div>;
-		} else {
-			if(!this.props.auth.status) {
-				return <PublicApp />;
-			} else {
-				return <App />;
-			}
-		}
-	}
+  render() {
+    if (!this.props.auth) {
+      return <div>Getting auth data...</div>;
+    }
+    if (!this.props.auth.status) {
+      return <PublicApp />;
+    }
+    return <App />;
+  }
 }
 
 function mapStateToProps(state) {
-	return {
-		auth: state.auth,
-	}
+  return {
+    auth: state.auth,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-	return {
-		dispatch: dispatch,
-	}
+  return {
+    dispatch,
+  };
 }
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps,
 )(AuthRedirector);

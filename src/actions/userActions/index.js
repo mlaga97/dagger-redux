@@ -6,8 +6,8 @@ import list from './list';
 
 // Export Actions
 export default {
-	all,
-	current,
-	get,
-	list,
-}
+  all,
+  current,
+  get,
+  list,
+};

@@ -1,44 +1,43 @@
 // Library imports
 import React from 'react';
-import {FormGroup, ControlLabel, Radio} from 'react-bootstrap';
+import { FormGroup, ControlLabel, Radio } from 'react-bootstrap';
 
 // Helpers
-let questionStyle = {
-	'paddingLeft': '20px',
-}
+const questionStyle = {
+  paddingLeft: '20px',
+};
 
 function renderer(props) {
+  // Props
+  const type = props.type;
+  const question = props.question;
+  const index = props.index;
 
-	// Props
-	let type = props.type;
-	let question = props.question;
-	let index = props.index;
+  // Type Variables
+  const options = type.options;
 
-	// Type Variables
-	let options = type.options;
+  // Question Variables
+  const id = question.id;
+  const text = question.text;
 
-	// Question Variables
-	let id = question.id;
-	let text = question.text;
-
-	return(
-		<FormGroup>
-			<ControlLabel>
-				{index}. {text}
-			</ControlLabel>
-			<div style={questionStyle}>
-				{
+  return (
+    <FormGroup>
+      <ControlLabel>
+        {index}. {text}
+      </ControlLabel>
+      <div style={questionStyle}>
+        {
 					Object.keys(options).map((option, key) => (
-						<Radio key={key} value={options[option]} name={id}>
-							{option}
-						</Radio>
+  <Radio key={key} value={options[option]} name={id}>
+    {option}
+  </Radio>
 					))
 				}
-			</div>
-		</FormGroup>
-	);
+      </div>
+    </FormGroup>
+  );
 }
 
 export default {
-	renderer: renderer,
+  renderer,
 };

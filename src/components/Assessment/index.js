@@ -5,40 +5,39 @@ import React from 'react';
 import Section from './Section';
 
 function Assessment(props) {
+  // Props
+  const assessment = props.assessment;
 
-	// Props
-	let assessment = props.assessment;
+  // Assessment Variables
+  const types = assessment.types;
+  let sections = assessment.sections;
+  const questions = assessment.questions;
 
-	// Assessment Variables
-	let types = assessment.types;
-	let sections = assessment.sections;
-	let questions = assessment.questions;
+  // Translate questions field into sections format
+  // TODO: Decide if we should deprecate assessment.questions
+  if (questions) {
+    sections = [
+      {
+        questions,
+      },
+    ];
+  }
 
-	// Translate questions field into sections format
-	// TODO: Decide if we should deprecate assessment.questions
-	if(questions) {
-		sections = [
-			{
-				'questions': questions,
-			}
-		];
-	}
+  let offset = 0;
 
-	let offset = 0;
-
-	return(
-		<div>
-			{
+  return (
+    <div>
+      {
 				// Render Sections
 				sections.map((section, index) => {
-					index = index + offset;
+					index += offset;
 					offset = offset + section.questions.length - 1;
 
-					return <Section key={index} index={index} section={section} types={types} />
+					return <Section key={index} index={index} section={section} types={types} />;
 				})
 			}
-		</div>
-	);
+    </div>
+  );
 }
 
 export default Assessment;

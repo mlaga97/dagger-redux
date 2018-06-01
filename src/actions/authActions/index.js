@@ -5,7 +5,7 @@ import status from './status';
 
 // Export Actions
 export default {
-	login,
-	logout,
-	status,
-}
+  login,
+  logout,
+  status,
+};

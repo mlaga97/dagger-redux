@@ -1,18 +1,17 @@
 // TODO: JSDoc
 export default function list(state, action) {
-	if(!state)
-		state = {};
+  if (!state) { state = {}; }
 
-	let newState = {};
+  const newState = {};
 
-	// TODO: Document
-	action.data.forEach((assessmentClass, index) => {
-		if(assessmentClass in state) {
-			newState[assessmentClass] = state[assessmentClass];
-		} else {
-			newState[assessmentClass] = null;
-		}
-	});
+  // TODO: Document
+  action.data.forEach((assessmentClass, index) => {
+    if (assessmentClass in state) {
+      newState[assessmentClass] = state[assessmentClass];
+    } else {
+      newState[assessmentClass] = null;
+    }
+  });
 
-	return newState;
+  return newState;
 }

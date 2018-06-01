@@ -1,9 +1,8 @@
 // TODO: JSDoc
 export default function get(state, action) {
-	if(!state)
-		state = {};
+  if (!state) { state = {}; }
 
-	state[action.data.metadata.class] = action.data;
+  state[action.data.metadata.class] = action.data;
 
-	return state;
+  return state;
 }

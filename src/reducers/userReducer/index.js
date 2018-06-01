@@ -9,16 +9,16 @@ import list from './list';
 
 // Handle some actions
 export default function settings(state = {}, action) {
-	switch(action.type) {
-		case actions.user.all.succeeded:
-			return all(state, action);
-		case actions.user.current.succeeded:
-			return current(state, action);
-		case actions.user.get.succeeded:
-			return get(state, action);
-		case actions.user.list.succeeded:
-			return list(state, action);
-		default:
-			return state;
-	}
+  switch (action.type) {
+    case actions.user.all.succeeded:
+      return all(state, action);
+    case actions.user.current.succeeded:
+      return current(state, action);
+    case actions.user.get.succeeded:
+      return get(state, action);
+    case actions.user.list.succeeded:
+      return list(state, action);
+    default:
+      return state;
+  }
 }
