@@ -10,7 +10,7 @@ import metadata from './metadata';
 // Handle some actions
 export default function settings(state = null, action) {
   // return Object.assign({}, state, {
-  //	all: action.data,
+  //   all: action.data,
   // });
   switch (action.type) {
     case actions.assessment.all.succeeded:

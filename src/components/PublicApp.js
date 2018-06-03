@@ -1,7 +1,6 @@
 // Library imports
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { IndexLinkContainer } from 'react-router-bootstrap';
 

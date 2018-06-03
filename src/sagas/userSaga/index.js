@@ -5,10 +5,10 @@ import { takeLatest } from 'redux-saga/effects';
 import actions from '../../actions';
 
 // Sagas
-import all from './all.js';
-import current from './current.js';
-import get from './get.js';
-import list from './list.js';
+import all from './all';
+import current from './current';
+import get from './get';
+import list from './list';
 
 // Export saga
 export default function* userSaga() {

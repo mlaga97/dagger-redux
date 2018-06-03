@@ -9,14 +9,16 @@ import actions from '../actions';
 
 class ClinicList extends React.Component {
   componentWillMount() {
-    this.props.dispatch({ type: actions.clinic.all.requested });
+    this.props.dispatch({
+      type: actions.clinic.all.requested,
+    });
   }
 
   render() {
     if (!this.props.clinics) {
       return (
         <div>
-					Retrieving clinic list...
+          Retrieving clinic list...
         </div>
       );
     }
@@ -33,21 +35,21 @@ class ClinicList extends React.Component {
           </thead>
           <tbody>
             {
-								Object.keys(this.props.clinics).map((clinicID, index) => {
-									const clinic = this.props.clinics[clinicID];
+                Object.keys(this.props.clinics).map((clinicID) => {
+                  const clinic = this.props.clinics[clinicID];
 
-									return (
-  <tr key={clinic.id}>
-    <td>
-      <Link to={`/clinic/${clinic.id}`}>{clinic.id}</Link>
-    </td>
-    <td>{clinic.name}</td>
-    <td>{clinic.city}</td>
-    <td>{clinic.state}</td>
-  </tr>
-									);
-								})
-							}
+                  return (
+                    <tr key={clinic.id}>
+                      <td>
+                        <Link to={`/clinic/${clinic.id}`}>{clinic.id}</Link>
+                      </td>
+                      <td>{clinic.name}</td>
+                      <td>{clinic.city}</td>
+                      <td>{clinic.state}</td>
+                    </tr>
+                  );
+                })
+              }
           </tbody>
         </Table>
       </div>

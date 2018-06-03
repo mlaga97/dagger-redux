@@ -1,7 +1,6 @@
 // Library imports
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { IndexLinkContainer } from 'react-router-bootstrap';
 
@@ -9,9 +8,7 @@ import { IndexLinkContainer } from 'react-router-bootstrap';
 import LogoutPage from './LogoutPage';
 import AssessmentPage from './AssessmentPage';
 import ClinicList from './ClinicList';
-import ClinicPage from './ClinicList';
 import UserList from './UserList';
-import UserPage from './UserList';
 
 // Helpers
 function HomePage() {
@@ -92,11 +89,11 @@ class PrivateApp extends React.Component {
 
             <Route exact path="/clinics" component={ClinicList} />
             {/* <Route exact path='/clinic' component={ClinicPage} /> */}
-            <Route path="/clinic/*" component={ClinicPage} />
+            <Route path="/clinic/*" component={ClinicList} />
 
             <Route exact path="/users" component={UserList} />
             {/* <Route exact path='/user' component={UserPage} /> */}
-            <Route path="/user/*" component={UserPage} />
+            <Route path="/user/*" component={UserList} />
           </div>
         </div>
       </BrowserRouter>

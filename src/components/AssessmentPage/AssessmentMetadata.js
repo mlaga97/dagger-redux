@@ -6,7 +6,7 @@ export default () => (
   <Panel defaultExpanded>
     <Panel.Heading>
       <Panel.Title toggle>
-				Assessment Metadata
+        Assessment Metadata
       </Panel.Title>
     </Panel.Heading>
     <Panel.Collapse>

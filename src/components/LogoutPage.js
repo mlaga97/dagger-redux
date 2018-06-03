@@ -7,7 +7,9 @@ import actions from '../actions';
 
 class LogoutPage extends React.Component {
   componentWillMount() {
-    this.props.dispatch({ type: actions.auth.logout.requested });
+    this.props.dispatch({
+      type: actions.auth.logout.requested,
+    });
   }
 
   render() {

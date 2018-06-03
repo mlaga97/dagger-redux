@@ -9,14 +9,16 @@ import actions from '../actions';
 
 class UserList extends React.Component {
   componentWillMount() {
-    this.props.dispatch({ type: actions.user.all.requested });
+    this.props.dispatch({
+      type: actions.user.all.requested,
+    });
   }
 
   render() {
     if (!this.props.users) {
       return (
         <div>
-					Retrieving user list...
+          Retrieving user list...
         </div>
       );
     }
@@ -35,23 +37,23 @@ class UserList extends React.Component {
           </thead>
           <tbody>
             {
-								Object.keys(this.props.users).map((userID, index) => {
-									const user = this.props.users[userID];
+                Object.keys(this.props.users).map((userID, index) => {
+                  const user = this.props.users[userID];
 
-									return (
-  <tr key={index}>
-    <td>
-      <Link to={`/user/${user.id}`}>{user.id}</Link>
-    </td>
-    <td>{user.login.username}</td>
-    <td>{user.login.active ? 'Yes' : 'No'}</td>
-    <td>{user.flags.admin ? 'Yes' : 'No'}</td>
-    <td>{user.flags.debug ? 'Yes' : 'No'}</td>
-    <td>{user.flags.tester ? 'Yes' : 'No'}</td>
-  </tr>
-									);
-								})
-							}
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <Link to={`/user/${user.id}`}>{user.id}</Link>
+                      </td>
+                      <td>{user.login.username}</td>
+                      <td>{user.login.active ? 'Yes' : 'No'}</td>
+                      <td>{user.flags.admin ? 'Yes' : 'No'}</td>
+                      <td>{user.flags.debug ? 'Yes' : 'No'}</td>
+                      <td>{user.flags.tester ? 'Yes' : 'No'}</td>
+                    </tr>
+                  );
+                })
+              }
           </tbody>
         </Table>
       </div>

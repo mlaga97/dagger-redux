@@ -12,7 +12,9 @@ import PublicApp from './PublicApp';
 // The main layout for the application
 class AuthRedirector extends React.Component {
   componentWillMount() {
-    this.props.dispatch({ type: actions.auth.status.requested });
+    this.props.dispatch({
+      type: actions.auth.status.requested,
+    });
   }
 
   render() {

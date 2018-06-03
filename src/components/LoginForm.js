@@ -25,7 +25,7 @@ function LoginForm(props) {
 // Redux Form Decorator
 export default reduxForm({
   form: 'loginForm',
-  onSubmit: (values, dispatch, props, previousValues) => {
+  onSubmit: (values, dispatch) => {
     // TODO: Change this is login page is moved.
     if (window.location.pathname !== '/') { window.location.pathname = '/'; }
 
