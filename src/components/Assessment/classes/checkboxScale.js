@@ -4,12 +4,10 @@ import { Table, Checkbox } from 'react-bootstrap';
 
 function Renderer(props) {
   // Props
-  const question = props.question;
-  const index = props.index;
+  const { index, question } = props;
 
   // Question variables
-  const id = question.id;
-  const text = question.text;
+  const { id, text } = question;
 
   return (
     <tr>
@@ -24,7 +22,7 @@ function Renderer(props) {
 }
 
 function Wrapper(props) {
-  const children = props.children;
+  const { children } = props;
 
   return (
     <Table striped bordered condensed hover>

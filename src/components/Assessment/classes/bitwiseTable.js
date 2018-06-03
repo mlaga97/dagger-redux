@@ -4,16 +4,13 @@ import { Table, Checkbox } from 'react-bootstrap';
 
 function Renderer(props) {
   // Props
-  const type = props.type;
-  const question = props.question;
-  const index = props.index;
+  const { type, index, question } = props;
 
   // Question variables
-  const id = question.id;
-  const text = question.text;
+  const { id, text } = question;
 
   // Type Variables
-  const options = type.options;
+  const { options } = type;
 
   return (
     <tr>
@@ -21,23 +18,22 @@ function Renderer(props) {
         {index}. {text}
       </td>
       {
-				options.map((option, key) => (
-  <td key={key}>
-    <Checkbox name={`${id}-${key}`} value={Math.pow(2, key)} />
-  </td>
-				))
-			}
+        options.map((option, key) => (
+          <td key={key}>
+            <Checkbox name={`${id}-${key}`} value={2 ** key} />
+          </td>
+        ))
+      }
     </tr>
   );
 }
 
 function Wrapper(props) {
   // Props
-  const children = props.children;
-  const type = props.type;
+  const { type, children } = props;
 
   // Type variables
-  const options = type.options;
+  const { options } = type;
 
   return (
     <Table striped bordered condensed hover>
@@ -45,10 +41,10 @@ function Wrapper(props) {
         <tr>
           <th>Question</th>
           {
-						options.map((option, key) => (
-  <th key={key}>{option}</th>
-						))
-					}
+            options.map((option, key) => (
+              <th key={key}>{option}</th>
+            ))
+          }
         </tr>
       </thead>
       <tbody>

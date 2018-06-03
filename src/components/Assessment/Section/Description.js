@@ -2,7 +2,7 @@
 import React from 'react';
 
 function Header(props) {
-  const header = props.header;
+  const { header } = props;
 
   if (!header) { return null; }
 

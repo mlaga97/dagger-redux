@@ -27,7 +27,7 @@ function getChunks(types, questions) {
   let currentType = questions[0].type;
   let currentChunk = [];
 
-  questions.forEach((question, index) => {
+  questions.forEach((question) => {
     if (areFriends(types, currentType, question.type)) {
       currentChunk.push(question);
     } else {

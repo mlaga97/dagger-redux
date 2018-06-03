@@ -2,7 +2,7 @@
 import React from 'react';
 
 function Description(props) {
-  const description = props.description;
+  const { description } = props;
 
   if (!description) { return null; }
 

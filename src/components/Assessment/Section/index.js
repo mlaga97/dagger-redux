@@ -10,13 +10,10 @@ import Header from './Header';
 // TODO: Come up with a better system than header and description.
 function Section(props) {
   // Props
-  const types = props.types;
-  const section = props.section;
+  const { types, section } = props;
 
   // Section Variables
-  const header = section.header;
-  const questions = section.questions;
-  const description = section.description;
+  const { header, questions, description } = section;
 
   // Divide section into chunks
   const chunks = getChunks(types, questions);
@@ -31,14 +28,14 @@ function Section(props) {
       <Description description={description} />
 
       {
-				// Render Chunks
-				chunks.map((chunk, index) => {
-					index += offset;
-					offset = offset + chunk.length - 1;
+        // Render Chunks
+        chunks.map((chunk, index) => {
+          const key = index + offset;
+          offset += chunk.length - 1;
 
-					return <Chunk key={index} index={index} questions={chunk} types={types} />;
-				})
-			}
+          return <Chunk key={key} index={index} questions={chunk} types={types} />;
+        })
+      }
     </div>
   );
 }

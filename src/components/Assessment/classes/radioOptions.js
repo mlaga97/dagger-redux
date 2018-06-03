@@ -9,16 +9,13 @@ const questionStyle = {
 
 function renderer(props) {
   // Props
-  const type = props.type;
-  const question = props.question;
-  const index = props.index;
+  const { type, index, question } = props;
 
   // Type Variables
-  const options = type.options;
+  const { options } = type;
 
   // Question Variables
-  const id = question.id;
-  const text = question.text;
+  const { id, text } = question;
 
   return (
     <FormGroup>
@@ -27,12 +24,12 @@ function renderer(props) {
       </ControlLabel>
       <div style={questionStyle}>
         {
-					Object.keys(options).map((option, key) => (
-  <Radio key={key} value={options[option]} name={id}>
-    {option}
-  </Radio>
-					))
-				}
+          Object.keys(options).map((option, key) => (
+            <Radio key={key} value={options[option]} name={id}>
+              {option}
+            </Radio>
+          ))
+        }
       </div>
     </FormGroup>
   );

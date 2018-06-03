@@ -6,12 +6,11 @@ import Section from './Section';
 
 function Assessment(props) {
   // Props
-  const assessment = props.assessment;
+  const { assessment } = props;
 
   // Assessment Variables
-  const types = assessment.types;
-  let sections = assessment.sections;
-  const questions = assessment.questions;
+  let { sections } = assessment;
+  const { types, questions } = assessment;
 
   // Translate questions field into sections format
   // TODO: Decide if we should deprecate assessment.questions
@@ -28,14 +27,14 @@ function Assessment(props) {
   return (
     <div>
       {
-				// Render Sections
-				sections.map((section, index) => {
-					index += offset;
-					offset = offset + section.questions.length - 1;
+        // Render Sections
+        sections.map((section, index) => {
+          const key = index + offset;
+          offset += section.questions.length - 1;
 
-					return <Section key={index} index={index} section={section} types={types} />;
-				})
-			}
+          return <Section key={key} index={index} section={section} types={types} />;
+        })
+      }
     </div>
   );
 }

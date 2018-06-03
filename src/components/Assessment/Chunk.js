@@ -9,8 +9,7 @@ import classes from './classes';
 
 function Chunk(props) {
   // Props
-  const questions = props.questions;
-  const types = props.types;
+  const { types, questions } = props;
 
   // Check that we have at least one question
   // TODO: getChunks shouldn't do this in the first place...
@@ -19,7 +18,7 @@ function Chunk(props) {
   }
 
   // Get the type of the first question, now that we know it exists
-  let type = questions[0].type;
+  let { type } = questions[0];
 
   // Handle Anonymous Types
   if (typeof type === 'string') {
@@ -29,7 +28,8 @@ function Chunk(props) {
   }
 
   // Set default wrapper
-  let Wrapper = props => props.children;
+  // TODO: Find out why eslint doesn't like this.
+  let Wrapper = props => props.children; // eslint-disable-line no-shadow
 
   // Replace if we have a better one available
   if (classes[type.class] && classes[type.class].wrapper) {
@@ -39,10 +39,15 @@ function Chunk(props) {
   return (
     <Wrapper type={type}>
       {
-				props.questions.map((question, index) => (
-  <Question key={index} index={index + props.index} question={question} types={props.types} />
-				))
-			}
+        props.questions.map((question, index) => (
+          <Question
+            key={index}
+            index={index + props.index}
+            question={question}
+            types={props.types}
+          />
+        ))
+      }
     </Wrapper>
   );
 }

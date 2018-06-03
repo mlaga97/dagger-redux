@@ -4,12 +4,10 @@ import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 function Renderer(props) {
   // Props
-  const question = props.question;
-  const index = props.index;
+  const { index, question } = props;
 
   // Question variables
-  const id = question.id;
-  const text = question.text;
+  const { id, text } = question;
 
   return (
     <FormGroup>
