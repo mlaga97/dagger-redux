@@ -37,11 +37,11 @@ class UserList extends React.Component {
           </thead>
           <tbody>
             {
-                Object.keys(this.props.users).map((userID, index) => {
+                Object.keys(this.props.users).map((userID) => {
                   const user = this.props.users[userID];
 
                   return (
-                    <tr key={index}>
+                    <tr key={user.id}>
                       <td>
                         <Link to={`/user/${user.id}`}>{user.id}</Link>
                       </td>

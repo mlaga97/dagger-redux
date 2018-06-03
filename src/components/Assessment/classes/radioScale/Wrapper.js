@@ -13,6 +13,7 @@ function PreHeader(props) {
       <th>{props.type.span}</th>
       {
         props.type.options.map((subType, index) => (
+          // eslint-disable-next-line react/no-array-index-key
           <th key={index} colSpan={Object.keys(subType.options).length}>
             {subType.span}
           </th>
@@ -28,6 +29,7 @@ function HeaderColumns(props) {
 
   if (typeof options[Object.keys(options)[1]] !== 'object') {
     return Object.keys(options).map((value, key) => (
+      // eslint-disable-next-line react/no-array-index-key
       <th key={key}>
         {value}
       </th>
@@ -35,6 +37,7 @@ function HeaderColumns(props) {
   }
   return options.map(subType => (
     Object.keys(subType.options).map((value, key) => (
+      // eslint-disable-next-line react/no-array-index-key
       <th key={key}>
         {value}
       </th>

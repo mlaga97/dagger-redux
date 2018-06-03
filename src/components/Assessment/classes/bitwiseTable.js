@@ -19,6 +19,7 @@ function Renderer(props) {
       </td>
       {
         options.map((option, key) => (
+          // eslint-disable-next-line react/no-array-index-key
           <td key={key}>
             <Checkbox name={`${id}-${key}`} value={2 ** key} />
           </td>
@@ -42,6 +43,7 @@ function Wrapper(props) {
           <th>Question</th>
           {
             options.map((option, key) => (
+              // eslint-disable-next-line react/no-array-index-key
               <th key={key}>{option}</th>
             ))
           }

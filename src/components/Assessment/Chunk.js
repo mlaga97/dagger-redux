@@ -41,7 +41,7 @@ function Chunk(props) {
       {
         props.questions.map((question, index) => (
           <Question
-            key={index}
+            key={question.id}
             index={index + props.index}
             question={question}
             types={props.types}

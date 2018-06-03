@@ -25,6 +25,7 @@ function renderer(props) {
       <div style={questionStyle}>
         {
           Object.keys(options).map((option, key) => (
+            // eslint-disable-next-line react/no-array-index-key
             <Radio key={key} value={options[option]} name={id}>
               {option}
             </Radio>

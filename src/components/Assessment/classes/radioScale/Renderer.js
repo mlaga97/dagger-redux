@@ -25,6 +25,7 @@ function Renderer(props) {
         <React.Fragment>
           {
             Object.keys(options).map((value, key) => (
+              // eslint-disable-next-line react/no-array-index-key
               <td key={key}>
                 <Radio name={id}>
                   {!hideLabel ? value : null}
@@ -45,6 +46,7 @@ function Renderer(props) {
             const { suffix, hideLabel } = subType;
 
             return Object.keys(subType.options).map((value, key) => (
+              // eslint-disable-next-line react/no-array-index-key
               <td key={key}>
                 <Radio name={id + ((suffix) || '')}>
                   {!hideLabel ? value : null}
