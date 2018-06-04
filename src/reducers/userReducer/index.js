@@ -8,7 +8,7 @@ import get from './get';
 import list from './list';
 
 // Handle some actions
-export default function settings(state = {}, action) {
+export default function settings(state = null, action) {
   switch (action.type) {
     case actions.user.all.succeeded:
       return all(state, action);
