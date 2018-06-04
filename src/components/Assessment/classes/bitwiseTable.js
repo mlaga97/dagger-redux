@@ -1,66 +1,62 @@
 // Library imports
 import React from 'react';
-import {Table, Checkbox} from 'react-bootstrap';
+import { Table, Checkbox } from 'react-bootstrap';
 
 function Renderer(props) {
+  // Props
+  const { type, index, question } = props;
 
-	// Props
-	let type = props.type
-	let question = props.question;
-	let index = props.index;
+  // Question variables
+  const { id, text } = question;
 
-	// Question variables
-	let id = question.id;
-	let text = question.text;
+  // Type Variables
+  const { options } = type;
 
-	// Type Variables
-	let options = type.options;
-
-	return(
-		<tr>
-			<td>
-				{index}. {text}
-			</td>
-			{
-				options.map((option, key) => (
-					<td key={key}>
-						<Checkbox name={id + '-' + key} value={Math.pow(2, key)} />
-					</td>
-				))
-			}
-		</tr>
-	)
+  return (
+    <tr>
+      <td>
+        {index}. {text}
+      </td>
+      {
+        options.map((option, key) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <td key={key}>
+            <Checkbox name={`${id}-${key}`} value={2 ** key} />
+          </td>
+        ))
+      }
+    </tr>
+  );
 }
 
 function Wrapper(props) {
+  // Props
+  const { type, children } = props;
 
-	// Props
-	let children = props.children;
-	let type = props.type;
+  // Type variables
+  const { options } = type;
 
-	// Type variables
-	let options = type.options;
-
-	return(
-		<Table striped bordered condensed hover>
-			<thead>
-				<tr>
-					<th>Question</th>
-					{
-						options.map((option, key) => (
-							<th key={key}>{option}</th>
-						))
-					}
-				</tr>
-			</thead>
-			<tbody>
-				{children}
-			</tbody>
-		</Table>
-	);
+  return (
+    <Table striped bordered condensed hover>
+      <thead>
+        <tr>
+          <th>Question</th>
+          {
+            options.map((option, key) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <th key={key}>{option}</th>
+            ))
+          }
+        </tr>
+      </thead>
+      <tbody>
+        {children}
+      </tbody>
+    </Table>
+  );
 }
 
 export default {
-	renderer: Renderer,
-	wrapper: Wrapper,
+  renderer: Renderer,
+  wrapper: Wrapper,
 };

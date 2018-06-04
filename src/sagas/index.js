@@ -1,5 +1,5 @@
 // Librart imports
-import {all} from 'redux-saga/effects';
+import { all } from 'redux-saga/effects';
 
 // Sagas
 import assessmentSaga from './assessmentSaga';
@@ -9,10 +9,10 @@ import userSaga from './userSaga';
 
 // Export saga
 export default function* rootSaga() {
-	yield all([
-		assessmentSaga(),
-		authSaga(),
-		clinicSaga(),
-		userSaga(),
-	])
+  yield all([
+    assessmentSaga(),
+    authSaga(),
+    clinicSaga(),
+    userSaga(),
+  ]);
 }

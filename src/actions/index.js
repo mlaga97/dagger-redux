@@ -9,9 +9,9 @@ import user from './userActions';
 
 // Export Actions
 export default {
-	assessment,
-	auth,
-	clinic,
-	response,
-	user,
-}
+  assessment,
+  auth,
+  clinic,
+  response,
+  user,
+};

@@ -1,43 +1,44 @@
 // Library imports
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 // Actions
 import actions from '../actions';
 
 class LogoutPage extends React.Component {
-	componentWillMount() {
-		this.props.dispatch({type: actions.auth.logout.requested});
-	}
+  componentWillMount() {
+    this.props.dispatch({
+      type: actions.auth.logout.requested,
+    });
+  }
 
-	render() {
-		if(this.props.auth.status) {
-			window.location.pathname = '/';
+  render() {
+    if (this.props.auth.status) {
+      window.location.pathname = '/';
 
-			return(
-				<div>Logging out...</div>
-			);
-		} else {
-			return(
-				<div>Logged out!</div>
-			);
-		}
-	}
+      return (
+        <div>Logging out...</div>
+      );
+    }
+    return (
+      <div>Logged out!</div>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-	return {
-		auth: state.auth,
-	};
+  return {
+    auth: state.auth,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-	return {
-		dispatch: dispatch,
-	};
+  return {
+    dispatch,
+  };
 }
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps,
 )(LogoutPage);

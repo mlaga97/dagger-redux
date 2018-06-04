@@ -6,9 +6,9 @@ import radioOptions from './radioOptions';
 import textField from './textField';
 
 export default {
-	bitwiseTable: bitwiseTable,
-	checkboxScale: checkboxScale,
-	radioScale: radioScale,
-	radioOptions: radioOptions,
-	textField: textField,
-}
+  bitwiseTable,
+  checkboxScale,
+  radioScale,
+  radioOptions,
+  textField,
+};

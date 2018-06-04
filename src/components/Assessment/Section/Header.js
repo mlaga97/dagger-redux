@@ -2,17 +2,16 @@
 import React from 'react';
 
 function Description(props) {
-	let description = props.description;
+  const { description } = props;
 
-	if(!description)
-		return null;
+  if (!description) { return null; }
 
-	return(
-		<div>
-			<b>{description}</b>
-			<br/>
-		</div>
-	);
+  return (
+    <div>
+      <b>{description}</b>
+      <br />
+    </div>
+  );
 }
 
 export default Description;

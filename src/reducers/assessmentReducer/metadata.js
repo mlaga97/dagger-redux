@@ -1,17 +1,17 @@
 // TODO: JSDoc
 export default function current(state, action) {
-	let newState = {};
+  const newState = {};
 
-	// TODO: Document
-	Object.keys(action.data).forEach((assessmentClass, index) => {
-		if(assessmentClass in newState) {
-			newState[assessmentClass] = state[assessmentClass];
-		} else {
-			newState[assessmentClass] = {
-				metadata: action.data[assessmentClass],
-			}
-		}
-	});
+  // TODO: Document
+  Object.keys(action.data).forEach((assessmentClass) => {
+    if (assessmentClass in newState) {
+      newState[assessmentClass] = state[assessmentClass];
+    } else {
+      newState[assessmentClass] = {
+        metadata: action.data[assessmentClass],
+      };
+    }
+  });
 
-	return newState;
+  return newState;
 }
