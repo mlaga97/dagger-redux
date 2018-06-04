@@ -10,7 +10,10 @@ function Question(props) {
   let { type } = question;
 
   // Handle Anonymous Types
-  if (typeof type === 'string') { type = types[type]; } // Turns out the type was actually just the name!
+  if (typeof type === 'string') {
+    // eslint-disable-next-line prefer-destructuring
+    type = types[type]; // Turns out the type was actually just the name!
+  }
 
   // Check if we have a renderer available
   if (classes[type.class] && classes[type.class].renderer) {

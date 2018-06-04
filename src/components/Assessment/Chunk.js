@@ -22,9 +22,8 @@ function Chunk(props) {
 
   // Handle Anonymous Types
   if (typeof type === 'string') {
-    // Turns out the type was actually just the typeName!
-    // TODO: Stop using this variable for 2 different things?
-    type = types[type];
+    // eslint-disable-next-line prefer-destructuring
+    type = types[type]; // Turns out the type was actually just the typeName!
   }
 
   // Set default wrapper
