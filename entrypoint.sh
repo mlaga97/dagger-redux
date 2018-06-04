@@ -1,25 +1,65 @@
-if [ "$UID" = "0" ]; then
-	echo 'Permissions are probably about to get wrecked.'
-	echo 'Run `export UID` before the command to avoid this.'
-	echo
-fi
+#!/bin/bash
 
-if [ "$1" = "build" ] || [ "$REACT_APP_ENVIRONMENT" = "production" ]; then
-	echo "RUNNING PRODUCTION BUILD"
-	if [ "$PUBLIC_URL" = "" ]; then
-		echo 'ERROR: Need to specify a PUBLIC_URL';
-	fi
+cd /dagger
 
-	cd /dagger
-	npm install
-	npm run-script build
-elif [ "$1" = "develop" ] || [ "$REACT_APP_ENVIRONMENT" = "development" ]; then
-	echo "RUNNING DEVELOPMENT BUILD"
+install () {
+  npm install
+}
 
-	cd /dagger
-	npm install
-	npm start
-else
-	echo "REACT_APP_ENVIRONMENT was set to: $REACT_APP_ENVIRONMENT"
-	echo "Please specify a build mode!"
-fi
+test_install () {
+  if [ -z "$(ls -A node_modules)" ]; then
+    install
+  fi
+}
+
+start () {
+  npm start
+}
+
+build () {
+  npm run-script build
+}
+
+lint () {
+  npx eslint .
+}
+
+development () {
+  install
+  start
+}
+
+production () {
+  if [ "$PUBLIC_URL" = "" ]; then
+    echo 'ERROR: Need to specify a PUBLIC_URL';
+  fi
+
+  install
+  build
+}
+
+# Prefer parameters to environment
+case $1 in
+  lint)
+    test_install
+    lint
+    exit;;
+  bash)
+    /bin/bash
+    exit;;
+  development)
+    development
+    exit;;
+  production)
+    production
+    exit;;
+esac
+
+case $REACT_APP_ENVIRONMENT in
+  development)
+    development
+    exit;;
+  production)
+    production
+    exit;;
+esac
