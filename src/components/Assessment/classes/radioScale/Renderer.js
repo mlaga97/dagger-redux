@@ -7,42 +7,22 @@ function Renderer(props) {
   const { type, index, question } = props;
 
   // Type Variables
-  const { options } = type;
+  let { options } = type;
 
   // Question variables
   const { id, text } = question;
 
-  // Check if single- or multi- column
-  // TODO: Would it be better to split this up?
-  if (typeof options[Object.keys(options)[1]] !== 'object') {
-    const { hideLabel } = type;
-
-    return (
-      <tr>
-        <td>
-          {index}. {text}
-        </td>
-        <React.Fragment>
-          {
-            Object.keys(options).map((value, key) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <td key={key}>
-                <Radio name={id}>
-                  {!hideLabel ? value : null}
-                </Radio>
-              </td>
-            ))
-          }
-        </React.Fragment>
-      </tr>
-    );
+  // Convert non-multicolumn format into multi-column format
+  if (!Array.isArray(options)) {
+    options = [type];
   }
+
   return (
     <tr>
-      <td>{text}</td>
+      <td>{index}. {text}</td>
       <React.Fragment>
         {
-          props.type.options.map((subType) => {
+          options.map((subType) => {
             const { suffix, hideLabel } = subType;
 
             return Object.keys(subType.options).map((value, key) => (

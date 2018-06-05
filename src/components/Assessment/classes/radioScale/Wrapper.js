@@ -25,16 +25,13 @@ function PreHeader(props) {
 
 function HeaderColumns(props) {
   const { type } = props;
-  const { options } = type;
+  let { options } = type;
 
-  if (typeof options[Object.keys(options)[1]] !== 'object') {
-    return Object.keys(options).map((value, key) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <th key={key}>
-        {value}
-      </th>
-    ));
+  // Convert non-multicolumn format into multi-column format
+  if (!Array.isArray(options)) {
+    options = [type];
   }
+
   return options.map(subType => (
     Object.keys(subType.options).map((value, key) => (
       // eslint-disable-next-line react/no-array-index-key
