@@ -33,7 +33,7 @@ function Section(props) {
           const key = index + offset;
           offset += chunk.length - 1;
 
-          return <Chunk key={key} index={index} questions={chunk} types={types} />;
+          return <Chunk key={key} index={key} questions={chunk} types={types} />;
         })
       }
     </div>

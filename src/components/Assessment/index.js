@@ -32,7 +32,7 @@ function Assessment(props) {
           const key = index + offset;
           offset += section.questions.length - 1;
 
-          return <Section key={key} index={index} section={section} types={types} />;
+          return <Section key={key} index={key} section={section} types={types} />;
         })
       }
     </div>
