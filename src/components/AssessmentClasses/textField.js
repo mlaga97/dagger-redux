@@ -3,18 +3,18 @@ import React from 'react';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 function Renderer(props) {
-  // Props
-  const { index, question } = props;
-
-  // Question variables
-  const { id, text } = question;
+  const {
+    name,
+    text,
+    number,
+  } = props;
 
   return (
     <FormGroup>
       <ControlLabel>
-        {index}. {text}
+        {number}. {text}
       </ControlLabel>
-      <FormControl type="text" name={id} />
+      <FormControl type="text" name={name} />
     </FormGroup>
   );
 }

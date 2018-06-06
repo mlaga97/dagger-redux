@@ -3,32 +3,31 @@ import React from 'react';
 import { Radio } from 'react-bootstrap';
 
 function Renderer(props) {
-  // Props
-  const { type, index, question } = props;
+  const {
+    name,
+    text,
+    number,
+  } = props;
+  let { options } = props;
 
-  // Type Variables
-  let { options } = type;
-
-  // Question variables
-  const { id, text } = question;
-
+  // TODO: Move to some kind of AssessmentClass-based preprocessor/postprocessor system
   // Convert non-multicolumn format into multi-column format
   if (!Array.isArray(options)) {
-    options = [type];
+    options = [{ options }];
   }
 
   return (
     <tr>
-      <td>{index}. {text}</td>
+      <td>{number}. {text}</td>
       <React.Fragment>
         {
           options.map((subType) => {
             const { suffix, hideLabel } = subType;
 
-            return Object.keys(subType.options).map((value, key) => (
+            return Object.keys(subType.options).map((value, index) => (
               // eslint-disable-next-line react/no-array-index-key
-              <td key={key}>
-                <Radio name={id + ((suffix) || '')}>
+              <td key={index}>
+                <Radio name={name + ((suffix) || '')}>
                   {!hideLabel ? value : null}
                 </Radio>
               </td>

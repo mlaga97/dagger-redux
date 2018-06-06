@@ -3,19 +3,19 @@ import React from 'react';
 import { Table, Checkbox } from 'react-bootstrap';
 
 function Renderer(props) {
-  // Props
-  const { index, question } = props;
-
-  // Question variables
-  const { id, text } = question;
+  const {
+    name,
+    text,
+    number,
+  } = props;
 
   return (
     <tr>
       <td>
-        {index}. {text}
+        {number}. {text}
       </td>
       <td>
-        <Checkbox name={id} value={1} />
+        <Checkbox name={name} />
       </td>
     </tr>
   );

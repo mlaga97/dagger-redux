@@ -33,6 +33,18 @@ class OptionalAssessments extends React.Component {
           Object.keys(assessments).map((key) => {
             if (this.props.response.selected[key]) {
               const assessment = assessments[key];
+              const { types, questions } = assessment;
+              let { sections } = assessment;
+
+              // Translate questions field into sections format
+              // TODO: Decide if we should deprecate assessment.questions
+              if (questions) {
+                sections = [
+                  {
+                    questions,
+                  },
+                ];
+              }
 
               return (
                 <Panel key={key} defaultExpanded>
@@ -43,7 +55,7 @@ class OptionalAssessments extends React.Component {
                   </Panel.Heading>
                   <Panel.Collapse>
                     <Panel.Body>
-                      <Assessment assessment={assessment} />
+                      <Assessment types={types} sections={sections} />
                     </Panel.Body>
                   </Panel.Collapse>
                 </Panel>

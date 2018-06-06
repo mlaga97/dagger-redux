@@ -2,9 +2,6 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-// TODO: Consider whether the multicolumn support should be broken off into a separate
-//       'radioScaleMulticolumn' for SIGNIFICANTLY easier maintenence.
-
 function PreHeader(props) {
   if (!props.type.span) { return null; }
 
@@ -43,8 +40,7 @@ function HeaderColumns(props) {
 }
 
 function Header(props) {
-  const { type } = props;
-  const { span: hasPreheader } = type;
+  const { type, span: hasPreheader } = props;
 
   return (
     <tr>
@@ -57,8 +53,7 @@ function Header(props) {
 }
 
 function Wrapper(props) {
-  const { type } = props;
-  const { children } = props;
+  const { type, children } = props;
 
   return (
     <Table striped bordered condensed hover>

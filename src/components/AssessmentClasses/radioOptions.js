@@ -8,25 +8,23 @@ const questionStyle = {
 };
 
 function renderer(props) {
-  // Props
-  const { type, index, question } = props;
-
-  // Type Variables
-  const { options } = type;
-
-  // Question Variables
-  const { id, text } = question;
+  const {
+    name,
+    text,
+    number,
+    options,
+  } = props;
 
   return (
     <FormGroup>
       <ControlLabel>
-        {index}. {text}
+        {number}. {text}
       </ControlLabel>
       <div style={questionStyle}>
         {
-          Object.keys(options).map((option, key) => (
+          Object.keys(options).map((option, index) => (
             // eslint-disable-next-line react/no-array-index-key
-            <Radio key={key} value={options[option]} name={id}>
+            <Radio key={index} value={options[option]} name={name}>
               {option}
             </Radio>
           ))

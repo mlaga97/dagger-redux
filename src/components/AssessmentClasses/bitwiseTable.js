@@ -3,25 +3,23 @@ import React from 'react';
 import { Table, Checkbox } from 'react-bootstrap';
 
 function Renderer(props) {
-  // Props
-  const { type, index, question } = props;
-
-  // Question variables
-  const { id, text } = question;
-
-  // Type Variables
-  const { options } = type;
+  const {
+    name,
+    text,
+    number,
+    options,
+  } = props;
 
   return (
     <tr>
       <td>
-        {index}. {text}
+        {number}. {text}
       </td>
       {
-        options.map((option, key) => (
+        options.map((option, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <td key={key}>
-            <Checkbox name={`${id}-${key}`} value={2 ** key} />
+          <td key={index}>
+            <Checkbox name={`${name}-${index}`} value={2 ** index} />
           </td>
         ))
       }
@@ -30,10 +28,7 @@ function Renderer(props) {
 }
 
 function Wrapper(props) {
-  // Props
   const { type, children } = props;
-
-  // Type variables
   const { options } = type;
 
   return (
@@ -42,9 +37,9 @@ function Wrapper(props) {
         <tr>
           <th>Question</th>
           {
-            options.map((option, key) => (
+            options.map((option, index) => (
               // eslint-disable-next-line react/no-array-index-key
-              <th key={key}>{option}</th>
+              <th key={index}>{option}</th>
             ))
           }
         </tr>
