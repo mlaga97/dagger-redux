@@ -2,29 +2,40 @@
 import React from 'react';
 import { Table, Checkbox } from 'react-bootstrap';
 
-function Renderer(props) {
-  const {
-    name,
-    text,
-    number,
-    options,
-  } = props;
+class Renderer {
+  handleChange = (event) => {
+    const { name, checked } = event.target;
 
-  return (
-    <tr>
-      <td>
-        {number}. {text}
-      </td>
-      {
-        options.map((option, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <td key={index}>
-            <Checkbox name={`${name}-${index}`} value={2 ** index} />
-          </td>
-        ))
-      }
-    </tr>
-  );
+    this.props.onUpdate({
+      name,
+      value: checked,
+    });
+  }
+
+  render() {
+    const {
+      name,
+      text,
+      number,
+      options,
+    } = this.props;
+
+    return (
+      <tr>
+        <td>
+          {number}. {text}
+        </td>
+        {
+          options.map((option, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <td key={index}>
+              <Checkbox name={`${name}-${index}`} value={2 ** index} onChange={this.handleChange} />
+            </td>
+          ))
+        }
+      </tr>
+    );
+  }
 }
 
 function Wrapper(props) {

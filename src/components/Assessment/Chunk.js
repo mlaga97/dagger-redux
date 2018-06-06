@@ -7,6 +7,7 @@ function Chunk(props) {
     Renderer,
     firstType,
     questions,
+    onUpdate,
   } = props;
 
   return (
@@ -15,7 +16,7 @@ function Chunk(props) {
       {
         // Render Questions
         questions.map(question => (
-          <Renderer key={question.name} {...question} />
+          <Renderer key={question.name} {...question} onUpdate={onUpdate} />
         ))
       }
     </Wrapper>

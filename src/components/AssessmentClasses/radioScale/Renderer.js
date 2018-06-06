@@ -2,41 +2,52 @@
 import React from 'react';
 import { Radio } from 'react-bootstrap';
 
-function Renderer(props) {
-  const {
-    name,
-    text,
-    number,
-  } = props;
-  let { options } = props;
+class Renderer extends React.Component {
+  handleChange = (event) => {
+    const { name, value } = event.target;
 
-  // TODO: Move to some kind of AssessmentClass-based preprocessor/postprocessor system
-  // Convert non-multicolumn format into multi-column format
-  if (!Array.isArray(options)) {
-    options = [{ options }];
+    this.props.onUpdate({
+      name,
+      value,
+    });
   }
 
-  return (
-    <tr>
-      <td>{number}. {text}</td>
-      <React.Fragment>
-        {
-          options.map((subType) => {
-            const { suffix, hideLabel } = subType;
+  render() {
+    const {
+      name,
+      text,
+      number,
+    } = this.props;
+    let { options } = this.props;
 
-            return Object.keys(subType.options).map((value, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <td key={index}>
-                <Radio name={name + ((suffix) || '')}>
-                  {!hideLabel ? value : null}
-                </Radio>
-              </td>
-            ));
-          })
-        }
-      </React.Fragment>
-    </tr>
-  );
+    // TODO: Move to some kind of AssessmentClass-based preprocessor/postprocessor system
+    // Convert non-multicolumn format into multi-column format
+    if (!Array.isArray(options)) {
+      options = [{ options }];
+    }
+
+    return (
+      <tr>
+        <td>{number}. {text}</td>
+        <React.Fragment>
+          {
+            options.map((subType) => {
+              const { suffix, hideLabel } = subType;
+
+              return Object.keys(subType.options).map((label, index) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <td key={index}>
+                  <Radio name={name + ((suffix) || '')} value={subType.options[label]} onChange={this.handleChange} >
+                    {!hideLabel ? label : null}
+                  </Radio>
+                </td>
+              ));
+            })
+          }
+        </React.Fragment>
+      </tr>
+    );
+  }
 }
 
 export default Renderer;

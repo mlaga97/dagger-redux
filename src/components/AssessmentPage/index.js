@@ -10,7 +10,15 @@ import AssessmentSelector from './AssessmentSelector';
 import AssessmentMetadata from './AssessmentMetadata';
 import OptionalAssessments from './OptionalAssessments';
 
-class AssessmentTest extends React.Component {
+class AssessmentPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      response: {},
+    };
+  }
+
   componentWillMount() {
     if (!this.props.assessments) {
       this.props.dispatch({
@@ -19,20 +27,56 @@ class AssessmentTest extends React.Component {
     }
   }
 
+  responseUpdate = (event) => {
+    // Update State
+    this.setState(prevState => ({
+      ...prevState,
+      response: {
+        ...prevState.response,
+        [event.class]: {
+          ...prevState.response[event.class],
+          [event.name]: event.value,
+        },
+      },
+    }));
+  }
+
+  selectorUpdate = (event) => {
+    const { name, checked } = event.target;
+
+    const type = checked ?
+      actions.response.assessment.selected :
+      actions.response.assessment.deselected;
+
+    this.props.dispatch({
+      type,
+      data: name,
+    });
+  }
+
   render = () => (
     <form>
-      <AssessmentMetadata />
+      <AssessmentMetadata onUpdate={this.responseUpdate} />
       {/* <RequiredAssessments /> */}
-      <AssessmentSelector />
-      <OptionalAssessments />
+      <AssessmentSelector
+        onUpdate={this.selectorUpdate}
+        selected={this.props.response.selected}
+        assessments={this.props.assessments}
+      />
+      <OptionalAssessments
+        onUpdate={this.responseUpdate}
+        response={this.props.response}
+        assessments={this.props.assessments}
+      />
     </form>
   )
 }
 
 function mapStateToProps(state) {
   return {
-    assessments: state.assessments,
     auth: state.auth,
+    response: state.response,
+    assessments: state.assessments,
   };
 }
 
@@ -45,4 +89,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(AssessmentTest);
+)(AssessmentPage);
