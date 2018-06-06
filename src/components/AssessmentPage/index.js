@@ -1,6 +1,9 @@
 // Library imports
 import React from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
+import { withRouter } from 'react-router';
 
 // Actions
 import actions from '../../actions';
@@ -25,6 +28,15 @@ class AssessmentPage extends React.Component {
         type: actions.assessment.all.requested,
       });
     }
+  }
+
+  handleSubmit = () => {
+    this.props.dispatch({
+      type: actions.response.post.requested,
+      data: this.state,
+    })
+
+    this.props.history.push('/');
   }
 
   responseUpdate = (event) => {
@@ -68,6 +80,7 @@ class AssessmentPage extends React.Component {
         response={this.props.response}
         assessments={this.props.assessments}
       />
+      <Button onClick={this.handleSubmit}>Next</Button>
     </form>
   )
 }
@@ -86,7 +99,10 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+export default compose(
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )
 )(AssessmentPage);
