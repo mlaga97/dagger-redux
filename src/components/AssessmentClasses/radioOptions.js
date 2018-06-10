@@ -7,31 +7,42 @@ const questionStyle = {
   paddingLeft: '20px',
 };
 
-function renderer(props) {
-  const {
-    name,
-    text,
-    number,
-    options,
-  } = props;
+class renderer extends React.Component {
+  handleChange = (event) => {
+    const { name, value } = event.target;
 
-  return (
-    <FormGroup>
-      <ControlLabel>
-        {number}. {text}
-      </ControlLabel>
-      <div style={questionStyle}>
-        {
-          Object.keys(options).map((option, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <Radio key={index} value={options[option]} name={name}>
-              {option}
-            </Radio>
-          ))
-        }
-      </div>
-    </FormGroup>
-  );
+    this.props.onUpdate({
+      name,
+      value,
+    });
+  }
+
+  render() {
+    const {
+      name,
+      text,
+      number,
+      options,
+    } = this.props;
+
+    return (
+      <FormGroup>
+        <ControlLabel>
+          {number}. {text}
+        </ControlLabel>
+        <div style={questionStyle}>
+          {
+            Object.keys(options).map((option, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <Radio key={index} value={options[option]} name={name} onChange={this.handleChange}>
+                {option}
+              </Radio>
+            ))
+          }
+        </div>
+      </FormGroup>
+    );
+  }
 }
 
 export default {

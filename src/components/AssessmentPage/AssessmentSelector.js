@@ -1,32 +1,10 @@
 // Library imports
 import React from 'react';
-import { connect } from 'react-redux';
 import { Panel, Grid, Row, Col, Checkbox } from 'react-bootstrap';
 
-// Actions
-import actions from '../../actions';
-
 class AssessmentSelector extends React.Component {
-  componentWillMount() {
-    // TODO: Make this a metadata request
-    if (!this.props.assessments) {
-      this.props.dispatch({
-        type: actions.assessment.all.requested,
-      });
-    }
-  }
-
   handleChange = (event) => {
-    const { name, checked } = event.target;
-
-    const type = checked ?
-      actions.response.assessment.selected :
-      actions.response.assessment.deselected;
-
-    this.props.dispatch({
-      type,
-      data: name,
-    });
+    this.props.onUpdate(event);
   }
 
   render() {
@@ -72,16 +50,4 @@ class AssessmentSelector extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    assessments: state.assessments,
-    selected: state.response.selected,
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  dispatch => ({
-    dispatch,
-  }),
-)(AssessmentSelector);
+export default AssessmentSelector;

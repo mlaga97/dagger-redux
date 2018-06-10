@@ -2,23 +2,34 @@
 import React from 'react';
 import { Table, Checkbox } from 'react-bootstrap';
 
-function Renderer(props) {
-  const {
-    name,
-    text,
-    number,
-  } = props;
+class Renderer extends React.Component {
+  handleChange = (event) => {
+    const { name, checked } = event.target;
 
-  return (
-    <tr>
-      <td>
-        {number}. {text}
-      </td>
-      <td>
-        <Checkbox name={name} />
-      </td>
-    </tr>
-  );
+    this.props.onUpdate({
+      name,
+      value: checked,
+    });
+  }
+
+  render() {
+    const {
+      name,
+      text,
+      number,
+    } = this.props;
+
+    return (
+      <tr>
+        <td>
+          {number}. {text}
+        </td>
+        <td>
+          <Checkbox name={name} onChange={this.handleChange} />
+        </td>
+      </tr>
+    );
+  }
 }
 
 function Wrapper(props) {

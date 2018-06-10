@@ -8,7 +8,12 @@ import Header from './Header';
 
 // TODO: Come up with a better system than header and description.
 function Section(props) {
-  const { chunks, header, description } = props;
+  const {
+    chunks,
+    header,
+    onUpdate,
+    description,
+  } = props;
 
   return (
     <div>
@@ -19,7 +24,7 @@ function Section(props) {
       {
         // Render Chunks
         chunks.map(chunk => (
-          <Chunk key={chunk.index} {...chunk} />
+          <Chunk key={chunk.index} {...chunk} onUpdate={onUpdate} />
         ))
       }
     </div>
