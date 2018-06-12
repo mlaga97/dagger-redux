@@ -15,7 +15,7 @@ class ClinicList extends React.Component {
   }
 
   render() {
-    if (!this.props.clinics) {
+    if (!this.props.clinics.all) {
       return (
         <div>
           Retrieving clinic list...
@@ -35,8 +35,8 @@ class ClinicList extends React.Component {
           </thead>
           <tbody>
             {
-                Object.keys(this.props.clinics).map((clinicID) => {
-                  const clinic = this.props.clinics[clinicID];
+                Object.keys(this.props.clinics.all).map((clinicID) => {
+                  const clinic = this.props.clinics.all[clinicID];
 
                   return (
                     <tr key={clinic.id}>

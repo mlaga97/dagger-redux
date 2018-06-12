@@ -10,7 +10,7 @@ import get from './get';
 import list from './list';
 
 // Export saga
-export default function* userSaga() {
+export default function* () {
   yield takeLatest(actions.clinic.all.requested, all);
   yield takeLatest(actions.clinic.get.requested, get);
   yield takeLatest(actions.clinic.list.requested, list);

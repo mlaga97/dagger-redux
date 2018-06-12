@@ -2,19 +2,19 @@
 import { all } from 'redux-saga/effects';
 
 // Sagas
-import assessmentSaga from './assessmentSaga';
-import authSaga from './authSaga';
-import clinicSaga from './clinicSaga';
-import responseSaga from './responseSaga';
-import userSaga from './userSaga';
+import assessment from './assessment';
+import auth from './auth';
+import clinic from './clinic';
+import response from './response';
+import user from './user';
 
 // Export saga
-export default function* rootSaga() {
+export default function* () {
   yield all([
-    assessmentSaga(),
-    authSaga(),
-    clinicSaga(),
-    responseSaga(),
-    userSaga(),
+    assessment(),
+    auth(),
+    clinic(),
+    response(),
+    user(),
   ]);
 }

@@ -1,11 +1,11 @@
 // TODO: Add API_BASE_URL
 
 // Actions
-import assessment from './assessmentActions';
-import auth from './authActions';
-import clinic from './clinicActions';
-import response from './responseActions';
-import user from './userActions';
+import assessment from './assessment';
+import auth from './auth';
+import clinic from './clinic';
+import response from './response';
+import user from './user';
 
 // Export Actions
 export default {

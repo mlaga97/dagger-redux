@@ -11,7 +11,7 @@ import list from './list';
 import metadata from './metadata';
 
 // Export saga
-export default function* assessmentSaga() {
+export default function* () {
   yield takeLatest(actions.assessment.all.requested, all);
   yield takeLatest(actions.assessment.get.requested, get);
   yield takeLatest(actions.assessment.list.requested, list);

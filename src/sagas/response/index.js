@@ -8,6 +8,6 @@ import actions from '../../actions';
 import post from './post';
 
 // Export saga
-export default function* assessmentSaga() {
+export default function* () {
   yield takeLatest(actions.response.post.requested, post);
 }

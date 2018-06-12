@@ -6,12 +6,12 @@ import actions from '../../actions';
 
 // Sagas
 import all from './all';
-import current from './current';
 import get from './get';
 import list from './list';
+import current from './current';
 
 // Export saga
-export default function* userSaga() {
+export default function* () {
   yield takeLatest(actions.user.all.requested, all);
   yield takeLatest(actions.user.current.requested, current);
   yield takeLatest(actions.user.get.requested, get);
