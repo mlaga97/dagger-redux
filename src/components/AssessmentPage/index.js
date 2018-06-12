@@ -23,7 +23,7 @@ class AssessmentPage extends React.Component {
   }
 
   componentWillMount() {
-    if (!this.props.assessments) {
+    if (!this.props.assessments.all) {
       this.props.dispatch({
         type: actions.assessment.all.requested,
       });
@@ -73,12 +73,12 @@ class AssessmentPage extends React.Component {
       <AssessmentSelector
         onUpdate={this.selectorUpdate}
         selected={this.props.response.selected}
-        assessments={this.props.assessments}
+        assessments={this.props.assessments.all}
       />
       <OptionalAssessments
         onUpdate={this.responseUpdate}
         response={this.props.response}
-        assessments={this.props.assessments}
+        assessments={this.props.assessments.all}
       />
       <Button onClick={this.handleSubmit}>Next</Button>
     </form>
