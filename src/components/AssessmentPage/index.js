@@ -34,7 +34,7 @@ class AssessmentPage extends React.Component {
     this.props.dispatch({
       type: actions.response.post.requested,
       data: this.state,
-    })
+    });
 
     this.props.history.push('/');
   }
@@ -104,5 +104,5 @@ export default compose(
   connect(
     mapStateToProps,
     mapDispatchToProps,
-  )
+  ),
 )(AssessmentPage);
