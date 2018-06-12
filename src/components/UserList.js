@@ -15,7 +15,7 @@ class UserList extends React.Component {
   }
 
   render() {
-    if (!this.props.users) {
+    if (!this.props.users.all) {
       return (
         <div>
           Retrieving user list...
@@ -37,8 +37,8 @@ class UserList extends React.Component {
           </thead>
           <tbody>
             {
-                Object.keys(this.props.users).map((userID) => {
-                  const user = this.props.users[userID];
+                Object.keys(this.props.users.all).map((userID) => {
+                  const user = this.props.users.all[userID];
 
                   return (
                     <tr key={user.id}>

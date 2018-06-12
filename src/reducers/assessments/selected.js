@@ -1,7 +1,5 @@
-// Library imports
-import { combineReducers } from 'redux';
-
-import actions from '../actions';
+// Actions
+import actions from '../../actions';
 
 // Handle some actions
 function selected(state = {}, action) {
@@ -19,8 +17,4 @@ function selected(state = {}, action) {
   }
 }
 
-const responseReducer = combineReducers({
-  selected,
-});
-
-export default responseReducer;
+export default selected;

@@ -23,7 +23,7 @@ class AssessmentPage extends React.Component {
   }
 
   componentWillMount() {
-    if (!this.props.assessments) {
+    if (!this.props.assessments.all) {
       this.props.dispatch({
         type: actions.assessment.all.requested,
       });
@@ -34,7 +34,7 @@ class AssessmentPage extends React.Component {
     this.props.dispatch({
       type: actions.response.post.requested,
       data: this.state,
-    })
+    });
 
     this.props.history.push('/');
   }
@@ -72,13 +72,14 @@ class AssessmentPage extends React.Component {
       {/* <RequiredAssessments /> */}
       <AssessmentSelector
         onUpdate={this.selectorUpdate}
-        selected={this.props.response.selected}
-        assessments={this.props.assessments}
+        assessments={this.props.assessments.all}
+        selected={this.props.assessments.selected}
       />
       <OptionalAssessments
         onUpdate={this.responseUpdate}
         response={this.props.response}
-        assessments={this.props.assessments}
+        assessments={this.props.assessments.all}
+        selected={this.props.assessments.selected}
       />
       <Button onClick={this.handleSubmit}>Next</Button>
     </form>
@@ -88,7 +89,6 @@ class AssessmentPage extends React.Component {
 function mapStateToProps(state) {
   return {
     auth: state.auth,
-    response: state.response,
     assessments: state.assessments,
   };
 }
@@ -104,5 +104,5 @@ export default compose(
   connect(
     mapStateToProps,
     mapDispatchToProps,
-  )
+  ),
 )(AssessmentPage);
