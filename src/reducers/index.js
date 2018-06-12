@@ -3,11 +3,11 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
 // Reducers
-import assessments from './assessmentReducer';
-import auth from './authReducer';
-import clinics from './clinicReducer';
-import response from './responseReducer';
-import users from './userReducer';
+import auth from './auth';
+import users from './users';
+import clinics from './clinics';
+import response from './responses';
+import assessments from './assessments';
 
 /*
 All: all available objects, by id
@@ -15,12 +15,12 @@ Current: Contains the id of the object which applies to the user session
 Selected: Contains the id of the object of interest
 
 {
+  assessments: { all, current, selected },
+  clinics: { all, current, selected },
   users: { all, current, selected },
   visits: { all, current, selected },
-  clinics: { all, current, selected },
   patients: { all, current, selected },
-  assessments: { all, current, selected },
-  response: {
+  responses: { all, current, selected },
   },
   server: {
     version,
@@ -28,7 +28,8 @@ Selected: Contains the id of the object of interest
     modules: {}
   },
   client: { version },
-  analytics: {}
+  analytics: {},
+  auth: {},
 }
 
 */
