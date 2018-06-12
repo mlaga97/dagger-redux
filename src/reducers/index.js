@@ -20,7 +20,6 @@ Selected: Contains the id of the object of interest
   visits: { all, current, selected },
   patients: { all, current, selected },
   responses: { all, current, selected },
-  },
   server: {
     version,
     auth: {},
