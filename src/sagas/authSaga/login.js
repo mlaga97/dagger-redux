@@ -17,7 +17,7 @@ export default function* login(action) {
     const response = yield call(() => axios.post('/auth/login', action.data));
 
     yield put({
-      type: response.data === 'Authentication succeeded!' ? actions.auth.login.succeeded : actions.auth.login.failed,
+      type: response.data.success ? actions.auth.login.succeeded : actions.auth.login.failed,
       data: response.data,
     });
   } catch (e) {
