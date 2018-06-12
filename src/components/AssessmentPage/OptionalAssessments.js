@@ -7,7 +7,7 @@ import Assessment from '../Assessment';
 
 // TODO: Handle the 'optional' part
 function OptionalAssessments(props) {
-  const { assessments } = props;
+  const { assessments, selected } = props;
 
   if (!assessments) {
     return (
@@ -18,7 +18,7 @@ function OptionalAssessments(props) {
     <div>
       {
         Object.keys(assessments).map((key) => {
-          if (props.response.selected[key]) {
+          if (selected[key]) {
             const assessment = assessments[key];
             const { types, questions, metadata } = assessment;
             let { sections } = assessment;

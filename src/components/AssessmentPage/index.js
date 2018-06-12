@@ -72,13 +72,14 @@ class AssessmentPage extends React.Component {
       {/* <RequiredAssessments /> */}
       <AssessmentSelector
         onUpdate={this.selectorUpdate}
-        selected={this.props.response.selected}
         assessments={this.props.assessments.all}
+        selected={this.props.assessments.selected}
       />
       <OptionalAssessments
         onUpdate={this.responseUpdate}
         response={this.props.response}
         assessments={this.props.assessments.all}
+        selected={this.props.assessments.selected}
       />
       <Button onClick={this.handleSubmit}>Next</Button>
     </form>
@@ -88,7 +89,6 @@ class AssessmentPage extends React.Component {
 function mapStateToProps(state) {
   return {
     auth: state.auth,
-    response: state.response,
     assessments: state.assessments,
   };
 }
