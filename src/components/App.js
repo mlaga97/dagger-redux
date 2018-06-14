@@ -3,6 +3,10 @@ import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { IndexLinkContainer } from 'react-router-bootstrap';
+import { connect } from 'react-redux';
+
+// Actions
+import actions from '../actions';
 
 // Components
 import LogoutPage from './LogoutPage';
@@ -25,15 +29,34 @@ const divStyle = {
 class PrivateApp extends React.Component {
   // Do stuff that the entire application needs
   componentWillMount() {
+    // Get user data
+    if (!this.props.users.current) {
+      this.props.dispatch({
+        type: actions.user.current.requested,
+      });
+    }
+
+    // Get clinic data
+    if (!this.props.clinics.current) {
+      this.props.dispatch({
+        type: actions.clinic.current.requested,
+      });
+    }
+
     // TODO: Get server data
-    // TODO: Get user data
-    // TODO: Get users' data (admin only?)
-    // TODO: Get clinic data
     // TODO: Get assessment [meta?]data
     // TODO: Setup response?
   }
 
   render() {
+    if (!this.props.users.current) {
+      return <div>Loading user data...</div>;
+    }
+
+    if (!this.props.clinics.current) {
+      return <div>Loading clinic data...</div>;
+    }
+
     return (
       <BrowserRouter>
         <div>
@@ -101,4 +124,13 @@ class PrivateApp extends React.Component {
   }
 }
 
-export default PrivateApp;
+export default connect(
+  state => ({
+    auth: state.auth,
+    users: state.users,
+    clinics: state.clinics,
+  }),
+  dispatch => ({
+    dispatch,
+  }),
+)(PrivateApp);

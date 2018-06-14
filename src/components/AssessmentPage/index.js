@@ -9,17 +9,28 @@ import { withRouter } from 'react-router';
 import actions from '../../actions';
 
 // Components
-import AssessmentSelector from './AssessmentSelector';
-import AssessmentMetadata from './AssessmentMetadata';
-import OptionalAssessments from './OptionalAssessments';
+import AssessmentSelector from '../AssessmentSelector';
+import AssessmentMetadata from '../AssessmentMetadata';
+import OptionalAssessments from '../OptionalAssessments';
+
+// Event Handlers
+import handleSubmit from './handleSubmit';
+import responseUpdate from './responseUpdate';
+import selectorUpdate from './selectorUpdate';
+
 
 class AssessmentPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      selected: {},
       response: {},
     };
+
+    this.handleSubmit = handleSubmit.bind(this);
+    this.responseUpdate = responseUpdate.bind(this);
+    this.selectorUpdate = selectorUpdate.bind(this);
   }
 
   componentWillMount() {
@@ -30,79 +41,43 @@ class AssessmentPage extends React.Component {
     }
   }
 
-  handleSubmit = () => {
-    this.props.dispatch({
-      type: actions.response.post.requested,
-      data: this.state,
-    });
+  render() {
+    const { props, state, responseUpdate, selectorUpdate, handleSubmit } = this;
+    const { assessments } = props;
+    const { response, selected } = state;
 
-    this.props.history.push('/');
+    return (
+      <form>
+        <AssessmentMetadata onUpdate={responseUpdate} />
+        {/* <RequiredAssessments /> */}
+        <AssessmentSelector
+          onUpdate={selectorUpdate}
+          assessments={assessments.all}
+          selected={selected}
+        />
+        <OptionalAssessments
+          onUpdate={responseUpdate}
+          response={response}
+          assessments={assessments.all}
+          selected={selected}
+        />
+        <Button onClick={handleSubmit}>Next</Button>
+      </form>
+    );
   }
-
-  responseUpdate = (event) => {
-    // Update State
-    this.setState(prevState => ({
-      ...prevState,
-      response: {
-        ...prevState.response,
-        [event.class]: {
-          ...prevState.response[event.class],
-          [event.name]: event.value,
-        },
-      },
-    }));
-  }
-
-  selectorUpdate = (event) => {
-    const { name, checked } = event.target;
-
-    const type = checked ?
-      actions.response.assessment.selected :
-      actions.response.assessment.deselected;
-
-    this.props.dispatch({
-      type,
-      data: name,
-    });
-  }
-
-  render = () => (
-    <form>
-      <AssessmentMetadata onUpdate={this.responseUpdate} />
-      {/* <RequiredAssessments /> */}
-      <AssessmentSelector
-        onUpdate={this.selectorUpdate}
-        assessments={this.props.assessments.all}
-        selected={this.props.assessments.selected}
-      />
-      <OptionalAssessments
-        onUpdate={this.responseUpdate}
-        response={this.props.response}
-        assessments={this.props.assessments.all}
-        selected={this.props.assessments.selected}
-      />
-      <Button onClick={this.handleSubmit}>Next</Button>
-    </form>
-  )
-}
-
-function mapStateToProps(state) {
-  return {
-    auth: state.auth,
-    assessments: state.assessments,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
 }
 
 export default compose(
   withRouter,
   connect(
-    mapStateToProps,
-    mapDispatchToProps,
+    state => ({
+      auth: state.auth,
+      users: state.users,
+      clinics: state.clinics,
+      assessments: state.assessments,
+    }),
+    dispatch => ({
+      dispatch
+    }),
   ),
 )(AssessmentPage);

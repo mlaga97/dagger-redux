@@ -3,8 +3,9 @@ import actions from '../../actions';
 
 function current(state = null, action) {
   switch (action.type) {
-    case actions.auth.login.succeeded:
-      return action.data.userID;
+    // TODO: This, eventually, better.
+    //case actions.auth.login.succeeded:
+    //  return action.data.userID;
     case actions.user.current.succeeded:
       return action.data.id;
     default:
