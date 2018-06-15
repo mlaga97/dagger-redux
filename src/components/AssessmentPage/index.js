@@ -42,26 +42,26 @@ class AssessmentPage extends React.Component {
   }
 
   render() {
-    const { props, state, responseUpdate, selectorUpdate, handleSubmit } = this;
+    const { props, state } = this;
     const { assessments } = props;
     const { response, selected } = state;
 
     return (
       <form>
-        <AssessmentMetadata onUpdate={responseUpdate} />
+        <AssessmentMetadata onUpdate={this.responseUpdate} />
         {/* <RequiredAssessments /> */}
         <AssessmentSelector
-          onUpdate={selectorUpdate}
+          onUpdate={this.selectorUpdate}
           assessments={assessments.all}
           selected={selected}
         />
         <OptionalAssessments
-          onUpdate={responseUpdate}
+          onUpdate={this.responseUpdate}
           response={response}
           assessments={assessments.all}
           selected={selected}
         />
-        <Button onClick={handleSubmit}>Next</Button>
+        <Button onClick={this.handleSubmit}>Next</Button>
       </form>
     );
   }
@@ -77,7 +77,7 @@ export default compose(
       assessments: state.assessments,
     }),
     dispatch => ({
-      dispatch
+      dispatch,
     }),
   ),
 )(AssessmentPage);

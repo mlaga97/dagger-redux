@@ -7,15 +7,15 @@ function handleSubmit() {
     user: {
       id: this.props.users.current,
     },
-    //visit: {
-    //  type: '',
-    //  date: '',
-    //},
-    //client: {},
+    // visit: {
+    //   type: '',
+    //   date: '',
+    // },
+    // client: {},
     clinic: {
       id: this.props.clinics.current,
     },
-    //server: {},
+    // server: {},
     patient: {
       id: this.state.response.metadata.patientID,
       dob: this.state.response.metadata.patientDOB,
@@ -33,10 +33,10 @@ function handleSubmit() {
   const response = {
     apiVersion: 0,
     metadata,
-    //analytics: {},
+    // analytics: {},
     assessments,
-    //demographics: {},
-  }
+    // demographics: {},
+  };
 
   this.props.dispatch({
     type: actions.response.post.requested,
