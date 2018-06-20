@@ -3,11 +3,11 @@ export default function list(state, action) {
   const newState = {};
 
   // TODO: Document
-  action.data.forEach((assessmentClass) => {
-    if (assessmentClass in state || {}) {
-      newState[assessmentClass] = state[assessmentClass];
+  action.data.forEach((id) => {
+    if (id in state || {}) {
+      newState[id] = state[id];
     } else {
-      newState[assessmentClass] = null;
+      newState[id] = null;
     }
   });
 

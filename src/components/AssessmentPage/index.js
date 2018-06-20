@@ -12,6 +12,7 @@ import actions from '../../actions';
 import AssessmentSelector from '../AssessmentSelector';
 import AssessmentMetadata from '../AssessmentMetadata';
 import OptionalAssessments from '../OptionalAssessments';
+import RequiredAssessments from '../RequiredAssessments';
 
 // Event Handlers
 import handleSubmit from './handleSubmit';
@@ -49,7 +50,11 @@ class AssessmentPage extends React.Component {
     return (
       <form>
         <AssessmentMetadata onUpdate={this.responseUpdate} />
-        {/* <RequiredAssessments /> */}
+        <RequiredAssessments
+          onUpdate={this.responseUpdate}
+          response={response}
+          assessments={assessments.all}
+        />
         <AssessmentSelector
           onUpdate={this.selectorUpdate}
           assessments={assessments.all}

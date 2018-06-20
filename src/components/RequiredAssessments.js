@@ -5,9 +5,9 @@ import { Panel } from 'react-bootstrap';
 // Components
 import Assessment from './Assessment';
 
-// TODO: Merge with RequiredAssessments
-function OptionalAssessments(props) {
-  const { assessments, selected } = props;
+// TODO: Merge with OptionalAssessments
+function RequiredAssessments(props) {
+  const { assessments } = props;
 
   if (!assessments) {
     return (
@@ -22,8 +22,8 @@ function OptionalAssessments(props) {
           const { metadata } = assessment;
           const { required } = metadata;
 
-          if (!required && selected[key]) {
-            const { types, questions } = assessment;
+          if (required) {
+            const { types, questions, metadata } = assessment;
             let { sections } = assessment;
 
             // Translate questions field into sections format
@@ -56,6 +56,7 @@ function OptionalAssessments(props) {
               </Panel>
             );
           }
+
           return null;
         })
       }
@@ -63,4 +64,4 @@ function OptionalAssessments(props) {
   );
 }
 
-export default OptionalAssessments;
+export default RequiredAssessments;

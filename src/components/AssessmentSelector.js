@@ -27,7 +27,11 @@ class AssessmentSelector extends React.Component {
                 {
                   Object.keys(this.props.assessments).map((key) => {
                     const assessment = this.props.assessments[key];
-                    const { text } = assessment.metadata;
+                    const { title, required } = assessment.metadata;
+
+                    if (required) {
+                      return null;
+                    }
 
                     // Assume default value, lest we anger React
                     const value = this.props.selected[key] || false;
@@ -35,7 +39,7 @@ class AssessmentSelector extends React.Component {
                     return (
                       <Col key={key} xs={12} sm={6} md={3} lg={0.5}>
                         <Checkbox name={key} onChange={this.handleChange} checked={value}>
-                          {text}
+                          {title}
                         </Checkbox>
                       </Col>
                     );
