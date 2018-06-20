@@ -2,7 +2,7 @@
 import React from 'react';
 import { Table, Checkbox } from 'react-bootstrap';
 
-class Renderer {
+class Renderer extends React.Component {
   handleChange = (event) => {
     const { name, checked } = event.target;
 
