@@ -14,9 +14,9 @@ function Section(props) {
     onUpdate,
     description,
   } = props;
-  
+
   // TODO: This is definitely wrong
-  if(!chunks[0]) {
+  if (!chunks[0]) {
     chunks.shift();
   }
 

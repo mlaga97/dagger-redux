@@ -23,7 +23,7 @@ function RequiredAssessments(props) {
           const { required } = metadata;
 
           if (required) {
-            const { types, questions, metadata } = assessment;
+            const { types, questions } = assessment;
             let { sections } = assessment;
 
             // Translate questions field into sections format
