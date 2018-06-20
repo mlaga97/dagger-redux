@@ -2,6 +2,9 @@
 import React from 'react';
 import { Radio } from 'react-bootstrap';
 
+// Helper
+import { convertIntoMultiColumnRenderer } from './helpers';
+
 class Renderer extends React.Component {
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -18,13 +21,9 @@ class Renderer extends React.Component {
       text,
       number,
     } = this.props;
-    let { options } = this.props;
 
     // TODO: Move to some kind of AssessmentClass-based preprocessor/postprocessor system
-    // Convert non-multicolumn format into multi-column format
-    if (!Array.isArray(options)) {
-      options = [{ options }];
-    }
+    const options = convertIntoMultiColumnRenderer(this.props.options);
 
     return (
       <tr>

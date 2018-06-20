@@ -2,6 +2,9 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
+// Helper
+import { convertIntoMultiColumnWrapper } from './helpers';
+
 function PreHeader(props) {
   if (!props.type.span) { return null; }
 
@@ -22,12 +25,8 @@ function PreHeader(props) {
 
 function HeaderColumns(props) {
   const { type } = props;
-  let { options } = type;
 
-  // Convert non-multicolumn format into multi-column format
-  if (!Array.isArray(options)) {
-    options = [type];
-  }
+  const options = convertIntoMultiColumnWrapper(type);
 
   return options.map(subType => (
     Object.keys(subType.options).map((value, key) => (
