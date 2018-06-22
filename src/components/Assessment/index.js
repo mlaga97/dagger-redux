@@ -11,7 +11,7 @@ class Assessment extends React.Component {
   onUpdate = (event) => {
     this.props.onUpdate({
       ...event,
-      class: this.props.metadata.class,
+      class: this.props.metadata.id,
     });
   }
 
