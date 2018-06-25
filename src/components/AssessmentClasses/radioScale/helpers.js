@@ -14,27 +14,27 @@
 
 export function convertIntoMultiColumnRenderer(options) {
   if (!Array.isArray(options)) {
-    options = [{ options }];
-  } else {
-    // Catch the degenerate case
-    if (typeof options[0] !== 'object') {
-      options = [{ options }];
-    }
+    return [{ options }];
+  }
+
+  // Handle edge case (aforementioned server-side coersion)
+  if (typeof options[0] !== 'object') {
+    return [{ options }];
   }
 
   return options;
 }
 
 export function convertIntoMultiColumnWrapper(type) {
-  let { options } = type;
-  
+  const { options } = type;
+
   if (!Array.isArray(options)) {
-    options = [type];
-  } else {
-    // Catch the degenerate case
-    if (typeof options[0] !== 'object') {
-      options = [type];
-    }
+    return [type];
+  }
+
+  // Handle edge case (aforementioned server-side coersion)
+  if (typeof options[0] !== 'object') {
+    return [type];
   }
 
   return options;
