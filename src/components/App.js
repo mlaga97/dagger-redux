@@ -64,9 +64,9 @@ class PrivateApp extends React.Component {
         <div>
           <Navbar inverse>
             <Navbar.Header>
-              <Navbar.Brand>
-                <a href="/">Dagger</a>
-              </Navbar.Brand>
+              <IndexLinkContainer to="/">
+                <Navbar.Brand>Dagger</Navbar.Brand>
+              </IndexLinkContainer>
             </Navbar.Header>
             <Nav>
               <IndexLinkContainer to="/">
