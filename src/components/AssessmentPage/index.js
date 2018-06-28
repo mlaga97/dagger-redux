@@ -9,15 +9,15 @@ import { withRouter } from 'react-router';
 import actions from '../../actions';
 
 // Components
-import AssessmentSelector from '../AssessmentSelector';
-import AssessmentMetadata from '../AssessmentMetadata';
-import OptionalAssessments from '../OptionalAssessments';
-import RequiredAssessments from '../RequiredAssessments';
+import AssessmentSelector from './Selector';
+import AssessmentMetadata from './Metadata';
+import OptionalAssessments from './Optional';
+import RequiredAssessments from './Required';
 
 // Event Handlers
-import handleSubmit from './handleSubmit';
-import responseUpdate from './responseUpdate';
-import selectorUpdate from './selectorUpdate';
+import handleSubmit from './helpers/handleSubmit';
+import responseUpdate from './helpers/responseUpdate';
+import selectorUpdate from './helpers/selectorUpdate';
 
 
 class AssessmentPage extends React.Component {

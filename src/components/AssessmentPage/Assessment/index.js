@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Utilities
-import getSections from '../../utilities/Assessment/getSections';
+import getSections from '../utilities/getSections';
 
 // Components
 import Section from './Section';

@@ -1,5 +1,5 @@
 // Actions
-import actions from '../../actions';
+import actions from '../../../actions';
 
 function handleSubmit() {
   // Response Metadata
