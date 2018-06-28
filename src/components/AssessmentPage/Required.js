@@ -7,20 +7,23 @@ import Assessment from './Assessment';
 
 // TODO: Merge with OptionalAssessments
 function RequiredAssessments(props) {
-  const { assessments } = props;
+  const {
+    onUpdate,
+    response,
+    assessments,
+  } = props;
 
   if (!assessments) {
-    return (
-      <div>Retrieving assessments...</div>
-    );
+    return <div>Retrieving assessments...</div>;
   }
+
   return (
     <div>
       {
         Object.keys(assessments).map((key) => {
           const assessment = assessments[key];
           const { metadata } = assessment;
-          const { required } = metadata;
+          const { title, required } = metadata;
 
           if (required) {
             const { types, questions } = assessment;
@@ -40,16 +43,17 @@ function RequiredAssessments(props) {
               <Panel key={key} defaultExpanded>
                 <Panel.Heading>
                   <Panel.Title toggle>
-                    {metadata.title}
+                    {title}
                   </Panel.Title>
                 </Panel.Heading>
                 <Panel.Collapse>
                   <Panel.Body>
                     <Assessment
-                      metadata={metadata}
                       types={types}
+                      metadata={metadata}
                       sections={sections}
-                      onUpdate={props.onUpdate}
+                      onUpdate={onUpdate}
+                      response={response[key]}
                     />
                   </Panel.Body>
                 </Panel.Collapse>

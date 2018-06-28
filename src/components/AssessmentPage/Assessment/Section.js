@@ -12,6 +12,7 @@ function Section(props) {
     chunks,
     header,
     onUpdate,
+    response,
     description,
   } = props;
 
@@ -29,7 +30,7 @@ function Section(props) {
       {
         // Render Chunks
         chunks.map(chunk => (
-          <Chunk key={chunk.index} {...chunk} onUpdate={onUpdate} />
+          <Chunk key={chunk.index} {...chunk} response={response} onUpdate={onUpdate} />
         ))
       }
     </div>

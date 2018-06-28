@@ -16,12 +16,15 @@ class Assessment extends React.Component {
   }
 
   render() {
+    const { props, onUpdate } = this;
+    const { response } = props;
+
     return (
       <div>
         {
           // Render Sections
-          getSections(this.props).map(section => (
-            <Section key={section.index} {...section} onUpdate={this.onUpdate} />
+          getSections(props).map(section => (
+            <Section key={section.index} {...section} response={response} onUpdate={onUpdate} />
           ))
         }
       </div>
