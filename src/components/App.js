@@ -13,6 +13,8 @@ import LogoutPage from './LogoutPage';
 import AssessmentPage from './AssessmentPage';
 import ClinicList from './ClinicList';
 import UserList from './UserList';
+import ResponseList from './ResponseList';
+import ResponsePage from './ResponsePage';
 
 // Helpers
 function HomePage() {
@@ -73,6 +75,9 @@ class PrivateApp extends React.Component {
               <IndexLinkContainer to="/assessment">
                 <NavItem eventKey={2}>Assessment</NavItem>
               </IndexLinkContainer>
+              <IndexLinkContainer to="/responses">
+                <NavItem eventKey={3}>Responses</NavItem>
+              </IndexLinkContainer>
               <IndexLinkContainer to="/reportTest">
                 <NavItem eventKey={4}>Reports</NavItem>
               </IndexLinkContainer>
@@ -109,6 +114,10 @@ class PrivateApp extends React.Component {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/logout" component={LogoutPage} />
             <Route exact path="/assessment" component={AssessmentPage} />
+
+            <Route exact path="/responses" component={ResponseList} />
+            {/* <Route exact path='/response' component={ResponsePage} /> */}
+            <Route path="/response/:id" component={ResponsePage} />
 
             <Route exact path="/clinics" component={ClinicList} />
             {/* <Route exact path='/clinic' component={ClinicPage} /> */}
