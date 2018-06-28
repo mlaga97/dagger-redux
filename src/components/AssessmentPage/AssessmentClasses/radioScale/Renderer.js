@@ -17,30 +17,44 @@ class Renderer extends React.Component {
 
   render() {
     const {
-      name,
       text,
       number,
+      response,
     } = this.props;
 
     // TODO: Move to some kind of AssessmentClass-based preprocessor/postprocessor system
-    const options = convertIntoMultiColumnRenderer(this.props.options);
+    const subTypes = convertIntoMultiColumnRenderer(this.props.options);
 
     return (
       <tr>
         <td>{number}. {text}</td>
         <React.Fragment>
           {
-            options.map((subType) => {
-              const { suffix, hideLabel } = subType;
+            subTypes.map((subType) => {
+              const { suffix, hideLabel, options } = subType;
+              const name = this.props.name + ((suffix) || '');
+              const selected = response ? response[name] : null;
 
-              return Object.keys(subType.options).map((label, index) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <td key={index}>
-                  <Radio name={name + ((suffix) || '')} value={subType.options[label]} onChange={this.handleChange} >
-                    {!hideLabel ? label : null}
-                  </Radio>
-                </td>
-              ));
+              return Object.keys(options).map((label, index) => {
+                const value = options[label];
+
+                // TODO: Avoid type coercion by making type match at a higher level?
+                const checked = (options[label] == selected);
+
+                return (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <td key={index}>
+                    <Radio
+                      name={name}
+                      value={value}
+                      checked={checked}
+                      onChange={this.handleChange}
+                    >
+                      {!hideLabel ? label : null}
+                    </Radio>
+                  </td>
+                )
+              });
             })
           }
         </React.Fragment>

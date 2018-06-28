@@ -9,10 +9,10 @@ import { withRouter } from 'react-router';
 import actions from '../../actions';
 
 // Components
-import AssessmentSelector from './Selector';
-import AssessmentMetadata from './Metadata';
-import OptionalAssessments from './Optional';
-import RequiredAssessments from './Required';
+import Selector from './Selector';
+import Metadata from './Metadata';
+import Optional from './Optional';
+import Required from './Required';
 
 // Event Handlers
 import handleSubmit from './helpers/handleSubmit';
@@ -44,27 +44,27 @@ class AssessmentPage extends React.Component {
 
   render() {
     const { props, state } = this;
-    const { assessments } = props;
+    const { assessments: { all: assessments } } = props;
     const { response, selected } = state;
 
     return (
       <form>
-        <AssessmentMetadata onUpdate={this.responseUpdate} />
-        <RequiredAssessments
-          onUpdate={this.responseUpdate}
+        <Metadata onUpdate={this.responseUpdate} />
+        <Required
           response={response}
-          assessments={assessments.all}
+          assessments={assessments}
+          onUpdate={this.responseUpdate}
         />
-        <AssessmentSelector
+        <Selector
+          selected={selected}
+          assessments={assessments}
           onUpdate={this.selectorUpdate}
-          assessments={assessments.all}
-          selected={selected}
         />
-        <OptionalAssessments
-          onUpdate={this.responseUpdate}
+        <Optional
           response={response}
-          assessments={assessments.all}
           selected={selected}
+          assessments={assessments}
+          onUpdate={this.responseUpdate}
         />
         <Button onClick={this.handleSubmit}>Next</Button>
       </form>

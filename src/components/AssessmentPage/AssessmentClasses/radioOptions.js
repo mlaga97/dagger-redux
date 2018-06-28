@@ -23,7 +23,10 @@ class renderer extends React.Component {
       text,
       number,
       options,
+      response,
     } = this.props;
+
+    const selected = response ? response[name] : null;
 
     return (
       <FormGroup>
@@ -32,12 +35,25 @@ class renderer extends React.Component {
         </ControlLabel>
         <div style={questionStyle}>
           {
-            Object.keys(options).map((option, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <Radio key={index} value={options[option]} name={name} onChange={this.handleChange}>
-                {option}
-              </Radio>
-            ))
+            Object.keys(options).map((option, index) => {
+              const value = options[option];
+
+              // TODO: Avoid type coercion by making type match at a higher level?
+              const checked = (options[option] == selected);
+
+              return (
+                // eslint-disable-next-line react/no-array-index-key
+                <Radio
+                  key={index}
+                  name={name}
+                  value={value}
+                  checked={checked}
+                  onChange={this.handleChange}
+                >
+                  {option}
+                </Radio>
+              )
+            })
           }
         </div>
       </FormGroup>

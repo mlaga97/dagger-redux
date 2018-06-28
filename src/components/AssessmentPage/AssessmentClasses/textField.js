@@ -2,6 +2,7 @@
 import React from 'react';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
+// TODO: This component is only dubiously controlled, and that should be fixed.
 class Renderer extends React.Component {
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -17,14 +18,22 @@ class Renderer extends React.Component {
       name,
       text,
       number,
+      response,
     } = this.props;
+
+    const value = response ? response[name] : "";
 
     return (
       <FormGroup>
         <ControlLabel>
           {number}. {text}
         </ControlLabel>
-        <FormControl type="text" name={name} onChange={this.handleChange} />
+        <FormControl
+          type='input'
+          name={name}
+          defaultValue={value}
+          onBlur={this.handleChange}
+        />
       </FormGroup>
     );
   }

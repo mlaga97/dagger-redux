@@ -17,7 +17,10 @@ class Renderer extends React.Component {
       name,
       text,
       number,
+      response,
     } = this.props;
+
+    const checked = response ? response[name] : false;
 
     return (
       <tr>
@@ -25,7 +28,11 @@ class Renderer extends React.Component {
           {number}. {text}
         </td>
         <td>
-          <Checkbox name={name} onChange={this.handleChange} />
+          <Checkbox
+            name={name}
+            checked={checked}
+            onChange={this.handleChange}
+          />
         </td>
       </tr>
     );

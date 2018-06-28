@@ -6,21 +6,25 @@ import { Panel } from 'react-bootstrap';
 import Assessment from './Assessment';
 
 // TODO: Merge with RequiredAssessments
-function OptionalAssessments(props) {
-  const { assessments, selected } = props;
+function Optional(props) {
+  const {
+    onUpdate,
+    response,
+    selected,
+    assessments,
+  } = props;
 
   if (!assessments) {
-    return (
-      <div>Retrieving assessments...</div>
-    );
+    return <div>Retrieving assessments...</div>;
   }
+
   return (
     <div>
       {
         Object.keys(assessments).map((key) => {
           const assessment = assessments[key];
           const { metadata } = assessment;
-          const { required } = metadata;
+          const { title, required } = metadata;
 
           if (!required && selected[key]) {
             const { types, questions } = assessment;
@@ -40,22 +44,24 @@ function OptionalAssessments(props) {
               <Panel key={key} defaultExpanded>
                 <Panel.Heading>
                   <Panel.Title toggle>
-                    {metadata.title}
+                    {title}
                   </Panel.Title>
                 </Panel.Heading>
                 <Panel.Collapse>
                   <Panel.Body>
                     <Assessment
-                      metadata={metadata}
                       types={types}
+                      metadata={metadata}
                       sections={sections}
-                      onUpdate={props.onUpdate}
+                      onUpdate={onUpdate}
+                      response={response[key]}
                     />
                   </Panel.Body>
                 </Panel.Collapse>
               </Panel>
             );
           }
+
           return null;
         })
       }
@@ -63,4 +69,4 @@ function OptionalAssessments(props) {
   );
 }
 
-export default OptionalAssessments;
+export default Optional;
