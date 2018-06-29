@@ -21,7 +21,7 @@ class Renderer extends React.Component {
       response,
     } = this.props;
 
-    const value = response ? response[name] : "";
+    const value = response ? response[name] : '';
 
     return (
       <FormGroup>
@@ -29,7 +29,7 @@ class Renderer extends React.Component {
           {number}. {text}
         </ControlLabel>
         <FormControl
-          type='input'
+          type="input"
           name={name}
           defaultValue={value}
           onBlur={this.handleChange}

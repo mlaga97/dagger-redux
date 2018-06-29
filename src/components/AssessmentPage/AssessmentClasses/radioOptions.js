@@ -52,7 +52,7 @@ class renderer extends React.Component {
                 >
                   {option}
                 </Radio>
-              )
+              );
             })
           }
         </div>

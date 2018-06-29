@@ -53,7 +53,7 @@ class Renderer extends React.Component {
                       {!hideLabel ? label : null}
                     </Radio>
                   </td>
-                )
+                );
               });
             })
           }

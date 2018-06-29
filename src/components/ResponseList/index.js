@@ -19,11 +19,7 @@ class ResponseList extends React.Component {
 
   render() {
     if (!this.props.responses.all) {
-      return (
-        <div>
-          Retrieving response list...
-        </div>
-      );
+      return <div>Retrieving response list...</div>;
     }
 
     return (

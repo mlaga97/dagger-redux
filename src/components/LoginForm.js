@@ -9,25 +9,25 @@ import ReduxFormControl from './ReduxFormControl';
 // Actions
 import actions from '../actions';
 
-function LoginForm(props) {
-  return (
-    <form onSubmit={props.handleSubmit}>
-      <FormGroup>
-        <ControlLabel>Login</ControlLabel>
-        <Field component={ReduxFormControl} name="username" type="text" />
-        <Field component={ReduxFormControl} name="password" type="password" />
-      </FormGroup>
-      <Button type="submit">Submit</Button>
-    </form>
-  );
-}
+const LoginForm = props => (
+  <form onSubmit={props.handleSubmit}>
+    <FormGroup>
+      <ControlLabel>Login</ControlLabel>
+      <Field component={ReduxFormControl} name="username" type="text" />
+      <Field component={ReduxFormControl} name="password" type="password" />
+    </FormGroup>
+    <Button type="submit">Submit</Button>
+  </form>
+);
 
 // Redux Form Decorator
 export default reduxForm({
   form: 'loginForm',
   onSubmit: (values, dispatch) => {
     // TODO: Change this is login page is moved.
-    if (window.location.pathname !== '/') { window.location.pathname = '/'; }
+    if (window.location.pathname !== '/') {
+      window.location.pathname = '/';
+    }
 
     dispatch({
       type: actions.auth.login.requested,

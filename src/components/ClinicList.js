@@ -16,12 +16,9 @@ class ClinicList extends React.Component {
 
   render() {
     if (!this.props.clinics.all) {
-      return (
-        <div>
-          Retrieving clinic list...
-        </div>
-      );
+      return <div>Retrieving clinic list...</div>;
     }
+
     return (
       <div>
         <Table>
@@ -35,21 +32,21 @@ class ClinicList extends React.Component {
           </thead>
           <tbody>
             {
-                Object.keys(this.props.clinics.all).map((clinicID) => {
-                  const clinic = this.props.clinics.all[clinicID];
+              Object.keys(this.props.clinics.all).map((clinicID) => {
+                const clinic = this.props.clinics.all[clinicID];
 
-                  return (
-                    <tr key={clinic.id}>
-                      <td>
-                        <Link to={`/clinic/${clinic.id}`}>{clinic.id}</Link>
-                      </td>
-                      <td>{clinic.name}</td>
-                      <td>{clinic.city}</td>
-                      <td>{clinic.state}</td>
-                    </tr>
-                  );
-                })
-              }
+                return (
+                  <tr key={clinic.id}>
+                    <td>
+                      <Link to={`/clinic/${clinic.id}`}>{clinic.id}</Link>
+                    </td>
+                    <td>{clinic.name}</td>
+                    <td>{clinic.city}</td>
+                    <td>{clinic.state}</td>
+                  </tr>
+                );
+              })
+            }
           </tbody>
         </Table>
       </div>
@@ -57,19 +54,11 @@ class ClinicList extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    clinics: state.clinics,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  state => ({
+    clinics: state.clinics,
+  }),
+  dispatch => ({
+    dispatch,
+  }),
 )(ClinicList);

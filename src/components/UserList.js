@@ -16,12 +16,9 @@ class UserList extends React.Component {
 
   render() {
     if (!this.props.users.all) {
-      return (
-        <div>
-          Retrieving user list...
-        </div>
-      );
+      return <div>Retrieving user list...</div>;
     }
+
     return (
       <div>
         <Table>
@@ -61,19 +58,11 @@ class UserList extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    users: state.users,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  state => ({
+    users: state.users,
+  }),
+  dispatch => ({
+    dispatch,
+  }),
 )(UserList);

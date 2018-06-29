@@ -43,7 +43,7 @@ class Renderer extends React.Component {
                   onChange={this.handleChange}
                 />
               </td>
-            )
+            );
           })
         }
       </tr>

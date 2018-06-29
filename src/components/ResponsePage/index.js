@@ -32,21 +32,13 @@ class ResponsePage extends React.Component {
     const { responses } = props;
 
     if (!responses || !responses.all) {
-      return (
-        <div>
-          Retrieving response list...
-        </div>
-      );
+      return <div>Retrieving response list...</div>;
     }
 
     const response = responses.all[responseID];
 
     if (!response) {
-      return (
-        <div>
-          No response found for that id!
-        </div>
-      );
+      return <div>No response found for that id!</div>;
     }
 
     const { metadata } = this.props.responses.all[responseID];

@@ -15,30 +15,18 @@ class LogoutPage extends React.Component {
   render() {
     if (this.props.auth.status) {
       window.location.pathname = '/';
-
-      return (
-        <div>Logging out...</div>
-      );
+      return <div>Logging out...</div>;
     }
-    return (
-      <div>Logged out!</div>
-    );
+
+    return <div>Logged out!</div>;
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    auth: state.auth,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  state => ({
+    auth: state.auth,
+  }),
+  dispatch => ({
+    dispatch,
+  }),
 )(LogoutPage);

@@ -9,10 +9,9 @@ class AssessmentSelector extends React.Component {
 
   render() {
     if (!this.props.assessments) {
-      return (
-        <div>Retrieving assessments...</div>
-      );
+      return <div>Retrieving assessments...</div>;
     }
+
     return (
       <Panel defaultExpanded>
         <Panel.Heading>

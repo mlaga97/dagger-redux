@@ -31,11 +31,7 @@ class ResponseAssessments extends React.Component {
     } = this.props;
 
     if (!assessments || !assessments.all) {
-      return (
-        <div>
-          Retrieving assessments...
-        </div>
-      );
+      return <div>Retrieving assessments...</div>;
     }
 
     // Get the list of keys once
