@@ -1,37 +1,46 @@
 // Library imports
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { FormGroup, ControlLabel, Button } from 'react-bootstrap';
-
-// Components
-import ReduxFormControl from './ReduxFormControl';
+import { connect } from 'react-redux';
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 // Actions
 import actions from '../actions';
 
-const LoginForm = props => (
-  <form onSubmit={props.handleSubmit}>
-    <FormGroup>
-      <ControlLabel>Login</ControlLabel>
-      <Field component={ReduxFormControl} name="username" type="text" />
-      <Field component={ReduxFormControl} name="password" type="password" />
-    </FormGroup>
-    <Button type="submit">Submit</Button>
-  </form>
-);
+class LoginForm extends React.Component {
+  handleSubmit = (event) => {
+    event.preventDefault();
 
-// Redux Form Decorator
-export default reduxForm({
-  form: 'loginForm',
-  onSubmit: (values, dispatch) => {
-    // TODO: Change this is login page is moved.
+    // TODO: Change this if login page is moved.
     if (window.location.pathname !== '/') {
       window.location.pathname = '/';
     }
 
-    dispatch({
+    // Attempt Login
+    this.props.dispatch({
       type: actions.auth.login.requested,
-      data: values,
+      data: {
+        username: event.target.username.value,
+        password: event.target.password.value,
+      },
     });
-  },
-})(LoginForm);
+  }
+
+  render = () => (
+    <form onSubmit={this.handleSubmit}>
+      <FormGroup>
+        <ControlLabel>Login</ControlLabel>
+        <FormControl name="username" type="text" />
+        <FormControl name="password" type="password" />
+      </FormGroup>
+      <Button type="submit">Submit</Button>
+    </form>
+  )
+}
+
+export default connect(
+  () => ({
+  }),
+  dispatch => ({
+    dispatch,
+  }),
+)(LoginForm);
