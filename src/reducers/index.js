@@ -1,6 +1,5 @@
 // Library imports
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
 
 // Reducers
 import auth from './auth';
@@ -42,14 +41,6 @@ const rootReducer = combineReducers({
   // modules,   // Modules, by name
   responses, // Working area for current record
   users, // Users, by ID
-  form: formReducer.plugin({
-    loginForm: (state, action) => {
-      switch (action.type) {
-        default:
-          return state;
-      }
-    },
-  }),
 });
 
 export default rootReducer;
