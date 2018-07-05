@@ -1,5 +1,5 @@
 // Library imports
-import classes from '../AssessmentClasses';
+import classes from '../../QuestionClasses';
 
 function getRenderer(typeClass) {
   if (classes[typeClass] && classes[typeClass].renderer) {
