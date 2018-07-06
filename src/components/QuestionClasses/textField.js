@@ -18,10 +18,19 @@ class Renderer extends React.Component {
       name,
       text,
       number,
+      editable,
       response,
     } = this.props;
 
     const value = response ? response[name] : '';
+
+    if(!editable) {
+      return (
+        <div>
+          <b>{number}. {text}:</b> {value}
+        </div>
+      );
+    }
 
     return (
       <FormGroup>
