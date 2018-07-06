@@ -52,7 +52,11 @@ function Header(props) {
 }
 
 function Wrapper(props) {
-  const { type, children } = props;
+  const { type, children, editable } = props;
+
+  if(!editable) {
+    return <React.Fragment>{children}</React.Fragment>;
+  }
 
   return (
     <Table striped bordered condensed hover>

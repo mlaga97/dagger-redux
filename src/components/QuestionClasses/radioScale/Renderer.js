@@ -19,11 +19,36 @@ class Renderer extends React.Component {
     const {
       text,
       number,
+      editable,
       response,
     } = this.props;
 
     // TODO: Move to some kind of AssessmentClass-based preprocessor/postprocessor system
     const subTypes = convertIntoMultiColumnRenderer(this.props.options);
+
+    if(!editable) {
+      return (
+        <div>
+          {
+            subTypes.map((subType) => {
+              const { suffix, options } = subType;
+              const name = this.props.name + ((suffix) || '');
+              const selected = response ? response[name] : null;
+
+              return Object.keys(options).map((option, index) => {
+                if(String(options[option]) == selected) {
+                  return (
+                    <div>
+                      <b>{number}. {text}:</b> {option}
+                    </div>
+                  );
+                }
+              })
+            })
+          }
+        </div>
+      )
+    }
 
     return (
       <tr>
@@ -40,6 +65,9 @@ class Renderer extends React.Component {
 
                 // TODO: Avoid type coercion by making type match at a higher level?
                 const checked = (options[label] == selected);
+
+                if(!editable) {
+                }
 
                 return (
                   // eslint-disable-next-line react/no-array-index-key
