@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Utilities
-import getSections from '../utilities/getSections';
+import getSections from './utilities/getSections';
 
 // Components
 import Section from './Section';
@@ -17,14 +17,14 @@ class Assessment extends React.Component {
 
   render() {
     const { props, onUpdate } = this;
-    const { response } = props;
+    const { response, editable } = props;
 
     return (
       <div>
         {
           // Render Sections
           getSections(props).map(section => (
-            <Section key={section.index} {...section} response={response} onUpdate={onUpdate} />
+            <Section key={section.index} {...section} editable={editable} response={response} onUpdate={onUpdate} />
           ))
         }
       </div>

@@ -7,7 +7,7 @@ import actions from '../../actions';
 
 // Components
 import Metadata from './Metadata';
-import Assessments from './Assessments';
+import Assessments from '../Assessments';
 
 class ResponsePage extends React.Component {
   constructor(props) {
@@ -19,6 +19,12 @@ class ResponsePage extends React.Component {
   componentWillMount() {
     const { responses } = this.props;
 
+    if (!this.props.assessments.all) {
+      this.props.dispatch({
+        type: actions.assessment.all.requested,
+      });
+    }
+
     // TODO: Only request the relevant responseID from the server
     if (!responses || !responses.all || !responses.all[this.responseID]) {
       this.props.dispatch({
@@ -29,25 +35,31 @@ class ResponsePage extends React.Component {
 
   render() {
     const { responseID, props } = this;
-    const { responses } = props;
+    const assessments = props.assessments.all;
 
-    if (!responses || !responses.all) {
+    if (!props.responses || !props.responses.all) {
       return <div>Retrieving response list...</div>;
     }
 
-    const response = responses.all[responseID];
-
-    if (!response) {
-      return <div>No response found for that id!</div>;
-    }
-
+    // TODO: This isn't super clear.
     const { metadata } = this.props.responses.all[responseID];
+    const response = props.responses.all[responseID];
+    const responses = response.assessments.responses;
+    const selected = response.assessments.selected;
 
     // TODO: Heading?
     return (
       <div>
         <Metadata metadata={metadata} />
-        <Assessments response={response} />
+        <Assessments
+          response={responses}
+          assessments={assessments}
+        />
+        <Assessments
+          selected={selected}
+          response={responses}
+          assessments={assessments}
+        />
       </div>
     );
   }
@@ -56,6 +68,7 @@ class ResponsePage extends React.Component {
 export default connect(
   state => ({
     responses: state.responses,
+    assessments: state.assessments,
   }),
   dispatch => ({
     dispatch,
