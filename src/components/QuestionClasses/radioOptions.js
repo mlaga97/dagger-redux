@@ -23,10 +23,29 @@ class renderer extends React.Component {
       text,
       number,
       options,
+      editable,
       response,
     } = this.props;
 
     const selected = response ? response[name] : null;
+
+    if(!editable) {
+      return (
+        <div>
+          {
+            Object.keys(options).map((option, index) => {
+              if(String(options[option]) == selected) {
+                return (
+                  <div>
+                    <b>{number}. {text}:</b> {option}
+                  </div>
+                );
+              }
+            })
+          }
+        </div>
+      );
+    }
 
     return (
       <FormGroup>
