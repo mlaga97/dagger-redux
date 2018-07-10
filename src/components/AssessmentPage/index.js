@@ -11,8 +11,7 @@ import actions from '../../actions';
 // Components
 import Selector from './Selector';
 import Metadata from './Metadata';
-import Optional from './Optional';
-import Required from './Required';
+import Assessments from '../Assessments';
 
 // Event Handlers
 import handleSubmit from './helpers/handleSubmit';
@@ -50,7 +49,8 @@ class AssessmentPage extends React.Component {
     return (
       <form>
         <Metadata onUpdate={this.responseUpdate} />
-        <Required
+        <Assessments
+          editable
           response={response}
           assessments={assessments}
           onUpdate={this.responseUpdate}
@@ -60,7 +60,8 @@ class AssessmentPage extends React.Component {
           assessments={assessments}
           onUpdate={this.selectorUpdate}
         />
-        <Optional
+        <Assessments
+          editable
           response={response}
           selected={selected}
           assessments={assessments}

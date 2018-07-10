@@ -23,10 +23,34 @@ class renderer extends React.Component {
       text,
       number,
       options,
+      editable,
       response,
     } = this.props;
 
     const selected = response ? response[name] : null;
+
+    if (!editable) {
+      return (
+        <div>
+          {
+            Object.keys(options).map((option) => {
+              // TODO: Avoid type coercion by making type match at a higher level?
+              const checked = String(options[option]) === String(selected);
+
+              if (checked) {
+                return (
+                  <div>
+                    <b>{number}. {text}:</b> {option}
+                  </div>
+                );
+              }
+
+              return null;
+            })
+          }
+        </div>
+      );
+    }
 
     return (
       <FormGroup>
@@ -35,16 +59,15 @@ class renderer extends React.Component {
         </ControlLabel>
         <div style={questionStyle}>
           {
-            Object.keys(options).map((option, index) => {
+            Object.keys(options).map((option) => {
               const value = options[option];
 
               // TODO: Avoid type coercion by making type match at a higher level?
-              const checked = (options[option] == selected);
+              const checked = String(options[option]) === String(selected);
 
               return (
                 // eslint-disable-next-line react/no-array-index-key
                 <Radio
-                  key={index}
                   name={name}
                   value={value}
                   checked={checked}
