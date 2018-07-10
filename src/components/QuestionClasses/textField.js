@@ -24,7 +24,7 @@ class Renderer extends React.Component {
 
     const value = response ? response[name] : '';
 
-    if(!editable) {
+    if (!editable) {
       return (
         <div>
           <b>{number}. {text}:</b> {value}

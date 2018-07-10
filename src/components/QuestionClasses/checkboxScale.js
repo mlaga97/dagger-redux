@@ -23,7 +23,7 @@ class Renderer extends React.Component {
 
     const checked = response ? response[name] : false;
 
-    if(!editable) {
+    if (!editable) {
       return (
         <div>
           <b>{number}. {text}:</b> {(checked) ? 'yes' : 'no'}

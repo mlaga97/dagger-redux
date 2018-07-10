@@ -50,7 +50,7 @@ class AssessmentPage extends React.Component {
       <form>
         <Metadata onUpdate={this.responseUpdate} />
         <Assessments
-          editable={true}
+          editable
           response={response}
           assessments={assessments}
           onUpdate={this.responseUpdate}
@@ -61,7 +61,7 @@ class AssessmentPage extends React.Component {
           onUpdate={this.selectorUpdate}
         />
         <Assessments
-          editable={true}
+          editable
           response={response}
           selected={selected}
           assessments={assessments}

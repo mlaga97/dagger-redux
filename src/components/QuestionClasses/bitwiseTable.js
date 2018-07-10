@@ -22,7 +22,7 @@ class Renderer extends React.Component {
       response,
     } = this.props;
 
-    if(!editable) {
+    if (!editable) {
       return (
         <div>
           <b>{number}. {text}:</b> {
@@ -30,9 +30,11 @@ class Renderer extends React.Component {
               const name = `${this.props.name}-${index}`;
               const checked = response ? response[name] : false;
 
-              if(checked === true) {
-                return option
+              if (checked === true) {
+                return option;
               }
+
+              return null;
             }).join(', ')
           }
         </div>
@@ -73,7 +75,7 @@ function Wrapper(props) {
   const { type, children, editable } = props;
   const { options } = type;
 
-  if(!editable) {
+  if (!editable) {
     return <React.Fragment>{children}</React.Fragment>;
   }
 

@@ -31,7 +31,13 @@ function Section(props) {
       {
         // Render Chunks
         chunks.map(chunk => (
-          <Chunk key={chunk.index} {...chunk} editable={editable} response={response} onUpdate={onUpdate} />
+          <Chunk
+            {...chunk}
+            key={chunk.index}
+            editable={editable}
+            response={response}
+            onUpdate={onUpdate}
+          />
         ))
       }
     </div>

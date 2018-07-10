@@ -15,7 +15,13 @@ const Chunk = ({
     {
       // Render Questions
       questions.map(question => (
-        <Renderer key={question.name} {...question} editable={editable} response={response} onUpdate={onUpdate} />
+        <Renderer
+          {...question}
+          key={question.name}
+          editable={editable}
+          response={response}
+          onUpdate={onUpdate}
+        />
       ))
     }
   </Wrapper>

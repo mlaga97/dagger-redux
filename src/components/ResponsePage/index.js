@@ -42,10 +42,13 @@ class ResponsePage extends React.Component {
     }
 
     // TODO: This isn't super clear.
-    const { metadata } = this.props.responses.all[responseID];
-    const response = props.responses.all[responseID];
-    const responses = response.assessments.responses;
-    const selected = response.assessments.selected;
+    const {
+      metadata,
+      assessments: {
+        selected,
+        responses,
+      },
+    } = props.responses.all[responseID];
 
     // TODO: Heading?
     return (

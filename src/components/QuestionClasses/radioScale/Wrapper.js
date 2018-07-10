@@ -54,7 +54,7 @@ function Header(props) {
 function Wrapper(props) {
   const { type, children, editable } = props;
 
-  if(!editable) {
+  if (!editable) {
     return <React.Fragment>{children}</React.Fragment>;
   }
 

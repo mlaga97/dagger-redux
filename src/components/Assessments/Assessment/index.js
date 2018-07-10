@@ -24,7 +24,13 @@ class Assessment extends React.Component {
         {
           // Render Sections
           getSections(props).map(section => (
-            <Section key={section.index} {...section} editable={editable} response={response} onUpdate={onUpdate} />
+            <Section
+              {...section}
+              key={section.index}
+              editable={editable}
+              response={response}
+              onUpdate={onUpdate}
+            />
           ))
         }
       </div>

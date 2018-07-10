@@ -26,7 +26,8 @@ class Renderer extends React.Component {
     // TODO: Move to some kind of AssessmentClass-based preprocessor/postprocessor system
     const subTypes = convertIntoMultiColumnRenderer(this.props.options);
 
-    if(!editable) {
+    // TODO: Actually handle multi-column, instead of just ignoring it.
+    if (!editable) {
       return (
         <div>
           {
@@ -35,19 +36,24 @@ class Renderer extends React.Component {
               const name = this.props.name + ((suffix) || '');
               const selected = response ? response[name] : null;
 
-              return Object.keys(options).map((option, index) => {
-                if(String(options[option]) == selected) {
-                  return (
-                    <div>
-                      <b>{number}. {text}:</b> {option}
-                    </div>
-                  );
+              return Object.keys(options).map((option) => {
+                // TODO: Avoid type coercion by making type match at a higher level?
+                const checked = String(options[option]) === String(selected);
+
+                if (!checked) {
+                  return null;
                 }
-              })
+
+                return (
+                  <div>
+                    <b>{number}. {text}:</b> {option}
+                  </div>
+                );
+              });
             })
           }
         </div>
-      )
+      );
     }
 
     return (
@@ -64,10 +70,7 @@ class Renderer extends React.Component {
                 const value = options[label];
 
                 // TODO: Avoid type coercion by making type match at a higher level?
-                const checked = (options[label] == selected);
-
-                if(!editable) {
-                }
+                const checked = String(options[label]) === String(selected);
 
                 return (
                   // eslint-disable-next-line react/no-array-index-key
