@@ -5,37 +5,27 @@ import React from 'react';
 import getSections from './utilities/getSections';
 
 // Components
-import Section from './Section';
+import Scoring from './Scoring';
+import Sections from './Sections';
 
-class Assessment extends React.Component {
-  onUpdate = (event) => {
-    this.props.onUpdate({
-      ...event,
-      class: this.props.metadata.id,
-    });
-  }
+function Assessment(props) {
+  const { response, editable, metadata, onUpdate } = props;
 
-  render() {
-    const { props, onUpdate } = this;
-    const { response, editable } = props;
-
-    return (
-      <div>
-        {
-          // Render Sections
-          getSections(props).map(section => (
-            <Section
-              {...section}
-              key={section.index}
-              editable={editable}
-              response={response}
-              onUpdate={onUpdate}
-            />
-          ))
-        }
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Sections
+        sections={getSections(props)} // TODO: Move down?
+        editable={editable}
+        response={response}
+        metadata={metadata}
+        onUpdate={onUpdate}
+      />
+      <Scoring
+        response={response}
+        metadata={metadata}
+      />
+    </div>
+  );
 }
 
 export default Assessment;
