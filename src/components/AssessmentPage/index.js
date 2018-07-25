@@ -48,7 +48,11 @@ class AssessmentPage extends React.Component {
 
     return (
       <form>
-        <Metadata onUpdate={this.responseUpdate} />
+        <Metadata
+          editable
+          response={response}
+          onUpdate={this.responseUpdate}
+        />
         <Assessments
           editable
           response={response}
