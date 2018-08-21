@@ -8,9 +8,20 @@ import actions from '../../actions';
 /**
  * Retrieves data for all available responses.
  */
-export default function* all() {
+export default function* all(action) {
   try {
-    const response = yield call(() => axios.get('/response/all'));
+    let query = '';
+
+    // Build the query based on the search parameters
+    if (action.parameters && Object.keys(action.parameters).length > 0) {
+      Object.keys(action.parameters).forEach((parameter) => {
+        query += (query === '') ? '?' : '&';
+        query += parameter + '=' + action.parameters[parameter];
+      });
+    }
+
+    // Make the request
+    const response = yield call(() => axios.get('/response/all' + query));
 
     yield put({
       type: actions.response.all.succeeded,
