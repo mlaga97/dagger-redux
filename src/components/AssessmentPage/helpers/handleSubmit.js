@@ -7,19 +7,21 @@ function handleSubmit() {
     user: {
       id: this.props.users.current,
     },
-    // visit: {
-    //   type: '',
-    //   date: '',
-    // },
+    visit: {
+      //type: '',
+      date: this.state.response.metadata.assessmentDate,
+    },
     // client: {},
     clinic: {
       id: this.props.clinics.current,
     },
     // server: {},
+    //statistics: {},
     patient: {
       id: this.state.response.metadata.patientID,
       dob: this.state.response.metadata.patientDOB,
     },
+    dateSubmitted: (new Date()).toLocaleDateString('en-CA'),
   };
 
   // Assessment Responses
