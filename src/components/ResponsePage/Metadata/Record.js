@@ -2,7 +2,10 @@
 import React from 'react';
 import { Panel } from 'react-bootstrap';
 
-const Record = () => (
+const Record = ({
+  visit,
+  dateSubmitted,
+}) => (
   <Panel defaultExpanded>
     <Panel.Heading>
       <Panel.Title toggle>
@@ -13,11 +16,11 @@ const Record = () => (
       <Panel.Body>
         <div>
           <b>Assessment Performed</b>
-          <p>TODO</p>
+          <p>{visit.date}</p>
         </div>
         <div>
           <b>Assessment Recorded</b>
-          <p>TODO</p>
+          <p>{dateSubmitted}</p>
         </div>
       </Panel.Body>
     </Panel.Collapse>

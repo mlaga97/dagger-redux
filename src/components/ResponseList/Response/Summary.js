@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 
 const Summary = ({
   metadata: {
-    id, user, clinic, patient,
+    id, dateSubmitted, visit, user, clinic, patient,
   },
 }) => (
   <React.Fragment>
     <td>
       <Link to={`/response/${id}`}>{id}</Link>
     </td>
+    <td>{dateSubmitted}</td>
+    <td>{visit.date}</td>
     <td>{user.id}</td>
     <td>{clinic.id}</td>
     <td>{patient.id}</td>

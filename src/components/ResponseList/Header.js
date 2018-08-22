@@ -5,6 +5,8 @@ const Header = () => (
   <thead>
     <tr>
       <th>ID</th>
+      <th>Date Submitted</th>
+      <th>Visit Date</th>
       <th>User ID</th>
       <th>Clinic ID</th>
       <th>Patient ID</th>

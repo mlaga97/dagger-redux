@@ -8,13 +8,13 @@ import User from './User';
 import Clinic from './Clinic';
 
 const Metadata = ({
-  metadata: { patient, clinic, user },
+  metadata: { patient, clinic, user, visit, dateSubmitted },
 }) => (
   <React.Fragment>
     <Patient patient={patient} />
     <User user={user} />
     <Clinic clinic={clinic} />
-    <Record />
+    <Record visit={visit} dateSubmitted={dateSubmitted} />
   </React.Fragment>
 );
 
