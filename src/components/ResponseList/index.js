@@ -38,6 +38,8 @@ class ResponseList extends React.Component {
       return <div>Retrieving response list...</div>;
     }
 
+    const resultCount = Object.keys(this.props.responses.all).length;
+
     return (
       <div>
         <form onSubmit={
@@ -127,7 +129,7 @@ class ResponseList extends React.Component {
           }}>Update</Button>
         </form>
         <hr/>
-        <h3>Results</h3>
+        <h3>{resultCount} Result{(resultCount == 1) ? '' : 's'}</h3>
         <Table>
           <Header />
           <tbody>
