@@ -45,6 +45,22 @@ class ResponseList extends React.Component {
             console.log(event);
           }
         }>
+          <FormGroup>
+            <ControlLabel>Visit Date Start</ControlLabel>
+            <FormControl name='visitDateStart' type='date' />
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>Visit Date End</ControlLabel>
+            <FormControl name='visitDateEnd' type='date' />
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>Date Submitted Start</ControlLabel>
+            <FormControl name='dateSubmittedStart' type='date' />
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>Date Submitted End</ControlLabel>
+            <FormControl name='dateSubmittedEnd' type='date' />
+          </FormGroup>
           <FormGroup controlId='formControlsSelect'>
             <ControlLabel>User ID</ControlLabel>
             <FormControl name='userID' componentClass='select'>
@@ -68,6 +84,26 @@ class ResponseList extends React.Component {
             // TODO: Make not this way
 
             let parameters = {}
+
+            const visitDateStart = document.getElementsByName('visitDateStart')[0].value;
+            if (visitDateStart !== '') {
+              parameters.visitDateStart = visitDateStart;
+            }
+
+            const visitDateEnd = document.getElementsByName('visitDateEnd')[0].value;
+            if (visitDateEnd !== '') {
+              parameters.visitDateEnd = visitDateEnd;
+            }
+
+            const dateSubmittedStart = document.getElementsByName('dateSubmittedStart')[0].value;
+            if (dateSubmittedStart !== '') {
+              parameters.dateSubmittedStart = dateSubmittedStart;
+            }
+
+            const dateSubmittedEnd = document.getElementsByName('dateSubmittedEnd')[0].value;
+            if (dateSubmittedEnd !== '') {
+              parameters.dateSubmittedEnd = dateSubmittedEnd;
+            }
 
             const userID = document.getElementsByName('userID')[0].value;
             if (userID !== '') {
