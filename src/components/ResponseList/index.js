@@ -1,37 +1,62 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Table, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 
 // Actions
 import actions from '../../actions';
 
 // Components
-import Header from './Header';
+import Sorting from './Sorting';
 import Response from './Response';
 
 // TODO: Refactor into significantly smaller components
 class ResponseList extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      responseID: 1,
+      sortBy: 'responseID',
+      order: -1,
+    };
+  }
+
   componentWillMount() {
     this.props.dispatch({
       type: actions.response.all.requested,
     });
   }
 
-  // TODO: Fix this abomination in particular
-  // TODO: Base on globally valid options instead of locally valid?
-  GetOptionsFromResponses(target) {
-    return(
-      <React.Fragment>
-        {
-          // Create an option for each *unique* value of the target parameter in the current set of responses
-          [...new Set(Object.keys(this.props.responses.all).map(index => this.props.responses.all[index].metadata[target].id))].map(index => (
-            <option value={index}>{index}</option>
-          ))
-        }
-      </React.Fragment>
-    )
+  handleClick = (event) => {
+    const name = event.target.attributes.name.value;
+    //const val = ((this.state[name] || 0) + 1) % 2;
+    const val = ((this.state[name] || 0) + 1) % 2;
+
+    this.setState({
+      [name]: val,
+      sortBy: name,
+      //order: [0, 1, -1][val],
+      order: [1, -1][val],
+    });
   }
+
+  helper = (target, name) => {
+    let out = ' ';
+
+    if (this.state.sortBy === target) {
+      //out = [' ', '▾', '▴'][this.state[target]];
+      out = ['▾', '▴'][this.state[target]];
+    }
+
+    return(
+      <th name={target} onClick={this.handleClick}>
+        {name} {out}
+      </th>
+    );
+  }
+
+  sortHelper = (cmp) => this.state.order * ((cmp) ? 1 : -1);
 
   render() {
     if (!this.props.responses.all) {
@@ -42,99 +67,69 @@ class ResponseList extends React.Component {
 
     return (
       <div>
-        <form onSubmit={
-          (event) => {
-            console.log(event);
-          }
-        }>
-          <FormGroup>
-            <ControlLabel>Visit Date Start</ControlLabel>
-            <FormControl name='visitDateStart' type='date' />
-          </FormGroup>
-          <FormGroup>
-            <ControlLabel>Visit Date End</ControlLabel>
-            <FormControl name='visitDateEnd' type='date' />
-          </FormGroup>
-          <FormGroup>
-            <ControlLabel>Date Submitted Start</ControlLabel>
-            <FormControl name='dateSubmittedStart' type='date' />
-          </FormGroup>
-          <FormGroup>
-            <ControlLabel>Date Submitted End</ControlLabel>
-            <FormControl name='dateSubmittedEnd' type='date' />
-          </FormGroup>
-          <FormGroup controlId='formControlsSelect'>
-            <ControlLabel>User ID</ControlLabel>
-            <FormControl name='userID' componentClass='select'>
-              <option />
-              {this.GetOptionsFromResponses('user')}
-            </FormControl>
-            <br/>
-            <ControlLabel>Clinic ID</ControlLabel>
-            <FormControl name='clinicID' componentClass='select'>
-              <option />
-              {this.GetOptionsFromResponses('clinic')}
-            </FormControl>
-            <br/>
-            <ControlLabel>Patient ID</ControlLabel>
-            <FormControl name='patientID' componentClass='select'>
-              <option />
-              {this.GetOptionsFromResponses('patient')}
-            </FormControl>
-          </FormGroup>
-          <Button onClick={() => {
-            // TODO: Make not this way
-
-            let parameters = {}
-
-            const visitDateStart = document.getElementsByName('visitDateStart')[0].value;
-            if (visitDateStart !== '') {
-              parameters.visitDateStart = visitDateStart;
-            }
-
-            const visitDateEnd = document.getElementsByName('visitDateEnd')[0].value;
-            if (visitDateEnd !== '') {
-              parameters.visitDateEnd = visitDateEnd;
-            }
-
-            const dateSubmittedStart = document.getElementsByName('dateSubmittedStart')[0].value;
-            if (dateSubmittedStart !== '') {
-              parameters.dateSubmittedStart = dateSubmittedStart;
-            }
-
-            const dateSubmittedEnd = document.getElementsByName('dateSubmittedEnd')[0].value;
-            if (dateSubmittedEnd !== '') {
-              parameters.dateSubmittedEnd = dateSubmittedEnd;
-            }
-
-            const userID = document.getElementsByName('userID')[0].value;
-            if (userID !== '') {
-              parameters.userID = userID;
-            }
-
-            const clinicID = document.getElementsByName('clinicID')[0].value;
-            if (clinicID !== '') {
-              parameters.clinicID = clinicID;
-            }
-
-            const patientID = document.getElementsByName('patientID')[0].value;
-            if (patientID !== '') {
-              parameters.patientID = patientID;
-            }
-
-            this.props.dispatch({
-              type: actions.response.all.requested,
-              parameters,
-            });
-          }}>Update</Button>
-        </form>
+        <Sorting />
         <hr/>
-        <h3>{resultCount} Result{(resultCount == 1) ? '' : 's'}</h3>
+        <h3>{resultCount} Result{(resultCount === 1) ? '' : 's'}</h3>
         <Table>
-          <Header />
+          <thead>
+            <tr>
+              {this.helper('responseID', 'ID')}
+              {this.helper('dateSubmitted', 'Date Submitted')}
+              {this.helper('visitDate', 'Visit Date')}
+              {this.helper('userID', 'User ID')}
+              {this.helper('clinicID', 'Clinic ID')}
+              {this.helper('patientID', 'Patient ID')}
+              {this.helper('patientDOB', 'Patient DOB')}
+              <th>Assessments</th>
+            </tr>
+          </thead>
           <tbody>
             {
-              Object.keys(this.props.responses.all).map(index => (
+              Object.keys(this.props.responses.all).sort(
+                (a, b) => {
+                  const A = this.props.responses.all[a].metadata;
+                  const B = this.props.responses.all[b].metadata;
+
+                  if (!this.state.sortBy) {
+                    return -1;
+                  }
+
+                  if (!this.state.order || this.state.order === 0) {
+                    return -1;
+                  }
+
+                  if (this.state.sortBy === 'responseID') {
+                    return this.state.order;
+                  }
+
+                  if (this.state.sortBy === 'dateSubmitted') {
+                    return this.sortHelper(new Date(A.dateSubmitted) < new Date(B.dateSubmitted));
+                  }
+
+                  if (this.state.sortBy === 'visitDate') {
+                    return this.sortHelper(new Date(A.visit.date) < new Date(B.visit.date));
+                  }
+
+                  if (this.state.sortBy === 'userID') {
+                    return this.sortHelper(A.user.id < B.user.id);
+                  }
+
+                  if (this.state.sortBy === 'clinicID') {
+                    return this.sortHelper(A.clinic.id < B.clinic.id);
+                  }
+
+                  if (this.state.sortBy === 'patientID') {
+                    return this.sortHelper(A.patient.id < B.patient.id);
+                  }
+
+                  if (this.state.sortBy === 'patientDOB') {
+                    return this.sortHelper(new Date(A.patient.dob) < new Date(B.patient.dob));
+                  }
+
+                  console.warn('Attempted sorting on unsupported field!');
+                  return -1;
+                }
+              ).map(index => (
                 <Response response={this.props.responses.all[index]} />
               ))
             }
