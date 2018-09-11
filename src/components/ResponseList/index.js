@@ -1,14 +1,14 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Table } from 'react-bootstrap';
 
 // Actions
 import actions from '../../actions';
 
 // Components
-import Header from './Header';
 import Response from './Response';
+import SortableTable from './SortableTable';
+import AdvancedSearch from './AdvancedSearch';
 
 class ResponseList extends React.Component {
   componentWillMount() {
@@ -22,18 +22,16 @@ class ResponseList extends React.Component {
       return <div>Retrieving response list...</div>;
     }
 
+    const resultCount = Object.keys(this.props.responses.all).length;
+
     return (
       <div>
-        <Table>
-          <Header />
-          <tbody>
-            {
-              Object.keys(this.props.responses.all).map(index => (
-                <Response response={this.props.responses.all[index]} />
-              ))
-            }
-          </tbody>
-        </Table>
+        <AdvancedSearch />
+        <hr />
+        <h3>{resultCount} Result{(resultCount === 1) ? '' : 's'}</h3>
+        <SortableTable responses={this.props.responses}>
+          <Response />
+        </SortableTable>
       </div>
     );
   }
