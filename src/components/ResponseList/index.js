@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import actions from '../../actions';
 
 // Components
-import Sorting from './Sorting';
 import Response from './Response';
 import SortableTable from './SortableTable';
+import AdvancedSearch from './AdvancedSearch';
 
 class ResponseList extends React.Component {
   componentWillMount() {
@@ -26,8 +26,8 @@ class ResponseList extends React.Component {
 
     return (
       <div>
-        <Sorting />
-        <hr/>
+        <AdvancedSearch />
+        <hr />
         <h3>{resultCount} Result{(resultCount === 1) ? '' : 's'}</h3>
         <SortableTable responses={this.props.responses}>
           <Response />
