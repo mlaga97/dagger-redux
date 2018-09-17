@@ -11,14 +11,16 @@ import actions from '../actions';
 // Components
 import LogoutPage from './LogoutPage';
 import AssessmentPage from './AssessmentPage';
-import ClinicList from './ClinicList';
 import UserList from './UserList';
+import UserPage from './UserPage';
+import ClinicList from './ClinicList';
+import ClinicPage from './ClinicPage';
 import ResponseList from './ResponseList';
 import ResponsePage from './ResponsePage';
 
 // Helpers
 function HomePage() {
-  return <p>Hello.</p>;
+  return <p>Welcome to Dagger!</p>;
 }
 
 const divStyle = {
@@ -121,11 +123,11 @@ class PrivateApp extends React.Component {
 
             <Route exact path="/clinics" component={ClinicList} />
             {/* <Route exact path='/clinic' component={ClinicPage} /> */}
-            <Route path="/clinic/*" component={ClinicList} />
+            <Route path="/clinic/:id" component={ClinicPage} />
 
             <Route exact path="/users" component={UserList} />
             {/* <Route exact path='/user' component={UserPage} /> */}
-            <Route path="/user/*" component={UserList} />
+            <Route path="/user/:id" component={UserPage} />
           </div>
         </div>
       </BrowserRouter>
