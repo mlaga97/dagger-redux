@@ -1,0 +1,11 @@
+.app {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+}
+
+.login {
+  margin: auto;
+  max-width: 250px;
+  text-align: center;
+}

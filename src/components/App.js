@@ -5,6 +5,9 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { IndexLinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 
+// Styling
+import '../style/dagger.css';
+
 // Actions
 import actions from '../actions';
 
@@ -22,13 +25,6 @@ import ResponsePage from './ResponsePage';
 function HomePage() {
   return <p>Welcome to Dagger!</p>;
 }
-
-const divStyle = {
-  paddingLeft: '15px',
-  paddingRight: '15px',
-  paddingBottom: '15px',
-};
-
 
 class PrivateApp extends React.Component {
   // Do stuff that the entire application needs
@@ -112,7 +108,7 @@ class PrivateApp extends React.Component {
             </Nav>
           </Navbar>
 
-          <div style={divStyle}>
+          <div class='app'>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/logout" component={LogoutPage} />
             <Route exact path="/assessment" component={AssessmentPage} />

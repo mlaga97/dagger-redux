@@ -4,14 +4,10 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { IndexLinkContainer } from 'react-router-bootstrap';
 
-// Components
-import LoginForm from './LoginForm';
+import '../style/dagger.css';
 
-const divStyle = {
-  paddingLeft: '15px',
-  paddingRight: '15px',
-  paddingBottom: '15px',
-};
+// Components
+import LoginPage from './LoginPage';
 
 // TODO: Show a landing page for non-logged-in users
 const PublicApp = () => (
@@ -30,9 +26,9 @@ const PublicApp = () => (
         </Nav>
       </Navbar>
 
-      <div style={divStyle}>
-        <Route exact path="/" component={LoginForm} />
-        <Route exact path="/login" component={LoginForm} />
+      <div class='app'>
+        <Route exact path="/" component={LoginPage} />
+        <Route exact path="/login" component={LoginPage} />
       </div>
     </div>
   </BrowserRouter>
