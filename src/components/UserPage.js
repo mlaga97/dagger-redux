@@ -1,8 +1,6 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Table } from 'react-bootstrap';
 
 // Components
 import ClinicList from './ClinicList/List'
@@ -22,16 +20,12 @@ function UserClinics({user, allClinics}) {
     clinics[clinicID] = allClinics[clinicID]
   })
 
-  console.log(clinics);
-
   return (
     <div>
       <h3>Clinics</h3>
       <ClinicList clinics={clinics}/>
     </div>
-  );
-
-  return null;
+  )
 }
 
 class UserPage extends React.Component {

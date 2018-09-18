@@ -1,8 +1,6 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Table } from 'react-bootstrap';
 
 // Components
 import UserList from './UserList/List'
@@ -27,9 +25,7 @@ function ClinicUsers({clinic, allUsers}) {
       <h3>Users</h3>
       <UserList users={users}/>
     </div>
-  );
-
-  return null;
+  )
 }
 
 class ClinicPage extends React.Component {
@@ -59,7 +55,6 @@ class ClinicPage extends React.Component {
     }
 
     const clinic = this.props.clinics.all[this.clinicID];
-    console.log(clinic);
 
     return (
       <div>
