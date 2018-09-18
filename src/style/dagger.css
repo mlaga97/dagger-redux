@@ -1,4 +1,7 @@
 .app {
+}
+
+.page {
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 15px;
@@ -8,4 +11,8 @@
   margin: auto;
   max-width: 250px;
   text-align: center;
+}
+
+.footer-image {
+  height: 70px;
 }

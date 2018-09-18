@@ -12,14 +12,15 @@ import '../style/dagger.css';
 import actions from '../actions';
 
 // Components
-import LogoutPage from './LogoutPage';
-import AssessmentPage from './AssessmentPage';
+import Footer from './Footer';
 import UserList from './UserList';
 import UserPage from './UserPage';
 import ClinicList from './ClinicList';
 import ClinicPage from './ClinicPage';
+import LogoutPage from './LogoutPage';
 import ResponseList from './ResponseList';
 import ResponsePage from './ResponsePage';
+import AssessmentPage from './AssessmentPage';
 
 // Helpers
 function HomePage() {
@@ -59,71 +60,73 @@ class PrivateApp extends React.Component {
 
     return (
       <BrowserRouter>
-        <div>
+        <div class='app'>
           <Navbar inverse>
             <Navbar.Header>
-              <IndexLinkContainer to="/">
+              <IndexLinkContainer to='/'>
                 <Navbar.Brand>Dagger</Navbar.Brand>
               </IndexLinkContainer>
             </Navbar.Header>
             <Nav>
-              <IndexLinkContainer to="/">
+              <IndexLinkContainer to='/'>
                 <NavItem eventKey={1}>Home</NavItem>
               </IndexLinkContainer>
-              <IndexLinkContainer to="/assessment">
+              <IndexLinkContainer to='/assessment'>
                 <NavItem eventKey={2}>Assessment</NavItem>
               </IndexLinkContainer>
-              <IndexLinkContainer to="/responses">
+              <IndexLinkContainer to='/responses'>
                 <NavItem eventKey={3}>Responses</NavItem>
               </IndexLinkContainer>
-              <IndexLinkContainer to="/reportTest">
+              <IndexLinkContainer to='/reportTest'>
                 <NavItem eventKey={4}>Reports</NavItem>
               </IndexLinkContainer>
-              <NavDropdown eventKey={5} title="Other" id="nav-dropdown-other">
-                <IndexLinkContainer to="/clinicStats">
+              <NavDropdown eventKey={5} title='Other' id='nav-dropdown-other'>
+                <IndexLinkContainer to='/clinicStats'>
                   <MenuItem eventKey={5.1}>Clinic Statistics</MenuItem>
                 </IndexLinkContainer>
-                <IndexLinkContainer to="/modules">
+                <IndexLinkContainer to='/modules'>
                   <MenuItem eventKey={5.2}>Modules</MenuItem>
                 </IndexLinkContainer>
-                <IndexLinkContainer to="/config">
+                <IndexLinkContainer to='/config'>
                   <MenuItem eventKey={5.3}>Configuration</MenuItem>
                 </IndexLinkContainer>
-                <IndexLinkContainer to="/userStats">
+                <IndexLinkContainer to='/userStats'>
                   <MenuItem eventKey={5.4}>User Statistics</MenuItem>
                 </IndexLinkContainer>
-                <IndexLinkContainer to="/userSettings">
+                <IndexLinkContainer to='/userSettings'>
                   <MenuItem eventKey={5.5}>User Settings</MenuItem>
                 </IndexLinkContainer>
-                <IndexLinkContainer to="/users">
+                <IndexLinkContainer to='/users'>
                   <MenuItem eventKey={5.6}>Users</MenuItem>
                 </IndexLinkContainer>
-                <IndexLinkContainer to="/clinics">
+                <IndexLinkContainer to='/clinics'>
                   <MenuItem eventKey={5.7}>Clinics</MenuItem>
                 </IndexLinkContainer>
-                <IndexLinkContainer to="/logout">
+                <IndexLinkContainer to='/logout'>
                   <MenuItem eventKey={5.8}>Logout</MenuItem>
                 </IndexLinkContainer>
               </NavDropdown>
             </Nav>
           </Navbar>
 
-          <div class='app'>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/logout" component={LogoutPage} />
-            <Route exact path="/assessment" component={AssessmentPage} />
+          <div class='page'>
+            <Route exact path='/' component={HomePage} />
+            <Route exact path='/logout' component={LogoutPage} />
+            <Route exact path='/assessment' component={AssessmentPage} />
 
-            <Route exact path="/responses" component={ResponseList} />
+            <Route exact path='/responses' component={ResponseList} />
             {/* <Route exact path='/response' component={ResponsePage} /> */}
-            <Route path="/response/:id" component={ResponsePage} />
+            <Route path='/response/:id' component={ResponsePage} />
 
-            <Route exact path="/clinics" component={ClinicList} />
+            <Route exact path='/clinics' component={ClinicList} />
             {/* <Route exact path='/clinic' component={ClinicPage} /> */}
-            <Route path="/clinic/:id" component={ClinicPage} />
+            <Route path='/clinic/:id' component={ClinicPage} />
 
-            <Route exact path="/users" component={UserList} />
+            <Route exact path='/users' component={UserList} />
             {/* <Route exact path='/user' component={UserPage} /> */}
-            <Route path="/user/:id" component={UserPage} />
+            <Route path='/user/:id' component={UserPage} />
+
+            <Footer/>
           </div>
         </div>
       </BrowserRouter>

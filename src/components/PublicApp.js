@@ -7,28 +7,30 @@ import { IndexLinkContainer } from 'react-router-bootstrap';
 import '../style/dagger.css';
 
 // Components
+import Footer from './Footer';
 import LoginPage from './LoginPage';
 
 // TODO: Show a landing page for non-logged-in users
 const PublicApp = () => (
   <BrowserRouter>
-    <div>
+    <div class='app'>
       <Navbar inverse>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="/">Dagger</a>
+            <a href='/'>Dagger</a>
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-          <IndexLinkContainer to="/">
+          <IndexLinkContainer to='/'>
             <NavItem eventKey={1}>Login</NavItem>
           </IndexLinkContainer>
         </Nav>
       </Navbar>
 
-      <div class='app'>
-        <Route exact path="/" component={LoginPage} />
-        <Route exact path="/login" component={LoginPage} />
+      <div class='page'>
+        <Route exact path='/' component={LoginPage} />
+        <Route exact path='/login' component={LoginPage} />
+        <Footer/>
       </div>
     </div>
   </BrowserRouter>

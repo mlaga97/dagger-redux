@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 // Styling
-import '../../style/dagger.css';
+import '../style/dagger.css';
 
 // Actions
-import actions from '../../actions';
+import actions from '../actions';
 
 class LoginForm extends React.Component {
   handleSubmit = (event) => {
