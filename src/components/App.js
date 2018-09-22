@@ -60,7 +60,7 @@ class PrivateApp extends React.Component {
 
     return (
       <BrowserRouter>
-        <div class='app'>
+        <div className='app'>
           <Navbar inverse>
             <Navbar.Header>
               <IndexLinkContainer to='/'>
@@ -109,7 +109,7 @@ class PrivateApp extends React.Component {
             </Nav>
           </Navbar>
 
-          <div class='page'>
+          <div className='page'>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/logout' component={LogoutPage} />
             <Route exact path='/assessment' component={AssessmentPage} />

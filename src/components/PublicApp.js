@@ -13,7 +13,7 @@ import LoginPage from './LoginPage';
 // TODO: Show a landing page for non-logged-in users
 const PublicApp = () => (
   <BrowserRouter>
-    <div class='app'>
+    <div className='app'>
       <Navbar inverse>
         <Navbar.Header>
           <Navbar.Brand>
@@ -27,7 +27,7 @@ const PublicApp = () => (
         </Nav>
       </Navbar>
 
-      <div class='page'>
+      <div className='page'>
         <Route exact path='/' component={LoginPage} />
         <Route exact path='/login' component={LoginPage} />
         <Footer/>
