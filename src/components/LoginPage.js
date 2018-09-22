@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Panel, Grid, Row, Col } from 'react-bootstrap';
 
 // Styling
 import '../style/dagger.css';
@@ -32,38 +32,36 @@ class LoginForm extends React.Component {
   render = () => (
     <div className='container'>
       <form onSubmit={this.handleSubmit} className='login'>
-        <div className='panel panel-default'>
-          <div className='panel-heading'>Login</div>
-          <div className='panel-body'>
-            <div className='row'>
-              <div className='col-sm-4 col-sm-offset-4'>
-                <FormGroup controlId='formLoginUsername'>
-                  <ControlLabel>Username</ControlLabel>
-                  <FormControl name='username' type='text' />
-                </FormGroup>
-              </div>
-              {/* end div col */}
-            </div>
-            {/* end div row */}
-            <div className='row'>
-              <div className='col-sm-4 col-sm-offset-4'>
-                <FormGroup controlId='formLoginPassword'>
-                  <ControlLabel>Password</ControlLabel>
-                  <FormControl name='password' type='password' />
-                </FormGroup>
-              </div>
-              {/* end div col */}
-            </div>
-            {/* end div row */}
-          </div>
-          {/* end div panel-body */}
-        </div>
-        {/* end div panel */}
-        <div className='col-sm-4 col-sm-offset-4'>
-          <FormGroup controlId='formLoginSubmit' className='form-group-clear-style'>
-            <FormControl type='submit' name='Login' value='Login' />
-          </FormGroup>
-        </div>
+        <Panel>
+          <Panel.Heading>Login</Panel.Heading>
+          <Panel.Body>
+            <Grid>
+              <Row>
+                <Col sm={4} smOffset={4}>
+                  <FormGroup controlId='formLoginUsername'>
+                    <ControlLabel>Username</ControlLabel>
+                    <FormControl name='username' type='text' />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col sm={4} smOffset={4}>
+                  <FormGroup controlId='formLoginPassword'>
+                    <ControlLabel>Password</ControlLabel>
+                    <FormControl name='password' type='password' />
+                  </FormGroup>
+                </Col>
+              </Row>
+            </Grid>
+          </Panel.Body>
+        </Panel>
+        <Grid>
+          <Col sm={4} smOffset={4}>
+            <FormGroup controlId='formLoginSubmit' className='form-group-clear-style'>
+              <FormControl type='submit' name='Login' value='Login' />
+            </FormGroup>
+          </Col>
+        </Grid>
       </form>
     </div>
   )
