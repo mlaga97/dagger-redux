@@ -1,16 +1,127 @@
+body
+{
+	background: -moz-linear-gradient(-90deg, #efefef, #cdcdcd);
+	background: -o-linear-gradient(-90deg, #efefef, #cdcdcd);
+	background: -webkit-linear-gradient(-90deg, #efefef, #cdcdcd) fixed;
+	background-attachment: fixed;
+	background-color: #cdcdcd;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	color: #333;
+	font-family: Tahoma, Verdana, Segoe, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 26px;
+	margin: auto;
+	min-height: initial;
+}
+
+#root {
+
+}
+
 .app {
+
+}
+
+.navbar {
+  margin-bottom: 0px; /* Overwrites navbar style from unknown location */
+}
+
+/* Why does this need adjustment? window scaling on external monitor? */
+@media (min-width: 1200px) {
+  .container {
+      /* width: 1170px; */
+      width: 970px;
+  }
 }
 
 .page {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 15px;
+  background-color: #FBFBFB;
+  max-width: 1080px;
+	border-left: 1px solid #eeeeee;
+	border-right: 1px solid #eeeeee;
+
+	box-shadow: 0px 2px 1px #eeeeee inset, 0px -2px 8px #999999, -10px 0px 25px rgba(105, 105, 105, 0.1), 10px 0px 25px rgba(105, 105, 105, 0.1);
+	margin-left: 0px;
+	margin-right: 0px;
+    padding-top: 60px;
+	padding-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	webkit-transition: box-shadow 0.5s;
+  margin:auto;
+}
+
+.panel-heading {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.form-group {
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+  padding: 5px 10px 10px 10px;
+}
+
+.form-group-clear-style {
+  border: initial;
+  border-radius: initial;
+  padding: initial;
+}
+
+label {
+    text-align: left;
+    font-weight: initial;
+    padding-left: 3px;
+    padding-right: 10px;
+    width: 100%;
+    font-size: 90%;
+    margin-bottom: 2px;
+}
+
+input[type=submit], input[type=button], button {
+    min-height: initial;
+    min-width: initial;
+    width: initial;
+    height: initial;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    margin: auto;
+    cursor: pointer;
+    background: #eeeeee;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type=submit]:hover,
+input[type=button]:hover,
+button:hover {
+	border-color: #bbbbbb;
+    box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
+}
+
+input[type=submit]:focus,
+input[type=button]:focus,
+button:focus {
+    border-color: #bbbbbb;
+    background: aliceblue;
+    box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
+}
+
+input[type=submit]:disabled,
+input[type=button]:disabled,
+button:disabled {
+	border: 1px solid #999999;
+	background-color: #cccccc;
+	color: #666666;
 }
 
 .login {
   margin: auto;
-  max-width: 250px;
-  text-align: center;
 }
 
 .footer-image {

@@ -9,6 +9,7 @@ import '../style/dagger.css';
 // Actions
 import actions from '../actions';
 
+
 class LoginForm extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
@@ -29,14 +30,40 @@ class LoginForm extends React.Component {
   }
 
   render = () => (
-    <div class='container'>
-      <form onSubmit={this.handleSubmit} class='login'>
-        <FormGroup>
-          <ControlLabel>Login</ControlLabel>
-          <FormControl name="username" type="text" />
-          <FormControl name="password" type="password" />
-        </FormGroup>
-        <Button type="submit">Submit</Button>
+    <div className='container'>
+      <form onSubmit={this.handleSubmit} className='login'>
+        <div className='panel panel-default'>
+          <div className='panel-heading'>Login</div>
+          <div className='panel-body'>
+            <div className='row'>
+              <div className='col-sm-4 col-sm-offset-4'>
+                <FormGroup controlId='formLoginUsername'>
+                  <ControlLabel>Username</ControlLabel>
+                  <FormControl name='username' type='text' />
+                </FormGroup>
+              </div>
+              {/* end div col */}
+            </div>
+            {/* end div row */}
+            <div className='row'>
+              <div className='col-sm-4 col-sm-offset-4'>
+                <FormGroup controlId='formLoginPassword'>
+                  <ControlLabel>Password</ControlLabel>
+                  <FormControl name='password' type='password' />
+                </FormGroup>
+              </div>
+              {/* end div col */}
+            </div>
+            {/* end div row */}
+          </div>
+          {/* end div panel-body */}
+        </div>
+        {/* end div panel */}
+        <div className='col-sm-4 col-sm-offset-4'>
+          <FormGroup controlId='formLoginSubmit' className='form-group-clear-style'>
+            <FormControl type='submit' name='Login' value='Login' />
+          </FormGroup>
+        </div>
       </form>
     </div>
   )
