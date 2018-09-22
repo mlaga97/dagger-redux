@@ -60,6 +60,10 @@ body
   font-size: 18px;
 }
 
+.panel-body {
+    padding: 0px 15px 10px 15px;
+}
+
 .form-group {
   border: 1px dashed #ccc;
   border-radius: 4px;
@@ -120,10 +124,61 @@ button:disabled {
 	color: #666666;
 }
 
-.login {
-  margin: auto;
+.panel-footer {
+    padding: initial;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    background-color: #FCFCFC;
+    border-style: solid;
 }
 
+/* Footer stuff */
 .footer-image {
   height: 70px;
+}
+
+.logo {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.img-sosw-left {
+    width: 184px;
+    height: 70px;
+    filter: opacity(90%);
+    filter: grayscale(20%);
+}
+
+.credits {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 12px;
+    line-height: 16px;
+    color: gray;
+    padding-top: 0px;
+    text-align: center;
+}
+
+.img-grhop-right {
+    width: 69px;
+    height: 70px;
+    filter: opacity(90%);
+    filter: grayscale(20%);
+}
+
+/* TODO: Work this out */
+/*@media (min-width: 1200px) {
+  .img-grhop-right {
+      float: right;
+  }
+}*/
+
+@media (min-width: 992px)
+.img-grhop-right {
+    float: right;
+}
+
+@media (min-width: 768px)
+.img-grhop-right {
+    float: right;
 }
