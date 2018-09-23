@@ -8,7 +8,6 @@ class FocusableInput extends React.Component {
 
     this.state = {
       focused: false,
-      required: 'required', // should this be its own Component?
     };
   }
 
@@ -27,7 +26,7 @@ class FocusableInput extends React.Component {
   render = () => (
     <FormGroup controlId={this.props.controlId} className={(this.state.focused) ? 'focused' : 'blurred'} >
       <ControlLabel htmlFor={this.props.htmlFor}>{this.props.label}</ControlLabel>
-      <FormControl name={this.props.name} id={this.props.controlId} type={this.props.type} onBlur={this.handleBlur} onFocus={this.handleFocus} required={this.state.required} />
+      <FormControl name={this.props.name} id={this.props.controlId} type={this.props.type} onBlur={this.handleBlur} onFocus={this.handleFocus} required={this.props.required} />
     </FormGroup>
   )
 }

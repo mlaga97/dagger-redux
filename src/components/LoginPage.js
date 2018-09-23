@@ -41,12 +41,12 @@ class LoginForm extends React.Component {
             <Grid>
               <Row>
                 <Col sm={4} smOffset={4}>
-                  <FocusableInput controlID='formLoginUsername' label='Username' name='username' type='text' />
+                  <FocusableInput controlID='formLoginUsername' label='Username' name='username' type='text' required='true' />
                 </Col>
               </Row>
               <Row>
                 <Col sm={4} smOffset={4}>
-                  <FocusableInput controlID='formLoginPassword' label='Password' name='password' type='password' />
+                  <FocusableInput controlID='formLoginPassword' label='Password' name='password' type='password' required='true' />
                 </Col>
               </Row>
             </Grid>
