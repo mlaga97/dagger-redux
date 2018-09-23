@@ -185,9 +185,16 @@ button:disabled {
 
 /* FocusableInput */
 .form-group.focused {
-    background-color: #00FF00;
+	background: aliceblue;
+	border-color: #c0c0c0;
+	-moz-transition: background .2s ease-in;
+	-o-transition: background .2s ease-in;
+	-webkit-transition: background .2s ease-in;
 }
 
 .form-group.blurred {
-    background-color: #FF0000;
+	background: transparent;
+	-moz-transition: background .2s ease-in;
+	-o-transition: background .2s ease-in;
+	-webkit-transition: background .2s ease-in;
 }
