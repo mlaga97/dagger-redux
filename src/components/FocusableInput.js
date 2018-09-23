@@ -1,5 +1,6 @@
 // Library imports
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 class FocusableInput extends React.Component {
@@ -23,10 +24,14 @@ class FocusableInput extends React.Component {
     });
   }
 
+  handleClick = (event) => {
+    ReactDOM.findDOMNode(this.refs.inputNode).focus();
+  };
+
   render = () => (
-    <FormGroup controlId={this.props.controlId} className={(this.state.focused) ? 'focused' : 'blurred'} >
-      <ControlLabel htmlFor={this.props.htmlFor}>{this.props.label}</ControlLabel>
-      <FormControl name={this.props.name} id={this.props.controlId} type={this.props.type} onBlur={this.handleBlur} onFocus={this.handleFocus} required={this.props.required} />
+    <FormGroup className={(this.state.focused) ? 'focused' : 'blurred'} onClick={this.handleClick} >
+      <ControlLabel>{this.props.label}</ControlLabel>
+      <FormControl ref='inputNode' name={this.props.name} type={this.props.type} onBlur={this.handleBlur} onFocus={this.handleFocus} required={this.props.required} />
     </FormGroup>
   )
 }
