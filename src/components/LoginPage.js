@@ -3,6 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { FormGroup, ControlLabel, FormControl, Panel, Grid, Row, Col } from 'react-bootstrap';
 
+// Components
+import FocusableInput from './FocusableInput';
+
 // Styling
 import '../style/dagger.css';
 
@@ -38,18 +41,12 @@ class LoginForm extends React.Component {
             <Grid>
               <Row>
                 <Col sm={4} smOffset={4}>
-                  <FormGroup controlId='formLoginUsername'>
-                    <ControlLabel>Username</ControlLabel>
-                    <FormControl name='username' type='text' />
-                  </FormGroup>
+                  <FocusableInput controlID='formLoginUsername' label='Username' name='username' type='text' />
                 </Col>
               </Row>
               <Row>
                 <Col sm={4} smOffset={4}>
-                  <FormGroup controlId='formLoginPassword'>
-                    <ControlLabel>Password</ControlLabel>
-                    <FormControl name='password' type='password' />
-                  </FormGroup>
+                  <FocusableInput controlID='formLoginPassword' label='Password' name='password' type='password' />
                 </Col>
               </Row>
             </Grid>

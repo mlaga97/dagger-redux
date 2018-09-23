@@ -182,3 +182,12 @@ button:disabled {
 .img-grhop-right {
     float: right;
 }
+
+/* FocusableInput */
+.form-group.focused {
+    background-color: #00FF00;
+}
+
+.form-group.blurred {
+    background-color: #FF0000;
+}
