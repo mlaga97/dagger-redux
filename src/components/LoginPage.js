@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
 
   render = () => (
     <div className='container'>
-      <form onSubmit={this.handleSubmit} className='login' autocomplete='off'>
+      <form onSubmit={this.handleSubmit} className='login' autoComplete='off'>
         <Panel>
           <Panel.Heading>Login</Panel.Heading>
           <Panel.Body>
