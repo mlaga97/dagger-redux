@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { FormGroup, ControlLabel, FormControl, Panel, Grid, Row, Col } from 'react-bootstrap';
+import { FormGroup, FormControl, Panel, Grid, Row, Col } from 'react-bootstrap';
 
 // Components
 import FocusableInput from './FocusableInput';
