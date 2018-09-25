@@ -1,5 +1,6 @@
 // Library imports
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { FormGroup, FormControl, Panel, Grid, Row, Col } from 'react-bootstrap';
 
@@ -32,6 +33,10 @@ class LoginForm extends React.Component {
     });
   }
 
+  componentDidMount() {
+    ReactDOM.findDOMNode(this.refs.firstInput).focus();
+  }
+
   render = () => (
     <div className='container'>
       <form onSubmit={this.handleSubmit} className='login' autoComplete='off'>
@@ -41,7 +46,7 @@ class LoginForm extends React.Component {
             <Grid>
               <Row>
                 <Col sm={4} smOffset={4}>
-                  <FocusableInput controlID='formLoginUsername' label='Username' name='username' type='text' required='required' />
+                  <FocusableInput controlID='formLoginUsername' label='Username' name='username' type='text' required='required' autoFocus='autofocus' ref='firstInput' />
                 </Col>
               </Row>
               <Row>
