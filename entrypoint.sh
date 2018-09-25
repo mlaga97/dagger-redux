@@ -25,8 +25,6 @@ lint () {
 }
 
 version () {
-  apt install git
-
   RELEASE=`git describe --tags | sed 's|release_||; s|-.*||'`
   BRANCH=`git rev-parse --abbrev-ref HEAD`
   COMMIT=`git rev-parse --short HEAD`
