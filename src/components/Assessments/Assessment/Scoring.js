@@ -10,8 +10,7 @@ class Scoring extends React.Component {
   }
 
   getScript(id) {
-    // TODO: Get this from an environment variable.
-    const url = 'http://localhost/modules/' + id + '/scoring.js';
+    const url = process.env.REACT_APP_MODULES_BASE_URL + id + '/scoring.js';
 
     // TODO: Get this to work without using globals.
     scriptjs(url, () => {
