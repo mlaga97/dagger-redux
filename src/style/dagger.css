@@ -1,27 +1,31 @@
 body
 {
-	background: -moz-linear-gradient(-90deg, #efefef, #cdcdcd);
-	background: -o-linear-gradient(-90deg, #efefef, #cdcdcd);
-	background: -webkit-linear-gradient(-90deg, #efefef, #cdcdcd) fixed;
+	/* Set background gradient light to darker gray, top to bottom with crossbrowser BS */
+	background: linear-gradient(to bottom, #efefef, #cdcdcd) fixed;		/* All modern browsers*/
+	background: -webkit-linear-gradient(top, #efefef, #cdcdcd) fixed;	/* -webkit preferred by modern Opera, older Safari 5.1, iOS 5.0-6.1, Chrome 10-25, Android 4.0-4.3 */
+	background: -moz-linear-gradient(to bottom, #efefef, #cdcdcd);		/* -moz older Firefox 3.6 - 15 */
+	background: -o-linear-gradient(to bottom, #efefef, #cdcdcd);			/* -o older Opera 11.1 - 12 */
 	background-attachment: fixed;
 	background-color: #cdcdcd;
 	background-repeat: no-repeat;
 	background-size: 100%;
-	color: #333;
+	color: #333;																											/* font color */
 	font-family: Tahoma, Verdana, Segoe, sans-serif;
 	font-size: 16px;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 400;
 	line-height: 26px;
-	margin: auto;
-	min-height: initial;
+	/*margin: auto;*/ 																								/* miss me? - disabled 9/26/18 testing */
+	/*min-height: initial;*/ 																					/* miss me? - disabled 9/26/18 testing */
 }
 
+/* div id root is top level wrapper within body */
 #root {
 
 }
 
+/* div className app is top level wrapper within BrowserRouter */
 .app {
 
 }
@@ -30,7 +34,8 @@ body
   margin-bottom: 0px; /* Overwrites navbar style from unknown location */
 }
 
-/* Why does this need adjustment? window scaling on external monitor? */
+/* Why does this need adjustment? window scaling on external monitor? Possibly changed margins and page size. */
+/* Will require additional @media min-width css to handle mobile views */
 @media (min-width: 1200px) {
   .container {
       /* width: 1170px; */
@@ -39,20 +44,19 @@ body
 }
 
 .page {
-  background-color: #FBFBFB;
+  background-color: #fbfbfb;  /* Color name 'snow' */
   max-width: 1080px;
-	border-left: 1px solid #eeeeee;
+	border-left: 1px solid #eeeeee; /*Color name 'whisper' */
 	border-right: 1px solid #eeeeee;
-
 	box-shadow: 0px 2px 1px #eeeeee inset, 0px -2px 8px #999999, -10px 0px 25px rgba(105, 105, 105, 0.1), 10px 0px 25px rgba(105, 105, 105, 0.1);
+	-webkit-box-shadow: 0px 2px 1px #eeeeee inset, 0px -2px 8px #999999, -10px 0px 25px rgba(105, 105, 105, 0.1), 10px 0px 25px rgba(105, 105, 105, 0.1);
 	margin-left: 0px;
 	margin-right: 0px;
-    padding-top: 60px;
+	padding-top: 60px;
 	padding-bottom: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
-	webkit-transition: box-shadow 0.5s;
-  margin:auto;
+  margin:auto;									/* Center page */
 }
 
 .panel-heading {
