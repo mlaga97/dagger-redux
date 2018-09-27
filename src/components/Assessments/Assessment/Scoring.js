@@ -43,24 +43,43 @@ class Scoring extends React.Component {
       return <div>Loading scoring...</div>;
     }
 
-    const result = state.scoring(response);
+    // TODO: Make not this way
+    if (typeof state.scoring === 'function') {
+      const result = state.scoring(response);
 
-    return (
-      <Panel defaultExpanded>
-        <Panel.Heading>
-          <Panel.Title toggle>
-            Scoring
-          </Panel.Title>
-        </Panel.Heading>
-        <Panel.Collapse>
-          <Panel.Body>
-            Score: {result.score}<br/>
-            Severity: {result.severity}<br/>
-            Recommendation: {result.recommendation}<br/>
-          </Panel.Body>
-        </Panel.Collapse>
-      </Panel>
-    );
+      return (
+        <Panel defaultExpanded>
+          <Panel.Heading>
+            <Panel.Title toggle>
+              Scoring
+            </Panel.Title>
+          </Panel.Heading>
+          <Panel.Collapse>
+            <Panel.Body>
+              Score: {result.score}<br/>
+              Severity: {result.severity}<br/>
+              Recommendation: {result.recommendation}<br/>
+            </Panel.Body>
+          </Panel.Collapse>
+        </Panel>
+      );
+    } else {
+      const result = state.scoring.score(response);
+      const html = state.scoring.render(result);
+
+      return (
+        <Panel defaultExpanded>
+          <Panel.Heading>
+            <Panel.Title toggle>
+              Scoring
+            </Panel.Title>
+          </Panel.Heading>
+          <Panel.Collapse>
+            <Panel.Body dangerouslySetInnerHTML={{__html: html}}/>
+          </Panel.Collapse>
+        </Panel>
+      );
+    }
   }
 }
 
