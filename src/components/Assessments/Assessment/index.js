@@ -1,5 +1,6 @@
 // Library imports
 import React from 'react';
+import { Row, Col } from 'react-bootstrap';
 
 // Utilities
 import getSections from './utilities/getSections';
@@ -13,17 +14,25 @@ function Assessment(props) {
 
   return (
     <div>
-      <Sections
-        sections={getSections(props)} // TODO: Move down?
-        editable={editable}
-        response={response}
-        metadata={metadata}
-        onUpdate={onUpdate}
-      />
-      <Scoring
-        response={response}
-        metadata={metadata}
-      />
+    <Row>
+      <Col sm={4}>
+        <Sections
+          sections={getSections(props)} // TODO: Move down?
+          editable={editable}
+          response={response}
+          metadata={metadata}
+          onUpdate={onUpdate}
+        />
+      </Col>
+    </Row>
+    <Row>
+      <Col sm={12}>
+        <Scoring
+          response={response}
+          metadata={metadata}
+        />
+      </Col>
+    </Row>
     </div>
   );
 }
