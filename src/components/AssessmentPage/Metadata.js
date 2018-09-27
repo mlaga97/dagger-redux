@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { Panel, FormGroup, ControlLabel, FormControl, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Panel, FormGroup, ControlLabel, FormControl, Grid, Row, Col, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 
 class AssessmentDate extends React.Component {
   handleChange = (event) => {
@@ -32,7 +32,7 @@ class AssessmentDate extends React.Component {
     <React.Fragment>
       <FormGroup>
         <ControlLabel>Assessment Date Today</ControlLabel>
-        <br />
+
         <ToggleButtonGroup name="assessmentDateToday" type="radio" >
           <ToggleButton onChange={this.handleChange} value>Yes</ToggleButton>
           <ToggleButton onChange={this.handleChange} value={false}>No</ToggleButton>
@@ -70,18 +70,28 @@ class AssessmentMetadata extends React.Component {
       </Panel.Heading>
       <Panel.Collapse>
         <Panel.Body>
-          <FormGroup>
-            <ControlLabel>Patient ID</ControlLabel>
-            <FormControl name="patientID" type="text" onChange={this.handleChange} />
-          </FormGroup>
-          <FormGroup>
-            <ControlLabel>Patient DOB</ControlLabel>
-            <FormControl name="patientDOB" type="date" onChange={this.handleChange} />
-          </FormGroup>
-          <AssessmentDate
-            response={this.props.response}
-            onUpdate={this.props.onUpdate}
-          />
+          <Grid>
+            <Row>
+              <Col sm={4}>
+                <FormGroup>
+                  <ControlLabel>Patient ID</ControlLabel>
+                  <FormControl name="patientID" type="text" onChange={this.handleChange} />
+                </FormGroup>
+              </Col>
+              <Col sm={4}>
+                <FormGroup>
+                  <ControlLabel>Patient DOB</ControlLabel>
+                  <FormControl name="patientDOB" type="date" onChange={this.handleChange} />
+                </FormGroup>
+              </Col>
+              <Col sm={4}>
+                <AssessmentDate
+                  response={this.props.response}
+                  onUpdate={this.props.onUpdate}
+                />
+              </Col>
+            </Row>
+          </Grid>
         </Panel.Body>
       </Panel.Collapse>
     </Panel>

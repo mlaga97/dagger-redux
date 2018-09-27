@@ -54,10 +54,32 @@ body
 	margin-right: 0px;
 	padding-top: 60px;
 	padding-bottom: 20px;
-	padding-left: 10px;
-	padding-right: 10px;
-  margin:auto;									/* Center page */
+	padding-left: 50px;
+	padding-right: 50px;
+	margin:auto; /* Center page */
 }
+
+/* Small devices (tablets, 768px and up) @screen-sm-min */
+@media (min-width: 768px) {
+  .page{
+
+    }
+}
+
+/* Medium devices (desktops, 992px and up) @screen-md-min */
+@media (min-width: 992px ) {
+  .page{
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) @screen-lg-min  */
+@media (min-width: 1200px ) {
+.page{
+
+	}
+}
+
+
 
 .panel-heading {
   margin-bottom: 20px;
@@ -65,7 +87,12 @@ body
 }
 
 .panel-body {
-    padding: 0px 15px 10px 15px;
+    padding: 0px 0px 0px 0px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
 }
 
 .form-group {
@@ -88,6 +115,10 @@ label {
     width: 100%;
     font-size: 90%;
     margin-bottom: 2px;
+}
+
+label.btn {
+		width: initial; /* Override label with for btn class */
 }
 
 input[type=submit], input[type=button], button {
