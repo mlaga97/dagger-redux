@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { Panel, Grid } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
 
 // Components
 import Assessment from './Assessment';
@@ -61,16 +61,14 @@ function Assessments(props) {
               </Panel.Heading>
               <Panel.Collapse>
                 <Panel.Body>
-                  <Grid>
-                    <Assessment
-                      types={types}
-                      editable={editable}
-                      metadata={metadata}
-                      sections={sections}
-                      onUpdate={onUpdate}
-                      response={response[key]}
-                    />
-                  </Grid>
+                  <Assessment
+                    types={types}
+                    editable={editable}
+                    metadata={metadata}
+                    sections={sections}
+                    onUpdate={onUpdate}
+                    response={response[key]}
+                  />
                 </Panel.Body>
               </Panel.Collapse>
             </Panel>
