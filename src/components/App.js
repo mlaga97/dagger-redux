@@ -58,8 +58,10 @@ class PrivateApp extends React.Component {
       return <div>Loading clinic data...</div>;
     }
 
+    const basename = process.env.PUBLIC_URL.replace(/(^\w+:|^)\/\/.*?\//, '');
+
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <div className='app'>
           <Navbar inverse>
             <Navbar.Header>
