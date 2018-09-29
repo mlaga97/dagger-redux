@@ -233,3 +233,11 @@ button:disabled {
 	-o-transition: background .2s ease-in;
 	-webkit-transition: background .2s ease-in;
 }
+
+/* Grid Stuff */
+@media (min-width: 768px) {
+  .row.equal {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
