@@ -47,34 +47,11 @@ class Scoring extends React.Component {
     }
 
     // Two methods of rendering
-    if (typeof state.scoring === 'function') {
-      // Method 1: Show a score, an assessment of severity, and a recommended course of action.
-      // TODO: Improve this method
-
-      const result = state.scoring(response);
-
-      return (
-        <Panel defaultExpanded>
-          <Panel.Heading>
-            <Panel.Title toggle>
-              Scoring
-            </Panel.Title>
-          </Panel.Heading>
-          <Panel.Collapse>
-            <Panel.Body>
-              Score: {result.score}<br/>
-              Severity: {result.severity}<br/>
-              Recommendation: {result.recommendation}<br/>
-            </Panel.Body>
-          </Panel.Collapse>
-        </Panel>
-      );
-    } else {
-      // Method 2: Just show some html.
+    if (typeof state.scoring.render === 'function') {
+      // Method 1: Just show some html.
       // TODO: Deprecate this method
 
       const output = state.scoring.score(response, flags);
-      console.log(output);
 
       // TODO: Update flags w/ output.flags
       // const newFlags = output.flags;
@@ -90,6 +67,34 @@ class Scoring extends React.Component {
           </Panel.Heading>
           <Panel.Collapse>
             <Panel.Body dangerouslySetInnerHTML={{__html: html}}/>
+          </Panel.Collapse>
+        </Panel>
+      );
+    } else {
+      // Method 2: Show a score, an assessment of severity, and a recommended course of action.
+      // TODO: Improve this method
+      // TODO: Don't show if scoring not valid!
+
+      const output = state.scoring.score(response, flags);
+
+      // TODO: Update flags w/ output.flags
+      // const newFlags = output.flags;
+
+      const result = output.result;
+
+      return (
+        <Panel defaultExpanded>
+          <Panel.Heading>
+            <Panel.Title toggle>
+              Scoring
+            </Panel.Title>
+          </Panel.Heading>
+          <Panel.Collapse>
+            <Panel.Body>
+              Score: {result.score}<br/>
+              Severity: {result.severity}<br/>
+              Recommendation: {result.recommendation}<br/>
+            </Panel.Body>
           </Panel.Collapse>
         </Panel>
       );
