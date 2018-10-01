@@ -24,6 +24,9 @@ class Scoring extends React.Component {
     const { props, state } = this;
     const { response, metadata } = props;
 
+    // TODO: Implement flags
+    const flags = {};
+
     if (!metadata.scorable) {
       return null;
     }
@@ -43,8 +46,11 @@ class Scoring extends React.Component {
       return <div>Loading scoring...</div>;
     }
 
-    // TODO: Make not this way
+    // Two methods of rendering
     if (typeof state.scoring === 'function') {
+      // Method 1: Show a score, an assessment of severity, and a recommended course of action.
+      // TODO: Improve this method
+
       const result = state.scoring(response);
 
       return (
@@ -64,8 +70,16 @@ class Scoring extends React.Component {
         </Panel>
       );
     } else {
-      const result = state.scoring.score(response);
-      const html = state.scoring.render(result);
+      // Method 2: Just show some html.
+      // TODO: Deprecate this method
+
+      const output = state.scoring.score(response, flags);
+      console.log(output);
+
+      // TODO: Update flags w/ output.flags
+      // const newFlags = output.flags;
+
+      const html = state.scoring.render(output.result);
 
       return (
         <Panel defaultExpanded>
