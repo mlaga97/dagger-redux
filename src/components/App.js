@@ -41,7 +41,7 @@ class PrivateApp extends React.Component {
     // Get clinic data
     if (!this.props.clinics.current) {
       this.props.dispatch({
-        type: actions.clinic.current.requested,
+        type: actions.clinic.current.get.requested,
       });
     }
 

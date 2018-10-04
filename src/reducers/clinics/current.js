@@ -3,7 +3,7 @@ import actions from '../../actions';
 
 function current(state = null, action) {
   switch (action.type) {
-    case actions.clinic.current.succeeded:
+    case actions.clinic.current.get.succeeded:
       return action.data.id;
     default:
       return state;
