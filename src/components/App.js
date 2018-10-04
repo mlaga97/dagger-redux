@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Modal, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { IndexLinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 
@@ -22,6 +22,7 @@ import ResponseList from './ResponseList';
 import ResponsePage from './ResponsePage';
 import AssessmentPage from './AssessmentPage';
 import ConditionalWrapper from './ConditionalWrapper';
+import ClinicSwitcherModal from './ClinicSwitcherModal';
 
 // Helpers
 function HomePage() {
@@ -128,6 +129,8 @@ class PrivateApp extends React.Component {
               </NavDropdown>
             </Nav>
           </Navbar>
+
+          <ClinicSwitcherModal/>
 
           <div className='page'>
             <Route exact path='/' component={HomePage} />
