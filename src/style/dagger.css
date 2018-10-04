@@ -34,14 +34,8 @@ body
   margin-bottom: 0px; /* Overwrites navbar style from unknown location */
 }
 
-/* Why does this need adjustment? window scaling on external monitor? Possibly changed margins and page size. */
-/* Will require additional @media min-width css to handle mobile views */
-@media (min-width: 1200px) {
-  .container {
-      /* width: 1170px; */
-      width: 970px;
-  }
-}
+/* Mitigates form-group overlapping container and panel-body - I don't know why */
+.container { width: 100%;}
 
 .page {
   background-color: #fbfbfb;  /* Color name 'snow' */
