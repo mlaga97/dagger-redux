@@ -235,3 +235,43 @@ button:disabled {
     flex-wrap: wrap;
   }
 }
+
+/* Label style for radio scale options within tables */
+td div.radio {
+  position: relative;
+  display: inline-block;
+}
+
+td div.radio::after {
+  content: ' ';
+  display: block;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+}
+
+td div.radio label:not(div.radio){
+  display: block;
+}
+
+td div.radio label {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+	font-size: 75%;
+	color: gray;
+	padding-top: 30px;
+	padding-right: 20px;  /* overrides this CSS label style */
+}
+
+ td div.radio input {
+  position: absolute;
+  top: 5px;
+	left: 40% !important; /* Some hacky ass shit going on right here */
+  display: block;
+	transform: scale(1.35);
+  cursor: pointer;
+	margin-left: 0px !important;
+}
