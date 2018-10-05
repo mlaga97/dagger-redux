@@ -298,7 +298,11 @@ td div.radio label {
   top: 5px;
 	left: 40% !important; /* Some hacky ass shit going on right here */
   display: block;
-	transform: scale(1.35);
   cursor: pointer;
 	margin-left: 0px !important;
+}
+
+input[type="radio"], input[type="checkbox"] {
+	transform: scale(1.4);
+	margin: 6px 0 0;
 }
