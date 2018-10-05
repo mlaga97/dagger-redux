@@ -236,6 +236,11 @@ button:disabled {
   }
 }
 
+th {
+	padding:10px !important;
+	font-weight: normal;
+}
+
 /* Set special padding for 1st td in table - targeting question cell of tabled assessments */
 /* Currently affects first td of ALL tables, may need to be better targeted */
 td:first-child {
@@ -272,8 +277,8 @@ td div.radio label {
 	padding-top: 30px;
 	padding-right: 20px;  /* overrides this CSS label style */
 
-	/* This works well as a min-width with text labels, */
-	/* but less desirable on those with short number or day scales like Diabetes Self-Care, */
+	/* This works well as a min-width with longer text labels, */
+	/* but less desirable on those with short text or number for day scales like Diabetes Self-Care, */
 	/* and causes overlapping of container / panel at lower resolutions */
 	/* TODO: Reset div.radio label min-width to intial for lower resolutions */
 	/* TODO: Resolve short text labels issue */
