@@ -39,7 +39,7 @@ class AssessmentDate extends React.Component {
         </ToggleButtonGroup>
       </FormGroup>
       {
-        (this.props.response && this.props.response.metadata && this.props.response.metadata.assessmentDateToday !== 'true') ? (
+        (!this.props.response.metadata || (this.props.response.metadata && this.props.response.metadata.assessmentDateToday !== 'true')) ? (
           <FormGroup>
             <ControlLabel>Assessment Date</ControlLabel>
             <FormControl name="assessmentDate" type="date" onChange={this.handleChange} />
