@@ -239,6 +239,8 @@ button:disabled {
 th {
 	padding:10px !important;
 	font-weight: normal;
+	text-align: center;
+	vertical-align: middle !important;
 }
 
 /* Set special padding for 1st td in table - targeting question cell of tabled assessments */
@@ -246,6 +248,12 @@ th {
 td:first-child {
 	padding: 15px 10px 5px 10px !important; /* Overrides BS padding for table-condensed>tbody>tr>td */
 	font-size: 90%;
+}
+
+/* Hack for improved auto sizing on tabled radio scale options */
+td:not(:first-child){
+    width:1%;
+    white-space: pre-wrap; /* nowrap will allow cells space for labels on one line - consider for some assessments (add flag?) */
 }
 
 /* Label style for radio scale options within tables */
