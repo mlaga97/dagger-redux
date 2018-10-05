@@ -1,5 +1,6 @@
 // Library imports
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Panel, FormGroup, ControlLabel, FormControl, Grid, Row, Col, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 
 class AssessmentDate extends React.Component {
@@ -61,6 +62,10 @@ class AssessmentMetadata extends React.Component {
     });
   }
 
+  componentDidMount() {
+    ReactDOM.findDOMNode(this.refs.firstInput).focus();
+  }
+  
   render = () => (
     <Panel defaultExpanded>
       <Panel.Heading>
@@ -75,7 +80,7 @@ class AssessmentMetadata extends React.Component {
               <Col sm={4}>
                 <FormGroup>
                   <ControlLabel>Patient ID</ControlLabel>
-                  <FormControl name="patientID" type="text" onChange={this.handleChange} />
+                  <FormControl name="patientID" type="text" onChange={this.handleChange} ref="firstInput" />
                 </FormGroup>
               </Col>
               <Col sm={4}>
