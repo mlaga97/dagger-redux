@@ -52,7 +52,7 @@ function Wrapper(props) {
   const { children } = props;
 
   return (
-    <Table striped bordered condensed hover>
+    <Table striped bordered condensed hover className={"table-assessment"} >
       <thead>
         <tr>
           <th>Question</th>

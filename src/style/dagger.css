@@ -236,7 +236,8 @@ button:disabled {
   }
 }
 
-th {
+/* Header for tables containing assessments */
+table.table-assessment thead th {
 	padding:10px !important;
 	font-weight: normal;
 	text-align: center;
@@ -244,25 +245,39 @@ th {
 }
 
 /* Set special padding for 1st td in table - targeting question cell of tabled assessments */
-/* Currently affects first td of ALL tables, may need to be better targeted */
-td:first-child {
+/* May need more specific targeting to ensure formatting to the Question td */
+/* Currently only radioScale and checkboxScale assessment tables are classed table-assessment */
+table.table-assessment tbody tr td:first-child {
 	padding: 15px 10px 5px 10px !important; /* Overrides BS padding for table-condensed>tbody>tr>td */
 	font-size: 90%;
 }
 
-/* Hack for improved auto sizing on tabled radio scale options */
-td:not(:first-child){
+/* Hack for improved auto sizing of td on tabled radio scale options */
+table.table-assessment tbody tr td:not(:first-child) {
     width:1%;
     white-space: pre-wrap; /* nowrap will allow cells space for labels on one line - consider for some assessments (add flag?) */
+		padding: 0 !important;
 }
 
-/* Label style for radio scale options within tables */
-td div.radio {
+/* Target only tabled checkboxes in assessments or the assessment selection gets jacked */
+table.table-assessment tbody tr td div.checkbox label input{
+	margin-left: 16px !important;
+	margin-right: 16px !important;
+}
+
+/* For checkboxes without labels to take up space in the table cell */
+table.table-assessment tbody tr td div.checkbox {
+	min-width: 90px;
+}
+
+/* Label style for radio scale options within assessment tables, places label below */
+/* Some of these properties are extraneous - TODO: Cull */
+table.table-assessment tbody tr td div.radio {
   position: relative;
   display: inline-block;
 }
 
-td div.radio::after {
+table.table-assessment tbody tr td div.radio::after {
   content: ' ';
   display: block;
   width: 100%;
@@ -271,11 +286,11 @@ td div.radio::after {
   bottom: 0;
 }
 
-td div.radio label:not(div.radio){
+table.table-assessment tbody tr td div.radio label:not(div.radio){
   display: block;
 }
 
-td div.radio label {
+table.table-assessment tbody tr td div.radio label {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -293,12 +308,19 @@ td div.radio label {
 	min-width: 90px;
 }
 
- td div.radio input {
+/* ALL radios and checkboxes wrapped in a label */
+label input[type="radio"], label input[type="checkbox"] {
+	height: 18px;
+	width: 18px;
+	cursor: pointer;
+	margin-left: -25px !important; /* override BS default - extra space between text label & input */
+}
+
+/* Just radios in an assessment table */
+ table.table-assessment tbody tr td div.radio input {
   position: absolute;
   top: 5px;
-	left: 40% !important; /* Some hacky ass shit going on right here */
+	left: 66% !important; /* Centers radio button in table cell -- TODO: Find better way. */
   display: block;
-	transform: scale(1.35);
-  cursor: pointer;
-	margin-left: 0px !important;
+	margin-left: -20px !important; /* Get rid of general ALL radios wrapped in a label */
 }
