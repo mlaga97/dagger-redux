@@ -329,3 +329,25 @@ div.container-assessment-selection {
 	padding-left: 25px !important;
 	padding-bottom: 25px;
 }
+
+/* Fade to aliceblue with CSS only - CSS4 spec :focus-within supported by Chrome/Android Safari/iOS, Firefox - no Edge or IE  */
+div.form-group:focus-within,
+table.table-assessment tbody tr td:not(:first-child):focus-within {
+	background: aliceblue;
+	border-color: #c0c0c0;
+	-moz-transition: 		background .2s ease-in;
+	-o-transition: 			background .2s ease-in;
+	-webkit-transition:		background .2s ease-in;
+
+  -moz-box-shadow:    inset 0 0 15px #fbfbfb;
+  -webkit-box-shadow: inset 0 0 15px #fbfbfb;
+  box-shadow:         inset 0 0 15px #fbfbfb;
+}
+
+div.form-group:not(:focus-within),
+table.table-assessment tbody tr td:not(:first-child):not(:focus-within)  {
+	background: transparent;
+	-moz-transition: 		background .5s ease-out;
+	-o-transition: 			background .5s ease-out;
+	-webkit-transition: 	background .5s ease-out;
+}
