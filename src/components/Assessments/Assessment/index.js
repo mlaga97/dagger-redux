@@ -14,14 +14,14 @@ function Assessment(props) {
 
   return (
     <Grid className='container-fluid'>
-      <Row className='equal'>
-        <Sections
-          sections={getSections(props)} // TODO: Move down?
-          editable={editable}
-          response={response}
-          metadata={metadata}
-          onUpdate={onUpdate}
-        />
+      <Row>
+          <Sections
+            sections={getSections(props)} // TODO: Move down?
+            editable={editable}
+            response={response}
+            metadata={metadata}
+            onUpdate={onUpdate}
+          />
       </Row>
       <Row>
         <Col sm={12}>

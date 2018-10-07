@@ -324,3 +324,8 @@ label input[type="radio"], label input[type="checkbox"] {
   display: block;
 	margin-left: -20px !important; /* Get rid of general ALL radios wrapped in a label */
 }
+
+div.container-assessment-selection {
+	padding-left: 25px !important;
+	padding-bottom: 25px;
+}

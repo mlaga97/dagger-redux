@@ -21,7 +21,7 @@ class AssessmentSelector extends React.Component {
         </Panel.Heading>
         <Panel.Collapse>
           <Panel.Body>
-            <Grid>
+            <Grid className={'container-assessment-selection'}>
               <Row>
                 {
                   Object.keys(this.props.assessments).map((key) => {
@@ -36,7 +36,7 @@ class AssessmentSelector extends React.Component {
                     const value = this.props.selected[key] || false;
 
                     return (
-                      <Col key={key} xs={12} sm={6} md={3} lg={0.5}>
+                      <Col key={key} sm={3}>
                         <Checkbox name={key} onChange={this.handleChange} checked={value}>
                           {title}
                         </Checkbox>

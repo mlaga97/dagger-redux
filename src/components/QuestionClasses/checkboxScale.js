@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { Table, Checkbox } from 'react-bootstrap';
+import { Table, Col, Checkbox } from 'react-bootstrap';
 
 class Renderer extends React.Component {
   handleChange = (event) => {
@@ -52,17 +52,19 @@ function Wrapper(props) {
   const { children } = props;
 
   return (
-    <Table striped bordered condensed hover className={"table-assessment"} >
-      <thead>
-        <tr>
-          <th>Question</th>
-          <th />
-        </tr>
-      </thead>
-      <tbody>
-        {children}
-      </tbody>
-    </Table>
+    <Col sm={12}>
+      <Table striped bordered condensed hover className={"table-assessment"} >
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          {children}
+        </tbody>
+      </Table>
+    </Col>
   );
 }
 

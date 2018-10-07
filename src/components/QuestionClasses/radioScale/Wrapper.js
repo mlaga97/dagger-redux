@@ -59,17 +59,17 @@ function Wrapper(props) {
   }
 
   return (
-    <Col sm={12}>
-      <Table striped bordered condensed hover className={"table-assessment"} >
-        <thead>
-          <PreHeader type={type} />
-          <Header type={type} />
-        </thead>
-        <tbody>
-          {children}
-        </tbody>
-      </Table>
-    </Col>
+      <Col sm={12}>
+        <Table striped bordered condensed hover className={"table-assessment"} >
+          <thead>
+            <PreHeader type={type} />
+            <Header type={type} />
+          </thead>
+          <tbody>
+            {children}
+          </tbody>
+        </Table>
+      </Col>
   );
 }
 
