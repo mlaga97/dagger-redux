@@ -1,6 +1,7 @@
 // Library imports
 import React from 'react';
-import { Panel, FormGroup, ControlLabel, FormControl, Grid, Row, Col, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
+import ReactDOM from 'react-dom';
+import { Panel, FormGroup, ControlLabel, Grid, Row, Col, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 
 // Components
 import FocusableInput from '../FocusableInput';
@@ -31,22 +32,23 @@ class AssessmentDate extends React.Component {
     }
   }
 
+  handleClick = (event) => {
+    ReactDOM.findDOMNode(this.refs.inputNode).focus();
+  };
+
   render = () => (
     <React.Fragment>
-      <FormGroup>
+      <FormGroup  onClick={this.handleClick}>
         <ControlLabel>Assessment Date Today</ControlLabel>
 
         <ToggleButtonGroup name="assessmentDateToday" type="radio" >
-          <ToggleButton onChange={this.handleChange} value>Yes</ToggleButton>
+          <ToggleButton ref='inputNode' onChange={this.handleChange} value>Yes</ToggleButton>
           <ToggleButton onChange={this.handleChange} value={false}>No</ToggleButton>
         </ToggleButtonGroup>
       </FormGroup>
       {
         (this.props.response && this.props.response.metadata && this.props.response.metadata.assessmentDateToday !== 'true') ? (
-          <FormGroup>
-            <ControlLabel>Assessment Date</ControlLabel>
-            <FormControl name="assessmentDate" type="date" onChange={this.handleChange} />
-          </FormGroup>
+          <FocusableInput label='Assessment Date' name="assessmentDate" type="date" onChange={this.handleChange} />
         ) : null
       }
     </React.Fragment>
