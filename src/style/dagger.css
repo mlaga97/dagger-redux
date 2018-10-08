@@ -212,22 +212,6 @@ button:disabled {
     float: right;
 }
 
-/* FocusableInput */
-.form-group.focused {
-	background: aliceblue;
-	border-color: #c0c0c0;
-	-moz-transition: background .2s ease-in;
-	-o-transition: background .2s ease-in;
-	-webkit-transition: background .2s ease-in;
-}
-
-.form-group.blurred {
-	background: transparent;
-	-moz-transition: background .2s ease-in;
-	-o-transition: background .2s ease-in;
-	-webkit-transition: background .2s ease-in;
-}
-
 /* Grid Stuff */
 @media (min-width: 768px) {
   .row.equal {
