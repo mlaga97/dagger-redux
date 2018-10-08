@@ -2,6 +2,9 @@
 import React from 'react';
 import { Panel, FormGroup, ControlLabel, FormControl, Grid, Row, Col, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 
+// Components
+import FocusableInput from '../FocusableInput';
+
 class AssessmentDate extends React.Component {
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -73,16 +76,10 @@ class AssessmentMetadata extends React.Component {
           <Grid>
             <Row>
               <Col sm={4}>
-                <FormGroup>
-                  <ControlLabel>Patient ID</ControlLabel>
-                  <FormControl name="patientID" type="text" onChange={this.handleChange} autoFocus />
-                </FormGroup>
+                <FocusableInput label='Patient ID' name="patientID" type="text" onChange={this.handleChange} autoFocus />
               </Col>
               <Col sm={4}>
-                <FormGroup>
-                  <ControlLabel>Patient DOB</ControlLabel>
-                  <FormControl name="patientDOB" type="date" onChange={this.handleChange} />
-                </FormGroup>
+                <FocusableInput label='Patient DOB' name='patientDOB' type='date' onChange={this.handleChange} />
               </Col>
               <Col sm={4}>
                 <AssessmentDate
