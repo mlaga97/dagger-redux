@@ -13,6 +13,7 @@ import actions from '../actions';
 
 // Components
 import Footer from './Footer';
+import HomePage from './HomePage';
 import UserList from './UserList';
 import UserPage from './UserPage';
 import ClinicList from './ClinicList';
@@ -23,11 +24,6 @@ import ResponsePage from './ResponsePage';
 import AssessmentPage from './AssessmentPage';
 import ConditionalWrapper from './ConditionalWrapper';
 import ClinicSwitcherModal from './ClinicSwitcherModal';
-
-// Helpers
-function HomePage() {
-  return <p>Welcome to Dagger!</p>;
-}
 
 class PrivateApp extends React.Component {
   // Do stuff that the entire application needs
