@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Modal, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { IndexLinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 
@@ -22,6 +22,7 @@ import ResponseList from './ResponseList';
 import ResponsePage from './ResponsePage';
 import AssessmentPage from './AssessmentPage';
 import ConditionalWrapper from './ConditionalWrapper';
+import ClinicSwitcherModal from './ClinicSwitcherModal';
 
 // Helpers
 function HomePage() {
@@ -41,7 +42,7 @@ class PrivateApp extends React.Component {
     // Get clinic data
     if (!this.props.clinics.current) {
       this.props.dispatch({
-        type: actions.clinic.current.requested,
+        type: actions.clinic.current.get.requested,
       });
     }
 
@@ -89,6 +90,7 @@ class PrivateApp extends React.Component {
                 </IndexLinkContainer>
               </ConditionalWrapper>
               <NavDropdown eventKey={5} title='Other' id='nav-dropdown-other'>
+                <ClinicSwitcherModal/>
                 <ConditionalWrapper display={indev}>
                   <IndexLinkContainer to='/clinicStats'>
                     <MenuItem eventKey={5.1}>Clinic Statistics</MenuItem>
