@@ -13,7 +13,7 @@ function Assessment(props) {
   const { response, editable, metadata, onUpdate } = props;
 
   return (
-    <Grid className='container-fluid'>
+    <Grid className='container-fluid container-assessment'>
       <Row>
           <Sections
             sections={getSections(props)} // TODO: Move down?

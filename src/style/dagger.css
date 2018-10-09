@@ -335,3 +335,28 @@ table.table-assessment tbody tr td:not(:first-child):not(:focus-within)  {
 	-o-transition: 			background .5s ease-out;
 	-webkit-transition: 	background .5s ease-out;
 }
+
+
+/* Align Cols for FormGroups as if in properly formatted Rows */
+/* Assumes Containing 3 sm-col-4, targeted to container divs for assessments */
+/* Tags: Magic Potion, Bullshit, Need Real Rows */
+@media (min-width: 768px) {
+	div.container-assessment .col-sm-4 {
+	box-sizing: border-box;
+	width: 33%;
+	display: inline-block;
+	}
+
+	/* Col 1 and Cols 4, 7, 10, 13... */
+	/* Margin numbers derived from ancient runes */
+	div.container-assessment .col-sm-4:nth-child(1),
+	div.container-assessment .col-sm-4:nth-child(3n+4){
+		margin-left: .5rem;
+	}
+
+	/* Cols 3, 6, 9...*/
+	div.container-assessment .col-sm-4:nth-child(3n) {
+		margin-right: .2rem;
+	}
+
+}
