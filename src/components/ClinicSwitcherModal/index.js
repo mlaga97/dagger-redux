@@ -1,49 +1,16 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal, Button, Table, Radio } from 'react-bootstrap';
+import { Modal, Button, Table, Radio, MenuItem } from 'react-bootstrap';
 
 // Styling
-import '../style/dagger.css';
+import '../../style/dagger.css';
 
 // Actions
-import actions from '../actions';
+import actions from '../../actions';
 
-const Header = () => (
-  <tr>
-    <th></th>
-    <th>ID</th>
-    <th>Name</th>
-    <th>City</th>
-    <th>State</th>
-  </tr>
-);
-
-const Clinic = ({clinic}) => (
-  <tr key={clinic.id}>
-      <td><Radio name='clinic'/></td>
-      <td>{clinic.id}</td>
-      <td>{clinic.name}</td>
-      <td>{clinic.city}</td>
-      <td>{clinic.state}</td>
-    </tr>
-);
-
-// TODO: Merge with ClinicList/List
-const List = ({clinics}) => (
-  <Table>
-    <thead>
-      <Header/>
-    </thead>
-    <tbody>
-      {
-        Object.keys(clinics).map((clinicID) => (
-          <Clinic clinic={clinics[clinicID]}/>
-        ))
-      }
-    </tbody>
-  </Table>
-)
+// Components
+import List from './List';
 
 class ClinicSwitcherModal extends React.Component {
   constructor(props, context) {
@@ -72,6 +39,15 @@ class ClinicSwitcherModal extends React.Component {
     this.setState({ show: true });
   }
 
+  handleClick = (event) => {
+    const { value } = event.target;
+    this.props.dispatch({
+      type: actions.clinic.current.post.requested,
+      data: value,
+    });
+    this.handleClose();
+  }
+
   render = () => {
     if (!this.props.users.all) {
       return <div>Retrieving user list...</div>;
@@ -95,17 +71,22 @@ class ClinicSwitcherModal extends React.Component {
     })
 
     return (
-      <Modal show={this.state.show} onHide={this.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Please Select A Clinic</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <List clinics={clinics} />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={this.handleClose}>Close</Button>
-        </Modal.Footer>
-      </Modal>
+      <React.Fragment>
+        <MenuItem onClick={this.handleShow}>
+          Change Clinic
+        </MenuItem>
+        <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Please Select A Clinic</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <List clinics={clinics} handleClick={this.handleClick} currentClinic={this.props.clinics.current}/>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.handleClose}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+      </React.Fragment>
     );
   }
 }

@@ -90,6 +90,7 @@ class PrivateApp extends React.Component {
                 </IndexLinkContainer>
               </ConditionalWrapper>
               <NavDropdown eventKey={5} title='Other' id='nav-dropdown-other'>
+                <ClinicSwitcherModal/>
                 <ConditionalWrapper display={indev}>
                   <IndexLinkContainer to='/clinicStats'>
                     <MenuItem eventKey={5.1}>Clinic Statistics</MenuItem>
@@ -129,8 +130,6 @@ class PrivateApp extends React.Component {
               </NavDropdown>
             </Nav>
           </Navbar>
-
-          <ClinicSwitcherModal/>
 
           <div className='page'>
             <Route exact path='/' component={HomePage} />
