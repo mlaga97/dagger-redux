@@ -13,12 +13,12 @@ export default function* post(action) {
     const response = yield call(() => axios.post('/clinic/current', action.data));
 
     yield put({
-      type: actions.response.post.succeeded,
+      type: actions.clinic.current.post.succeeded,
       data: response.data,
     });
   } catch (e) {
     yield put({
-      type: actions.response.post.failed,
+      type: actions.clinic.current.post.failed,
       message: e.message,
     });
   }
