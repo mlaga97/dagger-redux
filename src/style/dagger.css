@@ -255,41 +255,15 @@ table.table-assessment tbody tr td div.checkbox {
 }
 
 /* Label style for radio scale options within assessment tables, places label below */
-/* Some of these properties are extraneous - TODO: Cull */
-table.table-assessment tbody tr td div.radio {
-  position: relative;
-  display: inline-block;
-}
-
-table.table-assessment tbody tr td div.radio::after {
-  content: ' ';
-  display: block;
-  width: 100%;
-  height: 30px;
-  position: absolute;
-  bottom: 0;
-}
-
-table.table-assessment tbody tr td div.radio label:not(div.radio){
-  display: block;
-}
-
 table.table-assessment tbody tr td div.radio label {
-  position: relative;
-  display: inline-block;
   vertical-align: middle;
   text-align: center;
 	font-size: 75%;
 	color: gray;
-	padding-top: 30px;
+	padding-top: 28px;
 	padding-right: 20px;  /* overrides this CSS label style */
-
-	/* This works well as a min-width with longer text labels, */
-	/* but less desirable on those with short text or number for day scales like Diabetes Self-Care, */
-	/* and causes overlapping of container / panel at lower resolutions */
-	/* TODO: Reset div.radio label min-width to intial for lower resolutions */
-	/* TODO: Resolve short text labels issue */
-	min-width: 90px;
+	padding-left: 17px;   /* fine tune centering of label - overrides CSS label style */
+	min-width: 90px; 			/* TODO: Reset div.radio label min-width to intial for lower resolutions */
 }
 
 /* ALL radios and checkboxes wrapped in a label */
@@ -301,14 +275,19 @@ label input[type="radio"], label input[type="checkbox"] {
 }
 
 /* Just radios in an assessment table */
- table.table-assessment tbody tr td div.radio input {
-  position: absolute;
+table.table-assessment tbody tr td div.radio label input {
   top: 5px;
 	left: 66% !important; /* Centers radio button in table cell -- TODO: Find better way. */
-  display: block;
-	margin-left: -20px !important; /* Get rid of general ALL radios wrapped in a label */
 }
 
+/* HR is a sizable element to adjust spacing between radio and label content below */
+table.table-assessment tbody tr td div.radio label hr {
+ margin-top: 2px;
+ margin-bottom: 2px;
+ border: 0;
+}
+
+/* Spacing for checkbox and label containers for assessment selection */
 div.container-assessment-selection {
 	padding-left: 25px !important;
 	padding-bottom: 25px;
