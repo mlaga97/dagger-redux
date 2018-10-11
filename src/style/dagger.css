@@ -99,6 +99,7 @@ body
   border: initial;
   border-radius: initial;
   padding: initial;
+	background: transparent !important; /* Override AliceBlue bg on form-group input - Ex login submit */
 }
 
 label {
