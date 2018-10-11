@@ -35,9 +35,9 @@ class renderer extends React.Component {
           {
             Object.keys(options).map((option) => {
               // TODO: Avoid type coercion by making type match at a higher level?
-              const checked = String(options[option]) === String(selected);
+              const selected = String(options[option]) === String(selected);
 
-              if (checked) {
+              if (selected) {
                 return (
                   <div>
                     <b>{number}. {text}:</b> {option}
@@ -57,21 +57,16 @@ class renderer extends React.Component {
         <ControlLabel>
           {number}. {text}
         </ControlLabel>
-        <FormControl componentClass='select' placehoder='select'>
+        <FormControl componentClass='select' name={name} value={selected} onChange={this.handleChange}>
+          <option value selected disabled hidden>- Select -</option>
           {
             Object.keys(options).map((option) => {
               const value = options[option];
 
-              // TODO: Avoid type coercion by making type match at a higher level?
-              const checked = String(options[option]) === String(selected);
-
               return (
-                // eslint-disable-next-line react/no-array-index-key
                 <option
-                  name={name}
                   value={value}
                   key={[name, value].join('_')} 
-                  onChange={this.handleChange}
                 >
                   {option}
                 </option>
