@@ -11,7 +11,7 @@ const Metadata = ({
   metadata: { patient, clinic, user, visit, dateSubmitted },
 }) => (
   <React.Fragment>
-    <Patient patient={patient} />
+    {/*<Patient patient={patient} />*/}
     <User user={user} />
     <Clinic clinic={clinic} />
     <Record visit={visit} dateSubmitted={dateSubmitted} />

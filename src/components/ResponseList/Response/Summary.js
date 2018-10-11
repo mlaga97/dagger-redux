@@ -20,8 +20,8 @@ const Summary = ({
     <td>{visit.date}</td>
     <td>{user.id}</td>
     <td>{clinic.id}</td>
-    <td>{patient.id}</td>
-    <td>{patient.dob}</td>
+    {/*<td>{patient.id}</td>*/}
+    {/*<td>{patient.dob}</td>*/}
   </React.Fragment>
 );
 
