@@ -1,5 +1,6 @@
 // Library imports
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 // Helpers
@@ -16,6 +17,10 @@ class renderer extends React.Component {
       value,
     });
   }
+
+  handleClick = (event) => {
+    ReactDOM.findDOMNode(this.refs.inputNode).focus();
+  };
 
   render() {
     const {
@@ -53,11 +58,11 @@ class renderer extends React.Component {
     }
 
     return (
-      <FormGroup>
+      <FormGroup onClick={this.handleClick} >
         <ControlLabel>
           {number}. {text}
         </ControlLabel>
-        <FormControl componentClass='select' name={name} value={selected} onChange={this.handleChange}>
+        <FormControl ref='inputNode' componentClass='select' name={name} value={selected} onChange={this.handleChange}>
           <option value selected disabled hidden>- Select -</option>
           {
             Object.keys(options).map((option) => {
