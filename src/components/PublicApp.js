@@ -11,29 +11,33 @@ import Footer from './Footer';
 import LoginPage from './LoginPage';
 
 // TODO: Show a landing page for non-logged-in users
-const PublicApp = () => (
-  <BrowserRouter>
-    <div className='app'>
-      <Navbar inverse>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href='/'>Dagger</a>
-          </Navbar.Brand>
-        </Navbar.Header>
-        <Nav>
-          <IndexLinkContainer to='/'>
-            <NavItem eventKey={1}>Login</NavItem>
-          </IndexLinkContainer>
-        </Nav>
-      </Navbar>
+const PublicApp = () => {
+  const basename = process.env.PUBLIC_URL.replace(/(^\w+:|^)\/\/.*?\//, '');
 
-      <div className='page'>
-        <Route exact path='/' component={LoginPage} />
-        <Route exact path='/login' component={LoginPage} />
-        <Footer/>
+  return(
+    <BrowserRouter basename={basename}>
+      <div className='app'>
+        <Navbar inverse>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href='/'>Dagger</a>
+            </Navbar.Brand>
+          </Navbar.Header>
+          <Nav>
+            <IndexLinkContainer to='/'>
+              <NavItem eventKey={1}>Login</NavItem>
+            </IndexLinkContainer>
+          </Nav>
+        </Navbar>
+
+        <div className='page'>
+          <Route exact path='/' component={LoginPage} />
+          <Route exact path='/login' component={LoginPage} />
+          <Footer/>
+        </div>
       </div>
-    </div>
-  </BrowserRouter>
-);
+    </BrowserRouter>
+  );
+};
 
 export default PublicApp;

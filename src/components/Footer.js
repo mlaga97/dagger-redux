@@ -16,7 +16,7 @@ export default () => (
             </Col>
             <Col sm={6} className='flex credits'>
               <div>Dagger 2.0 (demo)</div>
-              <div>&copy; 2013,2018 The University of Southern Mississippi</div>
+              <div>&copy; 2012, 2018 The University of Southern Mississippi</div>
               <div>Funded by the Gulf Region Health Outreach Program</div>
             </Col>
             <Col sm={3} className='logo'>

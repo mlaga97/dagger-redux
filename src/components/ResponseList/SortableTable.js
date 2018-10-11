@@ -54,55 +54,53 @@ class SortableTable extends React.Component {
           {this.helper('visitDate', 'Visit Date')}
           {this.helper('userID', 'User ID')}
           {this.helper('clinicID', 'Clinic ID')}
-          {this.helper('patientID', 'Patient ID')}
-          {this.helper('patientDOB', 'Patient DOB')}
+          {/*this.helper('patientID', 'Patient ID')*/}
+          {/*this.helper('patientDOB', 'Patient DOB')*/}
           <th>Assessments</th>
         </tr>
       </thead>
       <tbody>
         {
           Object.keys(this.props.responses.all).sort((a, b) => {
-              const A = this.props.responses.all[a].metadata;
-              const B = this.props.responses.all[b].metadata;
+            const A = this.props.responses.all[a].metadata;
+            const B = this.props.responses.all[b].metadata;
 
-              if (!this.state.sortBy) {
-                return -1;
-              }
+            if (!this.state.sortBy || !this.state.order || this.state.order === 0) {
+              return this.sortHelper(parseInt(a) < parseInt(b));
+            }
 
-              if (!this.state.order || this.state.order === 0) {
-                return -1;
-              }
+            if (this.state.sortBy === 'responseID') {
+              return this.sortHelper(parseInt(a) < parseInt(b));
+            }
 
-              if (this.state.sortBy === 'responseID') {
-                return this.state.order;
-              }
+            if (this.state.sortBy === 'dateSubmitted') {
+              return this.sortHelper(new Date(A.dateSubmitted) < new Date(B.dateSubmitted));
+            }
 
-              if (this.state.sortBy === 'dateSubmitted') {
-                return this.sortHelper(new Date(A.dateSubmitted) < new Date(B.dateSubmitted));
-              }
+            if (this.state.sortBy === 'visitDate') {
+              return this.sortHelper(new Date(A.visit.date) < new Date(B.visit.date));
+            }
 
-              if (this.state.sortBy === 'visitDate') {
-                return this.sortHelper(new Date(A.visit.date) < new Date(B.visit.date));
-              }
+            if (this.state.sortBy === 'userID') {
+              return this.sortHelper(A.user.id < B.user.id);
+            }
 
-              if (this.state.sortBy === 'userID') {
-                return this.sortHelper(A.user.id < B.user.id);
-              }
+            if (this.state.sortBy === 'clinicID') {
+              return this.sortHelper(A.clinic.id < B.clinic.id);
+            }
 
-              if (this.state.sortBy === 'clinicID') {
-                return this.sortHelper(A.clinic.id < B.clinic.id);
-              }
+            /*
+            if (this.state.sortBy === 'patientID') {
+              return this.sortHelper(A.patient.id < B.patient.id);
+            }
+            */
 
-              if (this.state.sortBy === 'patientID') {
-                return this.sortHelper(A.patient.id < B.patient.id);
-              }
+            if (this.state.sortBy === 'patientDOB') {
+              return this.sortHelper(new Date(A.patient.dob) < new Date(B.patient.dob));
+            }
 
-              if (this.state.sortBy === 'patientDOB') {
-                return this.sortHelper(new Date(A.patient.dob) < new Date(B.patient.dob));
-              }
-
-              console.warn('Attempted sorting on unsupported field!');
-              return -1;
+            console.warn('Attempted sorting on unsupported field!');
+            return -1;
           }).map(index => (
             React.Children.map(
               this.props.children,

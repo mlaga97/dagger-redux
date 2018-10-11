@@ -24,6 +24,9 @@ class Scoring extends React.Component {
     const { props, state } = this;
     const { response, metadata } = props;
 
+    // TODO: Implement flags
+    const flags = {};
+
     if (!metadata.scorable) {
       return null;
     }
@@ -43,24 +46,59 @@ class Scoring extends React.Component {
       return <div>Loading scoring...</div>;
     }
 
-    const result = state.scoring(response);
+    // Two methods of rendering
+    if (typeof state.scoring.render === 'function') {
+      // Method 1: Just show some html.
+      // TODO: Deprecate this method
 
-    return (
-      <Panel defaultExpanded>
-        <Panel.Heading>
-          <Panel.Title toggle>
-            Scoring
-          </Panel.Title>
-        </Panel.Heading>
-        <Panel.Collapse>
-          <Panel.Body>
-            Score: {result.score}<br/>
-            Severity: {result.severity}<br/>
-            Recommendation: {result.recommendation}<br/>
-          </Panel.Body>
-        </Panel.Collapse>
-      </Panel>
-    );
+      const output = state.scoring.score(response, flags);
+
+      // TODO: Update flags w/ output.flags
+      // const newFlags = output.flags;
+
+      const html = state.scoring.render(output.result);
+
+      return (
+        <Panel defaultExpanded>
+          <Panel.Heading>
+            <Panel.Title toggle>
+              Scoring
+            </Panel.Title>
+          </Panel.Heading>
+          <Panel.Collapse>
+            <Panel.Body dangerouslySetInnerHTML={{__html: html}}/>
+          </Panel.Collapse>
+        </Panel>
+      );
+    } else {
+      // Method 2: Show a score, an assessment of severity, and a recommended course of action.
+      // TODO: Improve this method
+      // TODO: Don't show if scoring not valid!
+
+      const output = state.scoring.score(response, flags);
+
+      // TODO: Update flags w/ output.flags
+      // const newFlags = output.flags;
+
+      const result = output.result;
+
+      return (
+        <Panel defaultExpanded>
+          <Panel.Heading>
+            <Panel.Title toggle>
+              Scoring
+            </Panel.Title>
+          </Panel.Heading>
+          <Panel.Collapse>
+            <Panel.Body>
+              Score: {result.score}<br/>
+              Severity: {result.severity}<br/>
+              Recommendation: {result.recommendation}<br/>
+            </Panel.Body>
+          </Panel.Collapse>
+        </Panel>
+      );
+    }
   }
 }
 
