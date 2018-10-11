@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { FormGroup, ControlLabel, Radio } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 // Helpers
 const questionStyle = {
@@ -57,7 +57,7 @@ class renderer extends React.Component {
         <ControlLabel>
           {number}. {text}
         </ControlLabel>
-        <div style={questionStyle}>
+        <FormControl componentClass='select' placehoder='select'>
           {
             Object.keys(options).map((option) => {
               const value = options[option];
@@ -67,19 +67,18 @@ class renderer extends React.Component {
 
               return (
                 // eslint-disable-next-line react/no-array-index-key
-                <Radio
+                <option
                   name={name}
                   value={value}
                   key={[name, value].join('_')} 
-                  checked={checked}
                   onChange={this.handleChange}
                 >
                   {option}
-                </Radio>
+                </option>
               );
             })
           }
-        </div>
+        </FormControl>
       </FormGroup>
     );
   }
