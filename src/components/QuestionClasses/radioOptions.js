@@ -70,6 +70,7 @@ class renderer extends React.Component {
                 <Radio
                   name={name}
                   value={value}
+                  key={[name, value].join('_')} 
                   checked={checked}
                   onChange={this.handleChange}
                 >

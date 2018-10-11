@@ -1,5 +1,6 @@
 // Library imports
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 // TODO: This component is only dubiously controlled, and that should be fixed.
@@ -12,6 +13,10 @@ class Renderer extends React.Component {
       value,
     });
   }
+
+  handleClick = (event) => {
+    ReactDOM.findDOMNode(this.refs.inputNode).focus();
+  };
 
   render() {
     const {
@@ -33,13 +38,14 @@ class Renderer extends React.Component {
     }
 
     return (
-      <FormGroup>
+      <FormGroup onClick={this.handleClick} >
         <ControlLabel>
           {number}. {text}
         </ControlLabel>
         <FormControl
           type="input"
           name={name}
+          ref='inputNode'
           defaultValue={value}
           onBlur={this.handleChange}
         />

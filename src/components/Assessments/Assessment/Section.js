@@ -23,7 +23,7 @@ function Section(props) {
   }
 
   return (
-    <div>
+    <React.Fragment>
       {/* Render Header and Description */}
       <Header header={header} />
       <Description description={description} />
@@ -40,7 +40,7 @@ function Section(props) {
           />
         ))
       }
-    </div>
+    </React.Fragment>
   );
 }
 

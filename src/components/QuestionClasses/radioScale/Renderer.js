@@ -81,6 +81,7 @@ class Renderer extends React.Component {
                       checked={checked}
                       onChange={this.handleChange}
                     >
+                      <hr /> {/* Sizable element to adjust vertical space between input and label text below */}
                       {!hideLabel ? label : null}
                     </Radio>
                   </td>

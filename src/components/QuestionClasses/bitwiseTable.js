@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { Table, Checkbox } from 'react-bootstrap';
+import { Table, Col, Checkbox } from 'react-bootstrap';
 
 // TODO: Surely there is a better way to store this in the json...
 class Renderer extends React.Component {
@@ -80,22 +80,24 @@ function Wrapper(props) {
   }
 
   return (
-    <Table striped bordered condensed hover>
-      <thead>
-        <tr>
-          <th>Question</th>
-          {
-            options.map((option, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <th key={index}>{option}</th>
-            ))
-          }
-        </tr>
-      </thead>
-      <tbody>
-        {children}
-      </tbody>
-    </Table>
+    <Col sm={12}>
+      <Table striped bordered condensed hover className={"table-assessment"} >
+        <thead>
+          <tr>
+            <th>Question</th>
+            {
+              options.map((option, index) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <th key={index}>{option}</th>
+              ))
+            }
+          </tr>
+        </thead>
+        <tbody>
+          {children}
+        </tbody>
+      </Table>
+    </Col>
   );
 }
 

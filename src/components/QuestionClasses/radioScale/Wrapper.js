@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { Table } from 'react-bootstrap';
+import { Col, Table } from 'react-bootstrap';
 
 // Helper
 import { convertIntoMultiColumnWrapper } from './helpers';
@@ -59,15 +59,17 @@ function Wrapper(props) {
   }
 
   return (
-    <Table striped bordered condensed hover>
-      <thead>
-        <PreHeader type={type} />
-        <Header type={type} />
-      </thead>
-      <tbody>
-        {children}
-      </tbody>
-    </Table>
+      <Col sm={12}>
+        <Table striped bordered condensed hover className={"table-assessment"} >
+          <thead>
+            <PreHeader type={type} />
+            <Header type={type} />
+          </thead>
+          <tbody>
+            {children}
+          </tbody>
+        </Table>
+      </Col>
   );
 }
 
