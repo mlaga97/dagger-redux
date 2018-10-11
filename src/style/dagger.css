@@ -315,6 +315,23 @@ table.table-assessment tbody tr td:not(:first-child):not(:focus-within)  {
 	-webkit-transition: 	background .5s ease-out;
 }
 
+/* Make table row hover more subtle and pleasing */
+/* TODO: Fix box shadow for select td cell */
+/* TODO: Radio Button selection overrides hover box shadow until mouse moves - can anything be done? */
+.table-hover>tbody>tr:hover {
+		-moz-box-shadow: inset 0 0 40px rgba(240, 248, 255, 0.8), inset 0 0 3px rgba(0, 0, 0, 0.6); /* colors: aliceblue, black */
+		-webkit-box-shadow: inset 0 0 40px rgba(240, 248, 255, 0.8), inset 0 0 3px rgba(0, 0, 0, 0.6);
+		box-shadow: inset 0 0 40px rgba(240, 248, 255, 0.8), inset 0 0 3px rgba(0, 0, 0, 0.6);
+}
+
+.table-hover>tbody>tr:nth-of-type(odd) {
+		background-color: #f9f9f9; /* Override BS default hover in favor of stripped table bg */
+}
+
+.table-hover>tbody>tr:nth-of-type(even) {
+		background-color: transparent; /* Override BS default hover in favor of stripped table bg */
+}
+
 
 /* Align Cols for FormGroups as if in properly formatted Rows */
 /* Assumes Containing 3 sm-col-4, targeted to container divs for assessments */
