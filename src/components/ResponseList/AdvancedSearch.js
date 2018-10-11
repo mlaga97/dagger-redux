@@ -30,6 +30,19 @@ const SortSelect = ({
   </FormGroup>
 );
 
+const SortText = ({
+  name,
+  label
+}) => (
+  <FormGroup>
+    <ControlLabel>{label}</ControlLabel>
+    <FormControl
+      type='input'
+      name={name}
+    />
+  </FormGroup>
+);
+
 class Sorting extends React.Component {
   // TODO: Fix this abomination in particular
   // TODO: Base on globally valid options instead of locally valid?
@@ -89,9 +102,7 @@ class Sorting extends React.Component {
     }
 
     const patientID = document.getElementsByName('patientID')[0].value;
-    if (patientID !== '') {
-      parameters.patientID = patientID;
-    }
+    parameters.patientID = patientID;
 
     this.props.dispatch({
       type: actions.response.all.requested,
@@ -101,14 +112,15 @@ class Sorting extends React.Component {
 
   render() {
     return (
-      <form>
+      <form onSubmit={(e) => {e.preventDefault();}}>
         <SortDate name='visitDateStart'>Visit Date Start</SortDate>
         <SortDate name='visitDateEnd'>Visit Date End</SortDate>
         <SortDate name='dateSubmittedStart'>Date Submitted Start</SortDate>
         <SortDate name='dateSubmittedEnd'>Date Submitted End</SortDate>
         <SortSelect name='userID' label='User ID'>{this.GetOptionsFromResponses('user')}</SortSelect>
         <SortSelect name='clinicID' label='Clinic ID'>{this.GetOptionsFromResponses('clinic')}</SortSelect>
-        <SortSelect name='patientID' label='Patient ID'>{this.GetOptionsFromResponses('patient')}</SortSelect>
+        {/*<SortSelect name='patientID' label='Patient ID'>{this.GetOptionsFromResponses('patient')}</SortSelect>*/}
+        <SortText name='patientID' label='Patient ID' />
         <Button onClick={this.handleClick}>Update</Button>
       </form>
     );
