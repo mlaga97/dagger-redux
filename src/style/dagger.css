@@ -293,20 +293,36 @@ div.container-assessment-selection {
 	padding-bottom: 25px;
 }
 
-/* Fade to aliceblue with CSS only - CSS4 spec :focus-within supported by Chrome/Android Safari/iOS, Firefox - no Edge or IE  */
+/* Set background-color to AliceBlue */
+/* Applies to standard form-group and table-assessment TDs containing radio or checkbox */
 div.form-group:focus-within,
 table.table-assessment tbody tr td:not(:first-child):focus-within {
 	background: aliceblue;
-	border-color: #c0c0c0;
 	-moz-transition: 		background .2s ease-in;
 	-o-transition: 			background .2s ease-in;
 	-webkit-transition:		background .2s ease-in;
-
-  -moz-box-shadow:    inset 0 0 15px #fbfbfb;
-  -webkit-box-shadow: inset 0 0 15px #fbfbfb;
-  box-shadow:         inset 0 0 15px #fbfbfb;
 }
 
+/* Set Top and Bottom ONLY box shadow to imitate TR box shadow on focused (but not hovered) TDs while TR is hovered */
+table.table-assessment tbody tr:hover td:not(:first-child):focus-within:not(:hover) {
+	-moz-box-shadow:
+		inset 0 11px 40px -11px rgba(240, 248, 255, 0.8),
+		inset 0 -11px 40px  -11px rgba(240, 248, 255, 0.8),
+		inset 0 8px 3px -9px rgba(0, 0, 0, 0.6),
+		inset 0 -9px 3px -9px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow:
+		inset 0 11px 40px -11px rgba(240, 248, 255, 0.8),
+		inset 0 -11px 40px  -11px rgba(240, 248, 255, 0.8),
+		inset 0 8px 3px -9px rgba(0, 0, 0, 0.6),
+		inset 0 -9px 3px -9px rgba(0, 0, 0, 0.6);
+	box-shadow:
+		inset 0 11px 40px -11px rgba(240, 248, 255, 0.8),
+		inset 0 -11px 40px  -11px rgba(240, 248, 255, 0.8),
+		inset 0 8px 3px -9px rgba(0, 0, 0, 0.6),
+		inset 0 -9px 3px -9px rgba(0, 0, 0, 0.6);
+}
+
+/* Losing focus - abandon AliceBlue*/
 div.form-group:not(:focus-within),
 table.table-assessment tbody tr td:not(:first-child):not(:focus-within)  {
 	background: transparent;
@@ -316,14 +332,15 @@ table.table-assessment tbody tr td:not(:first-child):not(:focus-within)  {
 }
 
 /* Make table row hover more subtle and pleasing */
-/* TODO: Fix box shadow for select td cell */
-/* TODO: Radio Button selection overrides hover box shadow until mouse moves - can anything be done? */
-.table-hover>tbody>tr:hover {
+/* Layered inset box shadow onHover of .table-assessment TR and assessment option T */
+.table-hover>tbody>tr:hover,
+table.table-assessment tbody tr td:not(:first-child):hover {
 		-moz-box-shadow: inset 0 0 40px rgba(240, 248, 255, 0.8), inset 0 0 3px rgba(0, 0, 0, 0.6); /* colors: aliceblue, black */
 		-webkit-box-shadow: inset 0 0 40px rgba(240, 248, 255, 0.8), inset 0 0 3px rgba(0, 0, 0, 0.6);
 		box-shadow: inset 0 0 40px rgba(240, 248, 255, 0.8), inset 0 0 3px rgba(0, 0, 0, 0.6);
 }
 
+/* BS hover background color change undesirable on stripped table rows */
 .table-hover>tbody>tr:nth-of-type(odd) {
 		background-color: #f9f9f9; /* Override BS default hover in favor of stripped table bg */
 }
