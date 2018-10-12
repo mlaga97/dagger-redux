@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { FormGroup, ControlLabel, Radio, Grid, Row, Col } from 'react-bootstrap';
+import { FormGroup, ControlLabel, Radio, Grid, Row } from 'react-bootstrap';
 
 // Helpers
 const questionStyle = {

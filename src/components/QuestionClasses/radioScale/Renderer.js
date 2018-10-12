@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { Radio, Table } from 'react-bootstrap';
+import { Radio } from 'react-bootstrap';
 
 // Helper
 import { convertIntoMultiColumnRenderer } from './helpers';
