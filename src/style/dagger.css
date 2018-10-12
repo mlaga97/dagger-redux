@@ -73,11 +73,12 @@ body
 	}
 }
 
-
+.panel-heading, .panel-title {
+	font-size: 18px;
+}
 
 .panel-heading {
   margin-bottom: 20px;
-  font-size: 18px;
 }
 
 .panel-body {
