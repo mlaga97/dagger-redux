@@ -55,7 +55,21 @@ function Wrapper(props) {
   const { type, children, editable } = props;
 
   if (!editable) {
-    return <React.Fragment>{children}</React.Fragment>;
+    return <React.Fragment>
+              <Col sm={12}>
+                <Table striped bordered condensed className={"table-response"} >
+                  <thead>
+                    <tr>
+                      <th>Question</th>
+                      <th>Response</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {children}
+                  </tbody>
+                </Table>
+              </Col>
+            </React.Fragment>;
   }
 
   return (

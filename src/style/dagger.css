@@ -90,11 +90,16 @@ body
     margin-left: -15px;
 }
 
-.form-group {
+.form-group, .info-group {
   border: 1px dashed #ccc;
   border-radius: 4px;
   padding: 5px 10px 10px 10px;
 	min-height: 86px; /* Failover for when form-control margin not invoked to veritcally size small form-groups with no form-control - Ex. Assessment Date Today */
+}
+
+.info-group {
+	border-style: solid; /* Override dashed border style */
+	margin-bottom: 15px; /* Mimic BS form-control bottom margin */
 }
 
 .form-group-clear-style {
@@ -104,7 +109,7 @@ body
 	background: transparent !important; /* Override AliceBlue bg on form-group input - Ex login submit */
 }
 
-.form-control {
+.form-control, .info-content {
 	font-size: 16px;
 	margin: 3px !important; /* Add below spacing, vertically expands the parent form-group */
 }
@@ -228,12 +233,17 @@ button:disabled {
   }
 }
 
-/* Header for tables containing assessments */
-table.table-assessment thead th {
+/* Header for tables containing assessments, responses */
+table.table-assessment thead th,
+table.table-response thead th {
 	padding:10px !important;
 	font-weight: normal;
 	text-align: center;
 	vertical-align: middle !important;
+}
+
+table.table-response tbody tr td:last-child {
+	text-align: center;
 }
 
 /* Set special padding for 1st td in table - targeting question cell of tabled assessments */
@@ -246,9 +256,8 @@ table.table-assessment tbody tr td:first-child {
 
 /* Hack for improved auto sizing of td on tabled radio scale options */
 table.table-assessment tbody tr td:not(:first-child) {
-    width:1%;
-    white-space: pre-wrap; /* nowrap will allow cells space for labels on one line - consider for some assessments (add flag?) */
-		padding: 0 !important;
+	width:1%;
+	padding: 0 !important;
 }
 
 /* Target only tabled checkboxes in assessments or the assessment selection gets jacked */
