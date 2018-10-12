@@ -37,8 +37,9 @@ class renderer extends React.Component {
               // TODO: Avoid type coercion by making type match at a higher level?
               if (String(options[option]) === String(selected)) {
                 return (
-                  <div>
-                    <b>{number}. {text}:</b> {option}
+                  <div className='info-group'>
+                    <label className='info-label'>{number}. {text}</label>
+                    <div className='info-content'>{option}</div>
                   </div>
                 );
               }

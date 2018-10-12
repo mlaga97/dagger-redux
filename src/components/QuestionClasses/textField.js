@@ -31,8 +31,9 @@ class Renderer extends React.Component {
 
     if (!editable) {
       return (
-        <div>
-          <b>{number}. {text}:</b> {value}
+        <div className='info-group'>
+          <label className='info-label'>{number}. {text}</label>
+          <div className='info-content'>{value}</div>
         </div>
       );
     }
