@@ -103,6 +103,10 @@ body
 	background: transparent !important; /* Override AliceBlue bg on form-group input - Ex login submit */
 }
 
+.form-control {
+	font-size: 16px;
+}
+
 label {
     text-align: left;
     font-weight: initial;
