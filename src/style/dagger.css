@@ -94,6 +94,7 @@ body
   border: 1px dashed #ccc;
   border-radius: 4px;
   padding: 5px 10px 10px 10px;
+	min-height: 86px; /* Failover for when form-control margin not invoked to veritcally size small form-groups with no form-control - Ex. Assessment Date Today */
 }
 
 .form-group-clear-style {
@@ -105,6 +106,7 @@ body
 
 .form-control {
 	font-size: 16px;
+	margin: 3px !important; /* Add below spacing, vertically expands the parent form-group */
 }
 
 label {
