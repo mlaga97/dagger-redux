@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 // Actions
 import actions from '../../actions';
@@ -10,10 +10,12 @@ const SortDate = ({
   name,
   children,
 }) => (
-  <FormGroup>
-    <ControlLabel>{children}</ControlLabel>
-    <FormControl name={name} type='date' />
-  </FormGroup>
+  <Col sm={4}>
+    <FormGroup>
+      <ControlLabel>{children}</ControlLabel>
+      <FormControl name={name} type='date' />
+    </FormGroup>
+  </Col>
 );
 
 const SortSelect = ({
@@ -21,26 +23,30 @@ const SortSelect = ({
   label,
   children,
 }) => (
-  <FormGroup>
-    <ControlLabel>{label}</ControlLabel>
-    <FormControl name={name} componentClass='select'>
-      <option />
-      {children}
-    </FormControl>
-  </FormGroup>
+  <Col sm={4}>
+    <FormGroup>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl name={name} componentClass='select'>
+        <option />
+        {children}
+      </FormControl>
+    </FormGroup>
+  </Col>
 );
 
 const SortText = ({
   name,
   label
 }) => (
-  <FormGroup>
-    <ControlLabel>{label}</ControlLabel>
-    <FormControl
-      type='input'
-      name={name}
-    />
-  </FormGroup>
+  <Col sm={4}>
+    <FormGroup>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl
+        type='input'
+        name={name}
+      />
+    </FormGroup>
+  </Col>
 );
 
 class Sorting extends React.Component {
