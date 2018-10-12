@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { Panel } from 'react-bootstrap';
+import { Panel, Grid, Row, Col } from 'react-bootstrap';
 
 const User = ({
   user: { id },
@@ -13,10 +13,16 @@ const User = ({
     </Panel.Heading>
     <Panel.Collapse>
       <Panel.Body>
-        <div>
-          <b>User ID</b>
-          <p>{id}</p>
-        </div>
+        <Grid>
+          <Row>
+            <Col sm={4}>
+              <div className='info-group'>
+                <label className='info-label'>User ID</label>
+                <div className='info-content'>{id}</div>
+              </div>
+            </Col>
+          </Row>
+        </Grid>
       </Panel.Body>
     </Panel.Collapse>
   </Panel>
