@@ -66,11 +66,11 @@ class SortableTable extends React.Component {
             const B = this.props.responses.all[b].metadata;
 
             if (!this.state.sortBy || !this.state.order || this.state.order === 0) {
-              return this.sortHelper(parseInt(a) < parseInt(b));
+              return this.sortHelper(parseInt(a, 10) < parseInt(b, 10));
             }
 
             if (this.state.sortBy === 'responseID') {
-              return this.sortHelper(parseInt(a) < parseInt(b));
+              return this.sortHelper(parseInt(a, 10) < parseInt(b, 10));
             }
 
             if (this.state.sortBy === 'dateSubmitted') {

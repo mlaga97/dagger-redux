@@ -68,7 +68,7 @@ class UserPage extends React.Component {
         {
           Object.keys(user.flags).map((key) => (
             <div>
-              <b>{key}</b>: {(user.flags[key] == 1) ? "yes" : "no"}<br/>
+              <b>{key}</b>: {(parseInt(user.flags[key], 10) === 1) ? "yes" : "no"}<br/>
             </div>
           ))
         }

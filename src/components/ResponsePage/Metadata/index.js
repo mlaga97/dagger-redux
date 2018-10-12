@@ -2,7 +2,6 @@
 import React from 'react';
 
 // Components
-import Patient from './Patient';
 import Record from './Record';
 import User from './User';
 import Clinic from './Clinic';

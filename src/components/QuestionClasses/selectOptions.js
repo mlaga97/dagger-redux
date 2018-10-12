@@ -3,11 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
-// Helpers
-const questionStyle = {
-  paddingLeft: '20px',
-};
-
 class renderer extends React.Component {
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,9 +35,7 @@ class renderer extends React.Component {
           {
             Object.keys(options).map((option) => {
               // TODO: Avoid type coercion by making type match at a higher level?
-              const selected = String(options[option]) === String(selected);
-
-              if (selected) {
+              if (String(options[option]) === String(selected)) {
                 return (
                   <div>
                     <b>{number}. {text}:</b> {option}
@@ -62,8 +55,8 @@ class renderer extends React.Component {
         <ControlLabel>
           {number}. {text}
         </ControlLabel>
-        <FormControl ref='inputNode' componentClass='select' name={name} value={selected} onChange={this.handleChange}>
-          <option value selected disabled hidden>- Select -</option>
+        <FormControl ref='inputNode' componentClass='select' name={name} value={selected || ''} onChange={this.handleChange}>
+          <option value='' disabled hidden>- Select -</option>
           {
             Object.keys(options).map((option) => {
               const value = options[option];

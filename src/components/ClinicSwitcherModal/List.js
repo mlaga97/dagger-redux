@@ -1,13 +1,9 @@
 // Library imports
 import React from 'react';
-import { connect } from 'react-redux';
-import { Modal, Button, Table, Radio } from 'react-bootstrap';
+import { Table, Radio } from 'react-bootstrap';
 
 // Styling
 import '../../style/dagger.css';
-
-// Actions
-import actions from '../../actions';
 
 const Header = () => (
   <tr>
@@ -21,7 +17,7 @@ const Header = () => (
 
 const Clinic = ({clinic, handleClick, checked}) => (
   <tr key={clinic.id}>
-    <td><Radio name='clinic' value={clinic.id} onClick={handleClick} checked={checked} /></td>
+    <td><Radio name='clinic' value={clinic.id} onClick={handleClick} readOnly checked={checked} /></td>
     <td>{clinic.id}</td>
     <td>{clinic.name}</td>
     <td>{clinic.city}</td>
@@ -38,11 +34,7 @@ const List = ({clinics, handleClick, currentClinic}) => (
     <tbody>
       {
         Object.keys(clinics).map((clinicID) => {
-          if (clinicID == currentClinic) {
-            return <Clinic clinic={clinics[clinicID]} handleClick={handleClick} checked='checked' />
-          } else {
-            return <Clinic clinic={clinics[clinicID]} handleClick={handleClick} />
-          }
+          return <Clinic key={clinicID} clinic={clinics[clinicID]} handleClick={handleClick} checked={clinicID === currentClinic} />
         })
       }
     </tbody>

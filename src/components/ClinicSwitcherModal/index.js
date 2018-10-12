@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal, Button, Table, Radio, MenuItem } from 'react-bootstrap';
+import { Modal, Button, MenuItem } from 'react-bootstrap';
 
 // Styling
 import '../../style/dagger.css';

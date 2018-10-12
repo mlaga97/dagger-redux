@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
-import { Modal, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { IndexLinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 
