@@ -139,42 +139,51 @@ div.info-group .info-content {
 		border-radius: 4px;
 }
 
+/* React Button classes html button as btn btn-default which overule our class unless !important */
 input[type=submit], input[type=button], button {
     min-height: initial;
     min-width: initial;
     width: initial;
     height: initial;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    margin: auto;
-    cursor: pointer;
-    background: #eeeeee;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    font-size: 16px;
+    padding: 10px 15px !important; /*Override BS classes btn btn-default */
+    border: 1px solid #ccc !important;
+    margin: auto !important;
+    cursor: pointer !important;
+    background: #eeeeee !important;
+    -webkit-border-radius: 4px !important;
+    border-radius: 4px !important;
+    font-size: 16px !important;
 }
 
 input[type=submit]:hover,
 input[type=button]:hover,
 button:hover {
-	border-color: #bbbbbb;
-    box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
+	border-color: #bbbbbb !important;
+  box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
 }
 
 input[type=submit]:focus,
 input[type=button]:focus,
 button:focus {
-    border-color: #bbbbbb;
-    background: aliceblue;
+    border-color: #bbbbbb !important; /* Override BS classes btn, btn-deafult */
+    background: aliceblue !important;
     box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
 }
 
 input[type=submit]:disabled,
 input[type=button]:disabled,
 button:disabled {
-	border: 1px solid #999999;
-	background-color: #cccccc;
-	color: #666666;
+	border: 1px solid #999999 !important;
+	background-color: #cccccc !important;
+	color: #666666 !important;
+}
+
+div.col-button {
+		padding: 5px 10px 10px 10px;
+}
+
+div.col-button button {
+	margin:30px 10px !important; /* Override BS classes btn, btn-deafult */
 }
 
 .panel-footer {
@@ -407,7 +416,7 @@ table.table-assessment tbody tr td:not(:first-child):hover {
 }
 
 
-/* Align Cols for FormGroups as if in properly formatted Rows */
+/* Custom layout for response search options */
 @media (min-width: 768px) {
 	div.container-response-search-options .col-sm-4 {
 	box-sizing: border-box;
@@ -428,14 +437,6 @@ table.table-assessment tbody tr td:not(:first-child):hover {
 	/* Col 5 Date Submitted End - create break*/
 	div.container-response-search-options .col-sm-4:nth-child(5) {
 		margin-right: 16.5rem;
-	}
-
-	div.col-button {
-	    padding: 5px 10px 10px 10px;
-	}
-
-	div.col-button button {
-		margin:33px 10px;
 	}
 
 }
