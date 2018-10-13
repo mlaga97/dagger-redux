@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, Row } from 'react-bootstrap';
+import { Panel, Grid, Row } from 'react-bootstrap';
 
 // Actions
 import actions from '../../actions';
@@ -27,12 +27,22 @@ class ResponseList extends React.Component {
 
     return (
       <div>
-        <Grid>
-          <Row>
-            <AdvancedSearch />
-          </Row>
-        </Grid>
-        <hr />
+        <Panel defaultExpanded>
+          <Panel.Heading>
+            <Panel.Title toggle>
+              Search Responses
+            </Panel.Title>
+          </Panel.Heading>
+          <Panel.Collapse>
+            <Panel.Body>
+              <Grid>
+                <Row>
+                  <AdvancedSearch />
+                </Row>
+              </Grid>
+            </Panel.Body>
+          </Panel.Collapse>
+        </Panel>
         <h3>{resultCount} Result{(resultCount === 1) ? '' : 's'}</h3>
         <SortableTable responses={this.props.responses}>
           <Response />
