@@ -55,7 +55,7 @@ function Wrapper(props) {
   if (!editable) {
     return (
       <Col sm={12}>
-        <Table striped bordered condensed className={"table-response"} >
+        <Table striped bordered className={"table-response"} >
           <thead>
             <tr>
               <th>Question</th>
