@@ -405,3 +405,37 @@ table.table-assessment tbody tr td:not(:first-child):hover {
 	}
 
 }
+
+
+/* Align Cols for FormGroups as if in properly formatted Rows */
+@media (min-width: 768px) {
+	div.container-response-search-options .col-sm-4 {
+	box-sizing: border-box;
+	width: 33%;
+	display: inline-block;
+	}
+
+	/* Col 1 Patient ID - create break*/
+	div.container-response-search-options .col-sm-4:nth-child(1) {
+		margin-right: 35rem;
+	}
+
+	/* Col 3 Visit Date End - create break*/
+	div.container-response-search-options .col-sm-4:nth-child(3) {
+		margin-right: 16.5rem;
+	}
+
+	/* Col 5 Date Submitted End - create break*/
+	div.container-response-search-options .col-sm-4:nth-child(5) {
+		margin-right: 16.5rem;
+	}
+
+	div.col-button {
+	    padding: 5px 10px 10px 10px;
+	}
+
+	div.col-button button {
+		margin:33px 10px;
+	}
+
+}

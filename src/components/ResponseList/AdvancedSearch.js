@@ -119,15 +119,15 @@ class Sorting extends React.Component {
   render() {
     return (
       <form onSubmit={(e) => {e.preventDefault();}}>
+        {/*<SortSelect name='patientID' label='Patient ID'>{this.GetOptionsFromResponses('patient')}</SortSelect>*/}
+        <SortText name='patientID' label='Patient ID' />
         <SortDate name='visitDateStart'>Visit Date Start</SortDate>
         <SortDate name='visitDateEnd'>Visit Date End</SortDate>
         <SortDate name='dateSubmittedStart'>Date Submitted Start</SortDate>
         <SortDate name='dateSubmittedEnd'>Date Submitted End</SortDate>
         <SortSelect name='userID' label='User ID'>{this.GetOptionsFromResponses('user')}</SortSelect>
         <SortSelect name='clinicID' label='Clinic ID'>{this.GetOptionsFromResponses('clinic')}</SortSelect>
-        {/*<SortSelect name='patientID' label='Patient ID'>{this.GetOptionsFromResponses('patient')}</SortSelect>*/}
-        <SortText name='patientID' label='Patient ID' />
-        <Button onClick={this.handleClick}>Update</Button>
+        <Col sm={4} className='col-button'><Button onClick={this.handleClick}>Search</Button></Col>
       </form>
     );
   }

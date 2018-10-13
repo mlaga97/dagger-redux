@@ -30,12 +30,12 @@ class ResponseList extends React.Component {
         <Panel defaultExpanded>
           <Panel.Heading>
             <Panel.Title toggle>
-              Search Responses
+              Search
             </Panel.Title>
           </Panel.Heading>
           <Panel.Collapse>
             <Panel.Body>
-              <Grid>
+              <Grid className='container-response-search-options'>
                 <Row>
                   <AdvancedSearch />
                 </Row>
