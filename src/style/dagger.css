@@ -140,7 +140,9 @@ div.info-group .info-content {
 }
 
 /* React Button classes html button as btn btn-default which overule our class unless !important */
-input[type=submit], input[type=button], button {
+/* Included anchor tags with class btn btn-default */
+input[type=submit], input[type=button], button,
+a.btn, a.btn-default {
     min-height: initial;
     min-width: initial;
     width: initial;
@@ -157,14 +159,16 @@ input[type=submit], input[type=button], button {
 
 input[type=submit]:hover,
 input[type=button]:hover,
-button:hover {
+button:hover,
+a.btn:hover, a.btn-default:hover  {
 	border-color: #bbbbbb !important;
   box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
 }
 
 input[type=submit]:focus,
 input[type=button]:focus,
-button:focus {
+button:focus,
+a.btn:focus, a.btn-default:focus {
     border-color: #bbbbbb !important; /* Override BS classes btn, btn-deafult */
     background: aliceblue !important;
     box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
@@ -182,7 +186,8 @@ div.col-button {
 		padding: 5px 10px 10px 10px;
 }
 
-div.col-button button {
+div.col-button button,
+a.btn, a.btn-default {
 	margin:30px 10px !important; /* Override BS classes btn, btn-deafult */
 }
 
