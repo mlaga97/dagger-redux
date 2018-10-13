@@ -257,6 +257,10 @@ table.table-response tbody tr td:last-child {
 	text-align: center;
 }
 
+table.table-response tbody tr td:last-child::first-letter {
+	text-transform: uppercase;
+}
+
 /* Set special padding for 1st td in table - targeting question cell of tabled assessments */
 /* May need more specific targeting to ensure formatting to the Question td */
 /* Currently only radioScale and checkboxScale assessment tables are classed table-assessment */
