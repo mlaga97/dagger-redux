@@ -33,6 +33,9 @@ version () {
   VERSION_STRING="v$RELEASE-$BRANCH.$COMMIT"
 }
 
+version
+export REACT_APP_VERSION_STRING=$VERSION_STRING
+export REACT_APP_REVISION_DATE=`date -d @$REVISION_DATE +"%y.%m.%d"`
 
 development () {
   install

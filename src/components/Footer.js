@@ -15,7 +15,7 @@ export default () => (
               <img src='./images/sosw_368x140.png' alt='USM SOSW' className='img-sosw-left' />
             </Col>
             <Col sm={6} className='flex credits'>
-              <div>Dagger 2.0 (demo)</div>
+              <div>Dagger {process.env.REACT_APP_VERSION_STRING} ({process.env.REACT_APP_REVISION_DATE})</div>
               <div>&copy; 2012, 2018 The University of Southern Mississippi</div>
               <div>Funded by the Gulf Region Health Outreach Program</div>
             </Col>
