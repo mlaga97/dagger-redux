@@ -258,7 +258,39 @@ a.btn, a.btn-default {
   }
 }
 
-/* Header for tables containing assessments, responses */
+/* SEARCH RESULTS TABLE */
+/* Header for search results table */
+table.table-search-results thead th {
+	padding:10px !important;
+	font-weight: normal;
+	vertical-align: middle !important;
+}
+
+/* Search results table not wrapped in Panel, set bg white like .page */
+table.table-search-results {
+	background-color: white;
+}
+
+div.search-results-count {
+	font-size: 16px;
+	padding: 10px;
+}
+
+table.table-search-results tbody tr td {
+	text-align: right;
+}
+
+table.table-search-results thead tr th:last-child {
+	text-align: center;
+}
+
+table.table-search-results tbody tr td:last-child {
+	text-transform: uppercase;
+	padding-right: 20px; /* table has no panel, last td content vertically alined with search options in panel above */
+}
+
+/* ASSESSMENT AND RESPONSE RECORD TABLES */
+/* Header for tables containing assessments, response records */
 table.table-assessment thead th,
 table.table-response thead th {
 	padding:10px !important;

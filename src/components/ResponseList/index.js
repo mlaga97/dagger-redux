@@ -43,7 +43,7 @@ class ResponseList extends React.Component {
             </Panel.Body>
           </Panel.Collapse>
         </Panel>
-        <h3>{resultCount} Result{(resultCount === 1) ? '' : 's'}</h3>
+        <div className='search-results-count'>{resultCount} Result{(resultCount === 1) ? '' : 's'}</div>
         <SortableTable responses={this.props.responses}>
           <Response />
         </SortableTable>
