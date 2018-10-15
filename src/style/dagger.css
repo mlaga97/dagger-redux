@@ -307,14 +307,22 @@ table.table-search-results tbody tr td:last-child {
 /* ASSESSMENT AND RESPONSE RECORD TABLES */
 /* Header for tables containing assessments, response records */
 table.table-assessment thead th,
-table.table-response thead th {
+table.table-response thead th,
+table.table-scoring thead th {
 	padding:10px !important;
 	font-weight: normal;
 	text-align: center;
 	vertical-align: middle !important;
 }
 
-table.table-response tbody tr td:last-child {
+div.loading-message {
+	width: 100%;
+	text-align: center;
+	margin-bottom:20px;
+}
+
+table.table-response tbody tr td:last-child,
+table.table-scoring tbody tr td:last-child {
 	text-align: center;
 }
 
@@ -334,6 +342,9 @@ table.table-assessment tbody tr td:first-child {
 table.table-assessment tbody tr td:not(:first-child) {
 	width:1%;
 	padding: 0 !important;
+}
+table.table-scoring tbody tr td:last-child {
+	width:1%;
 }
 
 /* Target only tabled checkboxes in assessments or the assessment selection gets jacked */

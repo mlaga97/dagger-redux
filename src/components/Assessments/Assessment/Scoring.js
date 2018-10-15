@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import scriptjs from 'scriptjs';
-import { Panel } from 'react-bootstrap';
+import { Table  } from 'react-bootstrap';
 
 class Scoring extends React.Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class Scoring extends React.Component {
     }
 
     if (!response) {
-      return <div>Loading response...</div>;
+      return <div className='loading-message'>Loading response...</div>;
     }
 
     if (!state.scoring) {
@@ -43,7 +43,7 @@ class Scoring extends React.Component {
 
       this.getScript(metadata.id);
 
-      return <div>Loading scoring...</div>;
+      return <div className='loading-message'>Loading scoring...</div>;
     }
 
     // Two methods of rendering
@@ -59,16 +59,16 @@ class Scoring extends React.Component {
       const html = state.scoring.render(output.result);
 
       return (
-        <Panel defaultExpanded>
-          <Panel.Heading>
-            <Panel.Title toggle>
-              Scoring
-            </Panel.Title>
-          </Panel.Heading>
-          <Panel.Collapse>
-            <Panel.Body dangerouslySetInnerHTML={{__html: html}}/>
-          </Panel.Collapse>
-        </Panel>
+        <Table bordered striped className='table-scoring' >
+          <thead>
+            <tr>
+              <th>Severity</th>
+              <th>Recomendation</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+            <tbody dangerouslySetInnerHTML={{__html: html}} />
+        </Table>
       );
     } else {
       // Method 2: Show a score, an assessment of severity, and a recommended course of action.
@@ -83,20 +83,22 @@ class Scoring extends React.Component {
       const result = output.result;
 
       return (
-        <Panel defaultExpanded>
-          <Panel.Heading>
-            <Panel.Title toggle>
-              Scoring
-            </Panel.Title>
-          </Panel.Heading>
-          <Panel.Collapse>
-            <Panel.Body>
-              Score: {result.score}<br/>
-              Severity: {result.severity}<br/>
-              Recommendation: {result.recommendation}<br/>
-            </Panel.Body>
-          </Panel.Collapse>
-        </Panel>
+        <Table bordered striped className='table-scoring' >
+          <thead>
+            <tr>
+              <th>Severity</th>
+              <th>Recomendation</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{(result.severity) ? result.severity : 'Loading...'}</td>
+              <td>{(result.recommendation) ? result.recommendation : 'Loading...'}</td>
+              <td>{(result.score) ? result.score : '...'}</td>
+            </tr>
+          </tbody>
+        </Table>
       );
     }
   }
