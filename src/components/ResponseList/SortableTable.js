@@ -49,7 +49,8 @@ class SortableTable extends React.Component {
     <Table className='table-search-results table-striped'>
       <thead>
         <tr>
-          {this.helper('responseID', 'ID')}
+          {/*this.helper('responseID', 'ID')*/}
+          <th>{/* placeholder for record launch button */}</th>
           {this.helper('dateSubmitted', 'Date Submitted')}
           {this.helper('visitDate', 'Visit Date')}
           {this.helper('userID', 'User ID')}
@@ -69,9 +70,11 @@ class SortableTable extends React.Component {
               return this.sortHelper(parseInt(a, 10) < parseInt(b, 10));
             }
 
+            /*
             if (this.state.sortBy === 'responseID') {
               return this.sortHelper(parseInt(a, 10) < parseInt(b, 10));
             }
+            */
 
             if (this.state.sortBy === 'dateSubmitted') {
               return this.sortHelper(new Date(A.dateSubmitted) < new Date(B.dateSubmitted));

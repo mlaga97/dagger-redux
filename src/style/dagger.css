@@ -142,41 +142,55 @@ div.info-group .info-content {
 /* React Button classes html button as btn btn-default which overule our class unless !important */
 /* Included anchor tags with class btn btn-default */
 input[type=submit], input[type=button], button,
-a.btn, a.btn-default {
+a.btn, a.btn-default, a.btn-sm {
     min-height: initial;
     min-width: initial;
     width: initial;
     height: initial;
-    padding: 10px 15px !important; /*Override BS classes btn btn-default */
+
     border: 1px solid #ccc !important;
     margin: auto !important;
     cursor: pointer !important;
     background: #eeeeee !important;
     -webkit-border-radius: 4px !important;
     border-radius: 4px !important;
-    font-size: 16px !important;
+}
+
+input[type=submit], input[type=button], button,
+a.btn, a.btn-default {
+		padding: 10px 15px !important; /*Override BS classes btn btn-default */
+		font-size: 16px !important;
+}
+
+button.btn-sm, a.btn-sm {
+	height: 28px;
+	color: rgb(51,51,51);
+	font-size: 12px !important;
 }
 
 input[type=submit]:hover,
 input[type=button]:hover,
 button:hover,
-a.btn:hover, a.btn-default:hover  {
+a.btn:hover, a.btn-default:hover, a.btn-sm:hover  {
 	border-color: #bbbbbb !important;
   box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
+	text-decoration: none; /* Supress A link underlines */
 }
 
 input[type=submit]:focus,
 input[type=button]:focus,
 button:focus,
-a.btn:focus, a.btn-default:focus {
+a.btn:focus, a.btn-default:focus, a.btn-sm:focus {
     border-color: #bbbbbb !important; /* Override BS classes btn, btn-deafult */
     background: aliceblue !important;
     box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
+		text-decoration: none; /* Supress A link underlines */
 }
 
 input[type=submit]:disabled,
 input[type=button]:disabled,
-button:disabled {
+button:disabled,
+ a.btn:disabled, a.btn-default:disabled, a.btn-sm:disabled{
 	border: 1px solid #999999 !important;
 	background-color: #cccccc !important;
 	color: #666666 !important;
@@ -276,6 +290,7 @@ div.search-results-count {
 	padding: 10px;
 }
 
+table.table-search-results thead tr th:not(:last-child),
 table.table-search-results tbody tr td {
 	text-align: right;
 }
