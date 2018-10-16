@@ -6,15 +6,15 @@ import { Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstr
 // Actions
 import actions from '../../actions';
 
+// Components
+import FocusableInput from '../FocusableInput';
+
 const SortDate = ({
   name,
   children,
 }) => (
   <Col sm={4}>
-    <FormGroup>
-      <ControlLabel>{children}</ControlLabel>
-      <FormControl name={name} type='date' />
-    </FormGroup>
+    <FocusableInput type='date' name={name} label={children} />
   </Col>
 );
 
@@ -24,13 +24,10 @@ const SortSelect = ({
   children,
 }) => (
   <Col sm={4}>
-    <FormGroup>
-      <ControlLabel>{label}</ControlLabel>
-      <FormControl name={name} componentClass='select'>
-        <option />
-        {children}
-      </FormControl>
-    </FormGroup>
+    <FocusableInput componentClass='select' name={name} label={label}>
+      <option />
+      {children}
+    </FocusableInput>
   </Col>
 );
 
@@ -39,13 +36,7 @@ const SortText = ({
   label
 }) => (
   <Col sm={4}>
-    <FormGroup>
-      <ControlLabel>{label}</ControlLabel>
-      <FormControl
-        type='input'
-        name={name}
-      />
-    </FormGroup>
+    <FocusableInput type='input' name={name} label={label} />
   </Col>
 );
 

@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import scriptjs from 'scriptjs';
-import { Table  } from 'react-bootstrap';
+import { Table, Panel  } from 'react-bootstrap';
 
 class Scoring extends React.Component {
   constructor(props) {
