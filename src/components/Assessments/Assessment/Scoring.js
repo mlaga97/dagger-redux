@@ -48,7 +48,7 @@ class Scoring extends React.Component {
 
     // Two methods of rendering
     if (typeof state.scoring.render === 'function') {
-      // Method 1: Just show some html.
+      // Method 1: Just show some raw, unformatted html.
       // TODO: Deprecate this method
 
       const output = state.scoring.score(response, flags);
@@ -58,16 +58,19 @@ class Scoring extends React.Component {
 
       const html = state.scoring.render(output.result);
 
+      // Keep using a table for what would otherwise be a panel because consistency.
       return (
         <Table bordered striped className='table-scoring' >
           <thead>
             <tr>
-              <th>Severity</th>
-              <th>Recomendation</th>
-              <th>Score</th>
+              <th>Scoring</th>
             </tr>
           </thead>
-            <tbody dangerouslySetInnerHTML={{__html: html}} />
+          <tbody>
+            <tr> 
+              <div style={{padding: '10px'}} dangerouslySetInnerHTML={{__html: html}} />
+            </tr>
+          </tbody>
         </Table>
       );
     } else {
