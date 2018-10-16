@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Panel, Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 // Actions
 import actions from '../../actions';
@@ -110,15 +110,28 @@ class Sorting extends React.Component {
   render() {
     return (
       <form onSubmit={(e) => {e.preventDefault();}}>
-        {/*<SortSelect name='patientID' label='Patient ID'>{this.GetOptionsFromResponses('patient')}</SortSelect>*/}
-        <SortText name='patientID' label='Patient ID' />
-        <SortDate name='visitDateStart'>Visit Date Start</SortDate>
-        <SortDate name='visitDateEnd'>Visit Date End</SortDate>
-        <SortDate name='dateSubmittedStart'>Date Submitted Start</SortDate>
-        <SortDate name='dateSubmittedEnd'>Date Submitted End</SortDate>
-        <SortSelect name='userID' label='User ID'>{this.GetOptionsFromResponses('user')}</SortSelect>
-        <SortSelect name='clinicID' label='Clinic ID'>{this.GetOptionsFromResponses('clinic')}</SortSelect>
-        <Col sm={4} className='col-button'><Button onClick={this.handleClick}>Search</Button></Col>
+        <div className='simple-search-wrapper'>
+          {/*<SortSelect name='patientID' label='Patient ID'>{this.GetOptionsFromResponses('patient')}</SortSelect>*/}
+          <SortText name='patientID' label='Patient ID' />
+          <Col sm={4} className='col-button'><Button onClick={this.handleClick}>Search</Button></Col>
+        </div>
+        <Panel className='panel-unadorned'>
+          <Panel.Heading>
+            <Panel.Title toggle>
+              Advanced Search
+            </Panel.Title>
+          </Panel.Heading>
+          <Panel.Collapse>
+            <Panel.Body>
+              <SortDate name='visitDateStart'>Visit Date Start</SortDate>
+              <SortDate name='visitDateEnd'>Visit Date End</SortDate>
+              <SortDate name='dateSubmittedStart'>Date Submitted Start</SortDate>
+              <SortDate name='dateSubmittedEnd'>Date Submitted End</SortDate>
+              <SortSelect name='userID' label='User ID'>{this.GetOptionsFromResponses('user')}</SortSelect>
+              <SortSelect name='clinicID' label='Clinic ID'>{this.GetOptionsFromResponses('clinic')}</SortSelect>
+            </Panel.Body>
+          </Panel.Collapse>
+        </Panel>
       </form>
     );
   }

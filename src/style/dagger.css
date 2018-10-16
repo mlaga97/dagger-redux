@@ -197,7 +197,7 @@ button:disabled,
 }
 
 div.col-button {
-		padding: 5px 10px 10px 10px;
+		padding: 5px 10px 0px 10px; /* 0px bottom for search button to reduce height of panel, breakout if problematic for other buttons */
 }
 
 div.col-button button,
@@ -478,6 +478,27 @@ table.table-assessment tbody tr td:not(:first-child):hover {
 
 }
 
+/* Advanced Search styling */
+div.simple-search-wrapper {
+	display: inline-block;
+	width: 100%;
+}
+
+div.panel-unadorned {
+	border: 0;
+	box-shadow: initial;
+	-webkit-box-shadow: initial;
+}
+
+div.panel-unadorned>.panel-heading {
+	background-color: inherit;
+	border: 0;
+	padding: 0 30px;
+}
+
+div.panel-unadorned>.panel-heading>.panel-title {
+	font-size: 14.4px; /* Bad measurements - equivalent of 90% of 16px (or is it 18px?) - to match label TODO: help me */
+}
 
 /* Custom layout for response search options */
 @media (min-width: 768px) {
@@ -487,18 +508,9 @@ table.table-assessment tbody tr td:not(:first-child):hover {
 	display: inline-block;
 	}
 
-	/* Col 1 Patient ID - create break*/
-	div.container-response-search-options .col-sm-4:nth-child(1) {
-		margin-right: 35rem;
-	}
-
-	/* Col 3 Visit Date End - create break*/
-	div.container-response-search-options .col-sm-4:nth-child(3) {
-		margin-right: 16.5rem;
-	}
-
-	/* Col 5 Date Submitted End - create break*/
-	div.container-response-search-options .col-sm-4:nth-child(5) {
+	/* Col 2, 5 starting from hidden advanced search options - Visit End Date, Date Submitted End- create break*/
+	div.container-response-search-options .col-sm-4:nth-child(2),
+	div.container-response-search-options .col-sm-4:nth-child(4) {
 		margin-right: 16.5rem;
 	}
 
