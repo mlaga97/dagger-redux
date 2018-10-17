@@ -14,7 +14,7 @@ const Summary = ({
 }) => (
   <React.Fragment>
     <td>
-      <Link to={`/response/${id}`}>{id}</Link>
+      <Link to={`/response/${id}`} className={'btn-sm'} >View</Link>
     </td>
     <td>{dateSubmitted}</td>
     <td>{visit.date}</td>

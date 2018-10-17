@@ -25,9 +25,10 @@ class Renderer extends React.Component {
 
     if (!editable) {
       return (
-        <div>
-          <b>{number}. {text}:</b> {(checked) ? 'yes' : 'no'}
-        </div>
+        <tr>
+          <td>{number}. {text}</td>
+          <td>{(checked) ? 'Yes' : 'No'}</td>
+        </tr>
       );
     }
 
@@ -49,7 +50,25 @@ class Renderer extends React.Component {
 }
 
 function Wrapper(props) {
-  const { children } = props;
+  const { children, editable } = props;
+
+  if (!editable) {
+    return (
+      <Col sm={12}>
+        <Table striped bordered className={"table-response"} >
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Response</th>
+            </tr>
+          </thead>
+          <tbody>
+            {children}
+          </tbody>
+        </Table>
+      </Col>
+    );
+  }
 
   return (
     <Col sm={12}>

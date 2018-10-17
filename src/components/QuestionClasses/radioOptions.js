@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { FormGroup, ControlLabel, Radio } from 'react-bootstrap';
+import { FormGroup, ControlLabel, Radio, Grid, Row } from 'react-bootstrap';
 
 // Helpers
 const questionStyle = {
@@ -31,24 +31,27 @@ class renderer extends React.Component {
 
     if (!editable) {
       return (
-        <div>
-          {
-            Object.keys(options).map((option) => {
-              // TODO: Avoid type coercion by making type match at a higher level?
-              const checked = String(options[option]) === String(selected);
+        <Grid>
+          <Row>
+            {
+              Object.keys(options).map((option) => {
+                // TODO: Avoid type coercion by making type match at a higher level?
+                const checked = String(options[option]) === String(selected);
 
-              if (checked) {
-                return (
-                  <div>
-                    <b>{number}. {text}:</b> {option}
-                  </div>
-                );
-              }
+                if (checked) {
+                  return (
+                    <div className='info-group'>
+                      <label className='info-label'>{number}. {text}</label>
+                      <div className='info-content'>{option}</div>
+                    </div>
+                  );
+                }
 
-              return null;
-            })
-          }
-        </div>
+                return null;
+              })
+            }
+          </Row>
+        </Grid>
       );
     }
 
@@ -70,7 +73,7 @@ class renderer extends React.Component {
                 <Radio
                   name={name}
                   value={value}
-                  key={[name, value].join('_')} 
+                  key={[name, value].join('_')}
                   checked={checked}
                   onChange={this.handleChange}
                 >

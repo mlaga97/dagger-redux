@@ -1,19 +1,21 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Panel, Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 // Actions
 import actions from '../../actions';
+
+// Components
+import FocusableInput from '../FocusableInput';
 
 const SortDate = ({
   name,
   children,
 }) => (
-  <FormGroup>
-    <ControlLabel>{children}</ControlLabel>
-    <FormControl name={name} type='date' />
-  </FormGroup>
+  <Col sm={4}>
+    <FocusableInput type='date' name={name} label={children} />
+  </Col>
 );
 
 const SortSelect = ({
@@ -21,26 +23,21 @@ const SortSelect = ({
   label,
   children,
 }) => (
-  <FormGroup>
-    <ControlLabel>{label}</ControlLabel>
-    <FormControl name={name} componentClass='select'>
+  <Col sm={4}>
+    <FocusableInput componentClass='select' name={name} label={label}>
       <option />
       {children}
-    </FormControl>
-  </FormGroup>
+    </FocusableInput>
+  </Col>
 );
 
 const SortText = ({
   name,
   label
 }) => (
-  <FormGroup>
-    <ControlLabel>{label}</ControlLabel>
-    <FormControl
-      type='input'
-      name={name}
-    />
-  </FormGroup>
+  <Col sm={4}>
+    <FocusableInput type='input' name={name} label={label} />
+  </Col>
 );
 
 class Sorting extends React.Component {
@@ -113,15 +110,28 @@ class Sorting extends React.Component {
   render() {
     return (
       <form onSubmit={(e) => {e.preventDefault();}}>
-        <SortDate name='visitDateStart'>Visit Date Start</SortDate>
-        <SortDate name='visitDateEnd'>Visit Date End</SortDate>
-        <SortDate name='dateSubmittedStart'>Date Submitted Start</SortDate>
-        <SortDate name='dateSubmittedEnd'>Date Submitted End</SortDate>
-        <SortSelect name='userID' label='User ID'>{this.GetOptionsFromResponses('user')}</SortSelect>
-        <SortSelect name='clinicID' label='Clinic ID'>{this.GetOptionsFromResponses('clinic')}</SortSelect>
-        {/*<SortSelect name='patientID' label='Patient ID'>{this.GetOptionsFromResponses('patient')}</SortSelect>*/}
-        <SortText name='patientID' label='Patient ID' />
-        <Button onClick={this.handleClick}>Update</Button>
+        <div className='simple-search-wrapper'>
+          {/*<SortSelect name='patientID' label='Patient ID'>{this.GetOptionsFromResponses('patient')}</SortSelect>*/}
+          <SortText name='patientID' label='Patient ID' />
+          <Col sm={4} className='col-button'><Button onClick={this.handleClick}>Search</Button></Col>
+        </div>
+        <Panel className='panel-unadorned'>
+          <Panel.Heading>
+            <Panel.Title toggle>
+              Advanced Search
+            </Panel.Title>
+          </Panel.Heading>
+          <Panel.Collapse>
+            <Panel.Body>
+              <SortDate name='visitDateStart'>Visit Date Start</SortDate>
+              <SortDate name='visitDateEnd'>Visit Date End</SortDate>
+              <SortDate name='dateSubmittedStart'>Date Submitted Start</SortDate>
+              <SortDate name='dateSubmittedEnd'>Date Submitted End</SortDate>
+              <SortSelect name='userID' label='User ID'>{this.GetOptionsFromResponses('user')}</SortSelect>
+              <SortSelect name='clinicID' label='Clinic ID'>{this.GetOptionsFromResponses('clinic')}</SortSelect>
+            </Panel.Body>
+          </Panel.Collapse>
+        </Panel>
       </form>
     );
   }

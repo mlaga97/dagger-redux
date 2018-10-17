@@ -29,7 +29,7 @@ class Renderer extends React.Component {
     // TODO: Actually handle multi-column, instead of just ignoring it.
     if (!editable) {
       return (
-        <div>
+        <tr>
           {
             subTypes.map((subType) => {
               const { suffix, options } = subType;
@@ -45,14 +45,15 @@ class Renderer extends React.Component {
                 }
 
                 return (
-                  <div>
-                    <b>{number}. {text}:</b> {option}
-                  </div>
+                  <React.Fragment>
+                    <td>{number}. {text}</td>
+                    <td>{option}</td>
+                  </React.Fragment>
                 );
               });
             })
           }
-        </div>
+        </tr>
       );
     }
 

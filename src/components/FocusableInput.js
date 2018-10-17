@@ -11,7 +11,9 @@ class FocusableInput extends React.Component {
   render = () => (
     <FormGroup onClick={this.handleClick} >
       <ControlLabel>{this.props.label}</ControlLabel>
-      <FormControl ref='inputNode' name={this.props.name} type={this.props.type} required={this.props.required} autoFocus={this.props.autoFocus} onChange={this.props.onChange} />
+      <FormControl ref='inputNode' name={this.props.name} componentClass={this.props.componentClass} type={this.props.type} required={this.props.required} autoFocus={this.props.autoFocus} onChange={this.props.onChange}>
+        {this.props.children}
+      </FormControl>
     </FormGroup>
   )
 }

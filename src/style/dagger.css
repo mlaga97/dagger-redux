@@ -90,11 +90,16 @@ body
     margin-left: -15px;
 }
 
-.form-group {
+.form-group, .info-group {
   border: 1px dashed #ccc;
   border-radius: 4px;
   padding: 5px 10px 10px 10px;
 	min-height: 86px; /* Failover for when form-control margin not invoked to veritcally size small form-groups with no form-control - Ex. Assessment Date Today */
+}
+
+.info-group {
+	border-style: solid; /* Override dashed border style */
+	margin-bottom: 15px; /* Mimic BS form-control bottom margin */
 }
 
 .form-group-clear-style {
@@ -104,7 +109,7 @@ body
 	background: transparent !important; /* Override AliceBlue bg on form-group input - Ex login submit */
 }
 
-.form-control {
+.form-control, .info-content {
 	font-size: 16px;
 	margin: 3px !important; /* Add below spacing, vertically expands the parent form-group */
 }
@@ -123,42 +128,81 @@ label.btn {
 		width: initial; /* Override label with for btn class */
 }
 
-input[type=submit], input[type=button], button {
+/* Make form-group-like content in response like text inputs */
+div.info-group .info-content {
+		background-color: #f9f9f9; /* Match BS class table-striped */
+		text-align: right; 				 /* questions to the left, responses to the right */
+		/* Match text input style */
+		height: 34px;
+		padding: 6px 12px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+}
+
+/* React Button classes html button as btn btn-default which overule our class unless !important */
+/* Included anchor tags with class btn btn-default */
+input[type=submit], input[type=button], button,
+a.btn, a.btn-default, a.btn-sm {
     min-height: initial;
     min-width: initial;
     width: initial;
     height: initial;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    margin: auto;
-    cursor: pointer;
-    background: #eeeeee;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    font-size: 16px;
+
+    border: 1px solid #ccc !important;
+    margin: auto !important;
+    cursor: pointer !important;
+    background: #eeeeee !important;
+    -webkit-border-radius: 4px !important;
+    border-radius: 4px !important;
+}
+
+input[type=submit], input[type=button], button,
+a.btn, a.btn-default {
+		padding: 10px 15px !important; /*Override BS classes btn btn-default */
+		font-size: 16px !important;
+}
+
+button.btn-sm, a.btn-sm {
+	height: 28px;
+	color: rgb(51,51,51);
+	font-size: 12px !important;
 }
 
 input[type=submit]:hover,
 input[type=button]:hover,
-button:hover {
-	border-color: #bbbbbb;
-    box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
+button:hover,
+a.btn:hover, a.btn-default:hover, a.btn-sm:hover  {
+	border-color: #bbbbbb !important;
+  box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
+	text-decoration: none; /* Supress A link underlines */
 }
 
 input[type=submit]:focus,
 input[type=button]:focus,
-button:focus {
-    border-color: #bbbbbb;
-    background: aliceblue;
+button:focus,
+a.btn:focus, a.btn-default:focus, a.btn-sm:focus {
+    border-color: #bbbbbb !important; /* Override BS classes btn, btn-deafult */
+    background: aliceblue !important;
     box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
+		text-decoration: none; /* Supress A link underlines */
 }
 
 input[type=submit]:disabled,
 input[type=button]:disabled,
-button:disabled {
-	border: 1px solid #999999;
-	background-color: #cccccc;
-	color: #666666;
+button:disabled,
+ a.btn:disabled, a.btn-default:disabled, a.btn-sm:disabled{
+	border: 1px solid #999999 !important;
+	background-color: #cccccc !important;
+	color: #666666 !important;
+}
+
+div.col-button {
+		padding: 5px 10px 0px 10px; /* 0px bottom for search button to reduce height of panel, breakout if problematic for other buttons */
+}
+
+div.col-button button,
+a.btn, a.btn-default {
+	margin:30px 10px !important; /* Override BS classes btn, btn-deafult */
 }
 
 .panel-footer {
@@ -228,12 +272,62 @@ button:disabled {
   }
 }
 
-/* Header for tables containing assessments */
-table.table-assessment thead th {
+/* SEARCH RESULTS TABLE */
+/* Header for search results table */
+table.table-search-results thead th {
+	padding:10px !important;
+	font-weight: normal;
+	vertical-align: middle !important;
+}
+
+/* Search results table not wrapped in Panel, set bg white like .page */
+table.table-search-results {
+	background-color: white;
+}
+
+div.search-results-count {
+	font-size: 16px;
+	padding: 10px;
+}
+
+table.table-search-results thead tr th:not(:last-child),
+table.table-search-results tbody tr td {
+	text-align: right;
+}
+
+table.table-search-results thead tr th:last-child {
+	text-align: center;
+}
+
+table.table-search-results tbody tr td:last-child {
+	text-transform: uppercase;
+	padding-right: 20px; /* table has no panel, last td content vertically alined with search options in panel above */
+}
+
+/* ASSESSMENT AND RESPONSE RECORD TABLES */
+/* Header for tables containing assessments, response records */
+table.table-assessment thead th,
+table.table-response thead th,
+table.table-scoring thead th {
 	padding:10px !important;
 	font-weight: normal;
 	text-align: center;
 	vertical-align: middle !important;
+}
+
+div.loading-message {
+	width: 100%;
+	text-align: center;
+	margin-bottom:20px;
+}
+
+table.table-response tbody tr td:last-child,
+table.table-scoring tbody tr td:last-child {
+	text-align: center;
+}
+
+table.table-response tbody tr td:last-child::first-letter {
+	text-transform: uppercase;
 }
 
 /* Set special padding for 1st td in table - targeting question cell of tabled assessments */
@@ -246,9 +340,11 @@ table.table-assessment tbody tr td:first-child {
 
 /* Hack for improved auto sizing of td on tabled radio scale options */
 table.table-assessment tbody tr td:not(:first-child) {
-    width:1%;
-    white-space: pre-wrap; /* nowrap will allow cells space for labels on one line - consider for some assessments (add flag?) */
-		padding: 0 !important;
+	width:1%;
+	padding: 0 !important;
+}
+table.table-scoring tbody tr td:last-child {
+	width:1%;
 }
 
 /* Target only tabled checkboxes in assessments or the assessment selection gets jacked */
@@ -378,6 +474,44 @@ table.table-assessment tbody tr td:not(:first-child):hover {
 	/* Cols 3, 6, 9...*/
 	div.container-assessment .col-sm-4:nth-child(3n) {
 		margin-right: .2rem;
+	}
+
+}
+
+/* Advanced Search styling */
+div.simple-search-wrapper {
+	display: inline-block;
+	width: 100%;
+}
+
+div.panel-unadorned {
+	border: 0;
+	box-shadow: initial;
+	-webkit-box-shadow: initial;
+}
+
+div.panel-unadorned>.panel-heading {
+	background-color: inherit;
+	border: 0;
+	padding: 0 30px;
+}
+
+div.panel-unadorned>.panel-heading>.panel-title {
+	font-size: 14.4px; /* Bad measurements - equivalent of 90% of 16px (or is it 18px?) - to match label TODO: help me */
+}
+
+/* Custom layout for response search options */
+@media (min-width: 768px) {
+	div.container-response-search-options .col-sm-4 {
+	box-sizing: border-box;
+	width: 33%;
+	display: inline-block;
+	}
+
+	/* Col 2, 5 starting from hidden advanced search options - Visit End Date, Date Submitted End- create break*/
+	div.container-response-search-options .col-sm-4:nth-child(2),
+	div.container-response-search-options .col-sm-4:nth-child(4) {
+		margin-right: 16.5rem;
 	}
 
 }

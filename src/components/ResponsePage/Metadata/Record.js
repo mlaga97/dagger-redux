@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { Panel } from 'react-bootstrap';
+import { Panel, Grid, Row, Col } from 'react-bootstrap';
 
 const Record = ({
   visit,
@@ -14,14 +14,22 @@ const Record = ({
     </Panel.Heading>
     <Panel.Collapse>
       <Panel.Body>
-        <div>
-          <b>Assessment Performed</b>
-          <p>{visit.date}</p>
-        </div>
-        <div>
-          <b>Assessment Recorded</b>
-          <p>{dateSubmitted}</p>
-        </div>
+        <Grid>
+          <Row>
+            <Col sm={4}>
+              <div className='info-group'>
+                <label className='info-label'>Assessment Performed</label>
+                <div className='info-content'>{visit.date}</div>
+              </div>
+            </Col>
+            <Col sm={4}>
+              <div className='info-group'>
+                <label className='info-label'>Assessment Recorded</label>
+                <div className='info-content'>{dateSubmitted}</div>
+              </div>
+            </Col>
+          </Row>
+        </Grid>
       </Panel.Body>
     </Panel.Collapse>
   </Panel>
