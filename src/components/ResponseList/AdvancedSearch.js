@@ -41,6 +41,14 @@ const SortText = ({
 );
 
 class Sorting extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false,
+    };
+  }
+
   // TODO: Fix this abomination in particular
   // TODO: Base on globally valid options instead of locally valid?
   GetOptionsFromResponses(target) {
@@ -107,6 +115,13 @@ class Sorting extends React.Component {
     });
   }
 
+  handleToggle = (e) => {
+    console.log(String(this.state.open));
+    this.setState({
+      open: !this.state.open,
+    });
+  }
+
   render() {
     return (
       <form onSubmit={(e) => {e.preventDefault();}}>
@@ -115,12 +130,7 @@ class Sorting extends React.Component {
           <SortText name='patientID' label='Patient ID' />
           <Col sm={4} className='col-button'><Button onClick={this.handleClick}>Search</Button></Col>
         </div>
-        <Panel className='panel-unadorned'>
-          <Panel.Heading>
-            <Panel.Title toggle>
-              Advanced Search
-            </Panel.Title>
-          </Panel.Heading>
+        <Panel className='panel-unadorned' onToggle={this.handleToggle} expanded={this.state.open}>
           <Panel.Collapse>
             <Panel.Body>
               <SortDate name='visitDateStart'>Visit Date Start</SortDate>
@@ -131,6 +141,11 @@ class Sorting extends React.Component {
               <SortSelect name='clinicID' label='Clinic ID'>{this.GetOptionsFromResponses('clinic')}</SortSelect>
             </Panel.Body>
           </Panel.Collapse>
+          <Panel.Heading>
+            <Panel.Title toggle>
+              {(this.state.open) ? '▴ Hide Advanced Search' : '▾ Advanced Search'}
+            </Panel.Title>
+          </Panel.Heading>
         </Panel>
       </form>
     );
