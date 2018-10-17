@@ -36,7 +36,7 @@ const SortText = ({
   label
 }) => (
   <Col sm={4}>
-    <FocusableInput type='input' name={name} label={label} />
+    <FocusableInput type='text' name={name} label={label} autoFocus />
   </Col>
 );
 
