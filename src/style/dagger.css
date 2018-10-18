@@ -219,7 +219,7 @@ a.btn, a.btn-default {
 }
 
 .logo {
-    margin-top: 10px;
+    margin: 10px 0 10px 0;
     text-align: center;
 }
 
@@ -240,6 +240,10 @@ a.btn, a.btn-default {
     text-align: center;
 }
 
+.credits div:first-child {
+	font-weight: bold;
+}
+
 .img-grhop-right {
     width: 69px;
     height: 70px;
@@ -247,21 +251,15 @@ a.btn, a.btn-default {
     filter: grayscale(20%);
 }
 
-/* TODO: Work this out */
-/*@media (min-width: 1200px) {
-  .img-grhop-right {
-      float: right;
-  }
-}*/
+/* Allow footer logo images to center in col on mobile, float to outside otherwise */
+@media (min-width: 768px) {
+	.img-sosw-left {
+	    float: left;
+	}
 
-@media (min-width: 992px)
-.img-grhop-right {
-    float: right;
-}
-
-@media (min-width: 768px)
-.img-grhop-right {
-    float: right;
+	.img-grhop-right {
+	    float: right;
+	}
 }
 
 /* Grid Stuff */
