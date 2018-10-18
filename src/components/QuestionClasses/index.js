@@ -5,6 +5,7 @@ import radioScale from './radioScale';
 import radioOptions from './radioOptions';
 import selectOptions from './selectOptions';
 import textField from './textField';
+import dateField from './dateField';
 
 export default {
   bitwiseTable,
@@ -13,4 +14,5 @@ export default {
   radioOptions,
   selectOptions,
   textField,
+  dateField,
 };
