@@ -32,6 +32,7 @@ body
 
 .navbar {
   margin-bottom: 0px; /* Overwrites navbar style from unknown location */
+	border-radius: 0 !important; /* Get rid of rounded corners on navbar */
 }
 
 /* Mitigates form-group overlapping container and panel-body - I don't know why */
