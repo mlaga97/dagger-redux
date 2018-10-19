@@ -355,6 +355,7 @@ table.table-response thead th,
 table.table-scoring thead th {
 	padding:10px !important;
 	font-weight: normal;
+	text-transform: capitalize; /* Failover if data is all lowercase */
 	text-align: center;
 	vertical-align: middle !important;
 }
@@ -405,6 +406,7 @@ table.table-assessment tbody tr td div.checkbox {
 table.table-assessment tbody tr td div.radio label {
   vertical-align: middle;
   text-align: center;
+	text-transform: capitalize; /* Failover if label text is all lowercase */
 	font-size: 75%;
 	color: gray;
 	padding-top: 28px;
