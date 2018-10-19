@@ -281,9 +281,33 @@ a.btn, a.btn-default {
   }
 }
 
-/* SEARCH RESULTS TABLE */
-/* Header for search results table */
-table.table-search-results thead th {
+/* Select a Clinic table in modal */
+/* TODO: Better targeting of this table, may need other tables in modals with different style */
+div.modal-body table tbody td {
+	vertical-align: middle;
+}
+
+div.modal-header {
+	padding: 10px; 			/* reduce default vertical spacing of modal-header */
+}
+div.modal-header h4.modal-title {
+	padding-left: 8px;	/* Bring into alignment with radio buttons */
+	padding-top:  8px;  /* Bring into alignment with close button */
+}
+
+div.modal-body {
+	padding-top: 0;			/* reduce default vertical spacing at top,bottom of modal */
+	padding-bottom: 0;
+}
+
+div.modal-body table tbody td div.radio {
+	margin: 0;
+}
+
+/* SEARCH RESULTS TABLE (plus Clinic Selection table header in modal)*/
+/* Header for search results table and tables in modal (currently only Select a Clinic) */
+table.table-search-results thead th,
+div.modal-body table thead th {
 	padding:10px !important;
 	font-weight: normal;
 	vertical-align: middle !important;
