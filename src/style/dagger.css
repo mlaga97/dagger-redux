@@ -379,7 +379,6 @@ table.table-response tbody tr td:last-child::first-letter {
 /* Currently only radioScale and checkboxScale assessment tables are classed table-assessment */
 table.table-assessment tbody tr td:first-child {
 	padding: 15px 10px 5px 10px !important; /* Overrides BS padding for table-condensed>tbody>tr>td */
-	font-size: 90%;
 }
 
 /* Hack for improved auto sizing of td on tabled radio scale options */
