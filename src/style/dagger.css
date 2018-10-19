@@ -221,6 +221,16 @@ a.btn, a.btn-default {
     border-style: solid;
 }
 
+/* A Panel alignment issue occurs because some Panels are unnecessarily contained in a Grid / div.container */
+/* Better to remove the div or the container class from the div than the negative margins BS below */
+/* This should be removed afterward */
+/* Panel for Welcome (New Record, Search buttons) has no identifier to target - still inconsistent on alignment */
+div.container div.panel-footer,
+div.container form.login div.panel {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
 /* Footer stuff */
 .footer-image {
   height: 70px;
