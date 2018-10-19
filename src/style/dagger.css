@@ -248,8 +248,11 @@ a.btn, a.btn-default {
     text-align: center;
 }
 
+/* Dagger name and version in footer */
 .credits div:first-child {
+	font-size: 14px;
 	font-weight: bold;
+	padding-bottom: 5px;
 }
 
 .img-grhop-right {
