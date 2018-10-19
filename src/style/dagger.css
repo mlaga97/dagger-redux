@@ -163,6 +163,13 @@ a.btn, a.btn-default {
 		font-size: 16px !important;
 }
 
+/* Aligns Next button with in-Panel content */
+/* Remove if left aligned Next button retired in favor of centered */
+/* TODO: Make more specific to not cause problems */
+button {
+	margin-left: 15px !important;
+}
+
 button.btn-sm, a.btn-sm {
 	height: 28px;
 	color: rgb(51,51,51);
