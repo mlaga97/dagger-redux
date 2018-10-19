@@ -112,7 +112,6 @@ body
 
 .form-control, .info-content {
 	font-size: 16px;
-	margin: 3px !important; /* Add below spacing, vertically expands the parent form-group */
 }
 
 label {
