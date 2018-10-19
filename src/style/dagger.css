@@ -32,6 +32,7 @@ body
 
 .navbar {
   margin-bottom: 0px; /* Overwrites navbar style from unknown location */
+	border-radius: 0 !important; /* Get rid of rounded corners on navbar */
 }
 
 /* Mitigates form-group overlapping container and panel-body - I don't know why */
@@ -111,7 +112,6 @@ body
 
 .form-control, .info-content {
 	font-size: 16px;
-	margin: 3px !important; /* Add below spacing, vertically expands the parent form-group */
 }
 
 label {
@@ -160,6 +160,13 @@ input[type=submit], input[type=button], button,
 a.btn, a.btn-default {
 		padding: 10px 15px !important; /*Override BS classes btn btn-default */
 		font-size: 16px !important;
+}
+
+/* Aligns Next button with in-Panel content */
+/* Remove if left aligned Next button retired in favor of centered */
+/* TODO: Make more specific to not cause problems */
+button {
+	margin-left: 15px !important;
 }
 
 button.btn-sm, a.btn-sm {
@@ -213,13 +220,23 @@ a.btn, a.btn-default {
     border-style: solid;
 }
 
+/* A Panel alignment issue occurs because some Panels are unnecessarily contained in a Grid / div.container */
+/* Better to remove the div or the container class from the div than the negative margins BS below */
+/* This should be removed afterward */
+/* Panel for Welcome (New Record, Search buttons) has no identifier to target - still inconsistent on alignment */
+div.container div.panel-footer,
+div.container form.login div.panel {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
 /* Footer stuff */
 .footer-image {
   height: 70px;
 }
 
 .logo {
-    margin-top: 10px;
+    margin: 10px 0 10px 0;
     text-align: center;
 }
 
@@ -240,6 +257,13 @@ a.btn, a.btn-default {
     text-align: center;
 }
 
+/* Dagger name and version in footer */
+.credits div:first-child {
+	font-size: 14px;
+	font-weight: bold;
+	padding-bottom: 5px;
+}
+
 .img-grhop-right {
     width: 69px;
     height: 70px;
@@ -247,21 +271,15 @@ a.btn, a.btn-default {
     filter: grayscale(20%);
 }
 
-/* TODO: Work this out */
-/*@media (min-width: 1200px) {
-  .img-grhop-right {
-      float: right;
-  }
-}*/
+/* Allow footer logo images to center in col on mobile, float to outside otherwise */
+@media (min-width: 768px) {
+	.img-sosw-left {
+	    float: left;
+	}
 
-@media (min-width: 992px)
-.img-grhop-right {
-    float: right;
-}
-
-@media (min-width: 768px)
-.img-grhop-right {
-    float: right;
+	.img-grhop-right {
+	    float: right;
+	}
 }
 
 /* Grid Stuff */
@@ -272,9 +290,33 @@ a.btn, a.btn-default {
   }
 }
 
-/* SEARCH RESULTS TABLE */
-/* Header for search results table */
-table.table-search-results thead th {
+/* Select a Clinic table in modal */
+/* TODO: Better targeting of this table, may need other tables in modals with different style */
+div.modal-body table tbody td {
+	vertical-align: middle;
+}
+
+div.modal-header {
+	padding: 10px; 			/* reduce default vertical spacing of modal-header */
+}
+div.modal-header h4.modal-title {
+	padding-left: 8px;	/* Bring into alignment with radio buttons */
+	padding-top:  8px;  /* Bring into alignment with close button */
+}
+
+div.modal-body {
+	padding-top: 0;			/* reduce default vertical spacing at top,bottom of modal */
+	padding-bottom: 0;
+}
+
+div.modal-body table tbody td div.radio {
+	margin: 0;
+}
+
+/* SEARCH RESULTS TABLE (plus Clinic Selection table header in modal)*/
+/* Header for search results table and tables in modal (currently only Select a Clinic) */
+table.table-search-results thead th,
+div.modal-body table thead th {
 	padding:10px !important;
 	font-weight: normal;
 	vertical-align: middle !important;
@@ -302,6 +344,7 @@ table.table-search-results thead tr th:last-child {
 table.table-search-results tbody tr td:last-child {
 	text-transform: uppercase;
 	padding-right: 20px; /* table has no panel, last td content vertically alined with search options in panel above */
+	font-size: 80%; /* Accomodate many assessments in table col without wrapping other cols */
 }
 
 /* ASSESSMENT AND RESPONSE RECORD TABLES */
@@ -311,6 +354,7 @@ table.table-response thead th,
 table.table-scoring thead th {
 	padding:10px !important;
 	font-weight: normal;
+	text-transform: capitalize; /* Failover if data is all lowercase */
 	text-align: center;
 	vertical-align: middle !important;
 }
@@ -335,7 +379,6 @@ table.table-response tbody tr td:last-child::first-letter {
 /* Currently only radioScale and checkboxScale assessment tables are classed table-assessment */
 table.table-assessment tbody tr td:first-child {
 	padding: 15px 10px 5px 10px !important; /* Overrides BS padding for table-condensed>tbody>tr>td */
-	font-size: 90%;
 }
 
 /* Hack for improved auto sizing of td on tabled radio scale options */
@@ -362,6 +405,7 @@ table.table-assessment tbody tr td div.checkbox {
 table.table-assessment tbody tr td div.radio label {
   vertical-align: middle;
   text-align: center;
+	text-transform: capitalize; /* Failover if label text is all lowercase */
 	font-size: 75%;
 	color: gray;
 	padding-top: 28px;
