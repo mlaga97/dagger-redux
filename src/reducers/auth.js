@@ -5,10 +5,16 @@ import actions from '../actions';
 export default function settings(state = null, action) {
   switch (action.type) {
     case actions.auth.login.succeeded:
+      // TODO: Change this if login page is moved.
+      if (window.location.pathname !== '/') {
+        window.location.pathname = '/';
+      }
+
       return Object.assign({}, state, {
         status: true,
       });
     case actions.auth.logout.succeeded:
+      window.location.pathname = '/';
       return Object.assign({}, state, {
         status: false,
       });
