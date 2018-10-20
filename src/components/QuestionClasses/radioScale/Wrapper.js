@@ -72,6 +72,17 @@ function Wrapper(props) {
             </React.Fragment>;
   }
 
+  // Fall back to radioOptions if on a mobile device
+  // TODO: Better
+  const isMobile = window.innerWidth <= 500;
+  if (isMobile) {
+    return (
+      <Col sm={12}>
+        {children}
+      </Col>
+    );
+  }
+
   return (
       <Col sm={12}>
         <Table striped bordered condensed hover className={"table-assessment"} >

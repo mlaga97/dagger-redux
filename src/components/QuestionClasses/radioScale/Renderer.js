@@ -5,6 +5,9 @@ import { Radio } from 'react-bootstrap';
 // Helper
 import { convertIntoMultiColumnRenderer } from './helpers';
 
+// Components
+import RadioOptions from '../radioOptions';
+
 class Renderer extends React.Component {
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -56,6 +59,13 @@ class Renderer extends React.Component {
           }
         </tr>
       );
+    }
+
+    // Fall back to radioOptions if on a mobile device
+    // TODO: Better
+    const isMobile = window.innerWidth <= 500;
+    if (isMobile) {
+      return <RadioOptions.renderer {...this.props} />;
     }
 
     return (
