@@ -3,7 +3,12 @@ function expandQuestions(props) {
 
   return questions.map((question, index) => {
     let { type } = question;
-    const { id: name, text, required } = question;
+    const {
+      text,
+      width,
+      required,
+      id: name,
+    } = question;
 
     // Incremental Numbering
     const number = index + offset;
@@ -19,6 +24,7 @@ function expandQuestions(props) {
     return {
       name, // Field name
       text, // Question text
+      width, // Question width
       number, // Question number
       options, // Question options
       required, // Is question required
