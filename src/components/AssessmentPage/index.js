@@ -47,7 +47,7 @@ class AssessmentPage extends React.Component {
     const { response, selected } = state;
 
     return (
-      <form>
+      <form onSubmit={this.handleSubmit} >
         <Metadata
           editable
           response={response}
@@ -71,7 +71,7 @@ class AssessmentPage extends React.Component {
           assessments={assessments}
           onUpdate={this.responseUpdate}
         />
-        <Button onClick={this.handleSubmit}>Next</Button>
+        <Button type='submit' name='Submit' value='Submit'>Next</Button>
       </form>
     );
   }
