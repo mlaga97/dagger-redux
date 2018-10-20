@@ -64,5 +64,5 @@ class Renderer extends React.Component {
 
 export default {
   renderer: Renderer,
-  wrapper: React.Fragment,
+  wrapper: (props) => (<React.Fragment>{props.children}</React.Fragment>),
 };
