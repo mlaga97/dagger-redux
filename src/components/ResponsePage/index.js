@@ -31,6 +31,9 @@ class ResponsePage extends React.Component {
         type: actions.response.all.requested,
       });
     }
+
+    // Prevent page from loading at bottom or in middle.
+    window.scrollTo(0, 0); // TODO: Not this.
   }
 
   render() {

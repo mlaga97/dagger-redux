@@ -36,7 +36,7 @@ const SortText = ({
   label
 }) => (
   <Col sm={4}>
-    <FocusableInput type='input' name={name} label={label} />
+    <FocusableInput type='text' name={name} label={label} autoFocus />
   </Col>
 );
 
@@ -107,7 +107,9 @@ class Sorting extends React.Component {
     }
 
     const patientID = document.getElementsByName('patientID')[0].value;
-    parameters.patientID = patientID;
+    if (patientID !== '') {
+      parameters.patientID = patientID;
+    }
 
     this.props.dispatch({
       type: actions.response.all.requested,
@@ -124,7 +126,7 @@ class Sorting extends React.Component {
 
   render() {
     return (
-      <form onSubmit={(e) => {e.preventDefault();}}>
+      <form onSubmit={(e) => {e.preventDefault(); this.handleClick()}}>
         <div className='simple-search-wrapper'>
           {/*<SortSelect name='patientID' label='Patient ID'>{this.GetOptionsFromResponses('patient')}</SortSelect>*/}
           <SortText name='patientID' label='Patient ID' />

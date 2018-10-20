@@ -18,11 +18,6 @@ class LoginForm extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    // TODO: Change this if login page is moved.
-    if (window.location.pathname !== '/') {
-      window.location.pathname = '/';
-    }
-
     // Attempt Login
     this.props.dispatch({
       type: actions.auth.login.requested,
