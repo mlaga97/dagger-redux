@@ -20,6 +20,7 @@ class Renderer extends React.Component {
       text,
       number,
       editable,
+      required,
       response,
     } = this.props;
 
@@ -81,6 +82,7 @@ class Renderer extends React.Component {
                       value={value}
                       checked={checked}
                       onChange={this.handleChange}
+                      required={(required) ? 'required' : null}
                     >
                       <hr /> {/* Sizable element to adjust vertical space between input and label text below */}
                       {!hideLabel ? label : null}

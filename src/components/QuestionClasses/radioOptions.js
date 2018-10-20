@@ -24,6 +24,7 @@ class renderer extends React.Component {
       number,
       options,
       editable,
+      required,
       response,
     } = this.props;
 
@@ -76,6 +77,7 @@ class renderer extends React.Component {
                   key={[name, value].join('_')}
                   checked={checked}
                   onChange={this.handleChange}
+                  required={(required) ? 'required' : null}
                 >
                   {option}
                 </Radio>

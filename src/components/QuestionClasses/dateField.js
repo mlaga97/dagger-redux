@@ -24,6 +24,7 @@ class Renderer extends React.Component {
       text,
       number,
       editable,
+      required,
       response,
     } = this.props;
 
@@ -49,6 +50,7 @@ class Renderer extends React.Component {
           ref='inputNode'
           defaultValue={value}
           onBlur={this.handleChange}
+          required={(required) ? 'required' : null}
         />
       </FormGroup>
     );
