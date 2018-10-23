@@ -129,14 +129,22 @@ label.btn {
 }
 
 /* Make form-group-like content in response like text inputs */
-div.info-group .info-content {
+/* NOTE: Don't specify to contained with div.info-group -- apply to ALL info-content */
+.info-content {
 		background-color: #f9f9f9; /* Match BS class table-striped */
 		text-align: right; 				 /* questions to the left, responses to the right */
 		/* Match text input style */
 		height: 34px;
-		padding: 6px 12px;
+		padding: 3px 12px;
 		border: 1px solid #ccc;
 		border-radius: 4px;
+		cursor: not-allowed;
+}
+
+/* Target only info-content applied to span -- this is for info-content inserted into regular data collecting form-groups */
+span.info-content {
+	position:absolute; /* Required to harizontall align form-control and info-content presented inline with form-control */
+	margin-left: 20px; /* Spacing between form-control assuming form-control precedes */
 }
 
 /* React Button classes html button as btn btn-default which overule our class unless !important */

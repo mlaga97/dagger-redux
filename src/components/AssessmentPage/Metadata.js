@@ -45,6 +45,7 @@ class AssessmentDate extends React.Component {
           <ToggleButton ref='inputNode' onChange={this.handleChange} value>Yes</ToggleButton>
           <ToggleButton onChange={this.handleChange} value={false}>No</ToggleButton>
         </ToggleButtonGroup>
+        <span className="info-content"> {(new Date()).toLocaleDateString('en-US')} </span>
       </FormGroup>
       {
         (!this.props.response.metadata || (this.props.response.metadata && this.props.response.metadata.assessmentDateToday !== 'true')) ? (
