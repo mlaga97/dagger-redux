@@ -23,6 +23,24 @@ function PreHeader(props) {
   );
 }
 
+function PreHeaderNonEdit(props) {
+  if (!props.type.span) { return null; }
+
+  return (
+    <tr>
+      <th>{props.type.span}</th>
+      {
+        props.type.options.map((subType, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <th key={index}>
+            {subType.span}
+          </th>
+        ))
+      }
+    </tr>
+  );
+}
+
 function HeaderColumns(props) {
   const { type } = props;
 
@@ -54,22 +72,41 @@ function Header(props) {
 function Wrapper(props) {
   const { type, children, editable } = props;
 
-  if (!editable) {
-    return <React.Fragment>
-              <Col sm={12}>
-                <Table striped bordered className={"table-response"} >
-                  <thead>
-                    <tr>
-                      <th>Question</th>
-                      <th>Response</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {children}
-                  </tbody>
-                </Table>
-              </Col>
-            </React.Fragment>;
+  if (!editable && type.span) {
+    return (
+      <React.Fragment>
+        <Col sm={12}>
+          <Table striped bordered className={"table-assessment"} >
+            <thead>
+              <PreHeaderNonEdit type={type} />
+            </thead>
+            <tbody>
+              {children}
+            </tbody>
+          </Table>
+        </Col>
+      </React.Fragment>
+    );
+  }
+
+  if (!editable && !type.span) {
+    return (
+      <React.Fragment>
+        <Col sm={12}>
+          <Table striped bordered className={"table-response"} >
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Response</th>
+              </tr>
+            </thead>
+            <tbody>
+              {children}
+            </tbody>
+          </Table>
+        </Col>
+      </React.Fragment>
+    );
   }
 
   // Fall back to radioOptions if on a mobile device

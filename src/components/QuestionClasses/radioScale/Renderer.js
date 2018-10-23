@@ -31,7 +31,8 @@ class Renderer extends React.Component {
     const subTypes = convertIntoMultiColumnRenderer(this.props.options);
 
     // TODO: Actually handle multi-column, instead of just ignoring it.
-    if (!editable) {
+    if (!editable && subTypes.length < 2) {
+      // Single Column
       return (
         <tr>
           {
@@ -59,6 +60,33 @@ class Renderer extends React.Component {
           }
         </tr>
       );
+    }
+
+    if (!editable && subTypes.length > 1) {
+      // Multi-column
+      return (
+        <tr>
+          <React.Fragment>
+            <td>{number}. {text}</td>
+            {
+              subTypes.map((subType) => {
+                const { suffix, options } = subType;
+                const name = this.props.name + ((suffix) || '');
+                const selected = response ? response[name] : null;
+
+                return Object.keys(options).map((option) => {
+                  // TODO: Avoid type coercion by making type match at a higher level?
+                  const checked = String(options[option]) === String(selected);
+
+                  if (checked) {
+                    return <td>{option}</td>;
+                  }
+                })
+              })
+            }
+          </React.Fragment>
+        </tr>
+      )
     }
 
     // Fall back to radioOptions if on a mobile device
