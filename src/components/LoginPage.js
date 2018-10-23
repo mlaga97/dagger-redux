@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { FormGroup, FormControl, Panel, Grid, Row, Col } from 'react-bootstrap';
+import { Alert, FormGroup, FormControl, Panel, Grid, Row, Col } from 'react-bootstrap';
 
 // Components
 import FocusableInput from './FocusableInput';
@@ -13,6 +13,17 @@ import '../style/dagger.css';
 // Actions
 import actions from '../actions';
 
+const ErrorMessage = ({auth}) => {
+  if (auth.status) {
+    return null;
+  }
+
+  if (!auth.reason) {
+    return null;
+  }
+
+  return <Alert bsStyle='danger'>{auth.reason}</Alert>;
+};
 
 class LoginForm extends React.Component {
   handleSubmit = (event) => {
@@ -35,6 +46,7 @@ class LoginForm extends React.Component {
   render = () => (
     <div className='container'>
       <form onSubmit={this.handleSubmit} className='login' autoComplete='off'>
+        <ErrorMessage auth={this.props.auth} />
         <Panel>
           <Panel.Heading>Login</Panel.Heading>
           <Panel.Body>
@@ -65,7 +77,8 @@ class LoginForm extends React.Component {
 }
 
 export default connect(
-  () => ({
+  state => ({
+    auth: state.auth,
   }),
   dispatch => ({
     dispatch,
