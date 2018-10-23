@@ -71,7 +71,7 @@ class AssessmentMetadata extends React.Component {
     <Panel defaultExpanded>
       <Panel.Heading>
         <Panel.Title toggle>
-          Assessment Metadata
+          Patient Identification / Assessment Date
         </Panel.Title>
       </Panel.Heading>
       <Panel.Collapse>
