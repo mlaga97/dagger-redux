@@ -133,6 +133,11 @@ class Sorting extends React.Component {
           <Col sm={4} className='col-button'><Button onClick={this.handleClick}>Search</Button></Col>
         </div>
         <Panel className='panel-unadorned' onToggle={this.handleToggle} expanded={this.state.open}>
+        <Panel.Heading>
+          <Panel.Title toggle>
+            {(this.state.open) ? '▴ Hide Advanced Search' : '▾ Advanced Search'}
+          </Panel.Title>
+        </Panel.Heading>
           <Panel.Collapse>
             <Panel.Body>
               <SortDate name='visitDateStart'>Visit Date Start</SortDate>
@@ -143,11 +148,6 @@ class Sorting extends React.Component {
               <SortSelect name='clinicID' label='Clinic ID'>{this.GetOptionsFromResponses('clinic')}</SortSelect>
             </Panel.Body>
           </Panel.Collapse>
-          <Panel.Heading>
-            <Panel.Title toggle>
-              {(this.state.open) ? '▴ Hide Advanced Search' : '▾ Advanced Search'}
-            </Panel.Title>
-          </Panel.Heading>
         </Panel>
       </form>
     );
