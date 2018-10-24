@@ -373,8 +373,8 @@ div.loading-message {
 	margin-bottom:20px;
 }
 
-table.table-response tbody tr td:last-child,
-table.table-scoring tbody tr td:last-child {
+table.table-response tbody tr td:not(:first-child),
+table.table-scoring tbody tr td:not(:first-child) {
 	text-align: center;
 }
 
