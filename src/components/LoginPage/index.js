@@ -1,18 +1,19 @@
 // Library imports
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { FormGroup, FormControl, Panel, Grid, Row, Col } from 'react-bootstrap';
+import { Panel, Grid, Row, Col } from 'react-bootstrap';
 
 // Components
-import FocusableInput from './FocusableInput';
+import Username from './Username';
+import Password from './Password';
+import LoginButton from './LoginButton';
+import ErrorMessage from './ErrorMessage';
 
 // Styling
-import '../style/dagger.css';
+import '../../style/dagger.css';
 
 // Actions
-import actions from '../actions';
-
+import actions from '../../actions';
 
 class LoginForm extends React.Component {
   handleSubmit = (event) => {
@@ -28,25 +29,22 @@ class LoginForm extends React.Component {
     });
   }
 
-  componentDidMount() {
-    ReactDOM.findDOMNode(this.refs.firstInput).focus();
-  }
-
   render = () => (
     <div className='container'>
       <form onSubmit={this.handleSubmit} className='login' autoComplete='off'>
+        <ErrorMessage auth={this.props.auth} />
         <Panel>
           <Panel.Heading>Login</Panel.Heading>
           <Panel.Body>
             <Grid>
               <Row>
                 <Col sm={4} smOffset={4}>
-                  <FocusableInput controlID='formLoginUsername' label='Username' name='username' type='text' required='required' autoFocus='autofocus' ref='firstInput' />
+                  <Username />
                 </Col>
               </Row>
               <Row>
                 <Col sm={4} smOffset={4}>
-                  <FocusableInput controlID='formLoginPassword' label='Password' name='password' type='password' required='required' />
+                  <Password />
                 </Col>
               </Row>
             </Grid>
@@ -54,9 +52,7 @@ class LoginForm extends React.Component {
         </Panel>
         <Grid>
           <Col sm={4} smOffset={4}>
-            <FormGroup controlId='formLoginSubmit' className='form-group-clear-style'>
-              <FormControl type='submit' name='Login' value='Login' />
-            </FormGroup>
+            <LoginButton />
           </Col>
         </Grid>
       </form>
@@ -65,7 +61,8 @@ class LoginForm extends React.Component {
 }
 
 export default connect(
-  () => ({
+  state => ({
+    auth: state.auth,
   }),
   dispatch => ({
     dispatch,

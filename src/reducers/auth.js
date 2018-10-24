@@ -13,6 +13,11 @@ export default function settings(state = null, action) {
       return Object.assign({}, state, {
         status: true,
       });
+    case actions.auth.login.failed:
+      return Object.assign({}, state, {
+        status: false,
+        reason: action.data,
+      });
     case actions.auth.logout.succeeded:
       window.location.pathname = '/';
       return Object.assign({}, state, {
