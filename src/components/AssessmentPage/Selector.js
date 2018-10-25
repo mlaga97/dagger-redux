@@ -25,8 +25,33 @@ class AssessmentSelector extends React.Component {
               <Row>
                 {
                   Object.keys(this.props.assessments).map((key) => {
+                    const { response } = this.props;
                     const assessment = this.props.assessments[key];
-                    const { title, required } = assessment.metadata;
+                    const { title, required, tags } = assessment.metadata;
+
+                    // Filter based on child/adult
+                    // TODO: Make more flexible
+                    // TODO: Move somewhere else
+                    if (tags) {
+                      if (response.metadata.patientDOB) {
+                        let today = new Date();
+                        let birthDate = new Date(response.metadata.patientDOB);
+                        let age = today.getFullYear() - birthDate.getFullYear();
+                        let m = today.getMonth() - birthDate.getMonth();
+
+                        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                          age--;
+                        }
+
+                        if (tags.includes('adultOnly') && age < 18) {
+                          return null;
+                        }
+
+                        if (tags.includes('childOnly') && age >= 18) {
+                          return null;
+                        }
+                      }
+                    }
 
                     if (required) {
                       return null;

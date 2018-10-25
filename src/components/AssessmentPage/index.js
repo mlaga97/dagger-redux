@@ -64,6 +64,7 @@ class AssessmentPage extends React.Component {
           onUpdate={this.responseUpdate}
         />
         <Selector
+          response={response}
           selected={selected}
           assessments={assessments}
           onUpdate={this.selectorUpdate}
