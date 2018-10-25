@@ -71,7 +71,9 @@ class AssessmentPage extends React.Component {
           assessments={assessments}
           onUpdate={this.responseUpdate}
         />
-        <Button type='submit' name='Submit' value='Submit'>Next</Button>
+        <div className='centered'>
+          <Button type='submit' name='Submit' value='Submit'>Next</Button>
+        </div>
       </form>
     );
   }

@@ -76,7 +76,7 @@ function Wrapper(props) {
     return (
       <React.Fragment>
         <Col sm={12}>
-          <Table striped bordered className={"table-assessment"} >
+          <Table striped bordered className={"table-response"} >
             <thead>
               <PreHeaderNonEdit type={type} />
             </thead>

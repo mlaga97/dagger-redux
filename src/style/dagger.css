@@ -170,12 +170,6 @@ a.btn, a.btn-default {
 		font-size: 16px !important;
 }
 
-/* Aligns Next button with in-Panel content */
-/* Remove if left aligned Next button retired in favor of centered */
-/* TODO: Make more specific to not cause problems */
-button {
-	margin-left: 15px !important;
-}
 
 button.btn-sm, a.btn-sm {
 	height: 28px;
@@ -373,8 +367,13 @@ div.loading-message {
 	margin-bottom:20px;
 }
 
-table.table-response tbody tr td:last-child,
-table.table-scoring tbody tr td:last-child {
+/* Generic class to center -- added to div wrapper for Next button */
+div.centered {
+	text-align: center;
+}
+
+table.table-response tbody tr td:not(:first-child),
+table.table-scoring tbody tr td:not(:first-child) {
 	text-align: center;
 }
 
