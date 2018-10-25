@@ -50,7 +50,7 @@ class AssessmentDate extends React.Component {
       </FormGroup>
       {
         (!this.props.response.metadata || (this.props.response.metadata && this.props.response.metadata.assessmentDateToday !== 'true')) ? (
-          <FocusableInput label='Assessment Date' name="assessmentDate" type="date" onChange={this.handleChange} required='required' />
+          <FocusableInput label='Assessment Date' name="assessmentDate" type="date" onChange={this.handleChange} required='required' autoFocus/>
         ) : null
       }
     </React.Fragment>
