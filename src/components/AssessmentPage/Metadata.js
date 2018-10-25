@@ -36,12 +36,13 @@ class AssessmentDate extends React.Component {
     ReactDOM.findDOMNode(this.refs.inputNode).focus();
   };
 
+  // TODO: Refactor
   render = () => (
     <React.Fragment>
       <FormGroup  onClick={this.handleClick}>
         <ControlLabel>Assessment Date Today</ControlLabel>
 
-        <ToggleButtonGroup name="assessmentDateToday" type="radio" required='required' >
+        <ToggleButtonGroup name="assessmentDateToday" type="radio" required='required' defaultValue={true} >
           <ToggleButton ref='inputNode' onChange={this.handleChange} value>Yes</ToggleButton>
           <ToggleButton onChange={this.handleChange} value={false}>No</ToggleButton>
         </ToggleButtonGroup>

@@ -25,7 +25,11 @@ class AssessmentPage extends React.Component {
 
     this.state = {
       selected: {},
-      response: {},
+      response: {
+        metadata: {
+          assessmentDateToday: 'true',
+        }
+      },
     };
 
     this.handleSubmit = handleSubmit.bind(this);
