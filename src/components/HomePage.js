@@ -6,6 +6,9 @@ import { Button, Panel } from 'react-bootstrap';
 // Styling
 import '../style/dagger.css';
 
+// Components
+import UserStatistics from './UserStatistics';
+
 // Helpers
 // TODO: Forgive me, for I have sinned.
 const HomePage = () => (
@@ -27,6 +30,7 @@ const HomePage = () => (
         </center>
       </Panel.Body>
     </Panel>
+    <UserStatistics />
   </div>
 )
 
