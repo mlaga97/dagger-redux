@@ -33,7 +33,7 @@ class AssessmentSelector extends React.Component {
                     // TODO: Make more flexible
                     // TODO: Move somewhere else
                     if (tags) {
-                      if (response.metadata.patientDOB) {
+                      if (response.metadata && response.metadata.patientDOB) {
                         let today = new Date();
                         let birthDate = new Date(response.metadata.patientDOB);
                         let age = today.getFullYear() - birthDate.getFullYear();
