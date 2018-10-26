@@ -25,7 +25,12 @@ class AssessmentPage extends React.Component {
 
     this.state = {
       selected: {},
-      response: {},
+      response: {
+        metadata: {
+          assessmentDateToday: 'true',
+          assessmentDate: (new Date()).toLocaleDateString('en-CA'),
+        }
+      },
     };
 
     this.handleSubmit = handleSubmit.bind(this);
