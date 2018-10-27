@@ -10,24 +10,20 @@ import '../style/dagger.css';
 import UserStatistics from './UserStatistics';
 
 // Helpers
-// TODO: Forgive me, for I have sinned.
+// DONE: Absolution for inline styling
 const HomePage = () => (
-  <div className='container'>
+  <div>
     <Panel>
-      <Panel.Heading>Welcome</Panel.Heading>
-      <Panel.Body style={{paddingTop: '50px', paddingBottom: '70px'}}>
-        <center>
-          <div style={{display: 'inline', margin: '30px'}}>
+      <Panel.Heading>Select Activity</Panel.Heading>
+      <Panel.Body>
+        <div className="centered">
             <IndexLinkContainer to='/assessment'>
               <Button>New Record</Button>
             </IndexLinkContainer>
-          </div>
-          <div style={{display: 'inline', margin: '30px'}}>
             <IndexLinkContainer to='/responses'>
-              <Button style={{margin: '10px'}}>Search</Button>
+              <Button>Search</Button>
             </IndexLinkContainer>
-          </div>
-        </center>
+        </div>
       </Panel.Body>
     </Panel>
     <UserStatistics />
