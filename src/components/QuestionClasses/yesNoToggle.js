@@ -1,14 +1,13 @@
 // Library imports
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Col, FormGroup, ControlLabel, FormControl, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import { Col, FormGroup, ControlLabel, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 class Renderer extends React.Component {
-  handleChange = (event) => {
-    const { name, value } = event.target;
-     
+  // Apparently ToggleButtonGroup doesn't behave like a normal form element?
+  handleChange = (value) => {
     this.props.onUpdate({
-      name,
+      name: this.props.name,
       value,
     });
   }
@@ -24,7 +23,6 @@ class Renderer extends React.Component {
       width,
       number,
       editable,
-      required,
       response,
     } = this.props;
 
@@ -47,17 +45,13 @@ class Renderer extends React.Component {
           <ControlLabel>
             {number}. {text}
           </ControlLabel>
-          <ToggleButtonGroup ref='inputNode' name={name} type='radio' required='required' onChange={
-            (value) => {
-              // Apparently ToggleButtonGroup doesn't behave like a normal form element?
-              this.handleChange({
-                target: {
-                  name,
-                  value,
-                }
-              });
-            }
-          } >
+          <ToggleButtonGroup
+            name={name}
+            type='radio'
+            ref='inputNode'
+            required='required'
+            onChange={this.handleChange}
+          >
             <ToggleButton value='yes'>Yes</ToggleButton>
             <ToggleButton value='no'>No</ToggleButton>
           </ToggleButtonGroup>

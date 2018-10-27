@@ -57,7 +57,14 @@ class renderer extends React.Component {
         <ControlLabel>
           {number}. {text}
         </ControlLabel>
-        <FormControl ref='inputNode' componentClass='select' name={name} value={selected || ''} onChange={this.handleChange} required={(required) ? 'required' : null} >
+        <FormControl
+          ref='inputNode'
+          componentClass='select'
+          name={name}
+          value={selected || ''}
+          onChange={this.handleChange}
+          required={(required) ? 'required' : null}
+        >
           <option value='' disabled hidden>- Select -</option>
           {
             Object.keys(options).map((option) => {

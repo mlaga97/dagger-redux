@@ -1,13 +1,12 @@
 // Library imports
 import React from 'react';
-import { Panel, FormGroup, ControlLabel, Grid, Row, Col, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Panel, Grid, Row, Col } from 'react-bootstrap';
 
 // Components
 import PatientID from './PatientID';
 import PatientDOB from './PatientDOB';
 import AssessmentDate from './AssessmentDate';
 import AssessmentDateToday from './AssessmentDateToday';
-import FocusableInput from '../../FocusableInput';
 
 class AssessmentMetadata extends React.Component {
   handleChange = (event) => {

@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import scriptjs from 'scriptjs';
-import { Table, Panel  } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 
 class Scoring extends React.Component {
   constructor(props) {
@@ -43,7 +43,9 @@ class Scoring extends React.Component {
 
       this.getScript(metadata.id);
 
-      return <div className='loading-message'>Loading scoring...</div>;
+      return <div className='loading-message'>
+        Loading scoring...
+      </div>;
     }
 
     // Two methods of rendering
@@ -68,7 +70,10 @@ class Scoring extends React.Component {
           </thead>
           <tbody>
             <tr> 
-              <div style={{padding: '10px'}} dangerouslySetInnerHTML={{__html: html}} />
+              <div
+                style={{padding: '10px'}}
+                dangerouslySetInnerHTML={{__html: html}}
+              />
             </tr>
           </tbody>
         </Table>
@@ -96,9 +101,18 @@ class Scoring extends React.Component {
           </thead>
           <tbody>
             <tr>
-              <td>{(result.severity) ? result.severity : 'Loading...'}</td>
-              <td>{(result.recommendation) ? result.recommendation : 'Loading...'}</td>
-              <td>{(result.score) ? result.score : '...'}</td>
+              <td>{
+                (result.severity) ?
+                  result.severity : 'Loading...'
+              }</td>
+              <td>{
+                (result.recommendation) ? 
+                  result.recommendation : 'Loading...'
+              }</td>
+              <td>{
+                (result.score) ?
+                  result.score : '...'
+              }</td>
             </tr>
           </tbody>
         </Table>

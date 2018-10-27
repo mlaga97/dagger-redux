@@ -77,11 +77,15 @@ class SortableTable extends React.Component {
             */
 
             if (this.state.sortBy === 'dateSubmitted') {
-              return this.sortHelper(new Date(A.dateSubmitted) < new Date(B.dateSubmitted));
+              return this.sortHelper(
+                new Date(A.dateSubmitted) < new Date(B.dateSubmitted)
+              );
             }
 
             if (this.state.sortBy === 'visitDate') {
-              return this.sortHelper(new Date(A.visit.date) < new Date(B.visit.date));
+              return this.sortHelper(
+                new Date(A.visit.date) < new Date(B.visit.date)
+              );
             }
 
             if (this.state.sortBy === 'userID') {
@@ -99,7 +103,9 @@ class SortableTable extends React.Component {
             */
 
             if (this.state.sortBy === 'patientDOB') {
-              return this.sortHelper(new Date(A.patient.dob) < new Date(B.patient.dob));
+              return this.sortHelper(
+                new Date(A.patient.dob) < new Date(B.patient.dob)
+              );
             }
 
             console.warn('Attempted sorting on unsupported field!');

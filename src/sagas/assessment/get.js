@@ -10,7 +10,8 @@ import actions from '../../actions';
  */
 export default function* get(action) {
   try {
-    const response = yield call(() => axios.get(`/assessment/${action.data.assessmentClass}`));
+    const url = `/assessment/${action.data.assessmentClass}`;
+    const response = yield call(() => axios.get(url));
 
     yield put({
       type: actions.assessment.get.succeeded,

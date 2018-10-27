@@ -17,7 +17,15 @@ const Header = () => (
 
 const Clinic = ({clinic, handleClick, checked}) => (
   <tr key={clinic.id}>
-    <td><Radio name='clinic' value={clinic.id} onClick={handleClick} readOnly checked={checked} /></td>
+    <td>
+      <Radio
+        readOnly
+        name='clinic'
+        value={clinic.id}
+        checked={checked}
+        onClick={handleClick}
+      />
+    </td>
     <td>{clinic.id}</td>
     <td>{clinic.name}</td>
     <td>{clinic.city}</td>
@@ -34,7 +42,14 @@ const List = ({clinics, handleClick, currentClinic}) => (
     <tbody>
       {
         Object.keys(clinics).map((clinicID) => {
-          return <Clinic key={clinicID} clinic={clinics[clinicID]} handleClick={handleClick} checked={clinicID === currentClinic} />
+          return (
+            <Clinic
+              key={clinicID}
+              handleClick={handleClick}
+              clinic={clinics[clinicID]}
+              checked={clinicID === currentClinic}
+            />
+          )
         })
       }
     </tbody>

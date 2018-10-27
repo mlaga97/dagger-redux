@@ -8,6 +8,7 @@ import { convertIntoMultiColumnRenderer } from './helpers';
 // Components
 import RadioOptions from '../radioOptions';
 
+// TODO: Refactor
 class Renderer extends React.Component {
   handleChange = (event) => {
     const { name, value } = event.target;

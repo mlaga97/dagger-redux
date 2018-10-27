@@ -21,6 +21,7 @@ function handleSubmit() {
       id: this.state.response.metadata.patientID,
       dob: this.state.response.metadata.patientDOB,
     },
+    // en-CA is the equivalent of ISO-8601
     dateSubmitted: (new Date()).toLocaleDateString('en-CA'),
   };
 

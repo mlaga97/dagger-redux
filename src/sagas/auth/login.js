@@ -13,16 +13,18 @@ import actions from '../../actions';
  * @param {string} action.data.password - The password to attempt login with.
  */
 export default function* login(action) {
+  const { succeeded, failed } = actions.auth.login;
+
   try {
     const response = yield call(() => axios.post('/auth/login', action.data));
 
     yield put({
-      type: response.data.success ? actions.auth.login.succeeded : actions.auth.login.failed,
+      type: response.data.success ? succeeded : failed,
       data: response.data,
     });
   } catch (e) {
     yield put({
-      type: actions.auth.login.failed,
+      type: failed,
       message: e.message,
     });
   }

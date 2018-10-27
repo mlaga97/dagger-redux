@@ -1,11 +1,7 @@
 // Library imports
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Panel, FormGroup, ControlLabel, Grid, Row, Col, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
-
-// Components
-import FocusableInput from '../../FocusableInput';
-import YesNoToggle from '../../QuestionClasses/yesNoToggle';
+import { FormGroup, ControlLabel, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 // TODO: Refactor
 // TODO: Make Controlled
@@ -22,7 +18,8 @@ class AssessmentDateToday extends React.Component {
     this.props.onChange({
       target: {
         name: 'assessmentDate',
-        value: (value === 'true') ? (new Date()).toLocaleDateString('en-CA') : null, // TODO: Not this.
+        // en-CA is the equivalent of ISO-8601
+        value: (value === 'true') ? (new Date()).toLocaleDateString('en-CA') : null,
       }
     });
   }
@@ -34,7 +31,14 @@ class AssessmentDateToday extends React.Component {
   render = () => (
     <FormGroup  onClick={this.handleClick}>
       <ControlLabel>Assessment Date Today</ControlLabel>
-      <ToggleButtonGroup ref='inputNode' name='assessmentDateToday' type='radio' required='required' defaultValue='true' onChange={this.handleChange} >
+      <ToggleButtonGroup
+        type='radio'
+        ref='inputNode'
+        required='required'
+        defaultValue='true'
+        name='assessmentDateToday'
+        onChange={this.handleChange}
+      >
         <ToggleButton value='true'>Yes</ToggleButton>
         <ToggleButton value='false'>No</ToggleButton>
       </ToggleButtonGroup>

@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Panel, Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Panel, Col, Button } from 'react-bootstrap';
 
 // Actions
 import actions from '../../actions';
@@ -36,7 +36,13 @@ const SortText = ({
   label
 }) => (
   <Col sm={4}>
-    <FocusableInput type='text' name={name} label={label} autoFocus autoComplete='off' />
+    <FocusableInput
+      autoFocus
+      type='text'
+      name={name}
+      label={label}
+      autoComplete='off'
+    />
   </Col>
 );
 
@@ -128,24 +134,41 @@ class Sorting extends React.Component {
     return (
       <form onSubmit={(e) => {e.preventDefault(); this.handleClick()}}>
         <div className='simple-search-wrapper'>
-          {/*<SortSelect name='patientID' label='Patient ID'>{this.GetOptionsFromResponses('patient')}</SortSelect>*/}
+          {/*
+            <SortSelect
+              name='patientID'
+              label='Patient ID'
+            >
+              {this.GetOptionsFromResponses('patient')}
+            </SortSelect>
+          */}
           <SortText name='patientID' label='Patient ID' />
-          <Col sm={4} className='col-button'><Button onClick={this.handleClick}>Search</Button></Col>
+          <Col sm={4} className='col-button'>
+            <Button onClick={this.handleClick}>Search</Button>
+          </Col>
         </div>
-        <Panel className='panel-unadorned' onToggle={this.handleToggle} expanded={this.state.open}>
-        <Panel.Heading>
-          <Panel.Title toggle>
-            {(this.state.open) ? '▴ Hide Advanced Search' : '▾ Advanced Search'}
-          </Panel.Title>
-        </Panel.Heading>
+        <Panel
+          className='panel-unadorned'
+          onToggle={this.handleToggle}
+          expanded={this.state.open}
+        >
+          <Panel.Heading>
+            <Panel.Title toggle>
+              {(this.state.open) ? '▴ Hide Advanced Search' : '▾ Advanced Search'}
+            </Panel.Title>
+          </Panel.Heading>
           <Panel.Collapse>
             <Panel.Body>
               <SortDate name='visitDateStart'>Visit Date Start</SortDate>
               <SortDate name='visitDateEnd'>Visit Date End</SortDate>
               <SortDate name='dateSubmittedStart'>Date Submitted Start</SortDate>
               <SortDate name='dateSubmittedEnd'>Date Submitted End</SortDate>
-              <SortSelect name='userID' label='User ID'>{this.GetOptionsFromResponses('user')}</SortSelect>
-              <SortSelect name='clinicID' label='Clinic ID'>{this.GetOptionsFromResponses('clinic')}</SortSelect>
+              <SortSelect name='userID' label='User ID'>
+                {this.GetOptionsFromResponses('user')}
+              </SortSelect>
+              <SortSelect name='clinicID' label='Clinic ID'>
+                {this.GetOptionsFromResponses('clinic')}
+              </SortSelect>
             </Panel.Body>
           </Panel.Collapse>
         </Panel>

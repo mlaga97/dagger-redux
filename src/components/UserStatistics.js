@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Panel, Grid, Row } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
 
 // Actions
 import actions from '../actions';
@@ -31,7 +31,9 @@ class ResponseList extends React.Component {
 
     return (
       <Panel>
-        <Panel.Heading>User Statistics - Week {weekNumber} ({weekStartDate} - {weekEndDate})</Panel.Heading>
+        <Panel.Heading>
+          User Statistics - Week {weekNumber} ({weekStartDate} - {weekEndDate})
+        </Panel.Heading>
         <Panel.Body>
           <div>HCH Record Count: {hchCount}</div>
           <div>Appointment Record Count: {appointmentCount}</div>

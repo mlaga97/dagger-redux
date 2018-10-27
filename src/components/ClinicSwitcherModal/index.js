@@ -80,7 +80,11 @@ class ClinicSwitcherModal extends React.Component {
             <Modal.Title>Please Select A Clinic</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <List clinics={clinics} handleClick={this.handleClick} currentClinic={this.props.clinics.current}/>
+            <List
+              clinics={clinics}
+              handleClick={this.handleClick}
+              currentClinic={this.props.clinics.current}
+            />
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.handleClose}>Close</Button>

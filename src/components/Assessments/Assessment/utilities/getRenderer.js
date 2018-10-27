@@ -6,7 +6,9 @@ function getRenderer(typeClass) {
     return classes[typeClass].renderer;
   }
 
-  console.warn(`No renderer available for type: ${typeClass}`); // eslint-disable-line no-console
+  // eslint-disable-next-line no-console
+  console.warn(`No renderer available for type: ${typeClass}`);
+
   return null;
 }
 

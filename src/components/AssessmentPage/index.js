@@ -28,6 +28,7 @@ class AssessmentPage extends React.Component {
       response: {
         metadata: {
           assessmentDateToday: 'true',
+          // en-CA is the equivalent of ISO-8601
           assessmentDate: (new Date()).toLocaleDateString('en-CA'),
         }
       },
