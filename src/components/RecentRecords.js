@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Panel, Grid, Row } from 'react-bootstrap';
+import { Panel, Grid, Row, Col } from 'react-bootstrap';
 
 // Actions
 import actions from '../actions';
@@ -35,13 +35,20 @@ class ResponseList extends React.Component {
 
     return (
       <div>
-        <div className='search-results-count'>
-          {resultCount} Result{(resultCount === 1) ? '' : 's'}
-        </div>
-        <SortableTable responses={this.props.responses}>
-          <Response />
-        </SortableTable>
+        <Grid>
+          <Row>
+            <Col sm={12}>
+              <div className='search-results-count'>
+                {resultCount} record{(resultCount === 1) ? '' : 's'} submitted today.
+              </div>
+              <SortableTable responses={this.props.responses}>
+                <Response />
+              </SortableTable>
+            </Col>
+          </Row>
+        </Grid>
       </div>
+
     );
   }
 }
