@@ -108,7 +108,6 @@ class SortableTable extends React.Component {
               );
             }
 
-            console.warn('Attempted sorting on unsupported field!');
             return -1;
           }).map(index => (
             React.Children.map(
