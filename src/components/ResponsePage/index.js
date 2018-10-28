@@ -17,7 +17,8 @@ class ResponsePage extends React.Component {
   }
 
   componentWillMount() {
-    const { responses } = this.props;
+    const { responseID, props } = this;
+    const { responses } = props;
 
     if (!this.props.assessments.all) {
       this.props.dispatch({
@@ -25,10 +26,10 @@ class ResponsePage extends React.Component {
       });
     }
 
-    // TODO: Only request the relevant responseID from the server
-    if (!responses || !responses.all || !responses.all[this.responseID]) {
+    if (!responses || !responses.all || !responses.all[responseID] || !responses.all[String(responseID)].assessments.responses) {
       this.props.dispatch({
-        type: actions.response.all.requested,
+        type: actions.response.get.requested,
+        data: this.responseID,
       });
     }
 
@@ -40,8 +41,8 @@ class ResponsePage extends React.Component {
     const { responseID, props } = this;
     const assessments = props.assessments.all;
 
-    if (!props.responses || !props.responses.all) {
-      return <div>Retrieving response list...</div>;
+    if (!props.responses || !props.responses.all || !props.responses.all[responseID] || !props.responses.all[String(responseID)].assessments.responses) {
+      return <div>Retrieving response data...</div>;
     }
 
     // TODO: This isn't super clear.
