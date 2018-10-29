@@ -10,6 +10,8 @@ import actions from '../../actions';
 import Response from './Response';
 import SortableTable from './SortableTable';
 import AdvancedSearch from './AdvancedSearch';
+import RandomEntry from '../RandomEntry';
+import ConditionalWrapper from '../ConditionalWrapper';
 
 class ResponseList extends React.Component {
   componentWillMount() {
@@ -27,6 +29,9 @@ class ResponseList extends React.Component {
 
     return (
       <div>
+        <ConditionalWrapper display={process.env.REACT_APP_ENVIRONMENT === 'development'}>
+          <RandomEntry />
+        </ConditionalWrapper>
         <Panel defaultExpanded>
           <Panel.Heading>
             <Panel.Title toggle>
