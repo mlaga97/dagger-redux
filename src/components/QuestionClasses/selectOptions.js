@@ -21,12 +21,13 @@ class renderer extends React.Component {
     const {
       name,
       text,
+      type,
       number,
-      options,
       editable,
       required,
       response,
     } = this.props;
+    const { options } = type;
 
     const selected = response ? response[name] : null;
 

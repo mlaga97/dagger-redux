@@ -22,6 +22,7 @@ class Renderer extends React.Component {
   render() {
     const {
       text,
+      type,
       number,
       editable,
       required,
@@ -29,9 +30,8 @@ class Renderer extends React.Component {
     } = this.props;
 
     // TODO: Move to some kind of AssessmentClass-based preprocessor/postprocessor system
-    const subTypes = convertIntoMultiColumnRenderer(this.props.options);
+    const subTypes = convertIntoMultiColumnRenderer(type.options);
 
-    // TODO: Actually handle multi-column, instead of just ignoring it.
     if (!editable && subTypes.length < 2) {
       // Single Column
       return (
@@ -103,7 +103,7 @@ class Renderer extends React.Component {
         <React.Fragment>
           {
             subTypes.map((subType) => {
-              const { suffix, hideLabel, options } = subType;
+              const { suffix, hideLabel, options } = type;
               const name = this.props.name + ((suffix) || '');
               const selected = response ? response[name] : null;
 

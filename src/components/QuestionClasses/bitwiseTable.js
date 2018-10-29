@@ -16,11 +16,12 @@ class Renderer extends React.Component {
   render() {
     const {
       text,
+      type,
       number,
-      options,
       editable,
       response,
     } = this.props;
+    const { options } = type;
 
     if (!editable) {
       return (
