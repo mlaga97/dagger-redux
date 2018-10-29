@@ -18,15 +18,12 @@ function expandQuestions(props) {
       type = types[type]; // Turns out the type was actually just the name!
     }
 
-    // Get options
-    const { options } = type;
-
     return {
       name, // Field name
+      type, // Question type
       text, // Question text
       width, // Question width
       number, // Question number
-      options, // Question options
       required, // Is question required
     };
   });
