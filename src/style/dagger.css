@@ -347,6 +347,7 @@ table.table-search-results tbody tr td:last-child {
 	text-transform: uppercase;
 	padding-right: 20px; /* table has no panel, last td content vertically alined with search options in panel above */
 	font-size: 80%; /* Accomodate many assessments in table col without wrapping other cols */
+	width: 33rem;   /* Set a proportional width for Assessments column */
 }
 
 /* ASSESSMENT AND RESPONSE RECORD TABLES */
