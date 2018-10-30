@@ -211,7 +211,7 @@ div.col-button {
 
 div.col-button button,
 a.btn, a.btn-default {
-	margin:30px 10px !important; /* Override BS classes btn, btn-deafult */
+	margin: 0 10px !important; /* Override BS classes btn, btn-deafult */
 }
 
 .panel-footer {
