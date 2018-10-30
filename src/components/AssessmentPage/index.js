@@ -24,6 +24,7 @@ class AssessmentPage extends React.Component {
     super(props);
 
     this.state = {
+      lastResponse: (props.state) ? props.state.responseID : null,
       selected: {},
       response: {
         metadata: {
@@ -49,8 +50,13 @@ class AssessmentPage extends React.Component {
 
   render() {
     const { props, state } = this;
-    const { assessments: { all: assessments } } = props;
-    const { response, selected } = state;
+    const { responseID, assessments: { all: assessments } } = props;
+    const { lastResponse, submitted, response, selected } = state;
+
+    if (lastResponse !== responseID) {
+      this.props.history.push('/response/' + responseID);
+      return <div>Submitted!</div>;
+    }
 
     return (
       <form onSubmit={this.handleSubmit} >
@@ -94,6 +100,7 @@ export default compose(
       users: state.users,
       clinics: state.clinics,
       assessments: state.assessments,
+      responseID: state.responses.post,
     }),
     dispatch => ({
       dispatch,
