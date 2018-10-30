@@ -16,7 +16,7 @@ const Summary = ({
     <td>
       <Link to={`/response/${id}`} className={'btn-sm'} >View</Link>
     </td>
-    <td>{dateSubmitted}</td>
+    <td>{dateSubmitted.split(' ')[0]}</td>
     <td>{visit.date}</td>
     <td>{user.id}</td>
     <td>{clinic.id}</td>
