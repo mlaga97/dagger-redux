@@ -33,23 +33,40 @@ class ResponseList extends React.Component {
 
     const resultCount = Object.keys(this.props.responses.all).length;
 
-    return (
-      <div>
-        <Grid>
-          <Row>
-            <Col sm={12}>
-              <div className='search-results-count'>
-                {resultCount} record{(resultCount === 1) ? '' : 's'} submitted today.
-              </div>
-              <SortableTable responses={this.props.responses}>
-                <Response />
-              </SortableTable>
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+    if(resultCount > 0) {
+      return (
+        <div>
+          <Grid>
+            <Row>
+              <Col sm={12}>
+                <div className='search-results-count'>
+                  {resultCount} record{(resultCount === 1) ? '' : 's'} submitted today.
+                </div>
+                <SortableTable responses={this.props.responses}>
+                  <Response />
+                </SortableTable>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
 
-    );
+      );
+    } else {
+      return (
+        <div>
+          <Grid>
+            <Row>
+              <Col sm={12}>
+                <div className='search-results-count'>
+                  {resultCount} records submitted today.
+                </div>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
+
+      );
+    }
   }
 }
 
