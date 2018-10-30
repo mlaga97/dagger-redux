@@ -1,7 +1,10 @@
 // Actions
 import actions from '../../../actions';
 
-function handleSubmit() {
+function handleSubmit(e) {
+  // Prevent redirect
+  e.preventDefault();
+
   // Response Metadata
   const metadata = {
     user: {
@@ -45,8 +48,6 @@ function handleSubmit() {
     type: actions.response.post.requested,
     data: response,
   });
-
-  this.props.history.push('/');
 }
 
 export default handleSubmit;
