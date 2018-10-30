@@ -2,7 +2,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Panel, Row, Col, Button } from 'react-bootstrap';
+import { Panel, Grid, Row, Col, Button } from 'react-bootstrap';
 
 // Actions
 import actions from '../actions';
@@ -144,19 +144,25 @@ class AssessmentPage extends React.Component {
   }
 
   render = () => (
-    <Panel defaultExpanded>
+    <Panel defaultExpanded className={'panel-testing'}>
       <Panel.Heading>
         <Panel.Title toggle>
           Generate Random Testing Data
         </Panel.Title>
       </Panel.Heading>
       <Panel.Collapse>
-        <Panel.Body style={{margin: '20px'}} >
-          {
-            [1, 5, 10, 25, 50, 100, 250, 500, 1000].map((count) => (
-              <Button onClick={() => {this.multiSubmit(count)}}>{count} Random</Button>
-            ))
-          }
+        <Panel.Body>
+          <Grid>
+            <Row>
+              <Col sm={12}>
+                {
+                  [1, 5, 10, 25, 50, 100, 250, 500, 1000].map((count) => (
+                    <Button className={'btn-sm'} onClick={() => {this.multiSubmit(count)}}>{count} Random</Button>
+                  ))
+                }
+              </Col>
+            </Row>
+          </Grid>
         </Panel.Body>
       </Panel.Collapse>
     </Panel>

@@ -175,6 +175,23 @@ button.btn-sm, a.btn-sm {
 	height: 28px;
 	color: rgb(51,51,51);
 	font-size: 12px !important;
+	padding: 5px 10px !important;
+}
+
+/* Testing panel for Random Testing Data Generator */
+.panel-testing .panel-heading {
+	background-color: darkgray;
+	color: white;
+}
+
+.panel-testing .panel-body .container .row .col-sm-12 {
+	text-align: center;
+}
+
+.panel-testing .panel-body .container .row .col-sm-12 button.btn-sm {
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	margin-bottom: 15px !important;
 }
 
 input[type=submit]:hover,
