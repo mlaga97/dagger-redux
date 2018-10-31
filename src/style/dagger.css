@@ -380,7 +380,51 @@ table.table-scoring thead th {
 	text-transform: capitalize; /* Failover if data is all lowercase */
 	text-align: center;
 	vertical-align: middle !important;
+	color: #686868; /* darker than html gray */
 }
+
+/* Make Card Tables on mobile */
+/* TODO: Investigate critical width, make sizing adjustments to tables to better accomodate horizontal tables as resolutions nearing 600px */
+@media screen and (max-width: 600px) {
+
+   table.table-card-table {
+      border: 0;
+		}
+
+   table.table-card-table thead {
+      display: none;
+    }
+
+   table.table-card-table tr {
+      margin-bottom: 20px;
+      display: block;
+      border-bottom: 2px solid #ddd;
+    }
+
+   table.table-card-table td {
+      display: block;
+      text-align: right !important; /* Override more specific selector .table-response td:not(:first-child) center alignment */
+			padding: 10px !important;
+    }
+
+   table.table-card-table td:last-child {
+      border-bottom: 0;
+    }
+
+   table.table-card-table td::before {
+      content: attr(data-label);
+      float: left;
+      /* text-transform: uppercase; */
+      /* font-weight: bold; */
+			color: #686868; /* Match TH color styling */
+    }
+    	table..table-card-table	tbody{
+			line-height:0!important;
+		}
+
+  }
+
+
 
 div.loading-message {
 	width: 100%;

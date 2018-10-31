@@ -50,7 +50,7 @@ class ResponseList extends React.Component {
           <Grid>
             <Row>
               <Col sm={12}>
-                <Table striped bordered className='table-response'>
+                <Table striped bordered className='table-response table-card-table'>
                   <thead>
                     <tr>
                       <th>Period</th>
@@ -63,20 +63,20 @@ class ResponseList extends React.Component {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>This Week (week {thisWeek_weekNumber})</td>
-                      <td>{thisWeek_weekStartDate} - {thisWeek_weekEndDate}</td>
-                      <td>{thisWeek_appointmentCount}</td>
-                      <td>{thisWeek_warmHandoffCount}</td>
-                      <td>{thisWeek_hchCount}</td>
-                      <td>{thisWeek_recordCount}</td>
+                      <td data-label='Period'>This Week (week {thisWeek_weekNumber})</td>
+                      <td data-label='Range'>{thisWeek_weekStartDate} - {thisWeek_weekEndDate}</td>
+                      <td data-label='Appointments'>{thisWeek_appointmentCount}</td>
+                      <td data-label='Warm Handoffs'>{thisWeek_warmHandoffCount}</td>
+                      <td data-label='HCH'>{thisWeek_hchCount}</td>
+                      <td data-label='Total Records'>{thisWeek_recordCount}</td>
                     </tr>
                     <tr>
-                      <td>Last Week (week {lastWeek_weekNumber})</td>
-                      <td>{lastWeek_weekStartDate} - {lastWeek_weekEndDate}</td>
-                      <td>{lastWeek_appointmentCount}</td>
-                      <td>{lastWeek_warmHandoffCount}</td>
-                      <td>{lastWeek_hchCount}</td>
-                      <td>{lastWeek_recordCount}</td>
+                      <td data-label='Period'>Last Week (week {lastWeek_weekNumber})</td>
+                      <td data-label='Range'>{lastWeek_weekStartDate} - {lastWeek_weekEndDate}</td>
+                      <td data-label='Appointments'>{lastWeek_appointmentCount}</td>
+                      <td data-label='Warm Handoffs'>{lastWeek_warmHandoffCount}</td>
+                      <td data-label='HCH'>{lastWeek_hchCount}</td>
+                      <td data-label='Total Records'>{lastWeek_recordCount}</td>
                     </tr>
                   </tbody>
                 </Table>
