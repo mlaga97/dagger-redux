@@ -46,7 +46,7 @@ class SortableTable extends React.Component {
   sortHelper = cmp => this.state.order * ((cmp) ? 1 : -1);
 
   render = () => (
-    <Table className='table-search-results table-striped'>
+    <Table className='table-search-results table-card-table table-striped'>
       <thead>
         <tr>
           {/*this.helper('responseID', 'ID')*/}

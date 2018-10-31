@@ -4,7 +4,7 @@ import React from 'react';
 const Assessments = ({
   selected,
 }) => (
-  <td>
+  <td data-label='Assessments'>
     {
       Object.keys(selected)
         .filter(key => selected[key])

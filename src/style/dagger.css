@@ -359,15 +359,23 @@ table.table-search-results tbody tr td {
 	text-align: right;
 }
 
-table.table-search-results thead tr th:last-child {
-	text-align: center;
+/* Do not apply in mobile view in favor of table-card-table style */
+@media (min-width: 601px) {
+	table.table-search-results thead tr th:last-child {
+		text-align: center;
+	}
+
+	table.table-search-results tbody tr td:last-child {
+		text-transform: uppercase; /* TODO: Remove when pulling friendly name for Assessments */
+		padding-right: 20px; /* table has no panel, last td content vertically alined with search options in panel above */
+		font-size: 80%; /* Accomodate many assessments in table col without wrapping other cols */
+		width: 33rem;   /* Set a proportional width for Assessments column */
+	}
+
 }
 
 table.table-search-results tbody tr td:last-child {
 	text-transform: uppercase;
-	padding-right: 20px; /* table has no panel, last td content vertically alined with search options in panel above */
-	font-size: 80%; /* Accomodate many assessments in table col without wrapping other cols */
-	width: 33rem;   /* Set a proportional width for Assessments column */
 }
 
 /* ASSESSMENT AND RESPONSE RECORD TABLES */
@@ -411,15 +419,20 @@ table.table-scoring thead th {
       border-bottom: 0;
     }
 
+		table.table-card-table td:last-child {
+       border-bottom: 0;
+     }
+
    table.table-card-table td::before {
       content: attr(data-label);
       float: left;
-      /* text-transform: uppercase; */
-      /* font-weight: bold; */
+      text-transform: capitalize;
 			color: #686868; /* Match TH color styling */
+			padding-right: 10px; /* ensures data does not bunch up to data-label (faux TH) */
     }
-    	table..table-card-table	tbody{
-			line-height:0!important;
+
+  	table.table-card-table	tbody{
+			line-height: 0 !important;
 		}
 
   }
