@@ -149,7 +149,8 @@ span.info-content {
 
 /* React Button classes html button as btn btn-default which overule our class unless !important */
 /* Included anchor tags with class btn btn-default */
-input[type=submit], input[type=button], button,
+/* Exclude the .navbar-toggle button from this style */
+input[type=submit], input[type=button], button:not(.navbar-toggle),
 a.btn, a.btn-default, a.btn-sm {
     min-height: initial;
     min-width: initial;
@@ -194,18 +195,20 @@ button.btn-sm, a.btn-sm {
 	margin-bottom: 15px !important;
 }
 
+/* Exclude the .navbar-toggle button from this style */
 input[type=submit]:hover,
 input[type=button]:hover,
-button:hover,
+button:not(.navbar-toggle):hover,
 a.btn:hover, a.btn-default:hover, a.btn-sm:hover  {
 	border-color: #bbbbbb !important;
   box-shadow: 2px 2px 4px rgba(105, 105, 105, 0.1);
 	text-decoration: none; /* Supress A link underlines */
 }
 
+/* Exclude the .navbar-toggle button from this style */
 input[type=submit]:focus,
 input[type=button]:focus,
-button:focus,
+button:not(.navbar-toggle):focus,
 a.btn:focus, a.btn-default:focus, a.btn-sm:focus {
     border-color: #bbbbbb !important; /* Override BS classes btn, btn-deafult */
     background: aliceblue !important;

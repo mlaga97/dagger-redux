@@ -17,17 +17,20 @@ const PublicApp = () => {
   return(
     <BrowserRouter basename={basename}>
       <div className='app'>
-        <Navbar inverse>
+        <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
               <a href='/'>Dagger</a>
             </Navbar.Brand>
+            <Navbar.Toggle />
           </Navbar.Header>
-          <Nav>
-            <IndexLinkContainer to='/'>
-              <NavItem eventKey={1}>Login</NavItem>
-            </IndexLinkContainer>
-          </Nav>
+          <Navbar.Collapse>
+            <Nav>
+              <IndexLinkContainer to='/'>
+                <NavItem eventKey={1}>Login</NavItem>
+              </IndexLinkContainer>
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
 
         <div className='page'>

@@ -64,67 +64,70 @@ class PrivateApp extends React.Component {
     return (
       <BrowserRouter basename={basename}>
         <div className='app'>
-          <Navbar inverse>
+          <Navbar inverse collapseOnSelect>
             <Navbar.Header>
               <IndexLinkContainer to='/'>
                 <Navbar.Brand>Dagger</Navbar.Brand>
               </IndexLinkContainer>
+              <Navbar.Toggle />
             </Navbar.Header>
-            <Nav>
-              <IndexLinkContainer to='/'>
-                <NavItem eventKey={1}>Home</NavItem>
-              </IndexLinkContainer>
-              <IndexLinkContainer to='/assessment'>
-                <NavItem eventKey={2}>Assessment</NavItem>
-              </IndexLinkContainer>
-              <IndexLinkContainer to='/responses'>
-                <NavItem eventKey={3}>Responses</NavItem>
-              </IndexLinkContainer>
-              <ConditionalWrapper display={indev}>
-                <IndexLinkContainer to='/reportTest'>
-                  <NavItem eventKey={4}>Reports</NavItem>
+            <Navbar.Collapse>
+              <Nav>
+                <IndexLinkContainer to='/'>
+                  <NavItem eventKey={1}>Home</NavItem>
                 </IndexLinkContainer>
-              </ConditionalWrapper>
-              <NavDropdown eventKey={5} title='Other' id='nav-dropdown-other'>
-                <ClinicSwitcherModal/>
-                <ConditionalWrapper display={indev}>
-                  <IndexLinkContainer to='/clinicStats'>
-                    <MenuItem eventKey={5.1}>Clinic Statistics</MenuItem>
-                  </IndexLinkContainer>
-                </ConditionalWrapper>
-                <ConditionalWrapper display={indev}>
-                  <IndexLinkContainer to='/modules'>
-                    <MenuItem eventKey={5.2}>Modules</MenuItem>
-                  </IndexLinkContainer>
-                </ConditionalWrapper>
-                <ConditionalWrapper display={indev}>
-                  <IndexLinkContainer to='/config'>
-                    <MenuItem eventKey={5.3}>Configuration</MenuItem>
-                  </IndexLinkContainer>
-                </ConditionalWrapper>
-                <ConditionalWrapper display={indev}>
-                  <IndexLinkContainer to='/userStats'>
-                    <MenuItem eventKey={5.4}>User Statistics</MenuItem>
-                  </IndexLinkContainer>
-                </ConditionalWrapper>
-                <IndexLinkContainer to='/userSettings'>
-                  <MenuItem eventKey={5.5}>User Settings</MenuItem>
+                <IndexLinkContainer to='/assessment'>
+                  <NavItem eventKey={2}>Assessment</NavItem>
+                </IndexLinkContainer>
+                <IndexLinkContainer to='/responses'>
+                  <NavItem eventKey={3}>Responses</NavItem>
                 </IndexLinkContainer>
                 <ConditionalWrapper display={indev}>
-                  <IndexLinkContainer to='/users'>
-                    <MenuItem eventKey={5.6}>Users</MenuItem>
+                  <IndexLinkContainer to='/reportTest'>
+                    <NavItem eventKey={4}>Reports</NavItem>
                   </IndexLinkContainer>
                 </ConditionalWrapper>
-                <ConditionalWrapper display={indev}>
-                  <IndexLinkContainer to='/clinics'>
-                    <MenuItem eventKey={5.7}>Clinics</MenuItem>
+                <NavDropdown eventKey={5} title='Other' id='nav-dropdown-other'>
+                  <ClinicSwitcherModal/>
+                  <ConditionalWrapper display={indev}>
+                    <IndexLinkContainer to='/clinicStats'>
+                      <MenuItem eventKey={5.1}>Clinic Statistics</MenuItem>
+                    </IndexLinkContainer>
+                  </ConditionalWrapper>
+                  <ConditionalWrapper display={indev}>
+                    <IndexLinkContainer to='/modules'>
+                      <MenuItem eventKey={5.2}>Modules</MenuItem>
+                    </IndexLinkContainer>
+                  </ConditionalWrapper>
+                  <ConditionalWrapper display={indev}>
+                    <IndexLinkContainer to='/config'>
+                      <MenuItem eventKey={5.3}>Configuration</MenuItem>
+                    </IndexLinkContainer>
+                  </ConditionalWrapper>
+                  <ConditionalWrapper display={indev}>
+                    <IndexLinkContainer to='/userStats'>
+                      <MenuItem eventKey={5.4}>User Statistics</MenuItem>
+                    </IndexLinkContainer>
+                  </ConditionalWrapper>
+                  <IndexLinkContainer to='/userSettings'>
+                    <MenuItem eventKey={5.5}>User Settings</MenuItem>
                   </IndexLinkContainer>
-                </ConditionalWrapper>
-                <IndexLinkContainer to='/logout'>
-                  <MenuItem eventKey={5.8}>Logout</MenuItem>
-                </IndexLinkContainer>
-              </NavDropdown>
-            </Nav>
+                  <ConditionalWrapper display={indev}>
+                    <IndexLinkContainer to='/users'>
+                      <MenuItem eventKey={5.6}>Users</MenuItem>
+                    </IndexLinkContainer>
+                  </ConditionalWrapper>
+                  <ConditionalWrapper display={indev}>
+                    <IndexLinkContainer to='/clinics'>
+                      <MenuItem eventKey={5.7}>Clinics</MenuItem>
+                    </IndexLinkContainer>
+                  </ConditionalWrapper>
+                  <IndexLinkContainer to='/logout'>
+                    <MenuItem eventKey={5.8}>Logout</MenuItem>
+                  </IndexLinkContainer>
+                </NavDropdown>
+              </Nav>
+            </Navbar.Collapse>
           </Navbar>
 
           <div className='page'>
