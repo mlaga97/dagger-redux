@@ -47,29 +47,40 @@ body
 	-webkit-box-shadow: 0px 2px 1px #eeeeee inset, 0px -2px 8px #999999, -10px 0px 25px rgba(105, 105, 105, 0.1), 10px 0px 25px rgba(105, 105, 105, 0.1);
 	margin-left: 0px;
 	margin-right: 0px;
-	padding-top: 60px;
-	padding-bottom: 20px;
-	padding-left: 50px;
-	padding-right: 50px;
+	padding-top: 20px; /* start with padding for lowest resolution, work up from there */
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
 	margin:auto; /* Center page */
 }
 
 /* Small devices (tablets, 768px and up) @screen-sm-min */
 @media (min-width: 768px) {
   .page{
-
-    }
+		padding-top: 30px;
+		padding-bottom: 20px;
+		padding-left: 20px;
+		padding-right: 20px;
+  }
 }
 
 /* Medium devices (desktops, 992px and up) @screen-md-min */
 @media (min-width: 992px ) {
   .page{
-    }
+		padding-top: 50px;
+		padding-bottom: 40px;
+		padding-left: 40px;
+		padding-right: 40px;
+  }
 }
 
 /* Large devices (large desktops, 1200px and up) @screen-lg-min  */
 @media (min-width: 1200px ) {
-.page{
+	.page{
+		padding-top: 60px;
+		padding-bottom: 50px;
+		padding-left: 50px;
+		padding-right: 50px;
 
 	}
 }
