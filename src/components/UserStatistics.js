@@ -46,7 +46,21 @@ class ResponseList extends React.Component {
           My Recent Activity
         </Panel.Heading>
         <Panel.Body>
+          <Grid>
+            <Row>
+              <Col sm={12}>
+                <h4>Activity Today</h4>
+              </Col>
+            </Row>
+          </Grid>
           <RecentRecords userID={this.props.users.current} />
+          <Grid>
+            <Row>
+              <Col sm={12}>
+                <h4>Activity by Week</h4>
+              </Col>
+            </Row>
+          </Grid>
           <Grid>
             <Row>
               <Col sm={12}>
