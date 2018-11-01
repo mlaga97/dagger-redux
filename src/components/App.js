@@ -77,10 +77,10 @@ class PrivateApp extends React.Component {
                   <NavItem eventKey={1}>Home</NavItem>
                 </IndexLinkContainer>
                 <IndexLinkContainer to='/assessment'>
-                  <NavItem eventKey={2}>Assessment</NavItem>
+                  <NavItem eventKey={2}>New Record</NavItem>
                 </IndexLinkContainer>
                 <IndexLinkContainer to='/responses'>
-                  <NavItem eventKey={3}>Responses</NavItem>
+                  <NavItem eventKey={3}>Search</NavItem>
                 </IndexLinkContainer>
                 <ConditionalWrapper display={indev}>
                   <IndexLinkContainer to='/reportTest'>
