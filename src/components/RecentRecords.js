@@ -28,7 +28,7 @@ class ResponseList extends React.Component {
 
   render() {
     if (!this.props.responses.all) {
-      return <div>Retrieving response list...</div>;
+      return <div className='content-loading'>Retrieving response list...</div>;
     }
 
     const resultCount = Object.keys(this.props.responses.all).length;

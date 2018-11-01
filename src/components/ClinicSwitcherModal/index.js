@@ -50,18 +50,18 @@ class ClinicSwitcherModal extends React.Component {
 
   render = () => {
     if (!this.props.users.all) {
-      return <div>Retrieving user list...</div>;
+      return <div className='content-loading'>Retrieving user list...</div>;
     }
 
     const userID = this.props.users.current;
     const user = this.props.users.all[userID];
 
     if (!user.clinics) {
-      return <div>Retrieving user clinics...</div>;
+      return <div className='content-loading'>Retrieving user clinics...</div>;
     }
 
     if (!this.props.clinics.all) {
-      return <div>Retrieving clinic list...</div>;
+      return <div className='content-loading'>Retrieving clinic list...</div>;
     }
 
     // Get the user clinics

@@ -17,7 +17,7 @@ class ClinicListPage extends React.Component {
 
   render() {
     if (!this.props.clinics.all) {
-      return <div>Retrieving clinic list...</div>;
+      return <div className='content-loading'>Retrieving clinic list...</div>;
     }
 
     return <List clinics={this.props.clinics.all}/>;

@@ -9,7 +9,7 @@ class AssessmentSelector extends React.Component {
 
   render() {
     if (!this.props.assessments) {
-      return <div>Retrieving assessments...</div>;
+      return <div className='content-loading'>Retrieving assessments...</div>;
     }
 
     return (

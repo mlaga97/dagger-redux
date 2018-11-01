@@ -375,6 +375,11 @@ div.search-results-count {
 	padding-left: 10px;
 }
 
+div.content-loading {
+	text-align: center;
+	color: gray;
+}
+
 /* Set feedback color */
 div.info-content,
 div.search-results-count,

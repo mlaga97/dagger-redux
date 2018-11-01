@@ -17,7 +17,7 @@ class UserList extends React.Component {
 
   render() {
     if (!this.props.users.all) {
-      return <div>Retrieving user list...</div>;
+      return <div className='content-loading'>Retrieving user list...</div>;
     }
 
     return <List users={this.props.users.all}/>;

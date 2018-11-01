@@ -47,11 +47,11 @@ class UserPage extends React.Component {
 
   render() {
     if (!this.props.users.all) {
-      return <div>Retrieving user list...</div>;
+      return <div className='content-loading'>Retrieving user list...</div>;
     }
 
     if (!this.props.clinics.all) {
-      return <div>Retrieving clinic list...</div>;
+      return <div className='content-loading'>Retrieving clinic list...</div>;
     }
 
     const user = this.props.users.all[this.userID];

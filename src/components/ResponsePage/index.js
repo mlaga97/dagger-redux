@@ -42,7 +42,7 @@ class ResponsePage extends React.Component {
     const assessments = props.assessments.all;
 
     if (!props.responses || !props.responses.all || !props.responses.all[responseID] || !props.responses.all[String(responseID)].assessments.responses) {
-      return <div>Retrieving response data...</div>;
+      return <div className='content-loading'>Retrieving response data...</div>;
     }
 
     // TODO: This isn't super clear.

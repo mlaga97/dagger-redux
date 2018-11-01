@@ -22,11 +22,11 @@ class ResponseList extends React.Component {
 
   render() {
     if (!this.props.users || !this.props.users.current) {
-      return <div>Retrieving user ID...</div>;
+      return <div className='content-loading'>Retrieving user ID...</div>;
     }
 
     if (!this.props.statistics || !this.props.statistics.user) {
-      return <div>Retrieving user statistics...</div>;
+      return <div className='content-loading'>Retrieving user statistics...</div>;
     }
 
     let {
