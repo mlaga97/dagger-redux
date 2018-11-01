@@ -410,6 +410,7 @@ table.table-search-results tbody tr td:last-child {
 /* Header for tables containing assessments, response records */
 table.table-assessment thead th,
 table.table-response thead th,
+table.table-user-stats thead th,
 table.table-scoring thead th,
 table.table-search-results thead th{
 	padding:10px !important;
@@ -423,6 +424,7 @@ table.table-search-results thead th{
 /* Set feedback color */
 table.table-response tbody tr td:not(:first-child),
 table.table-search-results tbody tr td,
+table.table-user-stats tbody tr td,
 table.table-scoring tbody tr td{
 	color: darkblue;
 }

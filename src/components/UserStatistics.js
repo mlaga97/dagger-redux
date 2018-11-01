@@ -64,7 +64,7 @@ class ResponseList extends React.Component {
           <Grid>
             <Row>
               <Col sm={12}>
-                <Table striped bordered className='table-response table-card-table'>
+                <Table striped bordered className='table-user-stats table-card-table'>
                   <thead>
                     <tr>
                       <th>Period</th>
