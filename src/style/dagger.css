@@ -146,7 +146,7 @@ label.btn {
 /* Make form-group-like content in response like text inputs */
 /* NOTE: Don't specify to contained with div.info-group -- apply to ALL info-content */
 .info-content {
-		background-color: #f9f9f9; /* Match BS class table-striped */
+		background-color: #fcfcfc;
 		text-align: right; 				 /* questions to the left, responses to the right */
 		/* Match text input style */
 		height: 34px;
@@ -375,6 +375,13 @@ div.search-results-count {
 	padding-left: 10px;
 }
 
+/* Set feedback color */
+div.info-content,
+div.search-results-count,
+table.table-search-results tbody tr td {
+	color: darkblue;
+}
+
 table.table-search-results thead tr th:not(:last-child),
 table.table-search-results tbody tr td {
 	text-align: right;
@@ -403,13 +410,21 @@ table.table-search-results tbody tr td:last-child {
 /* Header for tables containing assessments, response records */
 table.table-assessment thead th,
 table.table-response thead th,
-table.table-scoring thead th {
+table.table-scoring thead th,
+table.table-search-results thead th{
 	padding:10px !important;
 	font-weight: normal;
 	text-transform: capitalize; /* Failover if data is all lowercase */
 	text-align: center;
 	vertical-align: middle !important;
 	color: #686868; /* darker than html gray */
+}
+
+/* Set feedback color */
+table.table-response tbody tr td:not(:first-child),
+table.table-search-results tbody tr td,
+table.table-scoring tbody tr td{
+	color: darkblue;
 }
 
 /* Make Card Tables on mobile */
