@@ -9,7 +9,7 @@ const Assessments = ({
       Object.keys(selected)
         .filter(key => selected[key])
         .join(', ')
-    }
+    } &nbsp;
   </td>
 );
 
