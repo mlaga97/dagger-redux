@@ -240,11 +240,13 @@ button:disabled,
 	color: #666666 !important;
 }
 
-div.col-button {
-		padding: 5px 10px 0px 10px; /* 0px bottom for search button to reduce height of panel, breakout if problematic for other buttons */
+div.col-search-button {
+		padding-bottom: 10px; /* 0px bottom for search button to reduce height of panel, breakout if problematic for other buttons */
+		white-space: nowrap;
+		text-decoration: none !important;
 }
 
-div.col-button button,
+div.col-search-button button,
 a.btn, a.btn-default {
 	margin: 0 10px !important; /* Override BS classes btn, btn-deafult */
 }
