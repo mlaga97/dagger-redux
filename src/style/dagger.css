@@ -85,6 +85,10 @@ body
 	}
 }
 
+.h4, h4 {
+	padding-left: 10px; /* Align head tag content with tabled, form-control content */
+}
+
 .panel-heading, .panel-title {
 	font-size: 18px;
 }
@@ -347,6 +351,10 @@ div.modal-body table tbody td div.radio {
 }
 
 /* SEARCH RESULTS TABLE (plus Clinic Selection table header in modal)*/
+table.table-search-results {
+	margin-bottom: 30px;
+}
+
 /* Header for search results table and tables in modal (currently only Select a Clinic) */
 table.table-search-results thead th,
 div.modal-body table thead th {
@@ -362,7 +370,7 @@ table.table-search-results {
 
 div.search-results-count {
 	font-size: 16px;
-	padding: 10px;
+	padding-left: 10px;
 }
 
 table.table-search-results thead tr th:not(:last-child),
