@@ -412,7 +412,8 @@ table.table-assessment thead th,
 table.table-response thead th,
 table.table-user-stats thead th,
 table.table-scoring thead th,
-table.table-search-results thead th{
+table.table-search-results thead th,
+table.table-vertical th {
 	padding:10px !important;
 	font-weight: normal;
 	text-transform: capitalize; /* Failover if data is all lowercase */
@@ -425,8 +426,14 @@ table.table-search-results thead th{
 table.table-response tbody tr td:not(:first-child),
 table.table-search-results tbody tr td,
 table.table-user-stats tbody tr td,
-table.table-scoring tbody tr td{
+table.table-scoring tbody tr td,
+table.table-vertical tbody tr td{
 	color: darkblue;
+}
+
+table.table-vertical {
+	width: 302px;
+	margin: auto;
 }
 
 /* Make Card Tables on mobile */
