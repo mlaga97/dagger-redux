@@ -24,7 +24,7 @@ class AssessmentPage extends React.Component {
     super(props);
 
     this.state = {
-      lastResponse: (props.state) ? props.state.responseID : null,
+      lastResponse: props.responseID,
       selected: {},
       response: {
         metadata: {
