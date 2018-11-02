@@ -373,6 +373,8 @@ table.table-search-results {
 div.search-results-count {
 	font-size: 16px;
 	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
 }
 
 div.content-loading {
@@ -501,7 +503,8 @@ div.centered {
 }
 
 table.table-response tbody tr td:not(:first-child),
-table.table-scoring tbody tr td:not(:first-child) {
+table.table-scoring tbody tr td:not(:first-child),
+table.table-user-stats tbody tr td:not(:first-child) {
 	text-align: center;
 }
 
