@@ -8,7 +8,6 @@ import '../../style/dagger.css';
 const Header = () => (
   <tr>
     <th></th>
-    <th>ID</th>
     <th>Name</th>
     <th>City</th>
     <th>State</th>
@@ -17,7 +16,7 @@ const Header = () => (
 
 const Clinic = ({clinic, handleClick, checked}) => (
   <tr key={clinic.id}>
-    <td>
+    <td data-label='Select'>
       <Radio
         readOnly
         name='clinic'
@@ -26,16 +25,15 @@ const Clinic = ({clinic, handleClick, checked}) => (
         onClick={handleClick}
       />
     </td>
-    <td>{clinic.id}</td>
-    <td>{clinic.name}</td>
-    <td>{clinic.city}</td>
-    <td>{clinic.state}</td>
+    <td data-label='Name'>{clinic.name}</td>
+    <td data-label='City'>{clinic.city}</td>
+    <td data-label='State'>{clinic.state}</td>
   </tr>
 );
 
 // TODO: Merge with ClinicList/List
 const List = ({clinics, handleClick, currentClinic}) => (
-  <Table>
+  <Table striped className='table-select-clinic table-card-table'>
     <thead>
       <Header/>
     </thead>

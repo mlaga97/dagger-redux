@@ -384,6 +384,7 @@ div.content-loading {
 
 /* Set feedback color */
 div.info-content,
+span.info-content,
 div.search-results-count,
 table.table-search-results tbody tr td {
 	color: darkblue;
@@ -413,6 +414,16 @@ table.table-search-results tbody tr td:last-child {
 	text-transform: uppercase;
 }
 
+/* Adjust radio button position for table-card-table view of table-select-clinic */
+table.table-select-clinic tbody td div.radio label {
+	text-align: right;
+	display: inline;
+}
+
+table.table-select-clinic tbody td div.radio label input[type="radio"] {
+	margin-left: -15px !important;
+}
+
 /* ASSESSMENT AND RESPONSE RECORD TABLES */
 /* Header for tables containing assessments, response records */
 table.table-assessment thead th,
@@ -420,6 +431,7 @@ table.table-response thead th,
 table.table-user-stats thead th,
 table.table-scoring thead th,
 table.table-search-results thead th,
+table.table-select-clinic thead th,
 table.table-vertical th {
 	padding:10px !important;
 	font-weight: normal;
