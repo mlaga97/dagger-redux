@@ -33,13 +33,12 @@ class AssessmentDateToday extends React.Component {
       <ControlLabel>Assessment Date Today</ControlLabel>
       <ToggleButtonGroup
         type='radio'
-        ref='inputNode'
         required='required'
         defaultValue='true'
         name='assessmentDateToday'
         onChange={this.handleChange}
       >
-        <ToggleButton value='true'>Yes</ToggleButton>
+        <ToggleButton value='true' ref='inputNode'>Yes</ToggleButton>
         <ToggleButton value='false'>No</ToggleButton>
       </ToggleButtonGroup>
       <span className="info-content"> {(new Date()).toLocaleDateString('en-US')} </span>

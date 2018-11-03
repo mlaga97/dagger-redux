@@ -48,11 +48,10 @@ class Renderer extends React.Component {
           <ToggleButtonGroup
             name={name}
             type='radio'
-            ref='inputNode'
             required='required'
             onChange={this.handleChange}
           >
-            <ToggleButton value='yes'>Yes</ToggleButton>
+            <ToggleButton value='yes' ref='inputNode'>Yes</ToggleButton>
             <ToggleButton value='no'>No</ToggleButton>
           </ToggleButtonGroup>
         </FormGroup>
