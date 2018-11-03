@@ -601,23 +601,10 @@ table.table-assessment tbody tr td:not(:first-child):focus-within {
 	-webkit-transition:		background .2s ease-in;
 }
 
-/* Set Top and Bottom ONLY box shadow to imitate TR box shadow on focused (but not hovered) TDs while TR is hovered */
-table.table-assessment tbody tr:hover td:not(:first-child):focus-within:not(:hover) {
-	-moz-box-shadow:
-		inset 0 11px 40px -11px rgba(240, 248, 255, 0.8),
-		inset 0 -11px 40px  -11px rgba(240, 248, 255, 0.8),
-		inset 0 8px 3px -9px rgba(0, 0, 0, 0.6),
-		inset 0 -9px 3px -9px rgba(0, 0, 0, 0.6);
-	-webkit-box-shadow:
-		inset 0 11px 40px -11px rgba(240, 248, 255, 0.8),
-		inset 0 -11px 40px  -11px rgba(240, 248, 255, 0.8),
-		inset 0 8px 3px -9px rgba(0, 0, 0, 0.6),
-		inset 0 -9px 3px -9px rgba(0, 0, 0, 0.6);
+/* Exclude hover effect for form-group-clear-style -- used to place input submit and button in form-group */
+div.form-group:not(.form-group-clear-style):hover {
 	box-shadow:
-		inset 0 11px 40px -11px rgba(240, 248, 255, 0.8),
-		inset 0 -11px 40px  -11px rgba(240, 248, 255, 0.8),
-		inset 0 8px 3px -9px rgba(0, 0, 0, 0.6),
-		inset 0 -9px 3px -9px rgba(0, 0, 0, 0.6);
+		2px 2px 4px rgba(105, 105, 105, 0.1);
 }
 
 /* Losing focus - abandon AliceBlue*/
@@ -629,13 +616,54 @@ table.table-assessment tbody tr td:not(:first-child):not(:focus-within)  {
 	-webkit-transition: 	background .5s ease-out;
 }
 
-/* Make table row hover more subtle and pleasing */
-/* Layered inset box shadow onHover of .table-assessment TR and assessment option T */
-.table-hover>tbody>tr:hover,
-table.table-assessment tbody tr td:not(:first-child):hover {
-		-moz-box-shadow: inset 0 0 40px rgba(240, 248, 255, 0.8), inset 0 0 3px rgba(0, 0, 0, 0.6); /* colors: aliceblue, black */
-		-webkit-box-shadow: inset 0 0 40px rgba(240, 248, 255, 0.8), inset 0 0 3px rgba(0, 0, 0, 0.6);
-		box-shadow: inset 0 0 40px rgba(240, 248, 255, 0.8), inset 0 0 3px rgba(0, 0, 0, 0.6);
+/* Make table row hover EVEN MORE subtle and pleasing */
+.table-hover>tbody>tr:hover {
+	box-shadow:
+		0px 0px 8px rgba(105, 105, 105, 0.2);
+}
+
+.table-search-results>tbody>tr:hover,
+.table-select-clinic>tbody>tr:hover {
+	box-shadow:
+		0px 15px 8px 12px rgba(105, 105, 105, 0.2);
+
+}
+
+/* Make table row hover EVEN MORE subtle and pleasing */
+.table-hover>tbody>tr:hover {
+	box-shadow:
+		inset 0px 0px 8px rgba(105, 105, 105, 0.2);
+}
+
+.table-search-results>tbody>tr:hover,
+.table-select-clinic>tbody>tr:hover {
+	box-shadow:
+		inset 0px 12px 8px -12px rgba(105, 105, 105, 0.2),
+		inset 0px -12px 8px -12px rgba(105, 105, 105, 0.2);
+}
+
+/* Maintain top and bottom inset box shadow on td WHERE input within is focused AND tr:hover */
+.table-hover>tbody>tr:hover>td:focus-within {
+	box-shadow:
+		inset 0px 12px 8px -12px rgba(105, 105, 105, 0.2),
+		inset 0px -12px 8px -12px rgba(105, 105, 105, 0.2);
+}
+
+
+/* Last TD gets special inset box shadow on the right WHERE TR:hover AND TD:focus-within */
+.table-hover>tbody>tr:hover>td:last-child:focus-within {
+	box-shadow:
+		inset -12px 0px 8px -12px rgba(105, 105, 105, 0.2), /* inset right */
+		inset 0px 12px 8px -12px rgba(105, 105, 105, 0.2),  /* inset top - I think - TODO: confirm */
+		inset 0px -12px 8px -12px rgba(105, 105, 105, 0.2);
+}
+
+/* Emphasis onHover for table-assessment and container-assessment-selection labels */
+table.table-assessment tbody tr td:not(:first-child):hover label,
+div.container-assessment-selection div.checkbox label:hover {
+	color: #333;
+	text-decoration: underline;
+	text-decoration-style: dotted;
 }
 
 /* BS hover background color change undesirable on stripped table rows */
