@@ -592,10 +592,19 @@ div.container-assessment-selection {
 }
 
 /* Set background-color to AliceBlue */
-/* Applies to standard form-group and table-assessment TDs containing radio or checkbox */
+/* Applies to standard form-group and table-assessment TDs containing radio BUT NOT checkboxScale */
 div.form-group:focus-within,
-table.table-assessment tbody tr td:not(:first-child):focus-within {
+table.table-assessment:not(.table-checkboxScale) tbody tr td:not(:first-child):focus-within {
 	background: aliceblue;
+	-moz-transition: 		background .2s ease-in;
+	-o-transition: 			background .2s ease-in;
+	-webkit-transition:		background .2s ease-in;
+}
+
+/* Make entire table row of checkboxScale assessment tables bg AliceBlue when focus-within */
+/* TODO: Add box shadow */
+table.table-checkboxScale tbody tr:focus-within {
+	background-color: aliceblue;
 	-moz-transition: 		background .2s ease-in;
 	-o-transition: 			background .2s ease-in;
 	-webkit-transition:		background .2s ease-in;
@@ -643,7 +652,8 @@ table.table-assessment tbody tr td:not(:first-child):not(:focus-within)  {
 }
 
 /* Maintain top and bottom inset box shadow on td WHERE input within is focused AND tr:hover */
-.table-hover>tbody>tr:hover>td:focus-within {
+/* But not on checkboxScale because we do the whole row */
+table.table-hover:not(.table-checkboxScale)>tbody>tr:hover>td:focus-within {
 	box-shadow:
 		inset 0px 12px 8px -12px rgba(105, 105, 105, 0.2),
 		inset 0px -12px 8px -12px rgba(105, 105, 105, 0.2);
@@ -651,7 +661,8 @@ table.table-assessment tbody tr td:not(:first-child):not(:focus-within)  {
 
 
 /* Last TD gets special inset box shadow on the right WHERE TR:hover AND TD:focus-within */
-.table-hover>tbody>tr:hover>td:last-child:focus-within {
+/* But not on checkboxScale because we do the whole row */
+table.table-hover:not(.table-checkboxScale)>tbody>tr:hover>td:last-child:focus-within {
 	box-shadow:
 		inset -12px 0px 8px -12px rgba(105, 105, 105, 0.2), /* inset right */
 		inset 0px 12px 8px -12px rgba(105, 105, 105, 0.2),  /* inset top - I think - TODO: confirm */

@@ -73,7 +73,7 @@ function Wrapper(props) {
 
   return (
     <Col sm={12}>
-      <Table striped bordered condensed hover className={"table-assessment"} >
+      <Table striped bordered condensed hover className={"table-assessment table-checkboxScale"} >
         <thead>
           <tr>
             <th>Question</th>
