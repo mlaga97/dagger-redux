@@ -95,10 +95,20 @@ class Renderer extends React.Component {
     }
 
     // Fall back to radioOptions if on a mobile device
-    // TODO: Better
+    // TODO: Handle Multicolumn better
     const isMobile = window.innerWidth <= 500;
     if (isMobile) {
-      return <RadioOptions.renderer {...this.props} />;
+      return (
+        <React.Fragment>
+          {
+            subTypes.map((subType) => <RadioOptions.renderer
+              {...this.props}
+              type={subType}
+              text={(subType.span ? subType.span + ': ': '') + text}
+            />)
+          }
+        </React.Fragment>
+      );
     }
 
     return (
