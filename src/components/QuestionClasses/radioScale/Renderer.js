@@ -75,14 +75,18 @@ class Renderer extends React.Component {
                 const name = this.props.name + ((suffix) || '');
                 const selected = response ? response[name] : null;
 
-                return Object.keys(options).map((option) => {
+                let value = <td>NO RESPONSE</td>;
+
+                Object.keys(options).forEach((option) => {
                   // TODO: Avoid type coercion by making type match at a higher level?
                   const checked = String(options[option]) === String(selected);
 
                   if (checked) {
-                    return <td>{option}</td>;
+                    value = <td>{option}</td>;
                   }
                 })
+
+                return value;
               })
             }
           </React.Fragment>
