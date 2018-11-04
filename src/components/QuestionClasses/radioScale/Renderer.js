@@ -101,11 +101,26 @@ class Renderer extends React.Component {
       return (
         <React.Fragment>
           {
-            subTypes.map((subType) => <RadioOptions.renderer
-              {...this.props}
-              type={subType}
-              text={(subType.span ? subType.span + ': ': '') + text}
-            />)
+            subTypes.map((subType) => {
+              const { suffix, hideLabel, options } = subType;
+              const name = this.props.name + ((suffix) || '');
+              const selected = response ? response[name] : null;
+
+              let myText = text;
+              if (subType.span) {
+                myText = subType.span + ': ' + text;
+              }
+
+              return (
+                <RadioOptions.renderer
+                  {...this.props}
+                  name={name}
+                  text={myText}
+                  type={subType}
+                  selected={selected}
+                />
+              )
+            })
           }
         </React.Fragment>
       );
