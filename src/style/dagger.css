@@ -666,6 +666,17 @@ div.container-assessment-selection div.checkbox label:hover {
 	text-decoration-style: dotted;
 }
 
+/* Style labels in Question column for checkbox scale assessments */
+table.table-assessment tbody tr td label.label-assessment-checkbox {
+    width: 100%;
+    font-size: inherit;
+}
+
+table.table-assessment tbody tr td label.label-assessment-checkbox:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 /* BS hover background color change undesirable on stripped table rows */
 .table-hover>tbody>tr:nth-of-type(odd) {
 		background-color: #f9f9f9; /* Override BS default hover in favor of stripped table bg */

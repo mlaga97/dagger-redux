@@ -35,11 +35,12 @@ class Renderer extends React.Component {
     return (
       <tr>
         <td>
-          {number}. {text}
+          <label class='label-assessment-checkbox' for={name} >{number}. {text}</label>
         </td>
         <td>
           <Checkbox
             name={name}
+            id={name}
             checked={checked}
             onChange={this.handleChange}
           />
