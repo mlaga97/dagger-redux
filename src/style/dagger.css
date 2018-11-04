@@ -680,6 +680,7 @@ div.container-assessment-selection div.checkbox label:hover {
 /* Style labels in Question column for checkbox scale assessments */
 table.table-assessment tbody tr td label.label-assessment-checkbox {
     width: 100%;
+	line-height: 32px;
     font-size: inherit;
 }
 
