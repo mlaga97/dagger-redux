@@ -4,7 +4,7 @@ import React from 'react';
 // Components
 import FocusableInput from '../../FocusableInput';
 
-const AssessmentDate = ({metadata}) => {
+const AssessmentDate = ({metadata, onChange}) => {
   if (metadata && metadata.assessmentDateToday === 'true') {
     return null;
   }
@@ -16,7 +16,7 @@ const AssessmentDate = ({metadata}) => {
       required='required'
       name='assessmentDate'
       label='Assessment Date'
-      onChange={this.handleChange}
+      onChange={onChange}
     />
   );
 }
