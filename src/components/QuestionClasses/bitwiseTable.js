@@ -26,7 +26,13 @@ class Renderer extends React.Component {
     if (!editable) {
       return (
         <div>
-          <b>{number}. {text}:</b> {
+          <div className="list-style">
+            <div className="list-style-item">
+              <div className="list-style-item-ordinal">{number}.</div>
+              <div className="list-style-item-content">{text}</div>
+            </div>
+          </div>
+          {
             options.filter((option, index) => {
               const name = `${this.props.name}-${index}`;
               const checked = response ? response[name] : false;
@@ -45,7 +51,12 @@ class Renderer extends React.Component {
     return (
       <tr>
         <td>
-          {number}. {text}
+          <div className="list-style">
+            <div className="list-style-item">
+              <div className="list-style-item-ordinal">{number}.</div>
+              <div className="list-style-item-content">{text}</div>
+            </div>
+          </div>
         </td>
         {
           options.map((option, index) => {

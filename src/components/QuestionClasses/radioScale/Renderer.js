@@ -52,7 +52,14 @@ class Renderer extends React.Component {
 
                 return (
                   <React.Fragment>
-                    <td>{number}. {text}</td>
+                    <td>
+                      <div className="list-style">
+                        <div className="list-style-item">
+                          <div className="list-style-item-ordinal">{number}.</div>
+                          <div className="list-style-item-content">{text}</div>
+                        </div>
+                      </div>
+                    </td>
                     <td>{option}</td>
                   </React.Fragment>
                 );
@@ -68,7 +75,14 @@ class Renderer extends React.Component {
       return (
         <tr>
           <React.Fragment>
-            <td>{number}. {text}</td>
+            <td>
+              <div className="list-style">
+                <div className="list-style-item">
+                  <div className="list-style-item-ordinal">{number}.</div>
+                  <div className="list-style-item-content">{text}</div>
+                </div>
+              </div>
+            </td>
             {
               subTypes.map((subType) => {
                 const { suffix, options } = subType;
@@ -128,7 +142,14 @@ class Renderer extends React.Component {
 
     return (
       <tr>
-        <td>{number}. {text}</td>
+        <td>
+          <div className="list-style">
+            <div className="list-style-item">
+              <div className="list-style-item-ordinal">{number}.</div>
+              <div className="list-style-item-content">{text}</div>
+            </div>
+          </div>
+        </td>
         <React.Fragment>
           {
             subTypes.map((subType) => {

@@ -1,11 +1,6 @@
 // Library imports
 import React from 'react';
-import { FormGroup, ControlLabel, Radio, Grid, Row } from 'react-bootstrap';
-
-// Helpers
-const questionStyle = {
-  paddingLeft: '20px',
-};
+import { FormGroup, Radio, Grid, Row } from 'react-bootstrap';
 
 class renderer extends React.Component {
   handleChange = (event) => {
@@ -43,7 +38,12 @@ class renderer extends React.Component {
                 if (checked) {
                   return (
                     <div className='info-group'>
-                      <label className='info-label'>{number}. {text}</label>
+                      <div className="list-style">
+                        <div className="list-style-item">
+                          <div className="list-style-item-ordinal info-label">{number}.</div>
+                          <div className="list-style-item-content info-label">{text}</div>
+                        </div>
+                      </div>
                       <div className='info-content'>{option}</div>
                     </div>
                   );
@@ -59,10 +59,17 @@ class renderer extends React.Component {
 
     return (
       <FormGroup>
-        <ControlLabel>
-          {number}. {text}
-        </ControlLabel>
-        <div style={questionStyle}>
+        <div className="list-style">
+          <div className="list-style-item">
+            <div className="list-style-item-ordinal">
+              <label>{number}.</label>
+            </div>
+            <div className="list-style-item-content">
+              <label>{text}</label>
+            </div>
+          </div>
+        </div>
+        <div className="radio-options">
           {
             Object.keys(options).map((option) => {
               const value = options[option];

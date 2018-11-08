@@ -26,7 +26,14 @@ class Renderer extends React.Component {
     if (!editable) {
       return (
         <tr>
-          <td>{number}. {text}</td>
+          <td>
+            <div className="list-style">
+              <div className="list-style-item">
+                <div className="list-style-item-ordinal">{number}.</div>
+                <div className="list-style-item-content">{text}</div>
+              </div>
+            </div>
+          </td>
           <td>{(checked) ? 'Yes' : 'No'}</td>
         </tr>
       );
@@ -35,7 +42,16 @@ class Renderer extends React.Component {
     return (
       <tr>
         <td>
-          <label class='label-assessment-checkbox' for={name} >{number}. {text}</label>
+          <div className="list-style">
+            <div className="list-style-item">
+              <div className="list-style-item-ordinal">
+                {number}.
+              </div>
+              <div className="list-style-item-content">
+                <label className='label-assessment-checkbox' htmlFor={name} >{text}</label>
+              </div>
+            </div>
+          </div>
         </td>
         <td>
           <Checkbox

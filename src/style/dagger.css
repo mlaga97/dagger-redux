@@ -118,6 +118,10 @@ body
 	margin-bottom: 15px; /* Mimic BS form-control bottom margin */
 }
 
+.info-label {
+	/* styled with label tag */
+}
+
 .form-group-clear-style {
   border: initial;
   border-radius: initial;
@@ -129,7 +133,7 @@ body
 	font-size: 16px;
 }
 
-label {
+label, .info-label {
     text-align: left;
     font-weight: initial;
     padding-left: 3px;
@@ -669,9 +673,10 @@ table.table-hover:not(.table-checkboxScale)>tbody>tr:hover>td:last-child:focus-w
 		inset 0px -12px 8px -12px rgba(105, 105, 105, 0.2);
 }
 
-/* Emphasis onHover for table-assessment and container-assessment-selection labels */
+/* Emphasis onHover for table-assessment, radioOptions and container-assessment-selection labels */
 table.table-assessment tbody tr td:not(:first-child):hover label,
-div.container-assessment-selection div.checkbox label:hover {
+div.container-assessment-selection div.checkbox label:hover,
+div.container-assessment div.radio-options div.radio label:hover {
 	color: #333;
 	text-decoration: underline;
 	text-decoration-style: dotted;
@@ -759,4 +764,44 @@ div.panel-unadorned>.panel-heading>.panel-title {
 		margin-right: 16.5rem;
 	}
 
+}
+
+/* Style numbered questions like ordered list OL tag with content indented from ordinal */
+div.list-style {
+	display: table;
+}
+
+div.list-style-item {
+	display: table-row;
+}
+
+div.list-style-item-ordinal, div.list-style-item-content {
+	display: table-cell;
+}
+
+div.list-style-item-ordinal {
+	width: 30px;
+	min-width: 30px;
+	padding-right: 7px;
+	text-align: right;
+	vertical-align: top;
+}
+
+.table-checkboxScale tbody tr td div.list-style-item-ordinal {
+	line-height: 32px;
+}
+
+div.list-style-item-ordinal label {
+	padding-right: 0px;  /* Override our own label css */
+	text-align: right;
+}
+
+div.list-style-item-content {
+	width: 100%;  /* Allows for full td cell width for checkboxScale on label-assessment-checkbox class */
+	vertical-align: top;
+}
+
+div.radio-options {
+	padding-left: 0px;
+	margin-left: 13px; /* 10px plus 3px to bring inline with label padding */
 }
