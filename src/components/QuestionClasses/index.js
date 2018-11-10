@@ -6,6 +6,7 @@ import radioOptions from './radioOptions';
 import selectOptions from './selectOptions';
 import textField from './textField';
 import dateField from './dateField';
+import numberField from './numberField';
 import yesNoToggle from './yesNoToggle';
 
 export default {
@@ -16,5 +17,6 @@ export default {
   selectOptions,
   textField,
   dateField,
+  numberField,
   yesNoToggle,
 };
