@@ -3,6 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { FormGroup, ControlLabel, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
+let formatDate = function(input) {
+  let pattern = /(\d{4})\-(\d{2})\-(\d{2})/;
+  if (!input || !input.match(pattern)) {
+    return null;
+  }
+  return input.replace(pattern, '$2/$3/$1');
+};
+
 // TODO: Refactor
 // TODO: Make Controlled
 class AssessmentDateToday extends React.Component {
@@ -19,7 +27,7 @@ class AssessmentDateToday extends React.Component {
       target: {
         name: 'assessmentDate',
         // en-CA is the equivalent of ISO-8601
-        value: (value === 'true') ? (new Date()).toLocaleDateString('en-CA') : null,
+        value: (value === 'true') ? formatDate(new Date()) : null,
       }
     });
   }
