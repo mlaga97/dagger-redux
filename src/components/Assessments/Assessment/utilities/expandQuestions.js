@@ -1,10 +1,14 @@
 function expandQuestions(props) {
   const { types, offset, questions } = props;
 
+  // TODO: Make MUCH more generic
   return questions.map((question, index) => {
     let { type } = question;
     const {
+      min,
+      max,
       text,
+      step,
       width,
       required,
       id: name,
@@ -19,12 +23,15 @@ function expandQuestions(props) {
     }
 
     return {
+      min, // Min value
+      max, // Max value
       name, // Field name
       type, // Question type
       text, // Question text
       width, // Question width
       number, // Question number
       required, // Is question required
+      step, // Increment/decrement step
     };
   });
 }
