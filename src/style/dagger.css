@@ -31,7 +31,7 @@ body
 }
 
 .navbar {
-  margin-bottom: 0px; /* Overwrites navbar style from unknown location */
+	margin-bottom: 0px; /* Overwrites navbar style from unknown location */
 	border-radius: 0 !important; /* Get rid of rounded corners on navbar */
 }
 
@@ -39,48 +39,42 @@ body
 .container { width: 100%;}
 
 .page {
-  background-color: #fbfbfb;  /* Color name 'snow' */
-  max-width: 1080px;
+  	background-color: #fbfbfb;  /* Color name 'snow' */
+  	max-width: 1080px;
 	border-left: 1px solid #eeeeee; /*Color name 'whisper' */
 	border-right: 1px solid #eeeeee;
-	box-shadow: 0px 2px 1px #eeeeee inset, 0px -2px 8px #999999, -10px 0px 25px rgba(105, 105, 105, 0.1), 10px 0px 25px rgba(105, 105, 105, 0.1);
-	-webkit-box-shadow: 0px 2px 1px #eeeeee inset, 0px -2px 8px #999999, -10px 0px 25px rgba(105, 105, 105, 0.1), 10px 0px 25px rgba(105, 105, 105, 0.1);
-	margin-left: 0px;
-	margin-right: 0px;
-	padding-top: 20px; /* start with padding for lowest resolution, work up from there */
-	padding-bottom: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
+	box-shadow:
+		0px 2px 1px #eeeeee inset,
+		0px -2px 8px #999999,
+		-10px 0px 25px rgba(105, 105, 105, 0.1),
+		10px 0px 25px rgba(105, 105, 105, 0.1);
+	-webkit-box-shadow:
+		0px 2px 1px #eeeeee inset,
+		0px -2px 8px #999999,
+		-10px 0px 25px rgba(105, 105, 105, 0.1),
+		10px 0px 25px rgba(105, 105, 105, 0.1);
+	padding: 20px 10px 10px 10px;	/* start with padding for lowest resolution, work up from there */
 	margin:auto; /* Center page */
 }
 
 /* Small devices (tablets, 768px and up) @screen-sm-min */
 @media (min-width: 768px) {
   .page{
-		padding-top: 30px;
-		padding-bottom: 20px;
-		padding-left: 20px;
-		padding-right: 20px;
+		padding: 30px 20px 20px 20px;
   }
 }
 
 /* Medium devices (desktops, 992px and up) @screen-md-min */
 @media (min-width: 992px ) {
   .page{
-		padding-top: 50px;
-		padding-bottom: 40px;
-		padding-left: 40px;
-		padding-right: 40px;
+		padding: 50px 40px 40px 40px;
   }
 }
 
 /* Large devices (large desktops, 1200px and up) @screen-lg-min  */
 @media (min-width: 1200px ) {
 	.page{
-		padding-top: 60px;
-		padding-bottom: 50px;
-		padding-left: 50px;
-		padding-right: 50px;
+		padding: 60px 50px 50px 50px;
 
 	}
 }
@@ -107,9 +101,9 @@ body
 }
 
 .form-group, .info-group {
-  border: 1px dashed #ccc;
-  border-radius: 4px;
-  padding: 5px 10px 10px 10px;
+	border: 1px dashed #ccc;
+	border-radius: 4px;
+	padding: 5px 10px 10px 10px;
 	min-height: 86px; /* Failover for when form-control margin not invoked to veritcally size small form-groups with no form-control - Ex. Assessment Date Today */
 }
 
@@ -123,9 +117,9 @@ body
 }
 
 .form-group-clear-style {
-  border: initial;
-  border-radius: initial;
-  padding: initial;
+	border: initial;
+	border-radius: initial;
+	padding: initial;
 	background: transparent !important; /* Override AliceBlue bg on form-group input - Ex login submit */
 }
 
@@ -505,8 +499,6 @@ table.table-vertical {
 
   }
 
-
-
 div.loading-message {
 	width: 100%;
 	text-align: center;
@@ -801,6 +793,7 @@ div.list-style-item-content {
 	vertical-align: top;
 }
 
+/* Provides spacing for radio/label radioOptions */
 div.radio-options {
 	padding-left: 0px;
 	margin-left: 13px; /* 10px plus 3px to bring inline with label padding */
