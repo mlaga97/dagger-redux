@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { Panel, Grid, Row, Col } from 'react-bootstrap';
+import { Panel, Grid, Row, Col, Table } from 'react-bootstrap';
 
 let formatDate = function(input) {
   let pattern = /(\d{4})\-(\d{2})\-(\d{2})/;
@@ -24,16 +24,25 @@ const Patient = ({
         <Grid>
           <Row>
             <Col sm={4}>
-              <div className='info-group'>
-                <label className='info-label'>Patient ID</label>
-                <div className='info-content'>{id}</div>
-              </div>
-            </Col>
-            <Col sm={4}>
-              <div className='info-group'>
-                <label className='info-label'>Patient DOB</label>
-                <div className='info-content'>{formatDate(dob)}</div>
-              </div>
+               <Table striped bordered className='table-response table-vertical'>
+                   <thead>
+                     <tr>
+                        <th colspan='2'>
+                           Patient Overview
+                        </th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                        <th>Patient ID</th>
+                        <td data-label='Patient ID'>{id}</td>
+                     </tr>
+                     <tr>
+                        <th>Patient DOB</th>
+                        <td data-label='Patient DOB'>{formatDate(dob)}</td>
+                     </tr>
+                   </tbody>
+               </Table>
             </Col>
           </Row>
         </Grid>

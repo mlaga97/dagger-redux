@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { Panel, Grid, Row, Col } from 'react-bootstrap';
+import { Panel, Grid, Row, Col, Table } from 'react-bootstrap';
 
 let formatDate = function(input) {
   let pattern = /(\d{4})\-(\d{2})\-(\d{2})/;
@@ -25,16 +25,25 @@ const Record = ({
         <Grid>
           <Row>
             <Col sm={4}>
-              <div className='info-group'>
-                <label className='info-label'>Assessment Performed</label>
-                <div className='info-content'>{formatDate(visit.date)}</div>
-              </div>
-            </Col>
-            <Col sm={4}>
-              <div className='info-group'>
-                <label className='info-label'>Assessment Recorded</label>
-                <div className='info-content'>{formatDate(dateSubmitted.split(' ')[0])}</div>
-              </div>
+              <Table striped bordered className='table-response table-vertical'>
+                  <thead>
+                    <tr>
+                       <th colspan='2'>
+                          Record Overview
+                       </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                       <th>Assessment Performed</th>
+                       <td data-label='Assessment Performed'>{formatDate(visit.date)}</td>
+                    </tr>
+                    <tr>
+                       <th>Assessment Recorded</th>
+                       <td data-label='Assessment Recorded'>{formatDate(dateSubmitted.split(' ')[0])}</td>
+                    </tr>
+                  </tbody>
+              </Table>
             </Col>
           </Row>
         </Grid>

@@ -1,6 +1,6 @@
 // Library imports
 import React from 'react';
-import { Panel, Grid, Row, Col } from 'react-bootstrap';
+import { Panel, Grid, Row, Col, Table } from 'react-bootstrap';
 
 const Clinic = ({
   clinic: { id },
@@ -16,10 +16,21 @@ const Clinic = ({
         <Grid>
           <Row>
             <Col sm={4}>
-              <div className='info-group'>
-                <label className='info-label'>Clinic ID</label>
-                <div className='info-content'>{id}</div>
-              </div>
+              <Table striped bordered className='table-response table-vertical'>
+                  <thead>
+                    <tr>
+                       <th colspan='2'>
+                          Clinic Overview
+                       </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                       <th>Clinic ID</th>
+                       <td data-label='Clinic ID'>{id}</td>
+                    </tr>
+                  </tbody>
+              </Table>
             </Col>
           </Row>
         </Grid>

@@ -439,6 +439,14 @@ table.table-vertical th {
 	color: #686868; /* darker than html gray */
 }
 
+table.table-vertical th {
+	text-align: left !important; /* overwritting what was just set - not great form */
+}
+
+table.table-vertical thead th {
+	color: inherit;
+}
+
 /* Set feedback color */
 table.table-response tbody tr td:not(:first-child),
 table.table-search-results tbody tr td,
@@ -446,11 +454,6 @@ table.table-user-stats tbody tr td,
 table.table-scoring tbody tr td,
 table.table-vertical tbody tr td{
 	color: darkblue;
-}
-
-table.table-vertical {
-	width: 302px;
-	margin: auto;
 }
 
 /* Make Card Tables on mobile */
