@@ -30,7 +30,6 @@ class ResponseList extends React.Component {
     }
 
     let {
-      thisWeek_today, lastWeek_today,
       thisWeek_weekNumber, lastWeek_weekNumber,
       thisWeek_weekStartDate, lastWeek_weekStartDate,
       thisWeek_weekEndDate, lastWeek_weekEndDate,
