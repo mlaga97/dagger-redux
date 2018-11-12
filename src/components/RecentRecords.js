@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Panel, Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 // Actions
 import actions from '../actions';
@@ -10,8 +10,6 @@ import actions from '../actions';
 // TODO: Break these out to a higher level
 import Response from './ResponseList/Response';
 import SortableTable from './ResponseList/SortableTable';
-import AdvancedSearch from './ResponseList/AdvancedSearch';
-import ConditionalWrapper from './ConditionalWrapper';
 
 class ResponseList extends React.Component {
   componentWillMount() {
