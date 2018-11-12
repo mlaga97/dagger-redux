@@ -3,7 +3,7 @@ import React from 'react';
 import { Col, Table } from 'react-bootstrap';
 
 let formatDate = function(input) {
-  let pattern = /(d{4})-(d{2})-(d{2})/;
+  let pattern = /(\d{4})-(\d{2})-(\d{2})/;
   if (!input || !input.match(pattern)) {
     return null;
   }
