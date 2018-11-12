@@ -9,20 +9,23 @@ body
 	background-color: #cdcdcd;
 	background-repeat: no-repeat;
 	background-size: 100%;
-	color: #333;																											/* font color */
 	font-family: Tahoma, Verdana, Segoe, sans-serif;
 	font-size: 16px;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 400;
 	line-height: 26px;
-	/*margin: auto;*/ 																								/* miss me? - disabled 9/26/18 testing */
-	/*min-height: initial;*/ 																					/* miss me? - disabled 9/26/18 testing */
 }
 
 /* div id root is top level wrapper within body */
-#root {
+/* Declare CSS variables */
+:root {
+	--primary-font-color: #333;		/* Gray20 */
+	--feedback-font-color: #00008B;	/* DarkBlue */
+}
 
+#root {
+	color: var(--primary-font-color);
 }
 
 /* div className app is top level wrapper within BrowserRouter */
@@ -85,6 +88,7 @@ body
 
 .panel-heading, .panel-title {
 	font-size: 18px;
+	color: var(--primary-font-color);
 }
 
 .panel-heading {
@@ -169,7 +173,7 @@ a.btn, a.btn-default, a.btn-sm {
     min-width: initial;
     width: initial;
     height: initial;
-
+	 color: var(--primary-font-color);
     border: 1px solid #ccc !important;
     margin: auto !important;
     cursor: pointer !important;
@@ -187,7 +191,7 @@ a.btn, a.btn-default {
 
 button.btn-sm, a.btn-sm {
 	height: 28px;
-	color: rgb(51,51,51);
+	color: var(--primary-font-color);
 	font-size: 12px !important;
 	padding: 5px 10px !important;
 }
@@ -385,7 +389,7 @@ div.info-content,
 span.info-content,
 div.search-results-count,
 table.table-search-results tbody tr td {
-	color: darkblue;
+	color: var(--feedback-font-color);
 }
 
 table.table-search-results thead tr th:not(:last-child),
@@ -453,7 +457,7 @@ table.table-search-results tbody tr td,
 table.table-user-stats tbody tr td,
 table.table-scoring tbody tr td,
 table.table-vertical tbody tr td{
-	color: darkblue;
+	color: var(--feedback-font-color);
 }
 
 /* Make Card Tables on mobile */
@@ -695,7 +699,7 @@ table.table-hover:not(.table-checkboxScale)>tbody>tr:hover>td:last-child:focus-w
 table.table-assessment tbody tr td:not(:first-child):hover label,
 div.container-assessment-selection div.checkbox label:hover,
 div.container-assessment div.radio-options div.radio label:hover {
-	color: #333;
+	color: var(--primary-font-color);
 	text-decoration: underline;
 	text-decoration-style: dotted;
 }
