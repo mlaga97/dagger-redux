@@ -426,6 +426,10 @@ table.table-select-clinic tbody td div.radio label input[type="radio"] {
 	margin-left: -15px !important;
 }
 
+table.table-select-clinic tbody td {
+	text-align: center;
+}
+
 /* ASSESSMENT AND RESPONSE RECORD TABLES */
 /* Header for tables containing assessments, response records */
 table.table-assessment thead th,
