@@ -17,7 +17,7 @@ const User = ({
          <tbody>
            <tr>
               <th>User ID</th>
-              <td data-label='User ID'>{id}</td>
+              <td>{id}</td>
            </tr>
          </tbody>
      </Table>

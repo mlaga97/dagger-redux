@@ -25,11 +25,11 @@ const Patient = ({
           <tbody>
             <tr>
                <th>Patient ID</th>
-               <td data-label='Patient ID'>{id}</td>
+               <td>{id}</td>
             </tr>
             <tr>
                <th>Patient DOB</th>
-               <td data-label='Patient DOB'>{formatDate(dob)}</td>
+               <td>{formatDate(dob)}</td>
             </tr>
           </tbody>
       </Table>

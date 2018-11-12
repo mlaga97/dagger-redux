@@ -17,7 +17,7 @@ const Clinic = ({
          <tbody>
            <tr>
               <th>Clinic ID</th>
-              <td data-label='Clinic ID'>{id}</td>
+              <td>{id}</td>
            </tr>
          </tbody>
      </Table>

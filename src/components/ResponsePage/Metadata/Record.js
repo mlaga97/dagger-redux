@@ -26,11 +26,11 @@ const Record = ({
          <tbody>
            <tr>
               <th>Assessment Performed</th>
-              <td data-label='Assessment Performed'>{formatDate(visit.date)}</td>
+              <td>{formatDate(visit.date)}</td>
            </tr>
            <tr>
               <th>Assessment Recorded</th>
-              <td data-label='Assessment Recorded'>{formatDate(dateSubmitted.split(' ')[0])}</td>
+              <td>{formatDate(dateSubmitted.split(' ')[0])}</td>
            </tr>
          </tbody>
      </Table>

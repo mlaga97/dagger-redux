@@ -451,6 +451,10 @@ table.table-vertical th {
 	text-align: left !important; /* overwritting what was just set - not great form */
 }
 
+table.table-vertical tbody td {
+	padding: 10px;  /* Override default base bsClass .table */
+}
+
 table.table-vertical thead th {
 	color: inherit;
 }
