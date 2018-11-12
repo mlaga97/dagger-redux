@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { FormGroup, ControlLabel, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 let formatDate = function(input) {
-  let pattern = /(\d{4})\-(\d{2})\-(\d{2})/;
+  let pattern = /(d{4})-(d{2})-(d{2})/;
   if (!input || !input.match(pattern)) {
     return null;
   }
