@@ -27,7 +27,7 @@ class AssessmentDateToday extends React.Component {
       target: {
         name: 'assessmentDate',
         // en-CA is the equivalent of ISO-8601
-        value: (value === 'true') ? formatDate(new Date()) : null,
+        value: (value === 'true') ? (new Date()).toLocaleDateString('en-CA') : null,
       }
     });
   }
@@ -49,7 +49,7 @@ class AssessmentDateToday extends React.Component {
         <ToggleButton value='true' ref='inputNode'>Yes</ToggleButton>
         <ToggleButton value='false'>No</ToggleButton>
       </ToggleButtonGroup>
-      <span className="info-content"> {(new Date()).toLocaleDateString('en-US')} </span>
+      <span className="info-content"> {formatDate((new Date()).toLocaleDateString('en-CA'))} </span>
     </FormGroup>
   )
 }
