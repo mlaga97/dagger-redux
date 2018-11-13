@@ -8,6 +8,7 @@ import textField from './textField';
 import dateField from './dateField';
 import numberField from './numberField';
 import yesNoToggle from './yesNoToggle';
+import telField from './telField';
 
 export default {
   bitwiseTable,
@@ -19,4 +20,5 @@ export default {
   dateField,
   numberField,
   yesNoToggle,
+  telField,
 };

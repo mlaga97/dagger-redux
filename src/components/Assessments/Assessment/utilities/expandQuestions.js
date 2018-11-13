@@ -7,7 +7,10 @@ function expandQuestions(props) {
     const {
       min,
       max,
+      maxlength,
       text,
+      placeholder,
+      pattern,
       step,
       width,
       required,
@@ -32,6 +35,9 @@ function expandQuestions(props) {
       number, // Question number
       required, // Is question required
       step, // Increment/decrement step
+      maxlength, // Max length of allowable text input
+      placeholder, // Initial text inside an input until value changes
+      pattern, // RegEx expression to validate input value
     };
   });
 }
