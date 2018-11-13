@@ -168,7 +168,7 @@ class Sorting extends React.Component {
                 <Row>
                   <Col sm={4} className='col-search-button'>
                     <Button onClick={this.handleClick}>Search</Button>
-                    {(this.state.open) ? '▴ Hide Advanced Search' : '▾ Advanced Search'}
+                    <div className={(this.state.open) ? 'collapse-trigger collapsed' : 'collapse-trigger expanded'}>Advanced Search</div>
                   </Col>
                 </Row>
               </Grid>
