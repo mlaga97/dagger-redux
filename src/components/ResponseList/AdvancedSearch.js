@@ -9,24 +9,22 @@ import actions from '../../actions';
 // Components
 import FocusableInput from '../FocusableInput';
 
-let getMaxToday = function() {
-   let d = new Date();
-   return d.toLocaleDateString('en-CA');
-};
+// Helpers
+import {today, oneYearAgoPlusOneDay} from '../../lib/date';
 
-let getMinOneYearAgoPlusOneDay = function() {
-   let y = new Date();
-   y.setDate(y.getDate() + 1);            // Tomorrow
-   y.setFullYear(y.getFullYear() - 1);    // One year back from Tomorrow (excludes today's date last year)
-   return y.toLocaleDateString('en-CA');
-};
-
+// TODO: MIN AND MAX VALUES SHOULD NOT BE HARDCODED! CHANGE TO BE CONFIGURABLE ASAP!
 const SortDate = ({
   name,
   children,
 }) => (
   <Col sm={4}>
-    <FocusableInput type='date' name={name} label={children} max={getMaxToday()} min={getMinOneYearAgoPlusOneDay()} />
+    <FocusableInput
+      type='date'
+      name={name}
+      label={children}
+      max={today()}
+      min={oneYearAgoPlusOneDay()}
+    />
   </Col>
 );
 

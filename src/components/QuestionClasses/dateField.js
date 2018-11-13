@@ -3,28 +3,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
-let formatDate = function(input) {
-  let pattern = /(\d{4})-(\d{2})-(\d{2})/;
-  if (!input || !input.match(pattern)) {
-    return null;
-  }
-  return input.replace(pattern, '$2/$3/$1');
-};
-
-// Currently this min, max should apply to all Dagger dates except DOB, AssessmentDate which use FocusableInput
-let getMaxToday = function() {
-   let d = new Date();
-   return d.toLocaleDateString('en-CA');
-};
-
-let getMinOneYearAgoPlusOneDay = function() {
-   let y = new Date();
-   y.setDate(y.getDate() + 1);            // Tomorrow
-   y.setFullYear(y.getFullYear() - 1);    // One year back from Tomorrow (excludes today's date last year)
-   return y.toLocaleDateString('en-CA');
-};
+// Helpers
+import {formatDate, today, oneYearAgoPlusOneDay} from '../../lib/date';
 
 // TODO: This component is only dubiously controlled, and that should be fixed.
+// TODO: MIN AND MAX SHOULD NOT BE HARDCODED! CHANGE TO BE CONFIGURABLE ASAP!
 class Renderer extends React.Component {
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -72,8 +55,8 @@ class Renderer extends React.Component {
           defaultValue={value}
           onBlur={this.handleChange}
           required={(required) ? 'required' : null}
-          max={getMaxToday()}
-          min={getMinOneYearAgoPlusOneDay()}
+          max={today}
+          min={oneYearAgoPlusOneDay}
         />
       </FormGroup>
     );

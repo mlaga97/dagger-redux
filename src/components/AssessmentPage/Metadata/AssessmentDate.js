@@ -4,19 +4,10 @@ import React from 'react';
 // Components
 import FocusableInput from '../../FocusableInput';
 
-// TODO: Use server Date
-let getMaxYesterday = function() {
-   let d = new Date();
-   d.setDate(d.getDate() - 1);
-   return d.toLocaleDateString('en-CA');
-};
+// Helpers
+import {yesterday, oneYearAgo} from '../../../lib/date';
 
-let getMinOneYearAgo = function() {
-   let y = new Date();
-   y.setFullYear(y.getFullYear() - 1);
-   return y.toLocaleDateString('en-CA');
-};
-
+// TODO: MIN AND MAX SHOULD NOT BE HARDCODED! CHANGE TO BE CONFIGURABLE ASAP!
 const AssessmentDate = ({metadata, onChange}) => {
   if (metadata && metadata.assessmentDateToday === 'true') {
     return null;
@@ -30,8 +21,8 @@ const AssessmentDate = ({metadata, onChange}) => {
       name='assessmentDate'
       label='Assessment Date'
       onChange={onChange}
-      max={getMaxYesterday()}
-      min={getMinOneYearAgo()}
+      max={yesterday()}
+      min={oneYearAgo()}
     />
   );
 }

@@ -4,14 +4,12 @@ import React from 'react';
 // Components
 import FocusableInput from '../../FocusableInput';
 
-// Minimum allowed patient age is 1 year old as of today
-let getMaxOneYearAgo = function() {
-   let y = new Date();
-   y.setFullYear(y.getFullYear() - 1);
-   return y.toLocaleDateString('en-CA');
-};
+// Helpers
+import {oneYearAgo} from '../../../lib/date';
 
 // TODO: Make controlled
+// Minimum allowed patient age is 1 year old as of today
+// TODO: MIN AND MAX SHOULD NOT BE HARDCODED! CHANGE TO BE CONFIGURABLE ASAP!
 const PatientDOB = ({onChange}) => (
   <FocusableInput
     type='date'
@@ -19,7 +17,7 @@ const PatientDOB = ({onChange}) => (
     label='Patient DOB'
     required='required'
     onChange={onChange}
-    max={getMaxOneYearAgo()}
+    max={oneYearAgo()}
     min='1900-01-01'
   />
 );
