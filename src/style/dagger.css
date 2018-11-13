@@ -14,8 +14,15 @@ body
 /* div id root is top level wrapper within body */
 /* Declare CSS variables */
 :root {
+	/* Colors */
+	/* Font Colors */
 	--primary-font-color: #333;		/* Gray20 */
 	--feedback-font-color: #00008B;	/* DarkBlue */
+
+	/* Unicode characters */
+	--unicode-up-down-arrows: '\2B81'; 	/* U+2B81: UPWARDS TRIANGLE-HEADED ARROW LEFTWARDS OF DOWNWARDS TRIANGLE-HEADED ARROW */
+	--unicode-up-arrow: '\1F80B'; 		/* U+1F80B: DOWNWARDS ARROW WITH LARGE TRIANGLE ARROWHEAD */
+	--unicode-down-arrow: '\1F809';		/* U+1F809: UPWARDS ARROW WITH LARGE TRIANGLE ARROWHEAD */
 }
 
 #root {
@@ -370,6 +377,32 @@ div.modal-body table thead th {
 /* Search results table not wrapped in Panel, set bg white like .page */
 table.table-search-results {
 	background-color: white;
+}
+
+
+table.table-search-results thead th.sort {
+	cursor: pointer;
+}
+
+table.table-search-results thead th.sort::after {
+	padding-left: 5px;
+}
+
+table.table-search-results thead th.sort-inactive::after{
+	content: var(--unicode-up-down-arrows);
+}
+
+table.table-search-results thead th.sort-active {
+	color: var(--primary-font-color);
+}
+
+table.table-search-results thead th.sort-desc::after{
+	content: var(--unicode-down-arrow);
+
+}
+
+table.table-search-results thead th.sort-asc::after {
+	content: var(--unicode-up-arrow);
 }
 
 div.search-results-count {

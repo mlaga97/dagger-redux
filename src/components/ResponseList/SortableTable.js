@@ -29,16 +29,17 @@ class SortableTable extends React.Component {
   }
 
   helper = (target, name) => {
-    let out = ' ';
+    let out = 'sort sort-inactive';
 
     if (this.state.sortBy === target) {
       // out = [' ', '▾', '▴'][this.state[target]];
-      out = ['▾', '▴'][this.state[target]];
+      //out = ['▾', '▴'][this.state[target]];
+      out = ['sort sort-active sort-desc', 'sort sort-active sort-asc'][this.state[target]];
     }
 
     return (
-      <th name={target} onClick={this.handleClick}>
-        {name} {out}
+      <th name={target} className={out} onClick={this.handleClick}>
+        {name}
       </th>
     );
   }
