@@ -55,8 +55,8 @@ class Renderer extends React.Component {
           defaultValue={value}
           onBlur={this.handleChange}
           required={(required) ? 'required' : null}
-          max={today}
-          min={oneYearAgoPlusOneDay}
+          max={today()}
+          min={oneYearAgoPlusOneDay()}
         />
       </FormGroup>
     );
