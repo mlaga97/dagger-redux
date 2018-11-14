@@ -60,7 +60,7 @@ class Renderer extends React.Component {
             required={(required) ? 'required' : null}
             autoComplete='off'
             placeholder={placeholder}
-            maxlength={maxlength}
+            maxLength={maxlength}
             pattern={pattern}
           />
         </FormGroup>
