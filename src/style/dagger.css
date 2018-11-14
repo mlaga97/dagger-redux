@@ -419,6 +419,51 @@ table.table-search-results {
 	background-color: white;
 }
 
+/*** Panel Heading expand / collapse effects ***/
+/* Exclude panel-unadored for Advaced Search expand / collapse */
+.panel:not(.panel-unadorned)>.panel-heading>.panel-title>a {
+	display: block;	/* make a link full width of panel-title */
+}
+
+.panel:not(.panel-unadorned)>.panel-heading>.panel-title>a:hover,
+.panel:not(.panel-unadorned)>.panel-heading>.panel-title>a:focus {
+	text-decoration: none; /* Lose default hover underline */
+}
+
+.panel:not(.panel-unadorned)>.panel-heading>.panel-title>a::after {
+	font-size: 90%;
+	line-height: 22px;
+	color: gray;  /* gray unless hovered so really only applies to expand arrow when shown */
+	float: right;
+	animation-name: pointerFadeIn;
+	animation-duration: 1.5s;
+	animation-timing-function: ease;
+	animation-iteration-count: 1;
+}
+
+@-webkit-keyframes pointerFadeIn { from { opacity:0; } to { opacity:1;} }
+@keyframes pointerFadeIn { from { opacity:0; } to { opacity:1;} }
+
+/* Hover while expanded, show collape-pointer */
+.panel:not(.panel-unadorned)>.panel-heading>.panel-title>a[aria-expanded="true"]:hover::after {
+	content: var(--unicode-collapse-pointer);
+}
+
+/* Hover while collapsed, show expand-pointer */
+.panel:not(.panel-unadorned)>.panel-heading>.panel-title>a[aria-expanded="false"]:hover::after {
+	content: var(--unicode-expand-pointer);
+}
+
+/* Collapse-pointer persists when not expanded */
+.panel:not(.panel-unadorned)>.panel-heading>.panel-title>a[aria-expanded="false"]::after {
+	content: var(--unicode-collapse-pointer);
+}
+
+.panel:not(.panel-unadorned)>.panel-heading>.panel-title>a:hover::after {
+	color: var(--primary-font-color);
+}
+
+/*** END Panel Heading expand / collapse effects ***/
 
 table.table-search-results thead th.sort {
 	cursor: pointer;
