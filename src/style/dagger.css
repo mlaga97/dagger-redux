@@ -432,6 +432,11 @@ table.table-search-results thead th.sort-inactive::after{
 	content: var(--unicode-up-down-arrows);
 }
 
+/* Mitigate wobble in columns when sorting */
+table.table-search-results thead th.sort-active::after {
+	padding-left: 4.6px; /* Adjust for inherent width differences in unicode characters TAG: Necromancy */
+}
+
 table.table-search-results thead th.sort-active {
 	color: var(--primary-font-color);
 }
