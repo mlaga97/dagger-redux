@@ -363,43 +363,38 @@ div.modal-body table tbody td div.radio {
 	margin: 0;
 }
 
-/* Advanced Search */
+/* Advanced Search expand / collapse effects */
 div.col-search-button div.collapse-trigger {
 	display: inline;
+	padding-left: 5px;
+	font-size: 90%;
 }
 
-div.col-search-button div.collapse-trigger::before {
-	padding-right: 5px;
-}
-
-div.col-search-button div.collapse-trigger.collapsed::before {
-	content: var(--unicode-expand-pointer);
-}
-
-div.col-search-button div.collapse-trigger.collapsed:hover::before {
-	content: var(--unicode-collapse-pointer);
+div.col-search-button div.collapse-trigger::after {
+	color: gray;
+	padding-left: 5px;
 }
 
 div.col-search-button div.collapse-trigger:hover::after {
-	padding-left: 5px;
-	color: gray;
+	color: var(--primary-font-color);
 }
 
-div.col-search-button div.collapse-trigger.collapsed:hover::after {
-	content: '(Hide)';
-}
-
-div.col-search-button div.collapse-trigger.expanded::before {
-	content: var(--unicode-collapse-pointer);
-}
-
-div.col-search-button div.collapse-trigger.expanded:hover::before {
+div.col-search-button div.collapse-trigger.collapsed::after {
 	content: var(--unicode-expand-pointer);
 }
 
-div.col-search-button div.collapse-trigger.expanded:hover::after {
-	content: '(Show)';
+div.col-search-button div.collapse-trigger.collapsed:hover::after {
+	content: var(--unicode-collapse-pointer);
 }
+
+div.col-search-button div.collapse-trigger.expanded::after {
+	content: var(--unicode-collapse-pointer);
+}
+
+div.col-search-button div.collapse-trigger.expanded:hover::after {
+	content: var(--unicode-expand-pointer);
+}
+
 
 /* SEARCH RESULTS TABLE (plus Clinic Selection table header in modal)*/
 table.table-search-results {
