@@ -64,7 +64,7 @@ class PrivateApp extends React.Component {
     return (
       <BrowserRouter basename={basename}>
         <div className='app'>
-          <Navbar inverse collapseOnSelect>
+          <Navbar inverse collapseOnSelect fixedTop>
             <Navbar.Header>
               <IndexLinkContainer to='/'>
                 <Navbar.Brand>Dagger</Navbar.Brand>

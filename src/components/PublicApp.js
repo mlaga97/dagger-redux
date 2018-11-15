@@ -17,7 +17,7 @@ const PublicApp = () => {
   return(
     <BrowserRouter basename={basename}>
       <div className='app'>
-        <Navbar inverse collapseOnSelect>
+        <Navbar inverse collapseOnSelect fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
               <a href='/'>Dagger</a>

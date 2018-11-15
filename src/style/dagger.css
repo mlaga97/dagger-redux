@@ -49,6 +49,11 @@ body
 .navbar {
 	margin-bottom: 0px; /* Overwrites navbar style from unknown location */
 	border-radius: 0 !important; /* Get rid of rounded corners on navbar */
+	box-shadow:
+		-5px 0px 10px rgba(51, 51, 51, 0.2),
+		5px 0px 10px rgba(51, 51, 51, 0.2),
+		-10px 0px 20px rgba(105, 105, 105, 0.1),
+		10px 0px 20px rgba(105, 105, 105, 0.1);
 }
 
 /* Mitigates form-group overlapping container and panel-body - I don't know why */
@@ -69,28 +74,28 @@ body
 		0px -2px 8px #999999,
 		-10px 0px 25px rgba(105, 105, 105, 0.1),
 		10px 0px 25px rgba(105, 105, 105, 0.1);
-	padding: 20px 10px 10px 10px;	/* start with padding for lowest resolution, work up from there */
+	padding: 71px 10px 10px 10px;	/* start with padding for lowest resolution, work up from there */
 	margin:auto; /* Center page */
 }
 
 /* Small devices (tablets, 768px and up) @screen-sm-min */
 @media (min-width: 768px) {
   .page{
-		padding: 30px 20px 20px 20px;
+		padding: 82px 20px 20px 20px;
   }
 }
 
 /* Medium devices (desktops, 992px and up) @screen-md-min */
 @media (min-width: 992px ) {
   .page{
-		padding: 50px 40px 40px 40px;
+		padding: 102px 40px 40px 40px;
   }
 }
 
 /* Large devices (large desktops, 1200px and up) @screen-lg-min  */
 @media (min-width: 1200px ) {
 	.page{
-		padding: 60px 50px 50px 50px;
+		padding: 112px 50px 50px 50px;
 
 	}
 }
