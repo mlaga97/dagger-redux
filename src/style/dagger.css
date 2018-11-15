@@ -18,6 +18,10 @@ body
 	/* Font Colors */
 	--primary-font-color: #333;		/* Gray20 */
 	--feedback-font-color: #00008B;	/* DarkBlue */
+	--bsClass-table-bordered-color: #DDD; /* Gainsboro */
+
+	--primary-font-family: Tahoma, Verdana, Segoe, sans-serif;
+	--primary-font-size: 16px;
 
 	/* Unicode characters */
 	--unicode-up-down-arrows: '\2B81'; 	/* U+2B81: UPWARDS TRIANGLE-HEADED ARROW LEFTWARDS OF DOWNWARDS TRIANGLE-HEADED ARROW */
@@ -29,8 +33,8 @@ body
 
 #root {
 	color: var(--primary-font-color);
-	font-family: Tahoma, Verdana, Segoe, sans-serif;
-	font-size: 16px;
+	font-family: var(--primary-font-family);
+	font-size: var(--primary-font-size);
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 400;
@@ -395,25 +399,6 @@ div.col-search-button div.collapse-trigger.expanded:hover::after {
 	content: var(--unicode-expand-pointer);
 }
 
-
-/* SEARCH RESULTS TABLE (plus Clinic Selection table header in modal)*/
-table.table-search-results {
-	margin-bottom: 30px;
-}
-
-/* Header for search results table and tables in modal (currently only Select a Clinic) */
-table.table-search-results thead th,
-div.modal-body table thead th {
-	padding:10px !important;
-	font-weight: normal;
-	vertical-align: middle !important;
-}
-
-/* Search results table not wrapped in Panel, set bg white like .page */
-table.table-search-results {
-	background-color: white;
-}
-
 /*** Panel Heading expand / collapse effects ***/
 /* Exclude panel-unadored for Advaced Search expand / collapse */
 .panel:not(.panel-unadorned)>.panel-heading>.panel-title>a {
@@ -459,6 +444,27 @@ table.table-search-results {
 }
 
 /*** END Panel Heading expand / collapse effects ***/
+
+
+/* SEARCH RESULTS TABLE (also includes style applied to Clinic Selection table header in modal through this class)*/
+table.table-search-results {
+	margin-bottom: 30px;
+	border: 1px solid var(--bsClass-table-bordered-color); /* Outside border only - TH, TD do not have left, right borders (only top, bottom) for contiguous row */
+	background-color: #FFF;	/* Search results table not wrapped in Panel, set bg white like .page */
+}
+
+/* Header for search results table and tables in modal (currently only Select a Clinic) */
+table.table-search-results thead th,
+table.table-search-results tbody td:not(:last-child) {
+	line-height: 32px;
+}
+
+table.table-search-results thead th,
+div.modal-body table thead th {
+	padding:10px !important;
+	font-weight: normal;
+	vertical-align: middle !important;
+}
 
 table.table-search-results thead th.sort {
 	cursor: pointer;
@@ -526,12 +532,20 @@ table.table-search-results tbody tr td {
 		padding-right: 20px; /* table has no panel, last td content vertically alined with search options in panel above */
 		font-size: 80%; /* Accomodate many assessments in table col without wrapping other cols */
 		width: 33rem;   /* Set a proportional width for Assessments column */
+		line-height: 16px; /* Allows 2 lines of reduced size font before affecting TR height -- mitigates inconsistent table row height */
 	}
 
 }
 
 table.table-search-results tbody tr td:last-child {
 	text-transform: uppercase;
+}
+
+
+/*** SELECT CLINIC TABLE in modal window ***/
+table.table-select-clinic {
+	font-family: var(--primary-font-family);	/* Override bsClass for modal */
+	font-size: var(--primary-font-size);
 }
 
 /* Adjust radio button position for table-card-table view of table-select-clinic */
@@ -544,8 +558,16 @@ table.table-select-clinic tbody td div.radio label input[type="radio"] {
 	margin-left: -15px !important;
 }
 
+table.table-select-clinic thead th,
 table.table-select-clinic tbody td {
 	text-align: center;
+	vertical-align: middle;
+	line-height: 32px;
+	padding: 10px;
+}
+
+table.table-select-clinic tbody tr:last-child {
+	border-bottom: 1px solid var(--bsClass-table-bordered-color);
 }
 
 /* ASSESSMENT AND RESPONSE RECORD TABLES */
@@ -680,7 +702,8 @@ table.table-response tbody tr td:last-child::first-letter {
 /* May need more specific targeting to ensure formatting to the Question td */
 /* Currently only radioScale and checkboxScale assessment tables are classed table-assessment */
 table.table-assessment tbody tr td:first-child {
-	padding: 15px 10px 5px 10px !important; /* Overrides BS padding for table-condensed>tbody>tr>td */
+	padding: 10px; /* Overrides BS padding for a little extra space around question */
+	vertical-align: middle;
 }
 
 /* Hack for improved auto sizing of td on tabled radio scale options */
