@@ -2,19 +2,67 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Panel, Grid, Row, Col, Table } from 'react-bootstrap';
+import { format, getISOWeek, startOfWeek, endOfWeek, subWeeks, startOfMonth, endOfMonth, getMonth, subMonths } from 'date-fns';
 
 // Actions
 import actions from '../actions';
 
 // Components
 import RecentRecords from './RecentRecords';
+import QueryCount from './QueryCount';
+
+// TODO: Is it visitDate or dateSubmitted?
+function UserStatisticsHelper(props) {
+  const { title, queryID, userID, start, end } = props;
+
+  const visitDateStart = format(start, 'YYYY-MM-DD');
+  const visitDateEnd = format(end, 'YYYY-MM-DD');
+
+  return (
+    <tr>
+      {props.children}
+      <td data-label='Range'>{format(start, 'dddd, MMM DD')} - {format(end, 'dddd, MMM DD')}</td>
+      <td data-label='Appointments'>
+        <QueryCount parameters={{
+          queryID: 'appointments_' + visitDateStart + visitDateEnd,
+          userID,
+          visitDateStart,
+          visitDateEnd,
+          activityType: 'appointment',
+        }} />
+      </td>
+      <td data-label='Warm Handoffs'>
+        <QueryCount parameters={{
+          queryID: 'warmHandoffs_' + visitDateStart + visitDateEnd,
+          userID,
+          visitDateStart,
+          visitDateEnd,
+          activityType: 'warmHandOff',
+        }} />
+      </td>
+      <td data-label='HCH'>
+        <QueryCount parameters={{
+          queryID: 'hchScreenings_' + visitDateStart + visitDateEnd,
+          userID,
+          visitDateStart,
+          visitDateEnd,
+          activityType: 'hchScreening',
+        }} />
+      </td>
+      <td data-label='Total Records'>
+        <QueryCount parameters={{
+          queryID: 'totalRecords_' + visitDateStart + visitDateEnd,
+          userID,
+          visitDateStart,
+          visitDateEnd,
+        }} />
+      </td>
+    </tr>
+  );
+}
 
 class ResponseList extends React.Component {
   componentWillMount() {
-    this.props.dispatch({
-      type: actions.statistics.user.requested,
-    });
-
     this.props.dispatch({
       type: actions.user.current.requested,
     });
@@ -24,20 +72,6 @@ class ResponseList extends React.Component {
     if (!this.props.users || !this.props.users.current) {
       return <div className='content-loading'>Retrieving user ID...</div>;
     }
-
-    if (!this.props.statistics || !this.props.statistics.user) {
-      return <div className='content-loading'>Retrieving user statistics...</div>;
-    }
-
-    let {
-      thisWeek_weekNumber, lastWeek_weekNumber,
-      thisWeek_weekStartDate, lastWeek_weekStartDate,
-      thisWeek_weekEndDate, lastWeek_weekEndDate,
-      thisWeek_appointmentCount, lastWeek_appointmentCount,
-      thisWeek_warmHandoffCount, lastWeek_warmHandoffCount,
-      thisWeek_hchCount, lastWeek_hchCount,
-      thisWeek_recordCount, lastWeek_recordCount
-    } = this.props.statistics.user;
 
     return (
       <Panel>
@@ -75,22 +109,38 @@ class ResponseList extends React.Component {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td data-label='Period'>This Week (week {thisWeek_weekNumber})</td>
-                      <td data-label='Range'>{thisWeek_weekStartDate} - {thisWeek_weekEndDate}</td>
-                      <td data-label='Appointments'>{thisWeek_appointmentCount}</td>
-                      <td data-label='Warm Handoffs'>{thisWeek_warmHandoffCount}</td>
-                      <td data-label='HCH'>{thisWeek_hchCount}</td>
-                      <td data-label='Total Records'>{thisWeek_recordCount}</td>
-                    </tr>
-                    <tr>
-                      <td data-label='Period'>Last Week (week {lastWeek_weekNumber})</td>
-                      <td data-label='Range'>{lastWeek_weekStartDate} - {lastWeek_weekEndDate}</td>
-                      <td data-label='Appointments'>{lastWeek_appointmentCount}</td>
-                      <td data-label='Warm Handoffs'>{lastWeek_warmHandoffCount}</td>
-                      <td data-label='HCH'>{lastWeek_hchCount}</td>
-                      <td data-label='Total Records'>{lastWeek_recordCount}</td>
-                    </tr>
+                    <UserStatisticsHelper
+                      queryID='thisWeek'
+                      userID={this.props.users.current}
+                      start={startOfWeek(new Date(), {weekStartsOn: 1})}
+                      end={endOfWeek(new Date(), {weekStartsOn: 1})}
+                    >
+                      <td data-label='Period'>This Week (week {getISOWeek(new Date())})</td>
+                    </UserStatisticsHelper>
+                    <UserStatisticsHelper
+                      queryID='lastWeek'
+                      userID={this.props.users.current}
+                      start={startOfWeek(subWeeks(new Date(), 1), {weekStartsOn: 1})}
+                      end={endOfWeek(subWeeks(new Date(), 1), {weekStartsOn: 1})}
+                    >
+                      <td data-label='Period'>Last Week (week {getISOWeek(subWeeks(new Date(), 1))})</td>
+                    </UserStatisticsHelper>
+                    <UserStatisticsHelper
+                      queryID='thisMonth'
+                      userID={this.props.users.current}
+                      start={startOfMonth(new Date())}
+                      end={endOfMonth(new Date())}
+                    >
+                      <td data-label='Period'>This Month ({format(new Date(), 'MMMM')})</td>
+                    </UserStatisticsHelper>
+                    <UserStatisticsHelper
+                      queryID='thisMonth'
+                      userID={this.props.users.current}
+                      start={startOfMonth(subMonths(new Date(), 1))}
+                      end={endOfMonth(subMonths(new Date(), 1))}
+                    >
+                      <td data-label='Period'>Last Month ({format(subMonths(new Date(), 1), 'MMMM')})</td>
+                    </UserStatisticsHelper>
                   </tbody>
                 </Table>
               </Col>
@@ -105,7 +155,6 @@ class ResponseList extends React.Component {
 export default connect(
   state => ({
     users: state.users,
-    statistics: state.statistics,
   }),
   dispatch => ({
     dispatch,
