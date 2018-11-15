@@ -7,7 +7,6 @@ import auth from './auth';
 import clinic from './clinic';
 import response from './response';
 import user from './user';
-import statistics from './statistics';
 
 // Export saga
 export default function* () {
@@ -17,6 +16,5 @@ export default function* () {
     clinic(),
     response(),
     user(),
-    statistics(),
   ]);
 }

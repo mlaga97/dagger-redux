@@ -6,7 +6,6 @@ import auth from './auth';
 import users from './users';
 import clinics from './clinics';
 import responses from './responses';
-import statistics from './statistics';
 import assessments from './assessments';
 
 /*
@@ -42,7 +41,6 @@ const rootReducer = combineReducers({
   // modules,   // Modules, by name
   responses, // Working area for current record
   users, // Users, by ID
-  statistics, // TODO: Replace ASAP.
 });
 
 export default rootReducer;
