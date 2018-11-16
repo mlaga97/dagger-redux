@@ -1,7 +1,5 @@
 // Library imports
 import React from 'react';
-import { IndexLinkContainer } from 'react-router-bootstrap';
-import { Button} from 'react-bootstrap';
 
 // Styling
 import '../style/dagger.css';
