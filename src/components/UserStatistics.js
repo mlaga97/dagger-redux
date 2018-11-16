@@ -90,7 +90,7 @@ class ResponseList extends React.Component {
           <Grid>
             <Row>
               <Col sm={12}>
-                <h4>Activity by Week</h4>
+                <h4>Activity by Week / Month</h4>
               </Col>
             </Row>
           </Grid>
