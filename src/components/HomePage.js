@@ -14,14 +14,6 @@ import UserStatistics from './UserStatistics';
 const HomePage = () => (
   <div>
     <UserStatistics />
-    <div className='centered'>
-      <IndexLinkContainer to='/assessment'>
-        <Button>New Record</Button>
-      </IndexLinkContainer>
-      <IndexLinkContainer to='/responses'>
-        <Button>Search</Button>
-      </IndexLinkContainer>
-    </div>
   </div>
 )
 
