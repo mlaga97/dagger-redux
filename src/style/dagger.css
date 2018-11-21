@@ -982,3 +982,11 @@ div.radio-options {
 	padding-left: 0px;
 	margin-left: 13px; /* 10px plus 3px to bring inline with label padding */
 }
+
+/*** Printing ***/
+@media print {
+	/* Override BS CSS printing URLs after link (or link button) text */
+	a[href]:after {
+		content: none !important;
+	}
+}
