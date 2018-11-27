@@ -17,7 +17,7 @@ class Query extends React.Component {
   render() {
     let { responses, parameters: { queryID } } = this.props;
 
-    if (!this.props.responses || !this.props.responses.list || !this.props.responses.list[queryID]) {
+    if (!responses || !responses.list || !responses.list[queryID]) {
       return '...';
     }
 
