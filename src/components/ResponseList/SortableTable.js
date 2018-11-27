@@ -17,13 +17,11 @@ class SortableTable extends React.Component {
 
   handleClick = (event) => {
     const name = event.target.attributes.name.value;
-    // const val = ((this.state[name] || 0) + 1) % 2;
     const val = ((this.state[name] || 0) + 1) % 2;
 
     this.setState({
       [name]: val,
       sortBy: name,
-      // order: [0, 1, -1][val],
       order: [1, -1][val],
     });
   }
@@ -32,8 +30,6 @@ class SortableTable extends React.Component {
     let out = 'sort sort-inactive';
 
     if (this.state.sortBy === target) {
-      // out = [' ', '▾', '▴'][this.state[target]];
-      //out = ['▾', '▴'][this.state[target]];
       out = ['sort sort-active sort-desc', 'sort sort-active sort-asc'][this.state[target]];
     }
 
@@ -50,14 +46,11 @@ class SortableTable extends React.Component {
     <Table className='table-search-results table-card-table table-striped'>
       <thead>
         <tr>
-          {/*this.helper('responseID', 'ID')*/}
           <th>{/* placeholder for record launch button */}</th>
           {this.helper('dateSubmitted', 'Date Submitted')}
           {this.helper('visitDate', 'Visit Date')}
           {this.helper('userID', 'User ID')}
           {this.helper('clinicID', 'Clinic ID')}
-          {/*this.helper('patientID', 'Patient ID')*/}
-          {/*this.helper('patientDOB', 'Patient DOB')*/}
           <th>Assessments</th>
         </tr>
       </thead>
@@ -70,12 +63,6 @@ class SortableTable extends React.Component {
             if (!this.state.sortBy || !this.state.order || this.state.order === 0) {
               return this.sortHelper(parseInt(a, 10) < parseInt(b, 10));
             }
-
-            /*
-            if (this.state.sortBy === 'responseID') {
-              return this.sortHelper(parseInt(a, 10) < parseInt(b, 10));
-            }
-            */
 
             if (this.state.sortBy === 'dateSubmitted') {
               return this.sortHelper(
@@ -96,12 +83,6 @@ class SortableTable extends React.Component {
             if (this.state.sortBy === 'clinicID') {
               return this.sortHelper(A.clinic.id < B.clinic.id);
             }
-
-            /*
-            if (this.state.sortBy === 'patientID') {
-              return this.sortHelper(A.patient.id < B.patient.id);
-            }
-            */
 
             if (this.state.sortBy === 'patientDOB') {
               return this.sortHelper(

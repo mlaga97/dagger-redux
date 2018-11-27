@@ -4,57 +4,12 @@ import { connect } from 'react-redux';
 import { Panel, Grid, Row, Col, Button } from 'react-bootstrap';
 
 // Actions
-import actions from '../../actions';
+import actions from '../../../actions';
 
 // Components
-import FocusableInput from '../FocusableInput';
-
-// Helpers
-import {today, oneYearAgoPlusOneDay} from '../../lib/date';
-
-// TODO: MIN AND MAX VALUES SHOULD NOT BE HARDCODED! CHANGE TO BE CONFIGURABLE ASAP!
-const SortDate = ({
-  name,
-  children,
-}) => (
-  <Col sm={4}>
-    <FocusableInput
-      type='date'
-      name={name}
-      label={children}
-      max={today()}
-      min={oneYearAgoPlusOneDay()}
-    />
-  </Col>
-);
-
-const SortSelect = ({
-  name,
-  label,
-  children,
-}) => (
-  <Col sm={4}>
-    <FocusableInput componentClass='select' name={name} label={label}>
-      <option />
-      {children}
-    </FocusableInput>
-  </Col>
-);
-
-const SortText = ({
-  name,
-  label
-}) => (
-  <Col sm={4}>
-    <FocusableInput
-      autoFocus
-      type='text'
-      name={name}
-      label={label}
-      autoComplete='off'
-    />
-  </Col>
-);
+import SortDate from './SortDate.js';
+import SortText from './SortText.js';
+import SortSelect from './SortSelect.js';
 
 class Sorting extends React.Component {
   constructor(props) {
@@ -91,41 +46,22 @@ class Sorting extends React.Component {
     // TODO: Make not this way
 
     const parameters = {};
+    const list = [
+      'userID',
+      'clinicID',
+      'patientID',
+      'visitDateEnd',
+      'visitDateStart',
+      'dateSubmittedEnd',
+      'dateSubmittedStart',
+    ];
 
-    const visitDateStart = document.getElementsByName('visitDateStart')[0].value;
-    if (visitDateStart !== '') {
-      parameters.visitDateStart = visitDateStart;
-    }
-
-    const visitDateEnd = document.getElementsByName('visitDateEnd')[0].value;
-    if (visitDateEnd !== '') {
-      parameters.visitDateEnd = visitDateEnd;
-    }
-
-    const dateSubmittedStart = document.getElementsByName('dateSubmittedStart')[0].value;
-    if (dateSubmittedStart !== '') {
-      parameters.dateSubmittedStart = dateSubmittedStart;
-    }
-
-    const dateSubmittedEnd = document.getElementsByName('dateSubmittedEnd')[0].value;
-    if (dateSubmittedEnd !== '') {
-      parameters.dateSubmittedEnd = dateSubmittedEnd;
-    }
-
-    const userID = document.getElementsByName('userID')[0].value;
-    if (userID !== '') {
-      parameters.userID = userID;
-    }
-
-    const clinicID = document.getElementsByName('clinicID')[0].value;
-    if (clinicID !== '') {
-      parameters.clinicID = clinicID;
-    }
-
-    const patientID = document.getElementsByName('patientID')[0].value;
-    if (patientID !== '') {
-      parameters.patientID = patientID;
-    }
+    list.forEach((key) => {
+      const value = document.getElementsByName(key)[0].value;
+      if (value !== '') {
+        parameters[key] = value;
+      }
+    });
 
     this.props.dispatch({
       type: actions.response.all.requested,
