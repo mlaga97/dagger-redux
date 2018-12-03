@@ -71,7 +71,7 @@ class renderer extends React.Component {
         </div>
         <div className="radio-options">
           {
-            Object.keys(options).map((option) => {
+            Object.keys(options).map((option, index) => {
               const value = options[option];
 
               // TODO: Avoid type coercion by making type match at a higher level?
@@ -86,6 +86,7 @@ class renderer extends React.Component {
                   checked={checked}
                   onChange={this.handleChange}
                   required={(required) ? 'required' : null}
+                  ref={(index === 0) ? 'inputNode' : null}
                 >
                   {option}
                 </Radio>
