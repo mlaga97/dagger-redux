@@ -13,15 +13,20 @@ import SearchParameters from './SearchParameters';
 import SearchResultsCount from './SearchResultsCount';
 
 class SearchContainer extends React.Component {
-  updateSearch = (parameters) => {
-    this.props.dispatch({
-      type: 'SEARCH_PARAMETERS_UPDATED',
-      parameters: {
-        ...parameters,
-        queryID: 'responseList_count',
-      },
-    });
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      pageParameters: {
+        page: 1,
+        count: 10,
+      },
+      sortParameters: {},
+      searchParameters: {},
+    }
+  }
+
+  updateCount = (parameters) => {
     this.props.dispatch({
       type: actions.response.list.requested,
       parameters: {
@@ -29,7 +34,18 @@ class SearchContainer extends React.Component {
         queryID: 'responseList_count',
       },
     });
+  }
 
+  updateResults = (parameters) => {
+    this.props.dispatch({
+      type: actions.response.list.requested,
+      parameters: {
+        ...parameters,
+        queryID: 'responseList_results',
+      },
+    });
+
+    // TODO: Make sure this loads only the ones we need.
     this.props.dispatch({
       type: actions.response.all.requested,
       parameters: {
@@ -39,18 +55,47 @@ class SearchContainer extends React.Component {
     });
   }
 
-  updateSort = (parameters) => {
-    this.props.dispatch({
-      type: 'SEARCH_SORT_UPDATED',
-      parameters,
+  updateSearch = (searchParameters) => {
+    this.setState({
+      searchParameters,
     });
+
+    const parameters = {
+      ...this.state.pageParameters,
+      ...this.state.sortParameters,
+      ...searchParameters, // Use function argument since state hasn't updated yet.
+    }
+
+    this.updateCount(searchParameters);
+    this.updateResults(parameters);
   }
 
-  updatePage = (parameters) => {
-    this.props.dispatch({
-      type: 'SEARCH_PAGE_UPDATED',
-      parameters,
+  updateSort = (sortParameters) => {
+    this.setState({
+      sortParameters,
     });
+
+    const parameters = {
+      ...this.state.pageParameters,
+      ...sortParameters, // Use function argument since state hasn't updated yet.
+      ...this.state.searchParameters,
+    }
+
+    this.updateResults(parameters);
+  }
+
+  updatePage = (pageParameters) => {
+    this.setState({
+      pageParameters,
+    });
+
+    const parameters = {
+      ...pageParameters, // Use function argument since state hasn't updated yet.
+      ...this.state.sortParameters,
+      ...this.state.searchParameters,
+    }
+
+    this.updateResults(parameters);
   }
 
   componentDidMount() {
@@ -60,9 +105,9 @@ class SearchContainer extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <SearchParameters onUpdate={this.updateSearch} />
+        <SearchParameters onUpdate={this.updateSearch} parameters={this.state.searchParameters} />
         <SearchResultsCount />
-        <SearchResults updateSort={this.updateSort}>
+        <SearchResults updateSort={this.updateSort} >
           <Response />
         </SearchResults>
       </React.Fragment>

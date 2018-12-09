@@ -33,7 +33,7 @@ class SearchResults extends React.Component {
         <tbody>
           {
             // TODO: Change map -> some?
-            responses.list['responseList_count'].map((index) => {
+            responses.list['responseList_results'].map((index) => {
               const response = responses.all[index];
 
               if (!response) {
