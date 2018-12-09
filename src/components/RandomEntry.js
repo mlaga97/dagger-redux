@@ -156,7 +156,7 @@ class AssessmentPage extends React.Component {
             <Row>
               <Col sm={12}>
                 {
-                  [1, 5, 10, 25, 50, 100, 250, 500, 1000].map((count) => (
+                  [1, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000].map((count) => (
                     <Button className={'btn-sm'} onClick={() => {this.multiSubmit(count)}}>{count} Random</Button>
                   ))
                 }
