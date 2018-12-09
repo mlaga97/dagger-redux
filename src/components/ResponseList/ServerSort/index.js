@@ -121,7 +121,7 @@ class SearchContainer extends React.Component {
       <React.Fragment>
         <SearchParameters onUpdate={this.updateSearch} parameters={this.state.searchParameters} />
         <SearchResultsCount />
-        <SearchResults updateSort={this.updateSort} >
+        <SearchResults updateSort={this.updateSort} parameters={this.state.sortParameters} >
           <Response />
         </SearchResults>
         <PageSelector
