@@ -8,6 +8,7 @@ import actions from '../../../actions';
 
 // Components
 import Response from '../Response';
+import PageSelector from './PageSelector';
 import SearchResults from './SearchResults';
 import SearchParameters from './SearchParameters';
 import SearchResultsCount from './SearchResultsCount';
@@ -56,12 +57,18 @@ class SearchContainer extends React.Component {
   }
 
   updateSearch = (searchParameters) => {
-    this.setState({
+    this.setState(prevState => ({
+      ...prevState,
       searchParameters,
-    });
+      pageParameters: {
+        ...prevState.pageParameters,
+        page: 1, // Reset page on new search.
+      }
+    }));
 
     const parameters = {
       ...this.state.pageParameters,
+      page: 1, // Override page argument since it state hasn't updated yet.
       ...this.state.sortParameters,
       ...searchParameters, // Use function argument since state hasn't updated yet.
     }
@@ -103,6 +110,13 @@ class SearchContainer extends React.Component {
   }
 
   render() {
+    if (!this.props.responses.list || !this.props.responses.list['responseList_count']) {
+      return 'Loading...';
+    }
+
+    // Calculate number of pages
+    const maxPage = Math.ceil(this.props.responses.list['responseList_count'].length / this.state.pageParameters.count);
+
     return (
       <React.Fragment>
         <SearchParameters onUpdate={this.updateSearch} parameters={this.state.searchParameters} />
@@ -110,6 +124,11 @@ class SearchContainer extends React.Component {
         <SearchResults updateSort={this.updateSort} >
           <Response />
         </SearchResults>
+        <PageSelector
+          onUpdate={this.updatePage}
+          parameters={this.state.pageParameters}
+          maxPage={maxPage}
+        />
       </React.Fragment>
     );
   }

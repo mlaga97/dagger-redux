@@ -10,7 +10,7 @@ class SearchResults extends React.Component {
   render() {
     const { responses } = this.props;
 
-    if (!responses || !responses.list || !responses.list['responseList_count'] ) {
+    if (!responses || !responses.list || !responses.list['responseList_results'] ) {
       return 'Loading response list...';
     }
 
