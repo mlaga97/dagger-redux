@@ -84,6 +84,7 @@ class SearchContainer extends React.Component {
 
     const parameters = {
       ...this.state.pageParameters,
+      page: 1, // Override page argument since it state hasn't updated yet.
       ...sortParameters, // Use function argument since state hasn't updated yet.
       ...this.state.searchParameters,
     }

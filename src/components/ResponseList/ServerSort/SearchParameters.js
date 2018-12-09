@@ -27,6 +27,11 @@ class SearchParameters extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
+    // Open the advanced search
+    this.setState({
+      open: true,
+    });
+
     const parameters = {};
     const list = [
       'userID',
@@ -48,6 +53,13 @@ class SearchParameters extends React.Component {
     this.props.onUpdate(parameters);
   };
 
+  // TODO: Not this.
+  handleEnter = (e) => {
+    if (e.keyCode == 13) {
+      this.handleSubmit(e);
+    }
+  }
+
   render = () => (
     <Panel defaultExpanded>
       <Panel.Heading>
@@ -59,18 +71,19 @@ class SearchParameters extends React.Component {
         <Panel.Body>
           <Grid className='container-response-search-options'>
             <Row>
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit} onKeyUp={this.handleEnter} >
                 <div className='simple-search-wrapper'>
                   <SortText name='patientID' label='Patient ID' />
                 </div>
-                <Panel className='panel-unadorned' onToggle={this.handleToggle} expanded={this.state.open} >
+                <Panel className='panel-unadorned' expanded={this.state.open} >
                   <Panel.Heading>
                     <Panel.Title toggle>
                       <Grid>
                         <Row>
                           <Col sm={4} className='col-search-button'>
-                            <Button onClick={this.handleClick}>Search</Button>
-                            <div className={(this.state.open) ? 'collapse-trigger collapsed' : 'collapse-trigger expanded'}>Advanced Search</div>
+                            {/* type='submit' doesn't work here!?*/}
+                            <Button onClick={this.handleSubmit} >Search</Button>
+                            <div onClick={this.handleToggle} className={(this.state.open) ? 'collapse-trigger collapsed' : 'collapse-trigger expanded'}>Advanced Search</div>
                           </Col>
                         </Row>
                       </Grid>
@@ -84,12 +97,10 @@ class SearchParameters extends React.Component {
                           <SortDate name='visitDateEnd'>Visit Date End</SortDate>
                           <SortDate name='dateSubmittedStart'>Date Submitted Start</SortDate>
                           <SortDate name='dateSubmittedEnd'>Date Submitted End</SortDate>
-                          <SortSelect name='userID' label='User ID'>
-                            {/*this.GetOptionsFromResponses('user') // TODO: Reenable */}
-                          </SortSelect>
-                          <SortSelect name='clinicID' label='Clinic ID'>
-                            {/*this.GetOptionsFromResponses('clinic') // TODO: Reenable */}
-                          </SortSelect>
+
+                          {/* TODO: Convert userID and clinicID back into SortSelect. */}
+                          <SortText name='userID' label='User ID' />
+                          <SortText name='clinicID' label='Clinic ID' />
                         </Row>
                       </Grid>
                     </Panel.Body>
