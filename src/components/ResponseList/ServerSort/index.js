@@ -8,6 +8,7 @@ import actions from '../../../actions';
 
 // Components
 import Response from '../Response';
+import SearchDump from './SearchDump';
 import PageSelector from './PageSelector';
 import SearchResults from './SearchResults';
 import SearchParameters from './SearchParameters';
@@ -128,6 +129,13 @@ class SearchContainer extends React.Component {
         <PageSelector
           onUpdate={this.updatePage}
           parameters={this.state.pageParameters}
+          maxPage={maxPage}
+        />
+        <SearchDump
+          parameters={{
+            ...this.state.sortParameters,
+            ...this.state.searchParameters,
+          }}
           maxPage={maxPage}
         />
       </React.Fragment>
