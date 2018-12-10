@@ -11,6 +11,7 @@ import actions from '../actions';
 import Response from './ResponseList/Response';
 import SortableTable from './ResponseList/SortableTable';
 
+// TODO: Replace SortableTable with SearchResults
 class ResponseList extends React.Component {
   componentWillMount() {
     const date = (new Date()).toLocaleString('en-CA').substring(0, 10);
@@ -22,14 +23,33 @@ class ResponseList extends React.Component {
         userID: this.props.userID,
       }
     });
+
+    this.props.dispatch({
+      type: actions.response.list.requested,
+      parameters: {
+        dateSubmittedStart: date,
+        dateSubmittedEnd: date,
+        userID: this.props.userID,
+        queryID: 'recentRecords_user_' + this.props.userID,
+      }
+    });
   }
 
   render() {
-    if (!this.props.responses.all) {
+    const { responses, userID } = this.props;
+    const queryID = 'recentRecords_user_' + userID;
+
+    if (!responses.all) {
+      return <div className='content-loading'>Retrieving responses...</div>;
+    }
+
+    if (!responses.list || !responses.list[queryID]) {
       return <div className='content-loading'>Retrieving response list...</div>;
     }
 
-    const resultCount = Object.keys(this.props.responses.all).length;
+    const list = responses.list[queryID];
+    const resultCount = Object.keys(list).length;
+    const results = list.map(key => this.props.responses.all[key]);
 
     if(resultCount > 0) {
       return (
@@ -40,7 +60,7 @@ class ResponseList extends React.Component {
                 <div className='search-results-count'>
                   {resultCount} record{(resultCount === 1) ? '' : 's'} submitted today.
                 </div>
-                <SortableTable responses={this.props.responses}>
+                <SortableTable responses={results}>
                   <Response />
                 </SortableTable>
               </Col>

@@ -56,9 +56,9 @@ class SortableTable extends React.Component {
       </thead>
       <tbody>
         {
-          Object.keys(this.props.responses.all).sort((a, b) => {
-            const A = this.props.responses.all[a].metadata;
-            const B = this.props.responses.all[b].metadata;
+          Object.keys(this.props.responses).sort((a, b) => {
+            const A = this.props.responses[a].metadata;
+            const B = this.props.responses[b].metadata;
 
             if (!this.state.sortBy || !this.state.order || this.state.order === 0) {
               return this.sortHelper(parseInt(a, 10) < parseInt(b, 10));
@@ -95,7 +95,7 @@ class SortableTable extends React.Component {
             React.Children.map(
               this.props.children,
               child => React.cloneElement(child, {
-                response: this.props.responses.all[index],
+                response: this.props.responses[index],
               }),
             )
           ))
