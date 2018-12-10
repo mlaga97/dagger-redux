@@ -63,10 +63,10 @@ class SearchResults extends React.Component {
         <thead>
           <tr>
             <th>{/* placeholder for record launch button */}</th>
-            <th>{this.helper('dateSubmitted', 'Date Submitted')}</th>
-            <th>{this.helper('visitDate', 'Visit Date')}</th>
-            <th>{this.helper('userID', 'User ID')}</th>
-            <th>{this.helper('clinicID', 'Clinic ID')}</th>
+            {this.helper('dateSubmitted', 'Date Submitted')}
+            {this.helper('visitDate', 'Visit Date')}
+            {this.helper('userID', 'User ID')}
+            {this.helper('clinicID', 'Clinic ID')}
             <th>Assessments</th>
           </tr>
         </thead>
