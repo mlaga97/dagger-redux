@@ -1,4 +1,8 @@
 // TODO: JSDoc
+// TODO: This is a memory leak!
 export default function all(state, action) {
-  return action.data;
+  return {
+    ...state,
+    ...action.data,
+  }
 }
