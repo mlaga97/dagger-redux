@@ -1,5 +1,6 @@
 // Library imports
 import React from 'react';
+import downloadCsv from 'download-csv';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 
@@ -34,13 +35,34 @@ class SearchDump extends React.Component {
 
         clearInterval(this.timerID);
       } else if (this.fetchedRecords() == this.recordsToFetch) {
+        clearInterval(this.timerID);
+
         console.log('Download finished...');
         console.log('Processing data...');
 
+        // TODO: Progress logging
+        // TODO: Assessment Responses
+        const data = this.props.responses.list['responseList_count'].map((key) => {
+          const { metadata, assessments } = this.props.responses.all[key];
 
+          return {
+            responseID: metadata.id,
+            userID: metadata.user.id,
+            clinicID: metadata.clinic.id,
+            visitDate: metadata.visit.date,
+            patientID: metadata.patient.id,
+            patientDOB: metadata.patient.dob,
+            dateSubmitted: metadata.dateSubmitted,
+            selectedAssessments: '"' + Object.keys(assessments.selected).reduce((acc, value) => {
+              return acc + value + ', ';
+            }, '').slice(0, -2) + '"',
+            assessmentResponses: assessments.responses,
+          };
+        });
+
+        downloadCsv(data, null, 'dagger_search_results.csv');
 
         console.log('Done!');
-        clearInterval(this.timerID);
       } else {
         console.log('Waiting on stragglers...');
       }
