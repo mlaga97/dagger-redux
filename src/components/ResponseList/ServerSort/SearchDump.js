@@ -7,6 +7,8 @@ import { Button } from 'react-bootstrap';
 // Actions
 import actions from '../../../actions';
 
+// TODO: This is absolute garbage and needs to be implemented as service workers
+// TODO: Show progress to user
 class SearchDump extends React.Component {
   loop = () => {
     const { maxPage, parameters } = this.props;
@@ -41,9 +43,18 @@ class SearchDump extends React.Component {
         console.log('Processing data...');
 
         // TODO: Progress logging
-        // TODO: Assessment Responses
+        // TODO: What if a text field has a comma?
         const data = this.props.responses.list['responseList_count'].map((key) => {
           const { metadata, assessments } = this.props.responses.all[key];
+
+          let assessmentResponses = {}
+          Object.keys(assessments.responses).forEach((assessment) => {
+            const assessmentResponse = assessments.responses[assessment];
+
+            Object.keys(assessmentResponse).forEach((field) => {
+              assessmentResponses[assessment + '_' + field] = assessmentResponse[field];
+            });
+          });
 
           return {
             responseID: metadata.id,
@@ -56,10 +67,11 @@ class SearchDump extends React.Component {
             selectedAssessments: '"' + Object.keys(assessments.selected).reduce((acc, value) => {
               return acc + value + ', ';
             }, '').slice(0, -2) + '"',
-            assessmentResponses: assessments.responses,
+            ...assessmentResponses,
           };
         });
 
+        // TODO: Verify that excel can parse this properly
         downloadCsv(data, null, 'dagger_search_results.csv');
 
         console.log('Done!');
@@ -92,7 +104,7 @@ class SearchDump extends React.Component {
     this.recordsToFetch = this.props.responses.list['responseList_count'].length;
     this.pagesToFetch = Math.ceil(this.recordsToFetch/1000);
 
-    this.timerID = setInterval(this.loop, 200);
+    this.timerID = setInterval(this.loop, 500);
   }
 
   render = () => <Button onClick={this.handleClick} >Download Search Results</Button>;
