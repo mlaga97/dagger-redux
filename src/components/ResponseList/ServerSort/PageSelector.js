@@ -30,14 +30,14 @@ class PageSelector extends React.Component {
     const { page } = parameters;
 
     return (
-      <div>
-        <Button onClick={this.firstPage}>&lt;&lt;&lt;</Button>
-        <Button onClick={this.prevPage_10}>&lt;&lt;</Button>
-        <Button onClick={this.prevPage}>&lt;</Button>
-        <span> Page {page} of {maxPage} </span>
-        <Button onClick={this.nextPage}>&gt;</Button>
-        <Button onClick={this.nextPage_10}>&gt;&gt;</Button>
-        <Button onClick={this.lastPage}>&gt;&gt;&gt;</Button>
+      <div class='page-selector-wrapper'>
+        <Button className='btn-page-selector btn-page-back-first' onClick={this.firstPage} disabled={parseInt(page) == 1 ? 'disabled' : ''} ></Button>
+        <Button className='btn-page-selector btn-page-back-ten' onClick={this.prevPage_10}  disabled={(parseInt(page) - 10) < 1 ? 'disabled' : ''} ></Button>
+        <Button className='btn-page-selector btn-page-back-one' onClick={this.prevPage}  disabled={parseInt(page) == 1 ? 'disabled' : ''} ></Button>
+        <span> Page <span class='feedback'>{page}</span> of <span class='feedback'>{maxPage}</span> </span>
+        <Button className='btn-page-selector btn-page-forward-one' onClick={this.nextPage} disabled={parseInt(page) == parseInt(maxPage) ? 'disabled' : ''} ></Button>
+        <Button className='btn-page-selector btn-page-forward-ten' onClick={this.nextPage_10} disabled={(parseInt(page) + 10) > parseInt(maxPage) ? 'disabled' : ''} ></Button>
+        <Button className='btn-page-selector btn-page-forward-last' onClick={this.lastPage}  disabled={parseInt(page) == parseInt(maxPage) ? 'disabled' : ''} ></Button>
       </div>
     );
   }

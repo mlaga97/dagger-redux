@@ -29,6 +29,14 @@ body
 	--unicode-down-arrow: '\1F809';		/* U+1F809: UPWARDS ARROW WITH LARGE TRIANGLE ARROWHEAD */
 	--unicode-expand-pointer: '\25BC';			/* U+25BC: BLACK DOWN-POINTING TRIANGLE */
 	--unicode-collapse-pointer: '\25B2';			/* U+25BC: BLACK UP-POINTING TRIANGLE */
+
+	--unicode-right-arrowhead: '\2B9E';             /* U+2B9E: BLACK RIGHTWARDS EQUILATERAL ARROWHEAD */
+	--unicode-right-arrowhead-double: '\2B9E\2B9E'; /* U+2B9E: BLACK RIGHTWARDS EQUILATERAL ARROWHEAD - Doubled*/
+	--unicode-right-arrowhead-stop: '\2B9E|';       /* U+2B9E: BLACK RIGHTWARDS EQUILATERAL ARROWHEAD and PIPE */
+
+	--unicode-left-arrowhead: '\2B9C';              /* U+2B9C: BLACK LEFTWARDS EQUILATERAL ARROWHEAD */
+	--unicode-left-arrowhead-double: '\2B9C\2B9C';  /* U+2B9C: BLACK LEFTWARDS EQUILATERAL ARROWHEAD - Doubled */
+	--unicode-left-arrowhead-stop: '|\2B9C';        /* PIPE and U+2B9C: BLACK LEFTWARDS EQUILATERAL ARROWHEAD */
 }
 
 #root {
@@ -517,6 +525,7 @@ div.content-loading {
 div.info-content,
 span.info-content,
 div.search-results-count,
+span.feedback,
 table.table-search-results tbody tr td {
 	color: var(--feedback-font-color);
 }
@@ -989,4 +998,58 @@ div.radio-options {
 	a[href]:after {
 		content: none !important;
 	}
+}
+
+
+/* Pagination page selectors */
+div.page-selector-wrapper {
+	text-align: center;
+}
+button.btn-page-selector {
+	background: transparent !important;
+	border: 0 !important;
+}
+
+button.btn-page-selector:hover {
+	box-shadow: none;
+}
+
+button.btn-page-selector[disabled] {
+	cursor: default !important;
+}
+
+button.btn-page-selector:focus {
+	background: transparent !important;  /* No AliceBlue for you */
+	box-shadow: none;
+}
+
+button.btn-page-selector:focus,
+button.btn-page-selector:active,
+button.btn-page-selector:focus + button.btn-page-selector:active {
+	outline: none !important;
+	box-shadown: none !important;
+}
+
+button.btn-page-selector.btn-page-back-first::after {
+	content: var(--unicode-left-arrowhead-stop);
+}
+
+button.btn-page-selector.btn-page-back-ten::after {
+	content: var(--unicode-left-arrowhead-double);
+}
+
+button.btn-page-selector.btn-page-back-one::after {
+	content: var(--unicode-left-arrowhead);
+}
+
+button.btn-page-selector.btn-page-forward-one::after {
+	content: var(--unicode-right-arrowhead);
+}
+
+button.btn-page-selector.btn-page-forward-ten::after {
+	content: var(--unicode-right-arrowhead-double);
+}
+
+button.btn-page-selector.btn-page-forward-last::after {
+	content: var(--unicode-right-arrowhead-stop);
 }
