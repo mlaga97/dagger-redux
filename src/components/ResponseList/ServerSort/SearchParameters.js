@@ -74,7 +74,7 @@ class SearchParameters extends React.Component {
                 <div className='simple-search-wrapper'>
                   <SortText name='patientID' label='Patient ID' />
                 </div>
-                <Panel className='panel-unadorned' defaultExpanded >
+                <Panel className='panel-unadorned' expanded={this.state.open} onToggle={() => {}} >
                   <Panel.Heading>
                     <Panel.Title toggle>
                       <Grid>
