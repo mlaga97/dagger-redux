@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Panel, Grid, Row, Col, Table } from 'react-bootstrap';
-import { format, getISOWeek, startOfWeek, endOfWeek, subWeeks, startOfMonth, endOfMonth, getMonth, subMonths } from 'date-fns';
+import { format, getISOWeek, startOfWeek, endOfWeek, subWeeks, startOfMonth, endOfMonth, subMonths } from 'date-fns';
 
 // Actions
 import actions from '../actions';
@@ -13,7 +13,7 @@ import QueryCount from './QueryCount';
 
 // TODO: Is it visitDate or dateSubmitted?
 function UserStatisticsHelper(props) {
-  const { title, queryID, userID, start, end } = props;
+  const { userID, start, end } = props;
 
   const visitDateStart = format(start, 'YYYY-MM-DD');
   const visitDateEnd = format(end, 'YYYY-MM-DD');

@@ -5,7 +5,6 @@ import { Panel, Grid, Row, Col, Button } from 'react-bootstrap';
 // Components
 import SortDate from './SortDate';
 import SortText from './SortText';
-import SortSelect from './SortSelect';
 
 // TODO: Add onChange handlers to all input fields.
 // TODO: Make components be controlled.
@@ -55,7 +54,7 @@ class SearchParameters extends React.Component {
 
   // TODO: Not this.
   handleEnter = (e) => {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       this.handleSubmit(e);
     }
   }
@@ -75,7 +74,7 @@ class SearchParameters extends React.Component {
                 <div className='simple-search-wrapper'>
                   <SortText name='patientID' label='Patient ID' />
                 </div>
-                <Panel className='panel-unadorned' expanded={this.state.open} >
+                <Panel className='panel-unadorned' defaultExpanded >
                   <Panel.Heading>
                     <Panel.Title toggle>
                       <Grid>

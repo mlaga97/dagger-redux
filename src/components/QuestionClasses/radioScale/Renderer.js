@@ -116,7 +116,7 @@ class Renderer extends React.Component {
         <React.Fragment>
           {
             subTypes.map((subType) => {
-              const { suffix, hideLabel, options } = subType;
+              const { suffix } = subType;
               const name = this.props.name + ((suffix) || '');
               const selected = response ? response[name] : null;
 

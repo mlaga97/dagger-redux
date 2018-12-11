@@ -51,7 +51,7 @@ class AssessmentPage extends React.Component {
   render() {
     const { props, state } = this;
     const { responseID, assessments: { all: assessments } } = props;
-    const { lastResponse, submitted, response, selected } = state;
+    const { lastResponse, response, selected } = state;
 
     if (lastResponse !== responseID) {
       this.props.history.push('/response/' + responseID);

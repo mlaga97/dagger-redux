@@ -1,7 +1,5 @@
 // Library imports
 import React from 'react';
-import { connect } from 'react-redux';
-import { Panel, Grid, Row } from 'react-bootstrap';
 
 // Components
 import Search from './ServerSort';

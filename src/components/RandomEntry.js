@@ -1,6 +1,5 @@
 // Library imports
 import React from 'react';
-import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Panel, Grid, Row, Col, Button } from 'react-bootstrap';
 
@@ -34,7 +33,7 @@ const generateMetadata = () => {
   const patientOffset = Math.floor(Math.random() * 100);
 
   // Select a random date within the last four years, and return in ISO-8601 formatted string. I hate Javascript.
-  const assessmentDate = (new Date((new Date()).setDate((new Date).getDate()-Math.floor(Math.random() * 365 * 4)))).toLocaleString('en-CA').substring(0, 10);
+  const assessmentDate = (new Date((new Date()).setDate((new Date()).getDate()-Math.floor(Math.random() * 365 * 4)))).toLocaleString('en-CA').substring(0, 10);
 
   // Process Metadata
   const metadata = {
@@ -57,7 +56,7 @@ const generateMetadata = () => {
   return metadata;
 }
 
-class AssessmentPage extends React.Component {
+class RandomEntry extends React.Component {
   componentWillMount() {
     if (!this.props.assessments.all) {
       this.props.dispatch({
@@ -73,7 +72,7 @@ class AssessmentPage extends React.Component {
       responses: {},
     };
 
-    Object.keys(this.props.assessments.all).map((key) => {
+    Object.keys(this.props.assessments.all).forEach((key) => {
       const assessment = this.props.assessments.all[key];
 
       // Pick Assessments
@@ -117,6 +116,9 @@ class AssessmentPage extends React.Component {
               case 'checkboxScale':
                 assessments.responses[key][question.id] = (Math.random() < 0.5) ? true : false;
                 break;
+              default:
+                // TODO: Something
+                break;
             }
           }
         });
@@ -157,7 +159,7 @@ class AssessmentPage extends React.Component {
               <Col sm={12}>
                 {
                   [1, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000].map((count) => (
-                    <Button className={'btn-sm'} onClick={() => {this.multiSubmit(count)}}>{count} Random</Button>
+                    <Button key={count} className={'btn-sm'} onClick={() => {this.multiSubmit(count)}}>{count} Random</Button>
                   ))
                 }
               </Col>
@@ -179,4 +181,4 @@ export default connect(
   dispatch => ({
     dispatch,
   }),
-)(AssessmentPage);
+)(RandomEntry);

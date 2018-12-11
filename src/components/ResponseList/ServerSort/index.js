@@ -1,7 +1,6 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Table } from 'react-bootstrap';
 
 // Actions
 import actions from '../../../actions';

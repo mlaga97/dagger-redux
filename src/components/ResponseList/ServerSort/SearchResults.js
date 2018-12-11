@@ -3,9 +3,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
 
-// Actions
-import actions from '../../../actions';
-
 class SearchResults extends React.Component {
   handleClick = (event) => {
     const name = event.target.attributes.name.value;

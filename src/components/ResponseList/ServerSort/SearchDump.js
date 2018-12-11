@@ -11,8 +11,6 @@ import actions from '../../../actions';
 // TODO: Show progress to user
 class SearchDump extends React.Component {
   loop = () => {
-    const { maxPage, parameters } = this.props;
-
     if (this.pagesToFetch > 0) {
       // Queue up
       this.props.dispatch({
@@ -36,7 +34,7 @@ class SearchDump extends React.Component {
         // TODO: Download missing records here
 
         clearInterval(this.timerID);
-      } else if (this.fetchedRecords() == this.recordsToFetch) {
+      } else if (this.fetchedRecords() === this.recordsToFetch) {
         clearInterval(this.timerID);
 
         console.log('Download finished...');

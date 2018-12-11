@@ -27,7 +27,7 @@ class PageSelector extends React.Component {
 
   render() {
     const { parameters, maxPage } = this.props;
-    const { page, count } = this.props.parameters;
+    const { page } = parameters;
 
     return (
       <div>
