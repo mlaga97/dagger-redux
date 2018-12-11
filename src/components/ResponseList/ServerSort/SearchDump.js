@@ -105,7 +105,7 @@ class SearchDump extends React.Component {
     this.timerID = setInterval(this.loop, 500);
   }
 
-  render = () => <Button onClick={this.handleClick} >Download Search Results</Button>;
+  render = () => <Button onClick={this.handleClick} className="btn-sm btn-download" >Download Search Results</Button>;
 }
 
 export default connect(

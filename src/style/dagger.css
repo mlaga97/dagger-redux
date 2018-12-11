@@ -510,10 +510,17 @@ table.table-search-results thead th.sort-asc::after {
 }
 
 div.search-results-count {
+	display: inline-block;
 	font-size: 16px;
 	padding-left: 10px;
 	padding-right: 10px;
 	margin-bottom: 10px;
+}
+
+button.btn-download {
+	float: right;
+	margin-right: 10px !important;
+	margin-bottom: 10px !important;
 }
 
 div.content-loading {

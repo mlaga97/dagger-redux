@@ -122,19 +122,19 @@ class SearchContainer extends React.Component {
       <React.Fragment>
         <SearchParameters onUpdate={this.updateSearch} parameters={this.state.searchParameters} />
         <SearchResultsCount />
+        <SearchDump
+          parameters={{
+            ...this.state.sortParameters,
+            ...this.state.searchParameters,
+          }}
+          maxPage={maxPage}
+        />
         <SearchResults updateSort={this.updateSort} parameters={this.state.sortParameters} >
           <Response />
         </SearchResults>
         <PageSelector
           onUpdate={this.updatePage}
           parameters={this.state.pageParameters}
-          maxPage={maxPage}
-        />
-        <SearchDump
-          parameters={{
-            ...this.state.sortParameters,
-            ...this.state.searchParameters,
-          }}
           maxPage={maxPage}
         />
       </React.Fragment>
