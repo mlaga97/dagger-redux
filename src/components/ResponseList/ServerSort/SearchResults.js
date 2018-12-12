@@ -74,7 +74,7 @@ class SearchResults extends React.Component {
               const response = responses.all[index];
 
               if (!response) {
-                return <tr>Loading response...</tr>;
+                return <tr><td colSpan='6'>Loading response...</td></tr>;
               }
 
               return (
