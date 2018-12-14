@@ -109,7 +109,7 @@ class PrivateApp extends React.Component {
                       <MenuItem eventKey={5.4}>User Statistics</MenuItem>
                     </IndexLinkContainer>
                   </ConditionalWrapper>
-                  <IndexLinkContainer to='/userSettings'>
+                  <IndexLinkContainer to={'/user/' + this.props.users.current}>
                     <MenuItem eventKey={5.5}>User Settings</MenuItem>
                   </IndexLinkContainer>
                   <ConditionalWrapper display={indev}>
