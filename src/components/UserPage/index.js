@@ -1,7 +1,6 @@
 // Library imports
 import React from 'react';
-import { connect } from 'react-redux';
-import { Grid, Panel, ToggleButton, ToggleButtonGroup, Button, ButtonGroup, Tab, Row, Col, Nav, NavItem, Breadcrumb, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Breadcrumb, Tab, Row, Col, Nav, NavItem } from 'react-bootstrap';
 
 // Components
 import Account from './Account';
@@ -30,16 +29,16 @@ const UserPage = ({
     </Breadcrumb>
     <Tab.Container defaultActiveKey='overview'>
       <Row className='clearfix'>
-            <Col sm={3}>
-              <Nav bsStyle='pills' stacked>
-                <NavItem eventKey='overview'>Overview</NavItem>
-                <NavItem eventKey='activity'>Activity</NavItem>
-                <NavItem eventKey='records'>Records</NavItem>
-                <NavItem eventKey='clinics'>Clinics</NavItem>
-                <NavItem eventKey='settings'>Settings</NavItem>
-                <NavItem eventKey='account'>Account</NavItem>
-              </Nav>
-            </Col>
+        <Col sm={3}>
+          <Nav bsStyle='pills' stacked>
+            <NavItem eventKey='overview'>Overview</NavItem>
+            <NavItem eventKey='activity'>Activity</NavItem>
+            <NavItem eventKey='records'>Records</NavItem>
+            <NavItem eventKey='clinics'>Clinics</NavItem>
+            <NavItem eventKey='settings'>Settings</NavItem>
+            <NavItem eventKey='account'>Account</NavItem>
+          </Nav>
+        </Col>
         <Col sm={9}>
           <Tab.Content animation>
             <Tab.Pane eventKey='overview'>
@@ -62,20 +61,9 @@ const UserPage = ({
             </Tab.Pane>
           </Tab.Content>
         </Col>
-          </Row>
-        </Tab.Container>
-      </React.Fragment>
-    );
+      </Row>
+    </Tab.Container>
+  </React.Fragment>
+);
 
-  }
-}
-
-export default connect(
-  state => ({
-    users: state.users,
-    clinics: state.clinics,
-  }),
-  dispatch => ({
-    dispatch,
-  }),
-)(UserPage);
+export default UserPage;
