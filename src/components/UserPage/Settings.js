@@ -5,7 +5,7 @@ import { Panel, Grid, Row, Col, FormGroup, ControlLabel, ToggleButtonGroup, Togg
 const Settings = () => (
   <Panel>
     <Panel.Heading>
-      Settings
+      Flags
     </Panel.Heading>
     <Panel.Body>
       <Grid>

@@ -9,6 +9,7 @@ import Records from './Records';
 import Activity from './Activity';
 import Overview from './Overview';
 import Settings from './Settings';
+import Statistics from './Statistics';
 
 // Actions
 import actions from '../../actions';
@@ -32,7 +33,8 @@ const UserPage = ({
         <Col sm={3}>
           <Nav bsStyle='pills' stacked>
             <NavItem eventKey='overview'>Overview</NavItem>
-            <NavItem eventKey='activity'>Activity</NavItem>
+            <NavItem eventKey='activity'>Recent Activity</NavItem>
+            <NavItem eventKey='statistics'>Statistics</NavItem>
             <NavItem eventKey='records'>Records</NavItem>
             <NavItem eventKey='clinics'>Clinics</NavItem>
             <NavItem eventKey='settings'>Settings</NavItem>
@@ -46,6 +48,9 @@ const UserPage = ({
             </Tab.Pane>
             <Tab.Pane eventKey='activity'>
               <Activity userID={userID} />
+            </Tab.Pane>
+            <Tab.Pane eventKey='statistics'>
+              <Statistics userID={userID} />
             </Tab.Pane>
             <Tab.Pane eventKey='records'>
               <Records userID={userID} />

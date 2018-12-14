@@ -1,7 +1,7 @@
 // Library imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { Panel, Grid, Row, Col } from 'react-bootstrap';
+import { Panel, Grid, Row, Col, Button } from 'react-bootstrap';
 
 // Components
 import ClinicList from '../ClinicList/List'
@@ -39,20 +39,42 @@ class Clinics extends React.Component {
     })
 
     return (
-      <Panel>
-        <Panel.Heading>
-          Clinics
-        </Panel.Heading>
-        <Panel.Body>
-          <Grid>
-            <Row>
-              <Col sm={12}>
-                <ClinicList clinics={clinics} />
-              </Col>
-            </Row>
-          </Grid>
-        </Panel.Body>
-      </Panel>
+      <React.Fragment>
+        <Panel>
+          <Panel.Heading>
+            Assigned Clinics
+            <Button className='btn-sm btn-download'>Assign/Unassign Clinics</Button>
+          </Panel.Heading>
+          <Panel.Body>
+            <Grid>
+              <Row>
+                <Col sm={12}>
+                </Col>
+              </Row>
+              <Row>
+                <Col sm={12}>
+                  <ClinicList clinics={clinics} />
+                </Col>
+              </Row>
+            </Grid>
+          </Panel.Body>
+        </Panel>
+        <Panel>
+          <Panel.Heading>
+            {/* TODO: Title that better describes "clinics that a user has records in but isn't currently assigned to" */}
+            Other Related Clinics
+          </Panel.Heading>
+          <Panel.Body>
+            <Grid>
+              <Row>
+                <Col sm={12}>
+                  <ClinicList clinics={clinics} />
+                </Col>
+              </Row>
+            </Grid>
+          </Panel.Body>
+        </Panel>
+      </React.Fragment>
     );
   }
 }
