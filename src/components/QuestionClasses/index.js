@@ -9,6 +9,7 @@ import dateField from './dateField';
 import numberField from './numberField';
 import yesNoToggle from './yesNoToggle';
 import telField from './telField';
+import rangeScale from './rangeScale';
 
 export default {
   bitwiseTable,
@@ -21,4 +22,5 @@ export default {
   numberField,
   yesNoToggle,
   telField,
+  rangeScale,
 };

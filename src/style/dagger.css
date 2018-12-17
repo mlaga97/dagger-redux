@@ -647,6 +647,7 @@ table.table-vertical tbody tr td{
       border-bottom: 2px solid #ddd;
     }
 
+   /* Exlude table-range -- TODO: review tables where card table used */
    table.table-card-table td {
       display: block;
       text-align: right !important; /* Override more specific selector .table-response td:not(:first-child) center alignment */
@@ -727,8 +728,8 @@ table.table-assessment tbody tr td:first-child {
 	vertical-align: middle;
 }
 
-/* Hack for improved auto sizing of td on tabled radio scale options */
-table.table-assessment tbody tr td:not(:first-child) {
+/* Hack for improved auto sizing of td on tabled radio scale options - Exclude table-range */
+table.table-assessment:not(.table-range) tbody tr td:not(:first-child) {
 	width:1%;
 	padding: 0 !important;
 }
@@ -1060,3 +1061,237 @@ button.btn-page-selector.btn-page-forward-ten::after {
 button.btn-page-selector.btn-page-forward-last::after {
 	content: var(--unicode-right-arrowhead-stop);
 }
+/* END Pagination page selectors */
+
+
+
+/* RANGE */
+/* CSS for range input **********************************/
+:root {
+  /* Range */
+
+  /* wrapper */
+  --range-wrapper-background-color: #FFF;
+
+  /* track */
+  --range-track-lower-color: #A1D0FF;
+  --range-track-upper-color: #DEDEDE;
+  --range-track-no-response-color: #AAA;
+  --range-track-height: 20px;
+
+  /* thumb */
+  --range-thumb-color: #68B7EC;
+  --range-thumb-no-response-color: #CCC;
+  --range-thumb-border-color: #999;
+  --range-thumb-size-webkit: 18px; /* webkit - 2px less that of --range-track-height for upper/lower thumb border */
+  --range-thumb-size-moz: 16px; /* mozilla - 4px less */
+}
+
+table.table-assessment.table-range tbody tr td:last-child {
+  padding: 10px 20px;
+	text-align: center;
+}
+
+div.range-group-container {
+  display:inline-flex;
+}
+
+/* Contains input range and datalist (output excluded) */
+div.range-input-and-options-container {
+  width: 300px; /* TODO: consider either passing input width or calculating a minimum width based on number of options */
+}
+
+/* Contains only input range */
+div.range-input-container {
+  padding:3px 0 3px 0;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  background: #FFF; /* EdgeHTML < 15 */
+  background: var(--range-wrapper-background-color);
+}
+
+input[type=range].range-input {
+  -webkit-appearance: none;
+  width: 100%;
+  height: var(--range-track-height);
+  border-top: 1px solid Gainsboro;
+  border-bottom: 1px solid Gainsboro;
+  background: var(--range-wrapper-background-color);
+  background-color: white; /* EdgeHTML < 15 -- Check for redundancies for specific browsers - off-white somewhere? */
+  overflow: hidden; /* Important - prevents Chrome, Firefox box-shadow from overflowing */
+  margin: 0;
+  padding: 4px 0px 4px 0px;
+}
+
+input[type=range].range-input:hover {
+  cursor: pointer;
+}
+
+
+/* Range Track */
+input[type=range].range-input::-webkit-slider-runnable-track {	/* Chrome */
+  width: 100%;
+  height: var(--range-track-height);
+  background: var(--range-track-upper-color);
+}
+
+input.range-input.no-response::-webkit-slider-runnable-track {
+  background: var(--range-track-no-response-color) !important;
+}
+
+input[type=range].range-input::-moz-range-track {	/* Firefox */
+  width: 100%;
+  height: var(--range-track-height);
+  background: var(--range-track-upper-color);
+}
+
+input[type=range].range-input.no-response::-moz-range-track {
+  background: var(--range-track-no-response-color) !important;
+}
+
+input[type=range].range-input::-ms-track {	/* Microsoft */
+  width: 100%;
+  height: 20px; /* Falback EdgeHTML < 15 */
+  height: var(--range-track-height);
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type=range].range-input::-ms-fill-lower {
+  background: #A1D0FF !important;
+  background: var(--range-track-lower-color) !important;
+}
+
+input[type=range].range-input::-ms-fill-upper {
+  background: #DEDEDE !important;
+  background: var(--range-track-upper-color) !important;
+}
+
+input[type=range].no-response::-ms-fill-lower,
+input[type=range].no-response::-ms-fill-upper {
+  background: #AAA !important; /* EdgeHTML < 15 */
+  background: var(--range-track-no-response-color) !important; /* EDGEHTML >= 15 */
+}
+/* End Range Track */
+
+/* Range Button */
+input[type=range].range-input::-webkit-slider-thumb {	/* Chrome */
+  -webkit-appearance: none;
+  width: var(--range-thumb-size-webkit);
+  height: var(--range-thumb-size-webkit);
+  margin: 1px 0 1px 0;
+  background: var(--range-thumb-color);
+  box-shadow: -100vw 0 0 100vw var(--range-track-lower-color); /* Simulates track fill color for lower range (left-hand side) */
+  border: 1px solid var(--range-thumb-border-color);
+  border-radius: 3px;
+}
+
+input.range-input.no-response::-webkit-slider-thumb {
+  background: var(--range-thumb-no-response-color) !important;
+}
+
+input[type=range].range-input::-moz-range-thumb {	/* Firefox */
+  width: var(--range-thumb-size-moz);
+  height: var(--range-thumb-size-moz);
+  background: var(--range-thumb-color);
+  box-shadow: -100vw 0 0 100vw var(--range-track-lower-color);
+  border: 1px solid var(--range-thumb-border-color);
+  border-radius: 3px;
+}
+
+input[type=range].range-input.no-response::-moz-range-thumb {
+  background: var(--range-thumb-no-response-color) !important;
+}
+
+input[type=range].range-input::-ms-thumb {	/* Microsoft */
+  height: 18px;
+  height: var(--range-track-height);  /* Alledgedly works w EdgeHTML 15+ build */
+  width: 18px;
+  background: #68B7EC;
+  background: var(--range-thumb-color);
+  border: 1px solid #999;
+  border: 1px solid var(--range-thumb-border-color);
+  border-radius: 3px;
+}
+
+input[type=range].no-response::-ms-thumb {
+  background: #CCC;
+  background: var(--range-thumb-no-response-color) !important;
+}
+/* End Range Thumb */
+
+/* Thanks, but I'll style it myself */
+input[type=range].range-input::-ms-tooltip {  /* Kill Microsoft tooltip with content = value onchange -- prevent default */
+  display: none;
+}
+
+input[type=range].range-input:focus {
+  outline: none;  /* Kill browser focus outline */
+}
+
+input[type=range].range-input::-moz-focus-outer {
+  border: 0 !important; /* Kill Firefox evil dotted border onFocus */
+}
+/* End Thanks */
+
+/* Output, Datalist, Option */
+output.range-output {
+  margin-left: 25px;
+  padding-top: 6px; /* Override BS output style */
+  font-size: 24px;
+  text-align: right;
+  width: 32px;
+}
+
+datalist.range-list {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  overflow: hidden;
+  color: gray;	/* TOODO: check color source CSS for labels */
+}
+
+option.range-opt {
+  width: 20px;
+  text-align: center;
+  font-size: 12px; /* same as standard small labels */ /* TODO: Set label and label-like-creature to var */
+  padding-top: 4px; /* add space AND extend clickable area up to bottom border of range-input-wrapper */
+  /* cursor: pointer; */  /* Disabled until label option can set input value */
+}
+
+/* Hover on labels disabled until they can set value of range -- damn you React */
+/*
+option.range-opt:hover {
+  color: var(--primary-font-color);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+*/
+
+/* Range input slider motion often causes accidently selection of options and output - no harm but distracting in default dark blue hightlight */
+/* pseudo class for Mozilla ::-moz-selection is currently buggy and breaks style in Chrome, reported not working in Firefox anyway */
+option.range-opt::selection,
+output.range-output::selection {
+  background: transparent;
+}
+
+
+@media screen and (max-width: 600px) {
+
+/* table-range question cell */
+table.table-card-table.table-range td:first-child {
+	text-align: left !important;
+}
+
+/* table-range input cell */
+table.table-card-table.table-range td:last-child {
+	text-align: center !important;
+}
+
+}
+
+
+
+/* End Output, Datalist, Option */
+/* End CSS for range input *****************************************/
