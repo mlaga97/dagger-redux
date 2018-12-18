@@ -3,6 +3,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Table, Col } from 'react-bootstrap';
 
+// TODO: Set value and focus on range input by clicking option "labels". (2018.12.17)
+// TODO: <th> should pull responseSuffix from questionType (e.g. "Days"). (2018.12.17)
+// TODO: Present section preface in its own container. (2018.12.17)
+// TODO: Update "No Response Value" before the input is clicked. (2018.12.17)
+
 class Renderer extends React.Component {
   handleInput = (event) => {
     const { name, value, classList } = event.target;
